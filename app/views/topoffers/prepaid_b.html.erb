@@ -1,0 +1,115 @@
+<% # optimizely code %>
+<% content_for :optimizely do %>
+<% #<script src="//cdn.optimizely.com/js/75650562.js"></script> %>
+<% end %>
+
+<% # title and description for seo %>
+<% content_for :seotags do %>
+<title>Top Prepaid Cards: The Payday Hound</title>
+<meta name="description" content="Compare the top prepaid cards. Find and sign up for the one best for you. Get started now."/>
+<% end %>
+
+<div id = "lpWrapper">	
+
+	<header>
+		<div class = "lpHeader"><%= image_tag("lp/logo-sm.gif")%></div>
+	</header>
+		
+	<section id="lpMainContent">	
+
+		<div class="topCardBanner">Sign Up for the <b>Top Prepaid Card</b>. No Credit Check!</div>
+		<div class="topCardBox">
+			<div class="topCardBoxLeft topCardBoxWidth_lpPrepaid_b">
+				<h1>Most Popular Prepaid Card</h1>
+				<h2>UPside Visa® Prepaid Card</h2>
+				<ul>
+					<li>&nbsp;&nbsp;&nbsp;&nbsp;Winner of 2012 Best Consumer Value in Prepaid!!!</li>
+					<li>&nbsp;&nbsp;&nbsp;&nbsp;Only prepaid card with a rewards program.</li>
+					<li>&nbsp;&nbsp;&nbsp;&nbsp;Get cashback for using the card.</li>
+				</ul>
+				<div><%= link_to("SIGN UP", {:controller => 'partners', :action => 'go', :id => '80', :page=>@page}, :class => "compareTopCardApplyTop", :target => "_blank") %></a></div>
+			</div>
+			<div class="topCardBoxMiddle">
+				<%= link_to({:controller => 'partners', :action => 'go', :id => '80', :page=>@page}, :class => "topPickImage",:target => "_blank") do %>
+						
+								<div class="topPickText">2012<br />Winner</div>					
+						
+				<% end %>		
+				<div class="topCardBoxMiddleText">Best Consumer Value<br />Pay Before Awards</div>					
+			</div>			
+			<div class="topCardBoxRight"><%= image_tag("lp/prepaid_b/upside-tilt.png") %></div>	
+		</div>		
+
+		<div class="lpBottomSection">	
+			<div class="compareCards">
+				<div class="compareTopCardBanner">Compare <b>Top Prepaid Cards</b></div>
+				<div class="compareCardsTable lpPrepaid_b">	
+					<div class="compareTopCardRow">
+						<div class="compareTopCardRowC1"><%= image_tag("prepaid/upside-visa-prepaid-card.gif") %></div>
+						<div class="compareTopCardRowC2">
+							<h3>UPside Visa® Prepaid Card</h3>
+							<ul>
+								<li>Low $0.99 monthly fee if you load $500/month.</li>
+								<li>Lower than average ATM withdrawal fees.</li>
+								<li>Receive cash back through a rewards program.</li>
+							</ul>	
+						</div>
+						<div class="compareTopCardRowC3"><%= link_to("SIGN UP", {:controller => 'partners', :action => 'go', :id => '80', :page=>@page}, :class => "compareTopCardApply", :target => "_blank") %></div>
+					</div>
+					<div class="compareTopCardRow">
+						<div class="compareTopCardRowC1"><%= image_tag("prepaid/42_ACE_2010_Gunmetal_Visa_flat.jpg") %></div>
+						<div class="compareTopCardRowC2">
+							<h3>ACE Elite™ Visa® Prepaid Card</h3>
+							<ul>
+								<li>Free withdrawals at ACE Stores with direct deposit.</li>
+								<li>Lower than average reload fees.</li>
+								<li>Free $10 purchase overspend cushion.</li>
+							</ul>	
+						</div>
+						<div class="compareTopCardRowC3"><%= link_to("SIGN UP", {:controller => 'partners', :action => 'go', :id => '53', :page=>@page}, :class => "compareTopCardApply", :target => "_blank") %></div>
+					</div>
+					<div class="compareTopCardRowLast">
+						<div class="compareTopCardRowC1"><%= image_tag("prepaid/30_PayPal_MC_flat.jpg") %></div>
+						<div class="compareTopCardRowC2">
+							<h3>PayPal™ Prepaid MasterCard®</h3>
+							<ul>
+								<li>Lower monthly fees than most cards.</li>
+								<li>Lower than average reload fees.</li>
+								<li>Free $10 purchase overspend cushion.</li>
+							</ul>	
+						</div>
+						<div class="compareTopCardRowC3"><%= link_to("SIGN UP", {:controller => 'partners', :action => 'go', :id => '64', :page=>@page}, :class => "compareTopCardApply", :target => "_blank") %></div>
+					</div>
+				</div>
+			</div>
+			
+			<div class="lpCardDetails">
+				<div class="cardBestForBanner">Is <b>UPside</b> Best for Me?</div>
+				<div class="cardDetailsTable lpPrepaid_b">
+					<div class="lpCardDetailsRow">
+						<h3>The <%= link_to("UPside Prepaid Card", {:controller => 'partners', :action => 'go', :id => '76', :page=>@page}, :target => "_blank") %> is our top pick because:</h3>
+						<ul>
+							<li>It's the only prepaid with a rewards program.</li>
+							<li>Winner of the 2012 Best Value Prepaid Card.</li>
+						</ul>	
+						<p>However, there are a number of reasons why you might prefer a different card.</p>
+					</div>
+					<div class="lpCardDetailsRow">
+						<h3><%= image_tag("lp/CompareDesign/circlecross-icon.png", :size => "10x10") %>  Make a lot of cash withdrawals from ATM's?</h3>
+						<p><%= link_to("ACE Elite", {:controller => 'partners', :action => 'go', :id => '53', :page=>@page}, :target => "_blank") %> Visa prepaid cards are good option. If you live a new ACE Express retail location ACE Elite Prepaids get free ATM withdrawals at Ace Stores.</p> 
+						<p><%= link_to("Sign up for the ACE Elite Card >>", {:controller => 'partners', :action => 'go', :id => '53', :page=>@page}, :target => "_blank") %></a></p>
+					</div>
+					<div class="lpCardDetailsRowLast">
+						<h3><%= image_tag("lp/CompareDesign/circlecross-icon.png", :size => "10x10") %> Don't use direct deposit?</h3>
+						<p>The <%= link_to("PayPal Prepaid", {:controller => 'partners', :action => 'go', :id => '64', :page=>@page}, :target => "_blank") %> card has low cash reload fees (as low as $2 at some locations). Plus it has free customer service.</p>
+						<p><%= link_to("Sign up for the PayPal Prepaid >>", {:controller => 'partners', :action => 'go', :id => '64', :page=>@page}, :target => "_blank") %></p>
+					</div>
+				</div>
+			</div>
+		</div>
+	 
+	</section>
+
+  <%= render(:partial => "shared/lpfooter")%> 
+	 
+</div>

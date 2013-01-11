@@ -36,26 +36,19 @@
 		<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
 	<![endif]-->
 
-	<% # Google Analytics code for subdomain tracking %>
-	<script type="text/javascript">
-	  var _gaq = _gaq || [];
-	  _gaq.push(['_setAccount', 'UA-29737687-1']);
-	  _gaq.push(['_setDomainName', 'thepaydayhound.com']);
-	  _gaq.push(['_trackPageview']);	
-
-	  (function() {
-	    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-	    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-	    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-	  })();	
-
-	</script>	
-	<% # End Google Analytics code for subdomain tracking %>
-
-
 </head>
 
 <body>
+
+<!-- Google Tag Manager -->
+<noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-K4WS"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-K4WS');</script>
+<!-- End Google Tag Manager -->	
 
 <div id="container">
 	<div id="mainHeaderOutter">
@@ -121,25 +114,6 @@
 		 <div id="disclaimer">*Disclaimer: We aim to keep information accurate and up to date, however we cannot make warranties regarding the accuracy of our information. Please verify state licensing, fees, interest rates, FDIC Insurance / NCUA Insurance status, credit card information, interest rates or other provider terms and conditions during the application process. The Payday Hound may be compensated if consumers choose to utilize some of the links located throughout the content on this site and generate sales for the said merchant.</div>	
     </footer>
 </div>  
-
-	<% #Google Code for Remarketing tag %>
-	<% #Remarketing tags may not be associated with personally identifiable information or placed on pages related to sensitive categories. For instructions on adding this tag and more information on the above requirements, read the setup guide: google.com/ads/remarketingsetup %>
-	<script type="text/javascript">
-	/* <![CDATA[ */
-	var google_conversion_id = 1023523426;
-	var google_conversion_label = "bP5dCO7Q1wMQ4vSG6AM";
-	var google_custom_params = window.google_tag_params;
-	var google_remarketing_only = true;
-	/* ]]> */
-	</script>
-	<script type="text/javascript" src="//www.googleadservices.com/pagead/conversion.js">
-	</script>
-	<noscript>
-	<div style="display:inline;">
-	<img height="1" width="1" style="border-style:none;" alt="" src="//googleads.g.doubleclick.net/pagead/viewthroughconversion/1023523426/?value=0&amp;label=bP5dCO7Q1wMQ4vSG6AM&amp;guid=ON&amp;script=0"/>
-	</div>
-	</noscript>
-	<% # End Google remarketing code %>
 	    	
 </body>
 </html>

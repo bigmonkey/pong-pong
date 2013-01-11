@@ -1,5 +1,22 @@
 /*LandingPage*/
 
+/*change heights for info boxes. add class to compareCardsTable, cardDetailsTable. */
+/* to change height go to topCardBoxLeft and see additional class */
+
+.lpPrepaid {
+	height: 455px;
+}
+
+.lpBadCredit {
+	height:325px;
+}
+
+.lpPrepaid_b {
+	height:300px;
+}
+
+/* end custom heights for landing pages */
+
 .lpBody {
     background: #999;
     font-family: helvetica, arial, san-serif;
@@ -7,16 +24,29 @@
 }
 
 #lpWrapper {
-    width: 900px;
-    margin: 0 auto;
-    background-color: #fff;
-    padding: 0px 20px;
+  width: 900px;
+  margin: 0 auto;
+  background-color: #fff;
+  padding: 0px 20px;
 }
 
-.lpHeader { 	
+#lpMainContent {
+	clear: both;
+}
+
+.lpHeader {
+	float:left; 	
 	font-size: 1.5em;
 	padding: 0px;
 	margin: 0px;
+}
+
+.lpTopLink {
+	padding-top: 5px;
+	float: right;
+	font-size: .8em;
+	color: #0E8B4D;
+
 }
 
 .topCardBanner {
@@ -26,16 +56,16 @@
 	color: #fff;
 	padding: 5px 0px 0px;
 	border-radius: 3px;
-    background-image: url(<%= asset_path "lp/prepaid/lp-topbannner.png" %>);
-    background-repeat: no-repeat;
-    height: 40px;
-    text-shadow: 0 -1px #0e8b4d;
+  background-image: url(<%= asset_path "lp/CompareDesign/topbannner.png" %>);
+  background-repeat: no-repeat;
+  height: 40px;
+  text-shadow: 0 -1px #0e8b4d;
 	}
 	
 .topCardBox {
 	height: 200px;
-    background-image: url(<%= asset_path "lp/prepaid/lp-topbox.png" %>);
-    background-repeat: no-repeat;
+  background-image: url(<%= asset_path "lp/CompareDesign/topbox.png" %>);
+  background-repeat: no-repeat;
 }
 
 .lpBottomSection {
@@ -45,8 +75,8 @@
 .compareCards {
 	width: 60%;
 	float: left;
-	height: 490px;
 }
+
 
 .compareTopCardBanner {
 	text-align: center;
@@ -55,7 +85,7 @@
 	border-radius: 3px;
 	padding: 5px 0px 0px;
 	height: 37px;
-	background-image: url(<%= asset_path "lp/prepaid/lp-comparebannner.png" %>);
+	background-image: url(<%= asset_path "lp/CompareDesign/comparebannner.png" %>);
 	background-repeat: no-repeat;
 	text-shadow: 0 -1px #0e8b4d;
 }
@@ -63,7 +93,6 @@
 .lpCardDetails {
 	width: 39%;
 	float: right;
-	height: 490px;
 }
 
 .lpCardDetailsRow {
@@ -90,7 +119,7 @@
 	border-radius: 3px;
 	padding: 5px 0px 0px;
 	height: 37px;
-	background-image: url(<%= asset_path "lp/prepaid/lp-detailsbannner.png" %>);
+	background-image: url(<%= asset_path "lp/CompareDesign/detailsbannner.png" %>);
 	background-repeat: no-repeat;
 	text-shadow: 0 -1px #4169E1;
 }
@@ -100,10 +129,16 @@
 }
 	
 .topCardBoxLeft {
-	width: 60%;
+	width: 50%;
 	padding: 15px 20px;
 	float: left;
 }
+
+   /* controls width of topCardBoxLeft by adding new class */
+.topCardBoxWidth_lpPrepaid_b {
+	width: 45%;
+}
+   /* end width control */
 
 .topCardBoxLeft h1 {
 	font-size: 1.45em;
@@ -130,8 +165,44 @@
 	padding-left: 15px;
 }
 
+.topCardBoxMiddle {
+	float: left;
+	padding-top: 25px;
+}
+
+.topCardBoxMiddleText {
+	padding-top: 10px;
+	font-size: .7em;
+	color: #0A0C60;
+	text-align: center;
+}
+
+.topPickImage {
+	display:block;	
+	width:100px;
+	height:100px;
+	border-radius:50px;
+	-moz-border-radius:50px;
+	-webkit-border-radius:50px;
+	font-size:18px;
+	background-color:#0b2690;
+	background:linear-gradient(to bottom, #4569f6, #0b2690);
+	opacity:0.95;
+}
+
+.topPickText {
+	padding-top: 28px;
+	font-weight: bold;
+	color:#fff;	
+	text-align:center;
+	text-decoration:none;	
+}
+
+.topPickImage :hover, .topPickImage :active {
+	font-weight: normal;
+}
+
 .topCardBoxRight {
-	width: 30%;
 	float: right;
 	padding: 20px;
 }
@@ -141,7 +212,6 @@
 	border-radius: 3px;
 	margin-top: 3px;
 	margin-bottom: 20px;
-	height: 455px;
 }
 
 .cardDetailsTable {
@@ -149,7 +219,6 @@
 	border-radius: 3px;
 	margin-top: 3px;
 	background-color: #EEE;
-	height: 455px;
 }
 
 .cardDetailsTable p {
@@ -195,52 +264,52 @@
 }
 
 .compareTopCardApply {
- 	  margin: 30px 0px;
-	  padding: 0px;
- 	  font-weight: bold;
-    font-size: 0.75em;
-    width: 95px;
-    text-align: center;
-   	background-color: #E58D1F;
-  	color: #fff;
-	  display: block;
-	  height: 25px;
-	  line-height: 25px;
-	  border: 1px solid #E58D1F;
-	  border-radius: 3px;
-	  webkit-border-radius: 3px;
-	  moz-border-radius: 3px;
+  margin: 30px 0px;
+  padding: 0px;
+  font-weight: bold;
+  font-size: 0.75em;
+  width: 95px;
+  text-align: center;
+ 	background-color: #fff;
+ 	color: #666;
+  display: block;
+  height: 25px;
+  line-height: 25px;
+  border: 1px solid #666;
+  border-radius: 3px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
 
 }
 
 .compareTopCardApply:link, .compareTopCardApply:visited {
-    color: #FFF;
+    color: #666;
 }
 
 .compareTopCardApply:hover {
 	box-shadow: 0 0 5px rgba(102, 102, 102, 0.6);
 	-webkit-box-shadow: 0 0 5px rgba(102, 102, 102, 0.6);
 	-moz-box-shadow: 0 0 5px rgba(102, 102, 102, 0.6);
-	color: #fff;
+	color: #666;
 	font-weight: normal;
 }
 
 .compareTopCardApplyTop {
- 	  margin: 10px 0px;
-	  padding: 0px;
- 	  font-weight: bold;
-    font-size: 0.75em;
-    width: 95px;
-    text-align: center;
-   	background-color: #E58D1F;
-  	color: #fff;
-	  display: block;
-	  height: 25px;
-	  line-height: 25px;
-	  border: 1px solid #E58D1F;
-	  border-radius: 3px;
-	  webkit-border-radius: 3px;
-	  moz-border-radius: 3px;
+ 	margin: 10px 0px;
+  padding: 0px;
+	font-weight: bold;
+  font-size: 1em;
+  width: 120px;
+  text-align: center;
+  background-color: #E58D1F;
+ 	color: #fff;
+  display: block;
+  height: 30px;
+  line-height: 30px;
+  border: 1px solid #E58D1F;
+  border-radius: 3px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
 
 }
 
@@ -260,7 +329,7 @@
 	clear: both;
 	text-align: center;
 	font-size: 0.7em;
-	padding: 20px 0px 10px 0px;
+	padding: 0px 0px 10px 0px;
 	height: 100px;
 	margin: 0 auto;
 	width: 900px;
