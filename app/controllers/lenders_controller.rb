@@ -36,8 +36,6 @@ class LendersController < ApplicationController
       @select_lenders = @state.lenders
       @lenders = @select_lenders.by_top_rank.sniff_level(@criteria.sniff_id).rank_level(@criteria.ranking)
 
-      puts @criteria.ranking
-      puts "********************************** @criteria.ranking is the ranking **************"
     end  
   end
     
