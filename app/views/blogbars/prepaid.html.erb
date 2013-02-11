@@ -25,7 +25,7 @@
 <% #-- data from Rails for javaScript to use -- %>
 
 	<h2>Find a Card</h2>
-		<%= form_for(:criteria,:url => prepaids_path, :html => {:class => "cardCalc", :method => :get, :target => "_parent"} ) do |f| %>
+		<%= form_for(:criteria,:url => "http://www.cardcred.com/prepaids", :html => {:class => "cardCalc", :method => :get, :target => "_parent"} ) do |f| %>
 
 <% # this is how javascript variables get pased. id = #criteria_<hiddenfieldname> %>
 	        <%= f.hidden_field('CalcDirectDep', :value => @direct_dep) %>
@@ -82,7 +82,7 @@
 		    	<p class ="sliderBars"><div id="blogSliderATMInq"></div></p>
 		      <div class="cardSubLabel">Cust. Service calls?<span class = "calcValues"><span id="blogCalcCalls" ><%= @calls %></span> /month</span></div>		       	
 		    	<p class ="sliderBars"><div id="blogSliderCalls"></div></p>
-		    </divblogC
+		    </div>
 
 		    <div class = "cardCalcTitles">	
 		    	<div class="cardCalcLabel">TIME<span class = "calcValues"><span id="blogCalcPrepaidDur"> <%= @prepaid_duration %></span> months</span></div>

@@ -16,7 +16,7 @@ There are separate javascript functions for this section: blogSlidePurBal, blogS
 <div class = "criteria">
   <h2>Find a Card</h2>
 
-		<%= form_for(:criteria,:url => secureds_path, :html => {:class => "cardCalc", :method => :get, :target => "_parent"} ) do |f| %>
+		<%= form_for(:criteria,:url => "http://www.cardcred.com/secured-cards", :html => {:class => "cardCalc", :method => :get, :target => "_parent"} ) do |f| %>
 	        <%= f.hidden_field('PurBal', :value => @pur_balance) %>
 	        <%= f.hidden_field('CashBal', :value => @cash_balance) %>
 	        <%= f.hidden_field('Duration', :value => @duration) %>
