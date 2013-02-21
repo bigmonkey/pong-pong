@@ -1,6 +1,5 @@
 Pdh::Application.routes.draw do
 
-  get "topoffers/prepaid_a0"
 
  # get "secureds/index"
   match '' => redirect("http://www.thepaydayhound.com")
@@ -8,7 +7,7 @@ Pdh::Application.routes.draw do
   match 'why-use-the-payday-hound' => 'infos#why'  
   match 'payday-loans' => 'lenders#index'
   match 'secured-cards' => redirect("http://www.cardcred.com/secured-cards")
-  match 'prepaids' => redirect("http://www.cardcred.com/prepaids")
+ # match 'prepaids' => redirect("http://www.cardcred.com/prepaids")
   
   # The priority is based upon order of creation:
   # first created -> highest priority.
@@ -26,6 +25,7 @@ Pdh::Application.routes.draw do
  resources :secureds, :path => '/secured-cards'
  resources :lenders, :path => '/payday-loans'
  resources :prepaids
+ resources :applicants
  resources :homes, :path => ''
   # Sample resource route with options:
   #   resources :products do
@@ -69,5 +69,5 @@ Pdh::Application.routes.draw do
 
   # This is a legacy wild controller route that's not recommended for RESTful applications.
   # Note: This route will make all actions in every controller accessible via GET requests.
-   match ':controller(/:action(/:id))(.:format)'
+  match ':controller(/:action(/:id))(.:format)'
 end
