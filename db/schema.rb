@@ -11,52 +11,70 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130221185906) do
+ActiveRecord::Schema.define(:version => 20130224020759) do
 
   create_table "applicants", :force => true do |t|
-    t.boolean  "active_military"
+    t.string   "token"
+    t.string   "src_code",             :limit => 4
+    t.string   "page_code",            :limit => 4
+    t.string   "campaign",             :limit => 128
+    t.string   "ad_group"
+    t.string   "kw",                   :limit => 80
+    t.string   "creative",             :limit => 25
+    t.string   "placement"
+    t.boolean  "overdraft_protection"
+    t.integer  "payday_loan_history"
+    t.integer  "speed_sensitivity"
+    t.integer  "price_sensitivity"
+    t.integer  "licensed_sensitivity"
+    t.boolean  "creditcard_own"
+    t.datetime "created_at",                          :null => false
+    t.datetime "updated_at",                          :null => false
+  end
+
+  create_table "borrowers", :force => true do |t|
+    t.string   "token"
+    t.string   "first_name",                 :limit => 128
+    t.string   "last_name",                  :limit => 128
     t.string   "address",                    :limit => 128
+    t.string   "city",                       :limit => 128
+    t.string   "state",                      :limit => 2
+    t.integer  "zip"
     t.integer  "address_length_months"
+    t.string   "ssn",                        :limit => 11
+    t.date     "birth_date"
+    t.boolean  "own_home"
+    t.string   "home_phone",                 :limit => 12
+    t.string   "drivers_license_number",     :limit => 128
+    t.string   "drivers_license_state",      :limit => 2
+    t.string   "email",                      :limit => 128
+    t.string   "best_time_to_call",          :limit => 12
     t.integer  "bank_aba"
     t.integer  "bank_account_length_months"
     t.integer  "bank_account_number"
     t.string   "bank_account_type",          :limit => 8
     t.string   "bank_name",                  :limit => 128
     t.string   "bank_phone",                 :limit => 12
-    t.string   "best_time_to_call",          :limit => 12
-    t.date     "birth_date"
-    t.string   "city",                       :limit => 128
     t.boolean  "direct_deposit"
-    t.string   "drivers_license_number",     :limit => 128
-    t.string   "drivers_license_state",      :limit => 2
-    t.string   "email",                      :limit => 128
-    t.integer  "employed_months"
     t.string   "employer",                   :limit => 128
-    t.string   "first_name",                 :limit => 128
-    t.string   "home_phone",                 :limit => 12
-    t.string   "income_type",                :limit => 12
     t.string   "job_title",                  :limit => 128
-    t.string   "last_name",                  :limit => 128
     t.integer  "monthly_income"
-    t.boolean  "own_home"
+    t.string   "income_type",                :limit => 12
+    t.string   "work_phone",                 :limit => 12
     t.date     "pay_date1"
     t.date     "pay_date2"
     t.string   "pay_frequency",              :limit => 12
+    t.integer  "employed_months"
+    t.boolean  "active_military"
     t.integer  "requested_amount"
-    t.string   "ssn",                        :limit => 11
-    t.string   "state",                      :limit => 2
-    t.string   "work_phone",                 :limit => 12
-    t.integer  "zip"
-    t.string   "src_code",                   :limit => 4
-    t.string   "page_code",                  :limit => 4
-    t.string   "campaign",                   :limit => 128
-    t.string   "ad_group"
-    t.string   "kw",                         :limit => 80
-    t.string   "creative",                   :limit => 25
-    t.string   "placement"
-    t.integer  "tree"
-    t.datetime "created_at",                                :null => false
-    t.datetime "updated_at",                                :null => false
+    t.integer  "pingtree"
+    t.string   "status",                     :limit => 28
+    t.string   "leadid",                     :limit => 128
+    t.decimal  "sold_price",                                :precision => 8, :scale => 2
+    t.string   "redirect"
+    t.text     "error_description"
+    t.datetime "created_at",                                                              :null => false
+    t.datetime "updated_at",                                                              :null => false
   end
 
   create_table "lenders", :force => true do |t|

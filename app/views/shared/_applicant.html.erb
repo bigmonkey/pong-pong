@@ -1,0 +1,55 @@
+<div class = "appForm">
+	<h1>How Much Cash Do You Need?</h1>	
+
+	<%= form_tag({:controller => 'borrowers', :action => 'new'},:method => 'get', :html => {:id => "", :class => ""}) %>
+	        
+		<div class = "appLoanAmtBox">
+			<div id="pSliderLoanAmt"></div>
+			<div id="pLoanAmt">$<%= @requested_amount %></div> 
+			<%= hidden_field_tag('requested_amount', @requested_amount) %>	
+		</div>
+		<div class = "appDataBox">
+
+			<div class = "appSelectRow">
+				<div class = "appSelectContainer appTextRight">I live in</div>
+				<div class = "appSelectContainer appTextLeft"><%= select_tag :state, options_for_select(us_states), :class => "appSelectInputs" %></div>
+			</div>
+
+			<div class = "clearboth"></div>
+			<div class = "appSelectRow">
+		  	<div class = "appSelectContainer appTextRight">Transfer money to my</div>
+		  	<div class = "appSelectContainer appTextLeft"><%= select_tag :bank_account_type, options_for_select([['Checking','CHECKING'],['Savings','SAVING'], ['No Bank Account', 'NONE']], 'CHECKING'),:class => "appSelectInputs" %></div>
+		  </div>
+			<div class = "clearboth"></div>		  
+
+		  <div>What's important to you</div>
+		  <div>Very Important</div>
+		  <div>Don't Care</div>
+		  <div>Not Important</div>
+			<%= radio_button_tag(:speed_sensitivity, "1") %>
+			<%= radio_button_tag(:speed_sensitivity, "2") %>
+			<%= radio_button_tag(:speed_sensitivity, "3") %>			
+
+			<%= radio_button_tag(:price_sensitivity, "1") %>
+			<%= radio_button_tag(:price_sensitivity, "2") %>
+			<%= radio_button_tag(:price_sensitivity, "3") %>			
+
+			<%= radio_button_tag(:licensed_sensitivity, "1") %>
+			<%= radio_button_tag(:licensed_sensitivity, "2") %>
+			<%= radio_button_tag(:licensed_sensitivity, "3") %>			
+
+			<div>I am Active Duty Military or a Military Dependent</div>
+			<%= label_tag :active_military_true, "Yes" %>
+			<%= radio_button_tag(:active_military, "true") %>
+			<%= label_tag :active_military_false, "No" %>
+			<%= radio_button_tag(:active_military, "false") %>
+			<div>I am 18 years or older</div>
+			<%= label_tag :eighten_true, "Yes" %>
+			<%= radio_button_tag(:eighteen, "true") %>
+			<%= label_tag :eighten_false, "Yes" %>
+			<%= radio_button_tag(:eighteen, "false") %>	
+		</div>
+	 <div><%= submit_tag "FIND LOAN", :class => "findLoanButton" %></div>
+
+</div>
+		

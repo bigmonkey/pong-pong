@@ -1,6 +1,22 @@
 Pdh::Application.routes.draw do
 
 
+  get "applicants/new"
+
+  get "applicants/create"
+
+  get "applys/new"
+
+  get "applys/create"
+
+  get "borrowers/new"
+
+  get "borrowers/create"
+
+  get "prospects/new"
+
+  get "prospects/create"
+
  # get "secureds/index"
   match '' => redirect("http://www.thepaydayhound.com")
   match 'installment-loans' => 'lenders#installment'

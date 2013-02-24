@@ -38,5 +38,9 @@ class LendersController < ApplicationController
 
     end  
   end
+
+  def apply
+    @prospect = Prospect.new
+  end
     
 end
