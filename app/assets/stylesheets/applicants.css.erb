@@ -63,7 +63,7 @@
 /* Form */
 .appFormBox{
 
-	height: 400px;
+	height: 410px;
 	width: 500px;
 	margin: 40px;
 	float: right;
@@ -121,8 +121,8 @@
 
 .appDataBox {
 	width: 400px;
-	height: 185px;
-	margin: 15px auto;
+	height: 200px;
+	margin: 15px auto 0px;
 	padding: 15px 15px 0px;
 	background-color: #c9dbbd;
 	border-radius: 7px 7px 7px 7px;
@@ -133,13 +133,11 @@
 	-moz-box-shadow: 0 3px 3px #555;	
 }
 
-
-.appSelectRow {
-
-}
 .appSelectContainer {
 	float:left;
 	width: 50%;
+	font-size: 0.9em;
+	margin: 0px 10px 5px 0px;
 
 }
 
@@ -156,15 +154,88 @@
 }
 
 .appStyleSelect {
-   width: 100px;
+   width: 120px;
    height: 20px;
    overflow: hidden;
    background: url(<%= asset_path 'downarrow.png' %>) no-repeat right #eee;
    border: 1px solid #C6C6C6;
    border-radius: 6px 6px 6px 6px;
-
 }
 
+.appDataBox option {
+	font-size: 1.0em;
+	}
+
+.appImportance {
+	float: left;
+	width: 170px;
+	height: 25px;
+	line-height: 25px;
+	font-size: 0.9em;
+	font-weight: bold;
+}
+
+.appImportanceQuestions {
+	float: left;
+	width: 140px;
+	height: 20px;
+	line-height: 20px;
+	font-size: 0.75em;
+	padding: 0px 0px 0px 30px;
+}
+
+.appImportanceOptions {
+	float: left;
+	width: 75px;
+	height: 25px;
+	line-height: 25px;
+	font-size: 0.7em;
+	font-weight: bold;
+    text-align: center;
+}
+
+.appImportanceOptionsSelects {
+	float: left;
+	width: 75px;
+	height: 20px;
+	line-height: 20px;
+	font-size: 0.7em;
+	font-weight: bold;
+    text-align: center;
+}
+
+.appYNQuestions {
+	float: left;
+	width: 305px;
+	height: 25px;
+	line-height: 25px;
+	font-size: 0.9em;
+}
+
+.appYNOptions {
+	float: left;
+	width: 45px;
+	height: 25px;
+	line-height: 25px;
+	font-size: 0.7em;
+	text-align: center;
+}
+
+.appFindLoanButton {
+ 	background: none repeat scroll 0 0 #FFFFFF;
+    border: 1px solid #555555;
+    border-radius: 3px 3px 3px 3px;
+    color: #555555;
+    cursor: pointer;
+    font-family: helvetica,arial,san-serif;
+    font-size: 0.95em;
+    font-weight: bold;
+    height: 30px;
+    line-height: 30px;
+    margin: 10px 0 0 190px;
+    padding: 0 0 2px;
+    width: 120px;
+}
 
 /* Form End */
 
