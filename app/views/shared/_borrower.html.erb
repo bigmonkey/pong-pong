@@ -1,0 +1,96 @@
+<div class = "borForm">
+	<%= form_for @borrower, :url => { :action => "create" } do |f| %>
+		<div class = "borDataBox borPersonal">
+			<h2>Personal Information</h2>
+			<%= f.label :first_name, 'First Name' %>
+			<%= f.text_field :first_name %>
+			<%= f.label :last_name, 'Last Name' %>
+			<%= f.text_field :last_name %>
+			<%= f.label :address, 'Street Address' %>
+			<%= f.text_field :address %>
+			<%= f.label :city, 'City' %>
+			<%= f.text_field :city %>
+			<%= f.label :zip, 'Zip' %>
+			<%= f.number_field :zip %>
+			<%= f.label :address_length_months, 'Length at Address' %>
+			<%= f.select :address_length_months, options_for_select(time_length) %>
+			<%= f.label :ssn, 'SSN' %>
+			<%= f.number_field :ssn %>
+			<%= f.label :birth_date, 'Date of Birth' %>
+			<%= f.text_field :birth_date %>
+			<%= f.label :own_home, 'Rent or Own' %>
+			<%= f.select :own_home, options_for_select([['Own','true'],['Rent','false']], 'true')%>
+			<%= f.label :home_phone, 'Home Phone' %>
+			<%= f.telephone_field :home_phone %>
+			<%= f.label :drivers_license_number, 'Drive Lic' %>
+			<%= f.text_field :drivers_license_number %>
+			<%= f.label :drivers_license_state, 'Lic State' %>
+			<%= f.select :drivers_license_state, options_for_select(us_states)  %>
+			<%= f.label :email, 'Email' %>
+			<%= f.email_field :email %>
+			<%= f.label :best_time_to_call, 'Best Contact Time' %>
+			<%= f.select :best_time_to_call, options_for_select(call_times)  %>
+		</div>
+		<div class = "borDataBox borBank">
+			<h2>Bank Details</h2>
+			<%= f.label :bank_aba, 'ABA/Routing' %>
+			<%= f.number_field :bank_aba %>
+			<%= f.label :bank_account_length_months, 'Length at Account' %>
+			<%= f.select :bank_account_length_months, options_for_select(time_length)  %>
+			<%= f.label :bank_account_number, 'Account Number' %>
+			<%= f.number_field :bank_account_number %>
+			<%= f.label :bank_name, 'Bank Name' %>
+			<%= f.text_field :bank_name %>
+			<%= f.label :bank_phone, 'Bank Phone' %>
+			<%= f.telephone_field :bank_phone %>
+			<%= f.label :direct_deposit, 'Direct Deposit' %>
+			<%= f.select :direct_deposit, options_for_select([['Yes','true'],['No','false']], 'true')%>
+		</div>	
+		<div class ="borDataBox borWork">
+			<h2>Employment Information</h2>
+			<%= f.label :employer, 'Employer Name' %>
+			<%= f.text_field :employer %>
+			<%= f.label :job_title, 'Job Title' %>
+			<%= f.text_field :job_title %>
+			<%= f.label :monthly_income, 'Monthly Net Income' %>
+			<%= f.select :monthly_income, options_for_select([
+				["More than 5,000","5000"], 
+				["4,626 - 4,875", "4750"],
+				["4,376 - 4,625", "4500"],
+				["4,126 - 4,375", "4250"],
+				["3,876 - 4,125", "4000"],
+				["3,626 - 3,875", "3750"],
+				["3,376 - 3,625", "3500"],
+				["3,126 - 3,375", "3250"],
+				["2,876 - 3,125", "3000"],
+				["2,626 - 2,875", "2750"],
+				["2,376 - 2,625", "2500"],
+				["2,126 - 2,375", "2250"],
+				["1,876 - 2,125", "2000"],
+				["1,626 - 1,875", "1750"],
+				["1,376 - 1,625", "1500"],
+				["1,126 - 1,375", "1250"],
+				["1,000 – 1,225", "1000"]
+				]) %>
+			<%= f.label :income_type, 'Income Source' %>
+			<%= f.select :income_type, options_for_select([['Job Income','EMPLOYMENT'],['Benefits','BENEFITS']], 'EMPLOYMENT')%>
+			<%= f.label :work_phone, 'Work Phone' %>
+			<%= f.telephone_field :work_phone %>
+			<%= f.label :pay_date1, 'Next Paydate' %>
+			<%= f.text_field :pay_date1 %>
+			<%= f.label :pay_date2, 'Second Paydate' %>
+			<%= f.text_field :pay_date2 %>
+			<%= f.label :pay_frequency, 'Pay Frequency' %>
+			<%= f.select :pay_frequency, options_for_select(pay_freq)  %>
+			<%= f.label :employed_months, 'Time Employed' %>
+			<%= f.select :employed_months, options_for_select(time_length)  %>
+		</div>	
+
+		<%= f.hidden_field :active_military %>
+		<%= f.hidden_field :bank_account_type %>
+		<%= f.hidden_field :state %>
+		<%= submit_tag "FIND LOAN", :class => "appFindLoanButton" %>	
+	<% end %>	
+</div>
+
+

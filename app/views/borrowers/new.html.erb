@@ -1,2 +1,30 @@
-<h1>Borrowers#new</h1>
-<p>Find me in app/views/borrowers/new.html.erb</p>
+<% # title and description for seo %>
+<% content_for :seotags do %>
+<title>Direct Payday Loans: In-Depth Reviews and Independent Rankings</title>
+<meta name="description" content="Detailed, independent reviews and analysis of payday loan lenders. Apply direct to over 100 lenders with one simple application."/>
+<% end %>
+
+<div id = "wrapper">  
+	<div class = "borMain">
+    <div id ="borSidebar">
+      <div class = "borStatusBox">
+        <h1>Congratulations!</h1>
+        <div>We have found lenders making loans for</div>
+        <div>$<%= params[:requested_amount] %></div>
+        <div>in <%= params[:state] %></div>
+        <div>Use the form to the right to apply to these lenders.</div>
+        <div>Time: <%=Time.now %> </div>
+
+      </div>
+      
+    </div>  
+
+    <div class="borFormBox">
+
+      <%= render(:partial => "shared/borrower")%>
+    				
+    </div>
+  </div>  
+
+ 
+</div> 

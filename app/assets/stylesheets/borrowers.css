@@ -1,0 +1,103 @@
+/* holds appSidebar and appform */
+.borMain {
+	margin: 0px auto;
+	width: 920px;
+	overflow: auto;
+	height: 100%;
+}
+
+/* sidebar with status and loan benefits */
+#borSidebar {
+  background-color: #fff;
+  width: 250px;
+  float: left;
+  margin: 15px 15px 0px 0px; 
+}
+
+
+.borStatusBox {
+	width: 185px;
+	height: 125px;
+	margin: 10px auto;
+	padding: 18px 20px 0px;
+	background-color: #c9dbbd;
+	border-radius: 5px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	box-shadow: 0 3px 3px #555;
+	-webkit-box-shadow: 0 3px 3px #555;
+	-moz-box-shadow: 0 3px 3px #555;	
+}
+
+
+/* box to capture main application data */
+.borForm form{
+	font-size: .9em;
+}
+.borFormBox{
+	height: 700px;
+	width: 600px;
+	margin: 15px 15px 0px 0px;
+	float: right;
+	border-radius: 7px 7px 7px 7px;
+	-moz-border-radius: 7px 7px 7px 7px;
+	-webkit-border-radius: 7px 7px 7px 7px;
+	box-shadow: 0 5px 5px #444;
+	-webkit-box-shadow: 0 5px 5px #444;
+	-moz-box-shadow: 0 5px 5px #444;	
+	background: #8fc990; /* Old browsers */
+	/* IE9 SVG, needs conditional override of 'filter' to 'none' */
+	background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIxJSIgc3RvcC1jb2xvcj0iIzhmYzk5MCIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiMyMTVlMjciIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+	background: -moz-linear-gradient(top,  #8fc990 1%, #215e27 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(1%,#8fc990), color-stop(100%,#215e27)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top,  #8fc990 1%,#215e27 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top,  #8fc990 1%,#215e27 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top,  #8fc990 1%,#215e27 100%); /* IE10+ */
+	background: linear-gradient(to bottom,  #8fc990 1%,#215e27 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#8fc990', endColorstr='#215e27',GradientType=0 ); /* IE6-8 */
+
+}
+
+.borDataBox {
+	width: 400px;
+	height: 200px;
+	background-color: #c9dbbd;
+	border-radius: 7px 7px 7px 7px;
+	-moz-border-radius: 7px 7px 7px 7px;
+	-webkit-border-radius: 7px 7px 7px 7px;
+	box-shadow: 0 3px 3px #555;
+	-webkit-box-shadow: 0 3px 3px #555;
+	-moz-box-shadow: 0 3px 3px #555;	
+}
+
+.borPersonal {
+	width: 520px;
+	height: 220px;
+	margin: 15px auto 0px;
+	padding: 15px 15px 0px;
+}
+
+.borPersonal Label {
+  width: 175px;
+  font-size: 0.85em;
+}
+
+.borPersonal Input {
+	width: 200px;
+	margin: 2px 0;
+	height: 14px;
+}
+
+.borBank {
+	width: 520px;
+	height: 115px;
+	margin: 15px auto 0px;
+	padding: 15px 15px 0px;
+}
+
+.borWork {
+	width: 520px;
+	height: 145px;
+	margin: 15px auto 0px;
+	padding: 15px 15px 0px;
+}
