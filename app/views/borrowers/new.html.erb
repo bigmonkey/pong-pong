@@ -7,16 +7,23 @@
 <div id = "wrapper">  
 	<div class = "borMain">
     <div id ="borSidebar">
-      <div class = "borStatusBox">
+      <div class = "borStatusBox borLoans">
         <h1>Congratulations!</h1>
-        <div>We have found lenders making loans for</div>
-        <div>$<%= params[:requested_amount] %></div>
-        <div>in <%= params[:state] %></div>
-        <div>Use the form to the right to apply to these lenders.</div>
-        <div>Time: <%=Time.now %> </div>
+        <div class = "borStatusText">We found you multiple lenders</div>
+        <h2>$<%= (params[:requested_amount].to_i<500) ? params[:requested_amount] : "500+"  %></h2>
+        <h3><%= @state_name %></h3>
+        <h1>Apply to Get Your Cash</h1>
 
       </div>
-      
+      <div class = "borStatusBox borSystem">
+        <h2>Application System Status</h2>
+        <h1>Lender Systems Live</h1>
+        <h2><%=Time.now.strftime('%a  %m/%d/%Y  %l:%M%p') %> </h2>
+      </div>
+      <div class="appSidebarSeals">
+        <%= image_tag("SSL_Seal.gif", :alt => "Security Seal", :style => "margin: 0px 23px") %>
+        <%= link_to(image_tag("bank-think.png", :size => "100X53", :alt => "Bank Think"),"http://www.americanbanker.com/bankthink/get-more-transparency-in-payday-lending-1049381-1.html") %>
+      </div>      
     </div>  
 
     <div class="borFormBox">

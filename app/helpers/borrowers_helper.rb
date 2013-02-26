@@ -8,7 +8,7 @@ def time_length
 	['2+ Years', '24'],
 	['1+ Year', '12'],
 	['9+ Months', '12'],
-	['6+ Months', '9'],
+	['8+ Months', '9'],
 	['6 Months', '6'],
 	['5 Months', '5'],
 	['4 Months', '4'],

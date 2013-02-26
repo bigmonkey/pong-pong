@@ -1,26 +1,21 @@
 /* holds appSidebar and appform */
 .borMain {
 	margin: 0px auto;
-	width: 920px;
+	width: 950px;
 	overflow: auto;
 	height: 100%;
 }
 
 /* sidebar with status and loan benefits */
 #borSidebar {
-  background-color: #fff;
+
   width: 250px;
   float: left;
-  margin: 15px 15px 0px 0px; 
 }
 
 
 .borStatusBox {
-	width: 185px;
-	height: 125px;
-	margin: 10px auto;
-	padding: 18px 20px 0px;
-	background-color: #c9dbbd;
+	margin: 20px auto;
 	border-radius: 5px;
 	-moz-border-radius: 5px;
 	-webkit-border-radius: 5px;
@@ -29,15 +24,75 @@
 	-moz-box-shadow: 0 3px 3px #555;	
 }
 
+.borStatusText {
+	font-size: .8em;
+	text-align: center;
+	margin: 5px auto;
+}
+
+.borLoans {
+	width: 185px;
+	height: 140px;
+	padding: 1px 20px 0px;
+	background-color: #fff;
+	border: 1px solid #ddd;
+}
+
+.borLoans h1 {
+	color: #e85d1f;
+	text-align: center;
+	font-weight: bold;
+	font-size: 1em;
+	margin-top: 10px;
+}
+
+.borLoans h2 {
+	color: #281880;
+	font-size: 1.3em;
+	text-align: center;
+	font-weight: bold;
+}
+
+.borLoans h3 {
+	color: #281880;
+	font-size: 1em;
+	text-align: center;
+	font-weight: bold;
+}
+.borSystem {
+	width: 185px;
+	height: 65px;
+	padding: 5px 20px 0px;
+	border: 1px solid #ddd;
+	background-color: #eee;
+	box-shadow: 0 0px 0px #555;
+	-webkit-box-shadow: 0 0px 0px #555;
+	-moz-box-shadow: 0 0px 0px #555;
+}
+
+.borSystem h1 {
+	color: #006633;
+	font-size: .9em;
+	text-align: center;
+	font-weight: bold;
+	margin: 5px 0px;
+}
+
+.borSystem h2 {
+	color: #777;
+	font-size: .7em;
+	text-align: center;
+}
+
 
 /* box to capture main application data */
 .borForm form{
 	font-size: .9em;
 }
 .borFormBox{
-	height: 700px;
-	width: 600px;
-	margin: 15px 15px 0px 0px;
+	height: 650px;
+	width: 675px;
+	margin: 20px auto 25px;
 	float: right;
 	border-radius: 7px 7px 7px 7px;
 	-moz-border-radius: 7px 7px 7px 7px;
@@ -59,8 +114,9 @@
 }
 
 .borDataBox {
-	width: 400px;
-	height: 200px;
+	width: 595px;
+	padding: 0px 15px 0px;
+	margin: 15px auto 0px;
 	background-color: #c9dbbd;
 	border-radius: 7px 7px 7px 7px;
 	-moz-border-radius: 7px 7px 7px 7px;
@@ -70,34 +126,109 @@
 	-moz-box-shadow: 0 3px 3px #555;	
 }
 
+.borDataBox h2 {
+	margin-left: 9px;
+	font-size: .7em;
+}
+
 .borPersonal {
-	width: 520px;
-	height: 220px;
-	margin: 15px auto 0px;
-	padding: 15px 15px 0px;
-}
-
-.borPersonal Label {
-  width: 175px;
-  font-size: 0.85em;
-}
-
-.borPersonal Input {
-	width: 200px;
-	margin: 2px 0;
-	height: 14px;
+	height: 260px;
 }
 
 .borBank {
-	width: 520px;
-	height: 115px;
-	margin: 15px auto 0px;
-	padding: 15px 15px 0px;
+	height: 110px;
 }
 
 .borWork {
-	width: 520px;
-	height: 145px;
-	margin: 15px auto 0px;
-	padding: 15px 15px 0px;
+	height: 160px;
 }
+
+.borDataRow {
+	width: 100%;
+}
+
+.borDataContainer {
+	float: left;
+	width: 33.3%;
+}
+
+
+.borDataContainer input, .borDataContainer select, .borDataContainer label {
+	display: inline-block;
+	margin: -3px auto;
+}
+
+.borDataContainer label {
+	font-size: .8em;
+	color: #555;
+	margin-top: 10px;
+	margin-left: 1px;
+}
+
+.clearfix:after {
+  clear: both;
+  display: hidden;
+}
+.clearfix {
+    display: inline-block;
+}
+
+.borLabel {
+	width: 90%;
+
+}
+
+.borInput {
+	color: #221B70;
+	width: 90%;
+	height: 20px 4px;
+	padding: 3px;
+	background-color: #fff;
+  border: 1px solid #C6C6C6;
+  border-radius: 5px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px; 	
+}
+
+.borInputDate{
+	color: #221B70;
+	height: 20px 4px;
+	padding: 3px;
+	background-color: #fff;
+  border: 1px solid #C6C6C6;
+  border-radius: 5px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px; 	
+}
+
+.borDataContainer select {
+	height: 24px;
+}
+
+.borDataBox option {
+	font-size: 1.0em;
+	}
+
+.borFindLoanButton {
+ 	background: none repeat scroll 0 0 #fff;
+  border: 1px solid #555555;
+  border-radius: 5px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;   
+  color: #006633;
+  cursor: pointer;
+  font-family: helvetica,arial,san-serif;
+  font-size: 1.4em;
+  font-weight: bold;
+  height: 40px;
+  line-height: 45px;
+  margin: 17px auto;
+  padding: 0 0 2px;
+  width: 250px;
+  display: block;
+}	
+
+.borFindLoanButton:hover {
+ 	background: none repeat scroll 0 0 #E88C1A;
+  color: #fff;
+  }	
