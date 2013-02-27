@@ -8,9 +8,22 @@ class BorrowersController < ApplicationController
 	require 'open-uri'
 
   def new
-  	@borrower = Borrower.new
-  	@requested_amount = params[:requested_amount]
-  	@state_name= State.find_by_state_abbr(params[:state]).state
+  	if (params[:active_military]=="true") or (params[:bank_account_type]=="NONE") or (params[:eighteen]=="false")
+  		redirect_to("http://www.cardcred.com")
+  	else	
+  		case params[:state]
+	  	when "GA","VA","WV","AR"
+	  		redirect_to("http://www.mobilespinner.com")
+	  	else 
+		  	@borrower = Borrower.new
+		  	@requested_amount = params[:requested_amount]	
+		  	if !State.find_by_state_abbr(params[:state]).nil?
+		  		@state_name= State.find_by_state_abbr(params[:state]).state
+		  	else
+		  		@state_name=params[:state]
+		  	end	
+	  	end	
+	  end			
   end
 
 
@@ -27,10 +40,13 @@ class BorrowersController < ApplicationController
 			@borrower.sold_price = @response.xpath('//Price').text
 		when "reject", "duplicate"
 			@borrower.redirect = "http://www.mobilespinner.com"
-		else "error"
+		when "error"
 			@borrower.redirect = "http://www.mobilespinner.com"
 			@borrower.error_description = @response.xpath('//Description').text
+		else
+			@borrower.redirect = "http://www.mobilespinner.com"
 		end
+
 		@borrower.leadid = @response.xpath('//LeadID').text
 		
 		@borrower.save ? @save = "saved after ping" : "not saved after ping"

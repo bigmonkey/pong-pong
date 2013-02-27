@@ -1,7 +1,7 @@
 <div class = "appForm">
 	<h1>How Much Cash Do You Need?</h1>	
 
-	<%= form_tag({:controller => 'borrowers', :action => 'new'},:method => 'get', :html => {:id => "", :class => ""}) %>
+	<%= form_tag({:controller => 'borrowers', :action => 'new'},:method => 'post', :html => {:id => "", :class => ""}) %>
 	        
 		<div class = "appLoanAmtBox">
 			<div id="pSliderLoanAmt"></div>
@@ -33,21 +33,21 @@
 			  
 			  <div class = "appImportanceQuestions">Quick Cash Transfer</div>
 				<div class = "appImportanceOptionsSelects"><%= radio_button_tag(:speed_sensitivity, "1") %></div>
-				<div class = "appImportanceOptionsSelects"><%= radio_button_tag(:speed_sensitivity, "2") %></div>
+				<div class = "appImportanceOptionsSelects"><%= radio_button_tag(:speed_sensitivity, "2", true) %></div>
 				<div class = "appImportanceOptionsSelects"><%= radio_button_tag(:speed_sensitivity, "3") %></div>			
 			
 				<div class = "clearboth"></div>		
 
 				<div class = "appImportanceQuestions">Low Fees</div>
 				<div class = "appImportanceOptionsSelects"><%= radio_button_tag(:price_sensitivity, "1") %></div>
-				<div class = "appImportanceOptionsSelects"><%= radio_button_tag(:price_sensitivity, "2") %></div>
+				<div class = "appImportanceOptionsSelects"><%= radio_button_tag(:price_sensitivity, "2", true) %></div>
 				<div class = "appImportanceOptionsSelects"><%= radio_button_tag(:price_sensitivity, "3") %></div>			
 			
 				<div class = "clearboth"></div>		
 
 				<div class = "appImportanceQuestions">State Licensed Lender</div>
 				<div class = "appImportanceOptionsSelects"><%= radio_button_tag(:licensed_sensitivity, "1") %></div>
-				<div class = "appImportanceOptionsSelects"><%= radio_button_tag(:licensed_sensitivity, "2") %></div>
+				<div class = "appImportanceOptionsSelects"><%= radio_button_tag(:licensed_sensitivity, "2", true) %></div>
 				<div class = "appImportanceOptionsSelects"><%= radio_button_tag(:licensed_sensitivity, "3") %></div>				
 
 				<div class = "clearboth"></div>	
@@ -58,14 +58,14 @@
 				<div class = "appYNOptions"><%= label_tag :active_military_true, "Yes" %>
 				<%= radio_button_tag(:active_military, "true") %></div>
 				<div class = "appYNOptions"><%= label_tag :active_military_false, "No" %>
-				<%= radio_button_tag(:active_military, "false") %></div>
+				<%= radio_button_tag(:active_military, "false", true) %></div>
 		
 				<div class = "clearboth"></div>	
 
 				<div class = "appYNQuestions">18 years or older</div>
-				<div class = "appYNOptions"><%= label_tag :eighten_true, "Yes" %>
-				<%= radio_button_tag(:eighteen, "true") %></div>
-				<div class = "appYNOptions"><%= label_tag :eighten_false, "No" %>
+				<div class = "appYNOptions"><%= label_tag :eighteen_true, "Yes" %>
+				<%= radio_button_tag(:eighteen, "true", true) %></div>
+				<div class = "appYNOptions"><%= label_tag :eighteen_false, "No" %>
 				<%= radio_button_tag(:eighteen, "false") %></div>	
 			</div>	
 		</div>
