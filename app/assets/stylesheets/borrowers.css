@@ -90,7 +90,6 @@
 	font-size: .9em;
 }
 .borFormBox{
-	height: 650px;
 	width: 675px;
 	margin: 20px auto 25px;
 	float: right;
@@ -115,7 +114,7 @@
 
 .borDataBox {
 	width: 595px;
-	padding: 0px 15px 0px;
+	padding: 0px 15px 15px;
 	margin: 15px auto 0px;
 	background-color: #c9dbbd;
 	border-radius: 7px 7px 7px 7px;
@@ -129,18 +128,6 @@
 .borDataBox h2 {
 	margin-left: 9px;
 	font-size: .7em;
-}
-
-.borPersonal {
-	height: 260px;
-}
-
-.borBank {
-	height: 110px;
-}
-
-.borWork {
-	height: 160px;
 }
 
 .borDataRow {

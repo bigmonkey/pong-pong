@@ -23,21 +23,20 @@ class BorrowersController < ApplicationController
     @applicant.kw = session[:kw]
     @applicant.creative = session[:ad]
     @applicant.placement = session[:plc]
-
-    # saves marketing variables
-    @applicant.overdraft_protection = params[:overdraft_protection] 
-    @applicant.payday_loan_history = params[:payday_loan_history] 
-    @applicant.speed_sensitivity = params[:speed_sensitivity]
-    @applicant.price_sensitivity = params[:price_sensitivity]
-    @applicant.licensed_sensitivity = params[:licensed_sensitivity]
-    @applicant.creditcard_own = params[:creditcard_own]
-    @applicant.active_military = params[:active_military] 
-    @applicant.eighteen = params[:eighteen]
-    @applicant.state = params[:state]
-    @applicant.bank_account_type = params[:bank_account_type]
-    @applicant.redirect = @redirect
-    
-    @applicant.save 
+   	# saves marketing variables
+   	@applicant.overdraft_protection = params[:overdraft_protection] 
+   	@applicant.payday_loan_history = params[:payday_loan_history] 
+   	@applicant.speed_sensitivity = params[:speed_sensitivity]
+   	@applicant.price_sensitivity = params[:price_sensitivity]
+   	@applicant.licensed_sensitivity = params[:licensed_sensitivity]
+   	@applicant.creditcard_own = params[:creditcard_own]
+   	@applicant.active_military = params[:active_military] 
+   	@applicant.eighteen = params[:eighteen]
+   	@applicant.state = params[:state]
+  	@applicant.bank_account_type = params[:bank_account_type]
+   	@applicant.redirect = @redirect
+   
+ 	 	@applicant.save 
 	
 		session[:token]=@applicant.token
 	end

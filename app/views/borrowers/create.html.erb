@@ -1,10 +1,6 @@
 <div id="redirect">
     <p span class="center"><%= image_tag("loading.gif", :alt => "loading", :size => "32x32") %></p>
-   	<p span class="center">You application has been accepted.</p> 
-   	<p span class="center">borrow is this <%= @borrower.inspect %>.</p> 
-   	
-   	
-   	<p span class="center">this is the submit <%= @lender_url.inspect %></p> 
+   	<p span class="center">You application has been accepted and is being reviewed.</p> 
    	<p span class="center"><div id= "redirect_small"> If you are not redirected in five seconds please <%= link_to("click here", @lender_url) %></div></p>
    	<p span class="center"><%= link_to(image_tag("thepaydayhound-logo.png", :alt => "www.thepaydayhound.com", :size => "150x81"), "#{@lender_url}") %></p>
 </div>
