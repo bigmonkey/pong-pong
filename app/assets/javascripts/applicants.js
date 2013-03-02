@@ -1,6 +1,7 @@
-// ************** slider of payloan application ****************//
+
 $(document).ready(function () {
 
+// ************** slider of payloan application ****************//
     $("#pSliderLoanAmt").slider({
         value: 300,
         min: 100,
@@ -21,8 +22,13 @@ $(document).ready(function () {
 
         },
     });
-
-});
 // ***************** end sliders for prepaid card calculator blog version ************//
+
+
+
+/*** calls validation script kept in browsers.js ****/
+
+  $("#triageForm").validate();
+});
 
 

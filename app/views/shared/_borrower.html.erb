@@ -1,7 +1,7 @@
 
 	<div class = "borForm">
 
-	<%= form_for @borrower, :url => { :action => "create" }, :method => "get" do |f| %>
+	<%= form_for @borrower, :url => {:action => "create"}, :method => "post" do |f| %>
 		<div class = "borDataBox borPersonal">
 			<div class = "borDataRow clearfix">
 		  	<div class = "borDataContainer"><%= f.label :first_name, 'First Name',:class => "borLabel" %></div>
@@ -9,9 +9,9 @@
 				<div class = "borDataContainer"><%= f.label :address_length_months, 'Length at Address',:class => "borLabel" %></div>
 			</div>	
 			<div class = "borDataRow clearfix">
-				<div class = "borDataContainer"><%= f.text_field :first_name, :class => "borInput" %></div>
-				<div class = "borDataContainer"><%= f.text_field :last_name, :class => "borInput" %></div>
-				<div class = "borDataContainer"><%= f.select :address_length_months, options_for_select(time_length), {},:class => "borInput" %></div>
+				<div class = "borDataContainer"><%= f.text_field :first_name, :class => "borInput required" %></div>
+				<div class = "borDataContainer"><%= f.text_field :last_name, :class => "borInput required" %></div>
+				<div class = "borDataContainer"><%= f.select :address_length_months, options_for_select(time_length), {},:class => "borInput required" %></div>
 			</div>
 
 			<div class = "borDataRow clearfix">
@@ -20,20 +20,20 @@
 				<div class = "borDataContainer"><%= f.label :zip, 'Zip',:class => "borLabel" %></div>
 			</div>	
 			<div class = "borDataRow clearfix">
-				<div class = "borDataContainer"><%= f.text_field :address, :class => "borInput" %></div>
-				<div class = "borDataContainer"><%= f.text_field :city, :class => "borInput" %></div>
-				<div class = "borDataContainer"><%= f.text_field :zip, :class => "borInput" %></div>
+				<div class = "borDataContainer"><%= f.text_field :address, :class => "borInput required" %></div>
+				<div class = "borDataContainer"><%= f.text_field :city, :class => "borInput required" %></div>
+				<div class = "borDataContainer"><%= f.text_field :zip, :class => "borInput required zip" %></div>
 			</div>
 
 			<div class = "borDataRow clearfix">
-		  	<div class = "borDataContainer"><%= f.label :home_phone, 'Home Phone',:class => "borLabel" %></div>
+		  	<div class = "borDataContainer"><%= f.label :home_phone, 'Home Phone', :class => "borLabel" %></div>
 				<div class = "borDataContainer"><%= f.label :email, 'Email',:class => "borLabel" %></div>
 				<div class = "borDataContainer"><%= f.label :best_time_to_call, 'Best Contact Time',:class => "borLabel" %></div>
 			</div>	
 			<div class = "borDataRow clearfix">
-				<div class = "borDataContainer"><%= f.telephone_field :home_phone, :class => "borInput" %></div>
-				<div class = "borDataContainer"><%= f.email_field :email, :class => "borInput" %></div>
-				<div class = "borDataContainer"><%= f.select :best_time_to_call, options_for_select(call_times, 'AFTERNOON'), {}, :class => "borInput" %></div>
+				<div class = "borDataContainer"><%= f.telephone_field :home_phone, :class => "borInput required us_phone" %></div>
+				<div class = "borDataContainer"><%= f.email_field :email, :class => "borInput required" %></div>
+				<div class = "borDataContainer"><%= f.select :best_time_to_call, options_for_select(call_times), {}, :class => "borInput required" %></div>
 			</div>		
 
 			<div class = "borDataRow clearfix">
@@ -42,70 +42,21 @@
 				<div class = "borDataContainer"><%= f.label :own_home, 'Rent or Own',:class => "borLabel" %></div>
 			</div>	
 			<div class = "borDataRow clearfix">
-				<div class = "borDataContainer"><%= f.text_field :drivers_license_number, :class => "borInput" %></div>
-				<div class = "borDataContainer"><%= f.select :drivers_license_state, options_for_select(us_states), {}, :class => "borInput" %></div>
-				<div class = "borDataContainer"><%= f.select :own_home,options_for_select([['Own','true'],['Rent','false']], 'true'), {}, :class => "borInput" %></div>
+				<div class = "borDataContainer"><%= f.text_field :drivers_license_number, :class => "borInput required" %></div>
+				<div class = "borDataContainer"><%= f.select :drivers_license_state, options_for_select(us_states), {}, :class => "borInput required" %></div>
+				<div class = "borDataContainer"><%= f.select :own_home,options_for_select([['...', ''],['Own','true'],['Rent','false']]), {}, :class => "borInput required" %></div>
 			</div>					
 
 			<div class = "borDataRow clearfix">
 		  	<div class = "borDataContainer"><%= f.label :ssn, 'SSN',:class => "borLabel" %></div>
 				<div class = "borDataContainer"><%= f.label :birth_date, 'Date of Birth',:class => "borLabel" %></div>
-				<div class = "borDataContainer"></div>
-			</div>	
-			<div class = "borDataRow clearfix">
-				<div class = "borDataContainer"><%= f.text_field :ssn, :class => "borInput" %></div>
-				<div class = "borDataContainer"><%= f.date_select(:birth_date, {:start_year=>Time.now.year-100,:end_year => Time.now.year - 18, :default => 18.years.ago,:use_short_month => true}, {:class => "borInputDate"}) %></div>
-				<div class = "borDataContainer"></div>
-			</div>				
-
-	
-		</div>
-		<div class = "borDataBox borBank">
-
-			<div class = "borDataRow clearfix">
-		  	<div class = "borDataContainer"><%= f.label :bank_name, 'Bank Name',:class => "borLabel" %></div>
-				<div class = "borDataContainer"><%= f.label :bank_account_number, 'Account Number',:class => "borLabel" %></div>
-				<div class = "borDataContainer"><%= f.label :bank_aba, 'Bank Phone',:class => "borLabel" %></div>
-			</div>	
-			<div class = "borDataRow clearfix">
-				<div class = "borDataContainer"><%= f.text_field :bank_name, :class => "borInput" %></div>
-				<div class = "borDataContainer"><%= f.number_field :bank_account_number, :class => "borInput" %></div>
-				<div class = "borDataContainer"><%= f.number_field :bank_aba, :class => "borInput" %></div>
-			</div>	
-
-			<div class = "borDataRow clearfix">
-		  	<div class = "borDataContainer"><%= f.label :bank_account_length_months, 'Length at Account',:class => "borLabel" %></div>
-				<div class = "borDataContainer"><%= f.label :bank_account_number, 'Account Number',:class => "borLabel" %></div>
-				<div class = "borDataContainer"><%= f.label :direct_deposit, 'Direct Deposit',:class => "borLabel" %></div>
-			</div>	
-			<div class = "borDataRow clearfix">
-				<div class = "borDataContainer"><%= f.select :bank_account_length_months, options_for_select(time_length), {}, :class => "borInput" %></div>
-				<div class = "borDataContainer"><%= f.number_field :bank_account_number, :class => "borInput" %></div>
-				<div class = "borDataContainer"><%= f.select:direct_deposit, options_for_select([['Yes','true'],['No','false']], 'true'), {}, :class => "borInput" %></div>
-			</div>
-
-		</div>	
-		<div class ="borDataBox borWork">
-			<div class = "borDataRow clearfix">
-		  	<div class = "borDataContainer"><%= f.label :employer, 'Employer Name', :class => "borLabel" %></div>
-				<div class = "borDataContainer"><%= f.label :job_title, 'Job Title',:class => "borLabel" %></div>
-				<div class = "borDataContainer"><%= f.label :work_phone, 'Work Phone',:class => "borLabel" %></div>
-			</div>	
-			<div class = "borDataRow clearfix">
-				<div class = "borDataContainer"><%= f.text_field :employer, :class => "borInput" %></div>
-				<div class = "borDataContainer"><%= f.text_field :job_title, :class => "borInput" %></div>
-				<div class = "borDataContainer"><%= f.telephone_field :work_phone, :class => "borInput" %></div>
-			</div>
-
-			<div class = "borDataRow clearfix">
-		  	<div class = "borDataContainer"><%= f.label :employed_months, 'Time Employed', :class => "borLabel" %></div>
-				<div class = "borDataContainer"><%= f.label :income_type, 'Income Source',:class => "borLabel" %></div>
 				<div class = "borDataContainer"><%= f.label :monthly_income, 'Monthly Net Income',:class => "borLabel" %></div>
 			</div>	
 			<div class = "borDataRow clearfix">
-				<div class = "borDataContainer"><%= f.select :employed_months, options_for_select(time_length), {}, :class => "borInput" %></div>
-				<div class = "borDataContainer"><%= f.select :income_type, options_for_select([['Job Income','EMPLOYMENT'],['Benefits','BENEFITS']], 'EMPLOYMENT'), {}, :class => "borInput" %></div>
+				<div class = "borDataContainer"><%= f.text_field :ssn, :class => "borInput required ssn" %></div>
+				<div class = "borDataContainer"><%= f.date_select(:birth_date, {:start_year=>Time.now.year-95,:end_year => Time.now.year - 18, :include_blank => true, :default => nil, :use_short_month => true}, {:class => "borInputDate required"}) %></div>
 				<div class = "borDataContainer"><%= f.select :monthly_income, options_for_select([
+				['...', ''],	
 				["More than 5,000","5000"], 
 				["4,626 - 4,875", "4750"],
 				["4,376 - 4,625", "4500"],
@@ -123,7 +74,62 @@
 				["1,376 - 1,625", "1500"],
 				["1,126 - 1,375", "1250"],
 				["1,000 – 1,225", "1000"]
-				]), {}, :class => "borInput" %></div>
+				]), {}, :class => "borInput required" %></div>				
+			</div>				
+
+	
+		</div>
+		<div class = "borDataBox borBank">
+
+			<div class = "borDataRow clearfix">
+		  	<div class = "borDataContainer"><%= f.label :bank_name, 'Bank Name',:class => "borLabel" %></div>
+				<div class = "borDataContainer"><%= f.label :bank_account_number, 'Account Number',:class => "borLabel" %></div>
+				<div class = "borDataContainer"><%= f.label :bank_aba, 'Bank ABA/Routing', :class => "borLabel aba" %><span onmouseout="jQuery('#abaNote').hide();" onmouseover="jQuery('#abaNote').show();"><%= image_tag('application/help.gif') %></span>
+					<div id = "abaNote" class = "checkImageContainer" style ="display: none">
+						<div><%= image_tag('application/check.png') %></div>
+					</div> 
+				</div>
+
+			</div>	
+			<div class = "borDataRow clearfix">
+				<div class = "borDataContainer"><%= f.text_field :bank_name, :class => "borInput required" %></div>
+				<div class = "borDataContainer"><%= f.text_field :bank_account_number, :class => "borInput required" %></div>
+				<div class = "borDataContainer"><%= f.text_field :bank_aba, :class => "borInput required aba" %></div>
+			</div>	
+
+			<div class = "borDataRow clearfix">
+		  	<div class = "borDataContainer"><%= f.label :bank_account_length_months, 'Length at Account',:class => "borLabel" %></div>
+				<div class = "borDataContainer"><%= f.label :bank_phone, 'Bank Phone',:class => "borLabel" %></div>
+				<div class = "borDataContainer"></div>
+			</div>	
+			<div class = "borDataRow clearfix">
+				<div class = "borDataContainer"><%= f.select :bank_account_length_months, options_for_select(time_length), {}, :class => "borInput required" %></div>
+				<div class = "borDataContainer"><%= f.telephone_field :bank_phone, :class => "borInput required us_phone" %></div>
+				<div class = "borDataContainer"></div>
+			</div>
+
+		</div>	
+		<div class ="borDataBox borWork">
+			<div class = "borDataRow clearfix">
+		  	<div class = "borDataContainer"><%= f.label :employer, 'Employer Name', :class => "borLabel" %></div>
+				<div class = "borDataContainer"><%= f.label :job_title, 'Job Title',:class => "borLabel" %></div>
+				<div class = "borDataContainer"><%= f.label :work_phone, 'Work Phone',:class => "borLabel" %></div>
+			</div>	
+			<div class = "borDataRow clearfix">
+				<div class = "borDataContainer"><%= f.text_field :employer, :class => "borInput required" %></div>
+				<div class = "borDataContainer"><%= f.text_field :job_title, :class => "borInput required" %></div>
+				<div class = "borDataContainer"><%= f.telephone_field :work_phone, :class => "borInput required us_phone" %></div>
+			</div>
+
+			<div class = "borDataRow clearfix">
+		  	<div class = "borDataContainer"><%= f.label :employed_months, 'Time Employed', :class => "borLabel" %></div>
+				<div class = "borDataContainer"><%= f.label :income_type, 'Income Source',:class => "borLabel" %></div>
+				<div class = "borDataContainer"><%= f.label :direct_deposit, 'Direct Deposit',:class => "borLabel" %></div>
+			</div>	
+			<div class = "borDataRow clearfix">
+				<div class = "borDataContainer"><%= f.select :employed_months, options_for_select(time_length), {}, :class => "borInput required" %></div>
+				<div class = "borDataContainer"><%= f.select :income_type, options_for_select([['...',''],['Job Income','EMPLOYMENT'],['Benefits','BENEFITS']]), {}, :class => "borInput required" %></div>
+				<div class = "borDataContainer"><%= f.select :direct_deposit, options_for_select([['...',''],['Yes','true'],['No','false']]), {}, :class => "borInput required" %></div>
 			</div>
 
 			<div class = "borDataRow clearfix">
@@ -132,14 +138,15 @@
 				<div class = "borDataContainer"><%= f.label :pay_date2, 'Second Paydate',:class => "borLabel" %></div>
 			</div>	
 			<div class = "borDataRow clearfix">
-				<div class = "borDataContainer"><%= f.select :pay_frequency, options_for_select(pay_freq), {}, :class => "borInput" %></div>
-				<div class = "borDataContainer"><%= f.text_field :pay_date1, :class => "borInput" %></div>
-				<div class = "borDataContainer"><%= f.text_field :pay_date2, :class => "borInput" %></div>
+				<div class = "borDataContainer"><%= f.select :pay_frequency, options_for_select(pay_freq), {}, :class => "borInput required" %></div>
+				<div class = "borDataContainer"><%= f.text_field :pay_date1, :class => "borInput required" %></div>
+				<div class = "borDataContainer"><%= f.text_field :pay_date2, :class => "borInput required" %></div>
 			</div>
 
 
 		</div>	
-
+		<%= f.hidden_field :token, :value => session[:token] %>
+		<%= f.hidden_field :ip_address, :value => request.remote_ip %>
 		<%= f.hidden_field :active_military, :value => params[:active_military] %>
 		<%= f.hidden_field :bank_account_type, :value => params[:bank_account_type] %>
 		<%= f.hidden_field :state, :value => params[:state] %>

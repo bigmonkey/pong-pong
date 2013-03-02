@@ -1,9 +1,10 @@
-<h1>Borrowers#create</h1>
-<p>here's borrower raw <%= @borrower.inspect %></p>
-<p>data saved: <%= @save %> </p>
-<p>here's t3header <%= @t3header.inspect %></p>
-<p>here's the response <%= @response.inspect %><p/>
-
-<p>Status: <%= @response.xpath('//Status').text %> </p>
-<p>Price: <%= @response.xpath('//Price').text %> </p>
-<p>Status: <%= @response.xpath('//Redirect').text %> </p>
+<div id="redirect">
+    <p span class="center"><%= image_tag("loading.gif", :alt => "loading", :size => "32x32") %></p>
+   	<p span class="center">You application has been accepted.</p> 
+   	<p span class="center">borrow is this <%= @borrower.inspect %>.</p> 
+   	
+   	
+   	<p span class="center">this is the submit <%= @lender_url.inspect %></p> 
+   	<p span class="center"><div id= "redirect_small"> If you are not redirected in five seconds please <%= link_to("click here", @lender_url) %></div></p>
+   	<p span class="center"><%= link_to(image_tag("thepaydayhound-logo.png", :alt => "www.thepaydayhound.com", :size => "150x81"), "#{@lender_url}") %></p>
+</div>

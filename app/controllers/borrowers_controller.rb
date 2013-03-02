@@ -1,20 +1,64 @@
 class BorrowersController < ApplicationController
 
-  layout 'public'    
+  layout :resolve_layout
 
-  before_filter :set_tracking
+# DO NOT set_tracking
+# Only way to get here is through controller: applicants. Tracking is set there.
+# If tracking is set here variables will be wiped out.
+
   
 	require 'nokogiri'
 	require 'open-uri'
 
+	def save_tracking
+		@applicant = Applicant.new
+
+		@applicant.ip_address = request.remote_ip
+
+		# saves tracking variable 
+		@applicant.src_code = session[:src] 
+		@applicant.page_code = @page
+    @applicant.campaign = session[:camp]
+    @applicant.ad_group = session[:adgrp]
+    @applicant.kw = session[:kw]
+    @applicant.creative = session[:ad]
+    @applicant.placement = session[:plc]
+
+    # saves marketing variables
+    @applicant.overdraft_protection = params[:overdraft_protection] 
+    @applicant.payday_loan_history = params[:payday_loan_history] 
+    @applicant.speed_sensitivity = params[:speed_sensitivity]
+    @applicant.price_sensitivity = params[:price_sensitivity]
+    @applicant.licensed_sensitivity = params[:licensed_sensitivity]
+    @applicant.creditcard_own = params[:creditcard_own]
+    @applicant.active_military = params[:active_military] 
+    @applicant.eighteen = params[:eighteen]
+    @applicant.state = params[:state]
+    @applicant.bank_account_type = params[:bank_account_type]
+    @applicant.redirect = @redirect
+    
+    @applicant.save 
+	
+		session[:token]=@applicant.token
+	end
+
   def new
-  	if (params[:active_military]=="true") or (params[:bank_account_type]=="NONE") or (params[:eighteen]=="false")
-  		redirect_to("http://www.cardcred.com")
+  	if ( params[:active_military].nil? || params[:bank_account_type].nil? || params[:state].nil? || params[:requested_amount].nil? ) 
+  		redirect_to :controller => 'applicants', :action => 'new'  	
+  	elsif	
+	  	 (params[:active_military]=="true") or (params[:bank_account_type]=="NONE") or (params[:eighteen]=="false")
+	  		@redirect = "http://www.cardcred.com"
+	  		save_tracking
+	  		redirect_to(@redirect)
   	else	
   		case params[:state]
 	  	when "GA","VA","WV","AR"
-	  		redirect_to("http://www.mobilespinner.com")
+	  		@redirect = "http://www.mobilespinner.com"
+	  		save_tracking
+	  		redirect_to(@redirect)
 	  	else 
+	  		@redirect = "borrower/new"
+	  		save_tracking
 		  	@borrower = Borrower.new
 		  	@requested_amount = params[:requested_amount]	
 		  	if !State.find_by_state_abbr(params[:state]).nil?
@@ -23,17 +67,19 @@ class BorrowersController < ApplicationController
 		  		@state_name=params[:state]
 		  	end	
 	  	end	
-	  end			
+	  end					
   end
 
 
   def pingtree
 		# set variables
-		# t3 variables
-		@t3header = {"id" => "2.40896", "password" => "TFTQEcvpoAxUkdduxiiU", "client_ip_address" => request.remote_ip, "minimum_price" => "0", "subaccount" => "0000", "test_status" => "sold"}
-		t3pingurl="http://system.t3leads.com/system/lead_channel/server_post.php?"+params[:borrower].merge(@t3header).to_query
+		# t3 variables		
+		@t3header = {"id" => "2.40896", "password" => "TFTQEcvpoAxUkdduxiiU", "client_ip_address" => @borrower.ip_address, "minimum_price" => "0", "subaccount" => "0000", "test_status" => "sold"}
+		t3pingurl = "https://system.t3leads.com/system/lead_channel/server_post.php?"+params[:borrower].merge(@t3header).to_query
 		@response = Nokogiri::XML(open(t3pingurl))
 		
+
+
 		case @response.xpath('//Status').text
 		when "sold"
 			@borrower.redirect = @response.xpath('//Redirect').text
@@ -47,9 +93,9 @@ class BorrowersController < ApplicationController
 			@borrower.redirect = "http://www.mobilespinner.com"
 		end
 
-		@borrower.leadid = @response.xpath('//LeadID').text
-		
-		@borrower.save ? @save = "saved after ping" : "not saved after ping"
+		# leadid is same for all responses so saved at the end
+		@borrower.leadid = @response.xpath('//LeadID').text		
+		@borrower.save 
 
 
 
@@ -59,11 +105,24 @@ class BorrowersController < ApplicationController
   	# to code list:
   	# make sure came from new -- hidden fields are present. if not send back to new
 		
-  	if @borrower = Borrower.create(params[:borrower])
-  		pingtree
-	 	else
-	 	end
+  	@borrower = Borrower.create(params[:borrower])
+  		params[:borrower]['birth_date']=Date.new(params[:borrower]['birth_date(1i)'].to_i, params[:borrower]['birth_date(2i)'].to_i, params[:borrower]['birth_date(3i)'].to_i)
+			pingtree
+  		@lender_url = @borrower.redirect		
+	end
 
+  private
+
+  def resolve_layout
+    case action_name
+    when "create"
+      "partner"
+    else 
+      "public"
+    end
   end
+
+
+
 
 end

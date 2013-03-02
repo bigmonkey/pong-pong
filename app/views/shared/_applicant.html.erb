@@ -1,7 +1,7 @@
 <div class = "appForm">
 	<h1>How Much Cash Do You Need?</h1>	
 
-	<%= form_tag({:controller => 'borrowers', :action => 'new'},:method => 'post', :html => {:id => "", :class => ""}) %>
+	<%= form_tag({:controller => 'borrowers', :action => 'new'},:method => 'post', :id => "triageForm", :class => "") %>
 	        
 		<div class = "appLoanAmtBox">
 			<div id="pSliderLoanAmt"></div>
@@ -12,13 +12,13 @@
 
 			<div class = "appSelectRow">
 				<div class = "appSelectContainer appTextRight">I live in</div>
-				<div class = "appSelectContainer appTextLeft appStyleSelect"><%= select_tag :state, options_for_select(us_states) %></div>
+				<div class = "appSelectContainer appTextLeft appStyleSelect"><%= select_tag :state, options_for_select(us_states), :class => "required"  %></div>
 			</div>
 
 			<div class = "clearboth"></div>
 			<div class = "appSelectRow">
 		  	<div class = "appSelectContainer appTextRight">Transfer money to my</div>
-		  	<div class = "appSelectContainer appTextLeft appStyleSelect"><%= select_tag :bank_account_type, options_for_select([['Checking','CHECKING'],['Savings','SAVING'], ['No Bank Account', 'NONE']], 'CHECKING') %></div>
+		  	<div class = "appSelectContainer appTextLeft appStyleSelect"><%= select_tag :bank_account_type, options_for_select([['...',''],['Checking','CHECKING'],['Savings','SAVING'], ['No Bank Account', 'NONE']]), :class => "required"  %></div>
 		  </div>
 		  <div class = "clearboth"></div>		  	
 		  <div class = "appImportanceContainer">

@@ -5,8 +5,28 @@ class ApplicationController < ActionController::Base
 
   protected
 
+
+  # TRACKING VARIABLES from external (put in URL pointing to PDH)
+  # src -- the source of a visitor
+  # camp -- the campaign of a visitor. this includes device, country
+  # adg -- the ad groub of a visitor. 
+  # kw -- the keyword of a visitor. 
+  # ad -- the ad of a visitor. creative
+  # plc -- the placement of a visitor. website.
+
+
   def set_tracking
-  	!params[:src].nil? ? session[:src] = params[:src] : session[:src] = session[:src]
+  	if !params[:src].nil?
+      Source.find_by_src_code(params[:src]).nil? ? session[:src]="0000" : session[:src] = params[:src] 
+      session[:camp] = params[:camp]
+      session[:adgrp] = params[:adg]
+      session[:kw] = params[:kw]
+      session[:ad] = params[:ad]
+      session[:plc] = params[:plc]
+    else 
+      session[:src] = session[:src]
+    end
+
   end
 
   def set_secured_constants

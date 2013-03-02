@@ -2,6 +2,7 @@ module BorrowersHelper
 
 def time_length
 [
+	['...', ''],
 	['5+ Years', '58'],
 	['4+ Years', '48'],
 	['3+ Years', '36'],
@@ -20,6 +21,7 @@ end
 
 def pay_freq
 [
+	['...', ''],	
 	['Every Week', 'WEEKLY'],
 	['Every Two Weeks', 'BIWEEKLY'],
 	['Twice a Month', 'TWICEMONTHLY'],
@@ -29,6 +31,7 @@ end
 
 def call_times
 [
+	['...', ''],
 	['Anytime', 'ANYTIME'],	
 	['Mornings', 'MORNING'],
 	['Afternoons', 'AFTERNOON'],

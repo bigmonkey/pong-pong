@@ -5,18 +5,11 @@ Pdh::Application.routes.draw do
 
   get "applicants/create"
 
-  get "applys/new"
-
-  get "applys/create"
-
   get "borrowers/new"
 
   get "borrowers/create"
 
-  get "prospects/new"
-
-  get "prospects/create"
-
+ 
  # get "secureds/index"
   match '' => redirect("http://www.thepaydayhound.com")
   match 'installment-loans' => 'lenders#installment'
@@ -42,6 +35,7 @@ Pdh::Application.routes.draw do
  resources :lenders, :path => '/payday-loans'
  resources :prepaids
  resources :applicants
+ resources :borrowers
  resources :homes, :path => ''
   # Sample resource route with options:
   #   resources :products do

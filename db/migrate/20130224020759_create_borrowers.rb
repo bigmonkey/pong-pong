@@ -3,6 +3,7 @@ class CreateBorrowers < ActiveRecord::Migration
     create_table :borrowers do |t|
     	
     	t.string "token"
+    	t.string "ip_address"
 
     	# personal data
 			t.string "first_name", :limit => 128
@@ -10,7 +11,7 @@ class CreateBorrowers < ActiveRecord::Migration
 			t.string "address", :limit => 128
 			t.string "city", :limit => 128
 			t.string "state", :limit => 2
-			t.integer "zip"
+			t.string "zip"
 			t.integer "address_length_months"
 			t.string "ssn", :limit => 11
 			t.date "birth_date"
@@ -22,9 +23,9 @@ class CreateBorrowers < ActiveRecord::Migration
 			t.string "best_time_to_call", :limit => 12
 
 			#bank data
-			t.integer "bank_aba"
+			t.string "bank_aba"
 			t.integer "bank_account_length_months"
-			t.integer "bank_account_number"
+			t.string "bank_account_number"
 			t.string "bank_account_type", :limit => 8
 			t.string "bank_name", :limit => 128
 			t.string "bank_phone", :limit => 12		
@@ -44,9 +45,9 @@ class CreateBorrowers < ActiveRecord::Migration
 
 			#loan details
 			t.integer "requested_amount"
-		  t.integer "pingtree", :limit => 128			
-	  	t.string "status", :limit => 28
-			t.string "leadid", :limit => 128
+		  t.string "pingtree"			
+	  	t.string "status"
+			t.string "leadid"
 			t.decimal "sold_price", :precision => 8, :scale => 2
 			t.string "redirect"
 			t.text "error_description"

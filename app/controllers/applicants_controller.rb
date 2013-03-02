@@ -8,6 +8,4 @@ class ApplicantsController < ApplicationController
   	@requested_amount=300
   end
 
-  def create
-  end
 end
