@@ -14,7 +14,9 @@ class CreateBorrowers < ActiveRecord::Migration
 			t.string "zip"
 			t.integer "address_length_months"
 			t.string "ssn", :limit => 11
-			t.date "birth_date"
+			t.string "bir_year"
+			t.string "bir_mth"
+			t.string "bir_day"
 			t.boolean "own_home"	
 			t.string "home_phone", :limit => 12	
 			t.string "drivers_license_number", :limit => 128

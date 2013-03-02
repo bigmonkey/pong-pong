@@ -105,7 +105,7 @@ class BorrowersController < ApplicationController
   	# make sure came from new -- hidden fields are present. if not send back to new
 		
   	@borrower = Borrower.create(params[:borrower])
-  		params[:borrower]['birth_date']=Date.new(params[:borrower]['birth_date(1i)'].to_i, params[:borrower]['birth_date(2i)'].to_i, params[:borrower]['birth_date(3i)'].to_i)
+  		params[:borrower]['birth_date']=Date.new(params[:borrower]['bir_year'].to_i, params[:borrower]['birth_mth'].to_i, params[:borrower]['bir_day'].to_i)
 			pingtree
   		@lender_url = @borrower.redirect		
 	end
