@@ -1,0 +1,346 @@
+<% # title and description for seo %>
+<% content_for :seotags do %>
+<title>Best Pre-Paid Cards: In-Depth Reviews and Independent Rankings</title>
+<meta name="description" content="Detailed, independent reviews and rankings of the best pre-paid cards. The Payday Hound provides more detailed reviews of pre-paid cards than anyone else we know."/>
+<% end %>
+
+<div id="wrapper">
+  <aside id ="sidebar"> 
+
+      <%= render(:partial => "shared/prepaidfinder")%>
+      <%= render(:partial => "shared/sidebar")%>  
+
+  </aside>  
+  
+
+  <section id="mainContent">
+    <h1>Prepaid Cards</h1> 
+   	<p>Finding the best prepaid card can be difficult because there are so many variations on activation, monthly, ATM, or transaction fees. We've found the key differences in the best cards boil down to monthly, ATM, customer service and 3rd party load fees. Even when just focusing on these differences some cards reduce or waive these fees for direct deposit customers or those that load a certain amount to the card. Our Pre-Paid Card Cost Calculator calculates the total cost to own a card based on your usage and accounts for the different fee waivers. Just use the sliders to the left and to find the best bard for you.</p>
+    <p>Remember that unlike many checking accounts prepaids do not require a credit check so you can just sign up. But also remember that prepaids do not build credit. If you want to build credit we recommend <%= link_to("Secured Cards", secureds_path) %></p> 
+
+<% #-- data from Rails for javaScript to use -- %>
+    <span id = "prepaidCards" class = "jsData"><%= @prepaids.size %></span> 
+    <span id = "directDep" class = "jsData"><%= @direct_dep %></span>
+    <span id = "atmOwnerFee" class = "jsData"><%= @atm_owner_fee %></span>
+
+    <span id = "wklyTrans" class = "jsData"><%= @wkly_trans %></span>
+    <span id = "wklyATMIn" class = "jsData"><%= @wkly_atm_in_net %></span>
+    <span id = "wklyATMOut" class = "jsData"><%= @wkly_atm_out_net %></span>
+    <span id = "mthlyLoad" class = "jsData"><%= @mthly_load %></span>
+    <span id = "mthlyLoads" class = "jsData"><%= @mthly_loads %></span>
+    <span id = "wklyATMInq" class = "jsData"><%= @wkly_atm_inq %></span>
+    <span id = "mthlyCalls" class = "jsData"><%= @calls %></span>    
+    <span id = "prepaidDuration" class = "jsData"><%= @prepaid_duration %></span>
+
+    <span id = "maxWklyTrans" class = "jsData"><%= @max_wkly_purchase %></span>
+    <span id = "maxWklyATMIn" class = "jsData"><%= @max_wkly_atm_in_net %></span>
+    <span id = "maxWklyATMOut" class = "jsData"><%= @max_wkly_atm_out_net %></span>
+    <span id = "maxMthlyLoad" class = "jsData"><%= @max_mthly_load %></span>
+    <span id = "maxMthlyLoads" class = "jsData"><%= @max_mthly_loads %></span>
+    <span id = "maxWklyATMInq" class = "jsData"><%= @max_wkly_atm_inq %></span>
+    <span id = "maxMthlyCalls" class = "jsData"><%= @max_calls %></span>    
+    <span id = "maxPrepaidDuration" class = "jsData"><%= @max_prepaid_duration %></span>
+<% #-- data from Rails for javaScript to use -- %> 
+
+    <table id = "prepaidTable" class="cardListing tablesorter" summary="full prepaid list"> 
+      <thead>    
+        <tr class="securedTableHeader">
+          <th><div class = "preHeadCost">Weekly Cost</div></th>
+          <th><div class = "preHeadName">Company Name</div></th>
+          <th class = "preHeadDesc">Key Card Highlights</th>
+          <th class = "preHeadDetails">Daily Limits</th>          
+          <th><div  class = "preHeadApply">Sign Up</div></th>   
+        </tr>
+      </thead>
+      <tbody>    
+        <% @prepaids.each.with_index do |p,i| %>
+        <tr>
+          <td class = "preCardCost" id = <%="prepaidCost#{i}" %>><%= number_to_currency(
+            
+            #activation fees
+            (p.activation_fee/@prepaid_duration)/30.5*7 +
+
+            #monthly fees  
+            (( !p.reduce_mth_fee_load_amt.nil? && @mthly_load >= p.reduce_mth_fee_load_amt ) ?  p.reduce_mth_fee : (@direct_dep ? p.mth_fee_dep : p.mth_fee_no_dep ))/30.5*7+
+          
+            #atm fees 
+            (@wkly_atm_inq*p.atm_bal_fee + @wkly_atm_in_net * ( !p.atm_in_net_fee_no_dep.nil? ? (@direct_dep ? p.atm_in_net_fee_dep : p.atm_in_net_fee_no_dep) : p.atm_out_net_fee)  +  @wkly_atm_out_net * p.atm_out_net_fee  +  @wkly_atm_out_net * @atm_owner_fee) +
+
+            #load fees
+            (@mthly_loads * p.load_fee/30.5*7) + 
+
+            #transaction fees
+            (@wkly_trans * p.trans_fee_signature) +
+
+            #customer service fees
+            (@direct_dep ? (@calls * p.call_fee_dep)/30.5*7 : (( p.free_calls>@calls ? 0 : (@calls - p.free_calls))*p.call_fee_no_dep)/30.5*7)
+
+           ) %></td>
+          <td colspan = 4 class = "cardInfo">
+              <table width = 100% >
+                <tr>    
+                  <td class = "cardInfoName">
+                      <div><%= link_to(image_tag("prepaid/#{p.image_file}", :alt => p.name ),  {:controller => 'partners', :action => 'go', :id => p.partner_id, :page=>@page}, :target => "_blank") %></div>
+                      <div class = "preCardNameUnderImage"><%= p.name %></div>
+                  </td>
+                  <td class = "preCardInfoDesc">
+                    <div><%= p.first_comment %></div>
+                    <div><%= p.second_comment %></div>
+                    <div><%= p.third_comment %></div>                  
+                    <div align = "center"><a href=<%="javascript:Tog(#{p.id})" %> id = <%= "info#{p.id}" %>>More Info</a></div>
+                  </td>  
+                  <td class = "preCardInfoDetails">
+                    <div>Card Value: <%= p.max_bal == -1 ? "no limit" : ( p.max_bal.nil? ? "?" : number_to_currency(p.max_bal, :precision =>0)) %></div>
+                    <div>Cash Load: <%= p.max_cash_deposit == -1 ? "no limit" : (p.max_cash_deposit.nil? ? "?" : number_to_currency(p.max_cash_deposit, :precision =>0)) %></div>
+                    <div>Spend: <%= p.max_daily_spend == -1 ? "no limit" : (p.max_daily_spend.nil? ? "?" : number_to_currency(p.max_daily_spend, :precision =>0)) %></div>
+                    <div>ATM: <%= p.max_atm.nil? ? "?" : number_to_currency(p.max_atm, :precision =>0) %></div>
+                  </td>
+                  <td class = "preCardInfoApply">
+                      <%= link_to("SIGN UP", {:controller => 'partners', :action => 'go', :id => p.partner_id, :page=>@page}, :class => "cardApplyButton", :target => "_blank") %>
+                  </td>
+                </tr>    
+                <tr>
+                  <td colspan = 4>
+                      <table id = "<%=p.id %>" class = "cardDetails" style="overflow:hidden;display:none">
+                        <tr>
+                          <td class = "jsData">
+                            <span id = <%="activationFee#{i}" %>><%= p.activation_fee.nil? ? 0 : p.activation_fee %></span>
+                            <span id = <%="reduceMthFeeLevel#{i}" %>><%= p.reduce_mth_fee_load_amt %></span>
+                            <span id = <%="reduceMthFee#{i}" %>><%= p.reduce_mth_fee %></span>              
+                            <span id = <%="mthFeeDep#{i}" %>><%= p.mth_fee_dep.nil? ? 0 : p.mth_fee_dep %></span>
+                            <span id = <%="mthFeeNoDep#{i}" %>><%= p.mth_fee_no_dep.nil? ? 0 : p.mth_fee_no_dep %></span>
+                            <span id = <%="transFeeSig#{i}" %>><%= p.trans_fee_signature.nil? ? 0 : p.trans_fee_signature %></span>
+
+
+                            <span id = <%="atmBalInq#{i}" %>><%= p.atm_bal_fee.nil? ? 0 : p.atm_bal_fee %></span>
+                            <span id = <%="atmOutNetFee#{i}" %>><%= p.atm_out_net_fee.nil? ? 0 : p.atm_out_net_fee %></span>
+                            <span id = <%="atmInNetFeeDep#{i}" %>><%= p.atm_in_net_fee_dep %> ***</span>
+                            <span id = <%="atmInNetFeeNoDep#{i}" %>><%= p.atm_in_net_fee_no_dep %> ***</span>
+                            <span id = <%="loadFee#{i}" %>><%= p.load_fee.nil? ? 0 : p.load_fee %></span>
+                            <span id = <%="callFeeDep#{i}" %>><%= p.call_fee_dep.nil? ? 0 : p.call_fee_dep %></span>                      
+                            <span id = <%="callFeeNoDep#{i}" %>><%= p.call_fee_no_dep.nil? ? 0 : p.call_fee_no_dep %></span>
+                            <span id = <%="freeCalls#{i}" %>><%= p.free_calls.nil? ? 0 : p.free_calls %></span>
+
+                          </td>                
+                        </tr>     
+                        <tr>
+                          <td>
+                            <div class = "cardName"><%= raw(p.card_name) %></div>
+                            <div><b>Issuer:</b> <%= raw(p.issuer) %></div>
+                            <div><b>Credit:</b> <%= raw(p.credit_needed) %></div>
+                            <div><%= raw(p.bullets) %></div>
+                          </td>
+                          <td style width ="40%">
+                            <div class ="cardCostBreak">
+                              <div class = "cardCostBreakTitle">Weekly Fee Breakout </div>
+                              <table>
+                              <thead>
+                                <tr>
+                                  <th>Fee</th>
+                                  <th>Amt</th>
+                                  <th>Freq</th>
+                                  <th>Cost</th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                <tr>
+                                  <td>Activation</td>
+                                  <td><%= number_to_currency(p.activation_fee) %></td>
+                                  <td>Once</td>
+                                  <td id = <%= "wklyActivationFees#{i}"%>><%= number_to_currency((p.activation_fee/@prepaid_duration)/30.5*7) %></td>
+                                </tr> 
+                                <tr>
+                                  <td>Monthly</td>
+                                  <td id = <%= "actMthlyFee#{i}"%>><%= number_to_currency(( !p.reduce_mth_fee_load_amt.nil? && @mthly_load >= p.reduce_mth_fee_load_amt ) ?  p.reduce_mth_fee : (@direct_dep ? p.mth_fee_dep : p.mth_fee_no_dep )) %></td>
+                                  <td>1/mth</td>
+                                  <td id = <%= "prepaidWklyFees#{i}"%>><%= number_to_currency((( !p.reduce_mth_fee_load_amt.nil? && @mthly_load >= p.reduce_mth_fee_load_amt ) ?  p.reduce_mth_fee : (@direct_dep ? p.mth_fee_dep : p.mth_fee_no_dep ))/30.5*7) %></td>
+                                </tr>  
+                                <tr>
+                                  <td colspan ="4">ATM Fees</td>
+                                </tr>
+                                <tr>
+                                  <td>&nbsp- Check Balance</td>
+                                  <td><%= number_to_currency(p.atm_bal_fee) %></td>
+                                  <td id = <%= "wklyATMInq#{i}"%>><%= @wkly_atm_inq %>/wk</td>
+                                  <td id = <%= "wklyATMInqFees#{i}"%>><%= number_to_currency(@wkly_atm_inq*p.atm_bal_fee) %></td>
+                                </tr>
+                                <tr>
+                                  <td>&nbsp- In Network w/draw</td>
+                                  <% # if there is in network fee then use in network fee depending on direct dep else use out of the network fee %>
+                                  <td id = <%= "actATMInFee#{i}"%>><%= number_to_currency( !p.atm_in_net_fee_no_dep.nil? ? (@direct_dep ? p.atm_in_net_fee_dep : p.atm_in_net_fee_no_dep) : p.atm_out_net_fee) %></td>
+                                  <td id = <%= "wklyATMIn#{i}"%>><%= @wkly_atm_in_net %>/wk</td>
+                                  <td id = <%= "wklyATMInNetFees#{i}"%>><%= number_to_currency(@wkly_atm_in_net * ( !p.atm_in_net_fee_no_dep.nil? ? (@direct_dep ? p.atm_in_net_fee_dep : p.atm_in_net_fee_no_dep) : p.atm_out_net_fee)) %></td>
+                                </tr>
+                                <tr>
+                                  <td>&nbsp- Out of Network w/draw</td>
+                                  <td><%= number_to_currency(p.atm_out_net_fee) %></td>
+                                  <td id = <%= "wklyATMOut#{i}"%>><%= @wkly_atm_out_net %>/wk</td>
+                                  <td id = <%= "wklyATMOutNetFees#{i}"%>><%= number_to_currency(@wkly_atm_out_net * p.atm_out_net_fee) %></td>
+                                </tr>
+                                <tr>
+                                  <td>&nbsp- Out of Network Charges</td>
+                                  <td><%= number_to_currency(@atm_owner_fee) %></td>
+                                  <td id = <%= "wklyATMOutOwner#{i}"%>><%= @wkly_atm_out_net%>/wk</td>
+                                  <td id = <%= "wklyATMOwnerFees#{i}"%>><%= number_to_currency(@wkly_atm_out_net * @atm_owner_fee) %></td>
+                                </tr>
+                                <tr>
+                                  <td colspan = "3">ATM Total Fees</td>
+                                  <td id = <%= "atmTotalFees#{i}"%> ><%= number_to_currency(@wkly_atm_inq*p.atm_bal_fee + @wkly_atm_in_net * ( !p.atm_in_net_fee_no_dep.nil? ? (@direct_dep ? p.atm_in_net_fee_dep : p.atm_in_net_fee_no_dep) : p.atm_out_net_fee)  +  @wkly_atm_out_net * p.atm_out_net_fee  +  @wkly_atm_out_net * @atm_owner_fee ) %></td>
+                                </tr>                            
+                                <tr>
+                                  <td>Load</td>
+                                  <td><%= number_to_currency(p.load_fee) %></td>
+                                  <td id = <%= "mthlyLoads#{i}"%>><%= @mthly_loads%>/mth</td>
+                                  <td id = <%= "wklyLoadFees#{i}"%>><%= number_to_currency(@mthly_loads * p.load_fee/30.5*7) %></td>
+                                </tr>
+                                <tr>
+                                  <td>Transaction</td>
+                                  <td><%= number_to_currency(p.trans_fee_signature) %></td>
+                                  <td id = <%= "wklyTrans#{i}"%>><%= @wkly_trans %>/wk</td>
+                                  <td id = <%= "wklyTransFees#{i}"%>><%= number_to_currency(@wkly_trans * p.trans_fee_signature) %></td>
+                                </tr>                                
+                                <tr>
+                                  <td>Customer Service</td>
+                                  <% #assumes with direct deposit calls are free and not just reduced %>
+                                  <td><%= number_to_currency(@direct_dep ? p.call_fee_dep : p.call_fee_no_dep)%></td>
+                                  <td id = <%= "mthlyCalls#{i}"%>><%= @calls %>/mth</td>
+                                  <td id = <%= "wklyCallFees#{i}"%>><%= number_to_currency(@direct_dep ? (@calls * p.call_fee_dep)/30.5*7 : ((@calls - p.free_calls)*p.call_fee_no_dep)/30.5*7) %></td>
+                                </tr>
+                              </tbody>                              
+                              </table>
+                              <div class = "cardCostBreakCost" id = <%="prepaidBreakCost#{i}"%>>Cost per Week  
+                                <%= number_to_currency(
+            
+                                #activation fees
+                                (p.activation_fee/@prepaid_duration)/30.5*7 +                  
+
+                                #monthly fees  
+                                (( !p.reduce_mth_fee_load_amt.nil? && @mthly_load >= p.reduce_mth_fee_load_amt ) ?  p.reduce_mth_fee : (@direct_dep ? p.mth_fee_dep : p.mth_fee_no_dep ))/30.5*7+
+                              
+                                #atm fees 
+                                (@wkly_atm_inq*p.atm_bal_fee + @wkly_atm_in_net * ( !p.atm_in_net_fee_no_dep.nil? ? (@direct_dep ? p.atm_in_net_fee_dep : p.atm_in_net_fee_no_dep) : p.atm_out_net_fee)  +  @wkly_atm_out_net * p.atm_out_net_fee  +  @wkly_atm_out_net * @atm_owner_fee) +                    
+
+                                #load fees
+                                (@mthly_loads * p.load_fee/30.5*7) +                    
+
+                                #transaction fees
+                                (@wkly_trans * p.trans_fee_signature) +                   
+
+                                #customer service fees
+                                (@direct_dep ? (@calls * p.call_fee_dep) : (( p.free_calls>@calls ? 0 : (@calls - p.free_calls))*p.call_fee_no_dep))                    
+                               ) %>
+
+                              </div>
+                            </div>
+                          </td>
+                        </tr>  
+                    
+                        <tr> 
+
+                          <td colspan = "2"> 
+                            <div class = "cardFeatures">                            
+                           <table>
+                            <thead>
+                              <tr>
+                                <th colspan ="2">Card Features Details</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr>
+                              <td>      
+                                <table>
+                                  <tr>
+                                    <td><b>Activation Fee</b></td>
+                                    <td><%= number_to_currency(p.activation_fee) %></td>
+                                  </tr>
+                                  <tr>
+                                    <td><b>Monthly Fee<%= "*" if !p.reduce_mth_fee_load_amt.nil? %></b></td>
+                                    <td><%= p.mth_fee_dep.nil? ? "?" : number_to_currency(p.mth_fee_dep) %> w/ direct dep</td>
+                                  </tr>
+
+                                  <tr>
+                                    <td><b></b></td>
+                                    <td><%= p.mth_fee_no_dep.nil? ? "?" : number_to_currency(p.mth_fee_no_dep) %> no direct dep</td>
+                                  </tr>                 
+                                  <tr>
+                                    <td><b>Call Center</b></td>
+                                    <td><%= p.call_center_desc %></td>
+                                  </tr>                              
+                                  <tr>
+                                    <td><b>LOAD FEES</b></td>
+                                    <td></td>
+                                  </tr>
+                                  <tr>
+                                    <td>&nbsp- Cash Reload Fee***</td>
+                                    <td><%= number_to_currency(p.load_fee, :precision => 2) %> /day</td>
+                                  </tr>
+                                  <tr>
+                                    <td>&nbsp- Direct Deposit</td>
+                                    <td>Free (same as others)</td>
+                                  </tr>
+                                  <tr>
+                                    <td colspan = 2><%= "* Load #{number_to_currency(p.reduce_mth_fee_load_amt, :precision => 0)} /mth and monthy fee is #{ number_to_currency(p.reduce_mth_fee, :precision => 0)}" if !p.reduce_mth_fee_load_amt.nil? %></td>
+                                  </tr>   
+                                  <tr>
+                                    <td colspan ="2" >***None of the cards we carry charge load fees but to get cash onto your card 3rd party networks may charge you fees. Some cards own networks, have bank branch access, or retail store access and reduce the fee's charged. We include the different variations of all these fees based on your usage.</td>
+                                  </tr>                                                  
+                                </table>  
+                              </td>
+                              <td>
+                                <table>                              
+                                  <tr>
+                                    <td><b>ATM**</b></td>
+                                  </tr>
+                                  <tr>
+                                    <td>&nbsp-Balance Inquiry</td>
+                                    <td><%= p.atm_bal_fee.nil? ? "?" : number_to_currency(p.atm_bal_fee) %> /inquiry</td>
+                                  </tr>
+                                  <tr>
+                                    <td>&nbsp- Out of Network</td>
+                                    <td><%= p.atm_out_net_fee.nil? ? "?" : "#{number_to_currency(p.atm_out_net_fee)} /withdrawal" %></td>
+                                  </tr>
+                                  <tr>
+                                    <td>&nbsp- In Network<%= "****" if ( !p.atm_in_net_fee_no_dep.nil? and !( p.atm_in_net_fee_no_dep == p.atm_in_net_fee_dep )) %></td>
+                                    <td><%= p.atm_in_net_fee_no_dep.nil? ? "N/A" : "#{number_to_currency( @direct_dep ? p.atm_in_net_fee_dep : p.atm_in_net_fee_no_dep)} /withdrawal" %></td>
+                                  </tr>   
+                                  <tr>
+                                    <td><b>Transaction Fee (signature)</b></td>
+                                    <td><%= p.trans_fee_signature.nil? ? "?" : number_to_currency(p.trans_fee_signature) %> /transaction</td>
+                                  </tr>
+                                  <tr>
+                                    <td><b>Online Bill Pay</b></td>
+                                    <td><%= p.bill_pay_elec %></td>
+                                  </tr>
+                                  <tr>
+                                    <td><b>Online Acct Access</b></td>
+                                    <td><%= p.online_acct %></td>
+                                  </tr>  
+                                  <tr>
+                                    <td colspan ="2">**Out of Network ATM owners charge an average fee of $2.50 fees in addition to the fees above. Cards with In Network ATM access waive this owner's charge (but may charge a card fee). We include the different variations of all these fees based on your usage.</td>
+                                  </tr>
+                                  <tr>
+                                    <td colspan ="2">****<%= "In Network withdrawals are #{number_to_currency(p.atm_in_net_fee_dep, :precision => 0)} w/ direct deposit and #{number_to_currency(p.atm_in_net_fee_no_dep, :precision => 0)} w/o" if ( !p.atm_in_net_fee_no_dep.nil? and !( p.atm_in_net_fee_no_dep == p.atm_in_net_fee_dep ))%></td>
+                                  </tr>                                  
+                                </table>
+                              </td>
+                              </tr>
+                            </tbody>
+                           </table>  
+                            </div>                             
+                          </td>
+
+                        </tr>
+
+                      </table>  
+                  </td>
+                </tr>
+              </table>
+          </td>
+        </tr>
+        <% end %>
+      </tbody>    
+    </table>	
+        
+
+  </section>
+</div>
