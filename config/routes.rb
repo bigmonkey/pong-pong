@@ -15,7 +15,7 @@ Pdh::Application.routes.draw do
   match 'installment-loans' => 'lenders#installment'
   match 'why-use-the-payday-hound' => 'infos#why'  
   match 'payday-loans' => 'lenders#index'
-  match 'secured-cards' => redirect("http://www.cardcred.com/secured-cards")
+
  # match 'prepaids' => redirect("http://www.cardcred.com/prepaids")
   
   # The priority is based upon order of creation:
