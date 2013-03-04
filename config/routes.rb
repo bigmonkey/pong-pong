@@ -13,12 +13,12 @@ Pdh::Application.routes.draw do
 
   get "wrapper" => "homes#wrapper"
 
-  get "styles" => "homes#styles"
+  get "styles" => "homes#jscodes"
 
   get "header" => "homes#header"
   
   get "footer" => "homes#footer"
-  
+
  # get "secureds/index"
 
   match 'installment-loans' => 'lenders#installment'
