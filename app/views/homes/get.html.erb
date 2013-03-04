@@ -1,0 +1,124 @@
+<!-- custom body text -->
+<div id="wrapper">
+<section id="thePaydayHound"> 
+	<div id = "pdhSummary">			
+		<h1>The Payday Hound</h1>
+		<ul>
+			<li>Comprehensive reviews of alternative financial products</li>
+			<li>Detailed analysis and tools for finding the best providers</li>
+			<li>The only site focused on this fast growing market</li>
+		</ul>
+	</div>
+	<div id = "homeQuotes">			
+		<blockquote class = "industryQuote">30 million or almost one out of four households are underbanked</blockquote>	
+		<cite class = "industryQuoteCite">FDIC, Wash D.C.</cite>	
+		<blockquote class = "industryQuote">The underbanked spend ~$11B on nontraditional financial transactions</blockquote>	
+		<cite class = "industryQuoteCite">Experian, a Credit Bureau</cite>	
+	</div>
+</section>		
+<section id = "rankingReviews">
+	<div class = "rank_row">
+		<%= link_to("APPLY", "http://payday-loan-apply.thepaydayhound.com", :class => "rankingReviewsButton")%>
+		<div class = "rankingReviewsType">Payday Loans</div>
+	</div>
+	<div class = "rank_row">
+		<%= link_to("REVIEWS", lenders_path, :class => "rankingReviewsButton") %> 
+		<div class = "rankingReviewsType">Payday Loans</div>	
+	</div>
+	<div class = "rank_row">
+		<%= link_to("REVIEWS", secureds_path, :class => "rankingReviewsButton") %> 
+		<div class = "rankingReviewsType">Secured Credit Cards</div>	
+	</div>
+	<div class = "rank_row">
+		<%= link_to("REVIEWS", '#', :class => "rankingReviewsButton") %> 
+		<div class = "rankingReviewsType">Pre-paids COMING SOON</div>	
+	</div>	
+	<div id="clearboth"></div>
+</section>
+
+<div id = "homeWhyPDH">
+	<ul>	
+	  	<li><%= link_to("Why use the Payday Hound?", {:controller => 'infos', :action => 'why'}) %></li>
+		<li><%= link_to("How do we make money?", {:controller => 'infos', :action => 'why'}) %></li>
+		<li><%= link_to("How do our rankings work?", {:controller => 'infos', :action => 'why'}) %></li>
+	</ul>
+</div>
+
+
+
+ 	<section id = "paydayIndustryNews">
+ 		<h2>INDUSTRY NEWS</h2>
+ 		<article class = "industryNewsContent">
+ 			<h3><a href="http://www.usatoday.com/money/perfi/credit/story/2012-05-15/alternative-financial-services-underbanked-millennials/55028830/1">Banks Seek Profits, and a Better Reputation...</a></h3>
+			<h4>American Banker, July 20, 2012</h4>
+ 			<div class = "homeResourceSummary">Selling financial services to low-income customers has long appeared unprofitable at best, and a reputational risk at worst. From subprime mortgages to hidden credit card fees, banks have gotten a bad reputation for preying on poor people.</div>
+ 		</article>
+ 		<article class = "industryNewsContent">
+ 			<h3><a href="http://www.usatoday.com/money/perfi/credit/story/2012-05-15/alternative-financial-services-underbanked-millennials/55028830/1">Millennials use alternative financial services</a></h3>
+			<h4>USA Today, May 16, 2012</h4>
+ 			<div class = "homeResourceSummary">Payday loans, check cashing and prepaid debit cards have found a new customer in the cash-strapped twentysomething. Under-banked Millennials are using alternative financial services such as these at similar rates regardless of income level</div>
+ 		</article>
+ 		<article class = "industryNewsContent">
+ 			<h3><a href="http://www.nytimes.com/2012/04/26/business/chasing-fees-banks-court-low-income-customers.html">Chasing fees, banks court low-income customers</a></h3>
+			<h4>NY Times, April 25, 2012</h4>
+ 			<div class = "homeResourceSummary">When David Wegner went looking for a checking account in January, he was peppered with offers for low-end financial products, including a prepaid debit card with numerous fees</div>
+ 		</article>
+ 		<article class = "industryNewsContent">
+ 			<h3><a href="http://www.latimes.com/business/la-fi-banks-payday-loans-20120311,0,3076812.story">Credit Unions, banks grabbing a share of payday loan dollars</a></h3>
+			<h4>LA Times, March 11 25, 2012</h4>
+ 			<div class = "homeResourceSummary">Reporting from Washington— Payday loans, for years a fixture in poor, working-class neighborhoods, are increasingly being offered by local banks and employee credit unions </div>
+ 		</article>
+	</section>
+	
+ 	<section id = "homePDHResearch">
+ 		<h2>THE PAYDAY HOUND RESEARCH</h2>
+ 			<article class = "homeResearchContent_lft">
+ 				<div class = "homeResearchArticle">
+		 		<h3><a href="http://resources.thepaydayhound.com/quick-fast-loans/">Find the Best Quick Fast Loans</a></h3>
+		 		<div class = "homeResourceSummary">We evaluate five types of quick fast loans or loans that provide cash in less than 24 hours and can be repaid in 14 days. We then evaluated these five types of loans based on cost and lender requirements.</div>
+				</div>
+				<%= image_tag("Quick-Fast-Loans-sm.png", :alt => "Quick Fast Loans", :size => "100x67" ) %>
+				<div class="homeResearchMore"><a href="http://resources.thepaydayhound.com/quick-fast-loans/">More>></a></div>
+ 			</article> 
+ 			<article class = "homeResearchContent_rt">
+		 		<div class = "homeResearchArticle">
+		 		<h3><a href="http://resources.thepaydayhound.com/payday-loan-or-installment-loan/">Payday Loan or Installment Loan</a></h3>
+		 		<div class = "homeResourceSummary">There are two types of short term loans in the market that are underwritten based on your pay check: payday loans and installment loans.</div>
+				</div>
+				<%= image_tag("payday-or-installment-loan-sm.png", :alt => "Payday Or Term Loans", :size => "100x103" ) %>
+				<div class="homeResearchMore"><a href="http://resources.thepaydayhound.com/payday-loan-or-installment-loan/">More>></a></div>
+ 			</article>
+ 			<article class = "homeResearchContent_lft" id = "clearboth">
+		 		<div class = "homeResearchArticle">
+		 		<h3><a href="http://resources.thepaydayhound.com/choosing-a-payday-loan/">Choosing a Payday Loan</a></h3>
+		 		<div class = "homeResourceSummary">Choosing a payday loan requires finding a lender who will treat you fairly and offer you the best price. In general, all else considered equal, The Payday Hound choice is to find the lowest priced, state licensed lender.</div>
+				</div>
+				<%= image_tag("choosing-a-payday-loan-sm.png", :alt => "Payday Loan Choices", :size => "100x86" ) %>
+				<div class="homeResearchMore"><a href="http://resources.thepaydayhound.com/choosing-a-payday-loan/">More>></a></div>
+	 		</article>	
+ 			<article class = "homeResearchContent_rt">
+		 		<div class = "homeResearchArticle">
+		 		<h3><a href="http://resources.thepaydayhound.com/how-payday-loans-work/">How Payday Loans Work</a></h3>
+		 		<div class = "homeResourceSummary">Payday loans are designed to meet short-term, emergency cash needs. They were created to get cash into a borrower's hands as quickly as possible. The application process is streamlined with minimal documentation.</div>
+				</div>
+				<%= image_tag("how-payday-loans-work-sm.png", :alt => "How Payday Loans Work", :size => "100x67" ) %>
+				<div class="homeResearchMore"><a href="http://resources.thepaydayhound.com/how-payday-loans-work/">More>></a></div>
+ 			</article>
+ 			<article class = "homeResearchContent_lft">
+ 				<div class = "homeResearchArticle">
+		 		<h3><a href="http://resources.thepaydayhound.com/wells-fargo-direct-advance-fridays/">Wells Fargo -- Direct Advance Fridays</a></h3>
+		 		<div class = "homeResourceSummary">Wells Fargo recently entered the payday lending space with a new product called Direct Deposit Advance. The Payday Hound believes it is an aggressively priced product and a very good option to consider when looking at short-term, emergency funding options such as payday loans.</div>
+				</div>
+				<%= image_tag("Wells-Fargo-Direct-Advance.png", :alt => "Wells Fargo Payday", :size => "100x108" ) %>
+				<div class="homeResearchMore"><a href="http://resources.thepaydayhound.com/wells-fargo-direct-advance-fridays/">More>></a></div>
+ 			</article> 
+ 			<article class = "homeResearchContent_rt">
+		 		<div class = "homeResearchArticle">
+		 		<h3><a href="http://www.americanbanker.com/bankthink/get-more-transparency-in-payday-lending-1049381-1.html">Let's Get More Transparency in Payday Lending</a></h3>
+		 		<div class = "homeResourceSummary">Every year, despite the risks and high costs, millions of Americans turn to payday loans for emergency funds. To improve protection of consumers and encourage this industry to mature, regulation should be joined by efforts that encourage market transparency.</div>
+				</div>
+				<%= image_tag("bank-think.png", :alt => "Bank Think", :size => "100x53" ) %>
+				<div class="homeResearchMore"><a href="http://www.americanbanker.com/bankthink/get-more-transparency-in-payday-lending-1049381-1.html">More>></a></div>
+ 			</article>
+ 	</section>
+</div>
