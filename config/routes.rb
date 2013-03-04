@@ -36,6 +36,7 @@ Pdh::Application.routes.draw do
  resources :prepaids
  resources :applicants
  resources :borrowers
+ resources :homes
 
   # Sample resource route with options:
   #   resources :products do

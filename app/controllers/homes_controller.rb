@@ -3,7 +3,7 @@ class HomesController < ApplicationController
 
   before_filter :set_tracking
   	
-  def get
+  def index
   	
   end
 end
