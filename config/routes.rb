@@ -9,14 +9,13 @@ Pdh::Application.routes.draw do
 
   get "borrowers/create"
 
-  match "/blog" => redirect("/blog/")
+  match "/resources" => redirect("/resources/")
 
  # get "secureds/index"
-  match '' => redirect("http://www.thepaydayhound.com")
+
   match 'installment-loans' => 'lenders#installment'
   match 'why-use-the-payday-hound' => 'infos#why'  
   match 'payday-loans' => 'lenders#index'
-  match 'me' => redirect("http://www.facebook.com")
  # match 'prepaids' => redirect("http://www.cardcred.com/prepaids")
   
   # The priority is based upon order of creation:

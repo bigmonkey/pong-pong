@@ -4,7 +4,7 @@ class ApplicantsController < ApplicationController
   
   before_filter :set_tracking
 
-  def new
+  def index
   	@requested_amount=300
   end
 
