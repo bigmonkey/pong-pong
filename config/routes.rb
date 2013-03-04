@@ -12,6 +12,12 @@ Pdh::Application.routes.draw do
   get "borrowers/create"
 
   get "wrapper" => "homes#wrapper"
+
+  get "styles" => "homes#styles"
+
+  get "header" => "homes#header"
+  
+  get "footer" => "homes#footer"
   
  # get "secureds/index"
 

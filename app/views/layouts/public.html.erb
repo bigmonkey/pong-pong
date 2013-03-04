@@ -19,9 +19,13 @@
 
 	<% #Add in during development test %>
   <% # <META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW"> %>
+	<link rel="pingback" href="http://www.thepaydayhound.com/xmlrpc.php" />
+	<link rel="alternate" type="application/rss+xml" title="The Payday Hound &raquo; Feed" href="http://www.thepaydayhound.com/feed/" />
+	<link rel="alternate" type="application/rss+xml" title="The Payday Hound &raquo; Comments Feed" href="http://www.thepaydayhound.com/comments/feed/" />
 		
+	<%= stylesheet_link_tag    "application", :media => "all" %>		
 
-	<%= render :partial => 'shared/layouts/dependencies' %>
+	<%= render :partial => 'shared/layouts/styles' %>
 
 </head>
 
