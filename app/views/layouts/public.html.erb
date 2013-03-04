@@ -64,10 +64,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 		<nav>
 			<div id = "chromemenu">
 				<ul>
-					<li><%= link_to("Home", homes_path) %></li>
+					<li><%= link_to("Home", "http://www.thepaydayhound.com") %></li>
 					<li><%= link_to("Cards", secureds_path, :rel => "dropmenu1") %></li>
 				    <li><%= link_to("Loans", lenders_path, :rel => "dropmenu2") %></li>
-					<li><a href="http://localhost:3000/resources/" >Resources</a></li>
+					<li><a href="http://www.thepaydayhound.com/resources/" >Resources</a></li>
 				</ul>	
 			</div>	
 
@@ -80,7 +80,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 			<!--payday loan drop down menu -->                                                   
 			<div id="dropmenu2" class="dropmenudiv">
-			<%= link_to("Apply Now", applicants_path) %>
+			<%= link_to("Apply Now", "https://thepaydayhound.com/payday-loan-apply/") %>
 			<%= link_to("Payday Loans", lenders_path) %>	
 			<%= link_to("Installment Loans", {:controller => 'lenders', :action => 'installment'}) %>
 			</div>

@@ -9,13 +9,13 @@ Pdh::Application.routes.draw do
 
   get "borrowers/create"
 
-  match "/resources" => redirect("/resources/")
-
+ 
  # get "secureds/index"
-
+  match '' => redirect("http://www.thepaydayhound.com")
   match 'installment-loans' => 'lenders#installment'
   match 'why-use-the-payday-hound' => 'infos#why'  
   match 'payday-loans' => 'lenders#index'
+
  # match 'prepaids' => redirect("http://www.cardcred.com/prepaids")
   
   # The priority is based upon order of creation:
@@ -36,7 +36,7 @@ Pdh::Application.routes.draw do
  resources :prepaids
  resources :applicants
  resources :borrowers
- resources :homes
+ resources :homes, :path => ''
   # Sample resource route with options:
   #   resources :products do
   #     member do
@@ -73,7 +73,7 @@ Pdh::Application.routes.draw do
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
   # root :to => 'welcome#index'
-  root :to => 'homes#index'
+  root :to => redirect("http://www.thepaydayhound.com/")
 
   # See how all your routes lay out with "rake routes"
 
