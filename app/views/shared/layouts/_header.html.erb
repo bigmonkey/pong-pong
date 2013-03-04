@@ -1,0 +1,56 @@
+
+<!-- Google Tag Manager -->
+<noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-K4WS"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-K4WS');</script>
+<!-- End Google Tag Manager -->	
+
+	<div id="mainHeaderOutter">
+		<header id="mainHeader">
+		<div id="logo"><%= link_to(image_tag("thepaydayhound-logo.png", :alt => "logo" ), {:controller => 'homes', :action => 'index'})%></div>
+		<div id="socialmediaicons">
+			<%= link_to(image_tag("rss.png", :alt => "RSS Feed" ), "http://www.thepaydayhound.com/feed", :title => "The Payday Hound Feed") %>
+			<%= link_to(image_tag("facebook.png", :alt => "Facebook" ), "http://www.facebook.com/thepaydayhound", :title => "The Payday Hound Facebook Page") %>
+			<%= link_to(image_tag("twitter.png", :alt => "Twitter" ), "http://www.twitter.com/thepaydayhound", :title => "The Payday Hound Twitter Page") %>
+			<%= link_to(image_tag("googleplus.png", :alt => "Google +" ), "https://plus.google.com/114318301384219988110", :title => "The Payday Hound Google Page") %>
+ 		</div>
+
+		<nav>
+			<div id = "chromemenu">
+				<ul>
+					<li><%= link_to("Home", homes_path) %></li>
+					<li><%= link_to("Cards", secureds_path, :rel => "dropmenu1") %></li>
+				    <li><%= link_to("Payday Loans", lenders_path, :rel => "dropmenu2") %></li>
+					<li><%= link_to("Resources", "/resource") %></li>
+				</ul>	
+			</div>	
+
+
+			<!--credit card drop down menu -->                                                   
+			<div id="dropmenu1" class="dropmenudiv">
+			<%= link_to("Prepaid Cards", prepaids_path) %>	
+			<%= link_to("Secured Cards", secureds_path) %>
+			</div>
+
+			<!--payday loan drop down menu -->                                                   
+			<div id="dropmenu2" class="dropmenudiv">
+			<%= link_to("Apply Now", applicants_path) %>
+			<%= link_to("Payday Loans", lenders_path) %>	
+			<%= link_to("Installment Loans", {:controller => 'lenders', :action => 'installment'}) %>
+			</div>
+
+
+			<script type="text/javascript">
+
+			cssdropdown.startchrome("chromemenu")
+
+			</script>
+
+
+		</nav>
+		</header>
+	</div>

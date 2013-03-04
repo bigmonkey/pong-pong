@@ -11,7 +11,8 @@ Pdh::Application.routes.draw do
 
   get "borrowers/create"
 
- 
+  get "wrapper" => "homes#wrapper"
+  
  # get "secureds/index"
 
   match 'installment-loans' => 'lenders#installment'
