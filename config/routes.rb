@@ -25,7 +25,7 @@ Pdh::Application.routes.draw do
   match 'why-use-the-payday-hound' => 'infos#why'  
   match 'payday-loans' => 'lenders#index'
 
-  match "/resource" => redirect("/resource/")
+  match 'resource' => redirect("blog.thepaydayhound.com") 
 
  # match 'prepaids' => redirect("http://www.cardcred.com/prepaids")
   

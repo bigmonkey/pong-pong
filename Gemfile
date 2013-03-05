@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
  gem 'rails', '3.2.11'
 
- gem "rack-reverse-proxy", :require => "rack/reverse_proxy"
+ 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
