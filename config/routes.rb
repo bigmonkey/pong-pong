@@ -25,7 +25,7 @@ Pdh::Application.routes.draw do
   match 'why-use-the-payday-hound' => 'infos#why'  
   match 'payday-loans' => 'lenders#index'
 
-  match 'resource' => redirect("blog.thepaydayhound.com") 
+  match 'resource' => redirect("www.linandg.com/resource") 
 
  # match 'prepaids' => redirect("http://www.cardcred.com/prepaids")
   
@@ -92,5 +92,4 @@ Pdh::Application.routes.draw do
   # Note: This route will make all actions in every controller accessible via GET requests.
   match ':controller(/:action(/:id))(.:format)'
 
-  match "*" => redirect ('http://www.linandg.com')  
 end
