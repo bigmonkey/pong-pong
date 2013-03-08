@@ -3,13 +3,6 @@ Pdh::Application.routes.draw do
   root :to => 'homes#index'
 
 
-  get "applicants/new"
-
-  get "applicants/create"
-
-  get "borrowers/new"
-
-  get "borrowers/create"
 
   get "wrapper" => "homes#wrapper"
 
@@ -19,15 +12,8 @@ Pdh::Application.routes.draw do
   
   get "footer" => "homes#footer"
 
- # get "secureds/index"
+  get "lenders/installment" => "lenders#installment"
 
-  match 'installment-loans' => 'lenders#installment'
-  match 'why-use-the-payday-hound' => 'infos#why'  
-  match 'payday-loans' => 'lenders#index'
-
-  match 'resource' => redirect("www.linandg.com/resource") 
-
- # match 'prepaids' => redirect("http://www.cardcred.com/prepaids")
   
   # The priority is based upon order of creation:
   # first created -> highest priority.
@@ -42,12 +28,14 @@ Pdh::Application.routes.draw do
 
   # Sample resource route (maps HTTP verbs to controller actions automatically):
   #   resources :products
- resources :secureds, :path => '/secured-cards'
- resources :lenders, :path => '/payday-loans'
- resources :prepaids
- resources :applicants
- resources :borrowers
- resources :homes
+  resources :applicants
+  resources :borrowers
+  resources :secureds
+  resources :lenders
+  resources :prepaids
+  resources :applicants
+  resources :borrowers
+  resources :homes
 
   # Sample resource route with options:
   #   resources :products do
