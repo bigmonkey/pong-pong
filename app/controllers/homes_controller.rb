@@ -10,8 +10,8 @@ class HomesController < ApplicationController
   	render :partial => "shared/layouts/wrapper"
   end
 
-  def jscodes
-  	render :partial => "shared/layouts/jscodes"  	
+  def jstyle
+  	render :partial => "shared/layouts/jstyle"  	
   end
 
   def header

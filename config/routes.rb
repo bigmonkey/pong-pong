@@ -4,7 +4,7 @@ Pdh::Application.routes.draw do
 
   get "wrapper" => "homes#wrapper"
 
-  get "jscodes" => "homes#jscodes"
+  get "jstyle" => "homes#jstyle"
 
   get "header" => "homes#header"
   
