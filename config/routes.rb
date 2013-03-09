@@ -2,8 +2,6 @@ Pdh::Application.routes.draw do
 
   root :to => 'homes#index'
 
-  get "wrapper" => "homes#wrapper"
-
   get "jstyle" => "homes#jstyle"
 
   get "header" => "homes#header"
