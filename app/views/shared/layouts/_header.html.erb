@@ -24,19 +24,20 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 				<ul>
 					<li><%= link_to("Home", "/") %></li>
 					<li><%= link_to("Cards", secureds_path, :rel => "dropmenu1") %></li>
-				    <li><%= link_to("Loans", lenders_path, :rel => "dropmenu2") %></li>
-					<li><%= link_to("Learn", "http://www.linandg.com/learn/") %></li>
+				  <li><%= link_to("Loans", lenders_path, :rel => "dropmenu2") %></li>
+				  <% # below works ecause nginx redirects to wordpress server %
+					<li><%= link_to("Learn", "/learn/") %></li> 
 				</ul>	
 			</div>	
 
 
-			<!--credit card drop down menu -->                                                   
+			<%# credit card drop down menu %>                                                   
 			<div id="dropmenu1" class="dropmenudiv">
 			<%= link_to("Prepaid Cards", prepaids_path) %>	
 			<%= link_to("Secured Cards", secureds_path) %>
 			</div>
 
-			<!--payday loan drop down menu -->                                                   
+			<%# payday loan drop down menu %>                                                   
 			<div id="dropmenu2" class="dropmenudiv">
 			<%= link_to("Apply Now", applicants_path) %>
 			<%= link_to("Payday Loans", lenders_path) %>	
