@@ -2,8 +2,6 @@ Pdh::Application.routes.draw do
 
   root :to => 'homes#index'
 
-
-
   get "wrapper" => "homes#wrapper"
 
   get "jscodes" => "homes#jscodes"
@@ -33,8 +31,6 @@ Pdh::Application.routes.draw do
   resources :secureds
   resources :lenders
   resources :prepaids
-  resources :applicants
-  resources :borrowers
   resources :homes
 
   # Sample resource route with options:
