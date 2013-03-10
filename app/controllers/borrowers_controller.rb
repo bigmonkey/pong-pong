@@ -46,7 +46,7 @@ class BorrowersController < ApplicationController
   		redirect_to :controller => 'applicants', :action => 'new'  	
   	elsif	
 	  	 (params[:active_military]=="true") or (params[:bank_account_type]=="NONE") or (params[:eighteen]=="false")
-	  		@redirect = "http://www.cardcred.com"
+	  		@redirect = "/topoffers/prepaid_b"
 	  		save_tracking
 	  		redirect_to(@redirect)
   	else	
