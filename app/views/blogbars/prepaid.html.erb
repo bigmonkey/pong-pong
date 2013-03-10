@@ -25,7 +25,7 @@
 <% #-- data from Rails for javaScript to use -- %>
 
 	<h2>Find a Card</h2>
-		<%= form_for(:criteria,:url => "http://www.cardcred.com/prepaids", :html => {:class => "cardCalc", :method => :get, :target => "_parent"} ) do |f| %>
+		<%= form_for(:criteria,:url => "/prepaids", :html => {:class => "cardCalc", :method => :get, :target => "_parent"} ) do |f| %>
 
 <% # this is how javascript variables get pased. id = #criteria_<hiddenfieldname> %>
 	        <%= f.hidden_field('CalcDirectDep', :value => @direct_dep) %>

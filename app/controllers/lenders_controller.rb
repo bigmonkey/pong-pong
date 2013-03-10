@@ -10,7 +10,7 @@ class LendersController < ApplicationController
   end
 
   def installment
-    @lenders = Lender.not_lender_type("match").by_top_rank
+    @lenders = Lender.lender_type("term").by_top_rank
     @page = "0004" #sets page for tracking to 'installment-loans'
   end
   	

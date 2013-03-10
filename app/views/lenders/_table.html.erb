@@ -33,7 +33,7 @@
       <td><%= l.sniff.sniff_desc %></td>
       <td class = rank<%= l.ranking.round %>><div class="ratingSpace"><%= l.ranking.round %>.0/5.0</div></td>
       <td>
-          <%= link_to("APPLY", {:controller => 'partners', :action => 'go', :id => l.partner_id, :page=>@page}, :class => "tableApplyButton") %>
+          <%= link_to("APPLY", {:controller => 'partners', :action => 'go', :id => l.partner_id, :page=>@page}, :class => "tableApplyButton", :target => "_blank") %>
         <div class = "instantDecision"><%= link_to("instant decision", {:controller => 'partners', :action => 'go', :id => l.partner_id, :page => @page}) %></div>
       </td>
     </tr>

@@ -23,8 +23,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 			<div id = "chromemenu">
 				<ul>
 					<li><%= link_to("Home", "/") %></li>
-					<li><%= link_to("Cards", secureds_path, :rel => "dropmenu1") %></li>
-				  <li><%= link_to("Loans", lenders_path, :rel => "dropmenu2") %></li>
+					<li><%= link_to("Apply", applicants_path) %></li>
+					<li><%= link_to("Payday Loans", lenders_path) %></li>
+				  <li><%= link_to("Installment Loans", :controller => "lenders", :action => "installment") %></li>
+				  <li><%= link_to("Cards", secureds_path, :rel => "dropmenu1") %></li>
 				  <% # below works ecause nginx redirects to wordpress server %>
 					<li><%= link_to("Learn", "/learn/") %></li> 
 				</ul>	
@@ -37,13 +39,12 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 			<%= link_to("Secured Cards", secureds_path) %>
 			</div>
 
-			<%# payday loan drop down menu %>                                                   
-			<div id="dropmenu2" class="dropmenudiv">
-			<%= link_to("Apply Now", applicants_path) %>
-			<%= link_to("Payday Loans", lenders_path) %>	
-			<%= link_to("Installment Loans", {:controller => 'lenders', :action => 'installment'}) %>
-			</div>
-
+			<% # payday loan drop down menu  %>
+			<% # <div id="dropmenu2" class="dropmenudiv"> %>
+			<% # link_to("Apply Now", applicants_path) %>
+			<% # link_to("Payday Loans", lenders_path) %>	
+			<% #link_to("Installment Loans", {:controller => 'lenders', :action => 'installment'}) %>
+			<% #</div>	%>
 
 			<script type="text/javascript">
 
