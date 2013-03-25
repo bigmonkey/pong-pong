@@ -3,7 +3,8 @@ class PartnersController < ApplicationController
   before_filter :set_tracking
 
   def index
-  	go
+  	show
+    render('show')
   end
   
   def get_url
@@ -38,7 +39,7 @@ class PartnersController < ApplicationController
     @lenders = Partner.all
   end
 
-  def go
+  def show
   	#If there is an ID go to lender app else return to the hound
   	if params[:id].nil?
   		redirect_to(:controller => 'homes', :action => 'index')

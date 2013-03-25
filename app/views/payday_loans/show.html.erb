@@ -1,0 +1,38 @@
+<% # title and description for seo %>
+<% content_for :seotags do %>
+<title><%= @state.state_abbr %> Payday Loans</title>
+<meta name="description" content= 'Find the best #{@state.state_abbr} payday loans. The Payday Hound ranks, reviews, and analyzes #{@state.state} payday loans." %>' />
+<% end %>
+
+<div id="wrapper">
+	<aside id ="sidebarFinder">	
+
+			<%= render(:partial => "shared/sidebars/paydayfinder")%>
+	    <%= render(:partial => "shared/sidebars/sidebar")%>	
+
+	</aside>
+
+	<section id = "mainContent">
+		<h1><%= "#{@state.state} (#{@state.state_abbr})" %> Payday Loans</h1>
+		<div>
+		<% case @paydaylawstate.legal_status_summary %>
+		<% when "Legal" %>
+		<% #**** for states that regulate payday lending *** %> 
+			<p><%= @state.state %> licensed, out-of-state licensed, tribal-based and foreign-based lenders offer payday loans to <%= @state.state_abbr %> residents.</p>
+
+			<p>Licensed payday lenders are the best option as the <%= @paydaylawstate.regulator %> evaluates, regulates and monitors by these lenders. See <%= link_to("#{@state.state} Payday Loan Laws", "/payday-loan-laws/#{@state.state_abbr}") %> for more details on <%= @state.state %> loan fees, collections and other loan term regulations.</p>
+			<p>In addition to licensed lenders there may also be unlicensed lenders offering payday loans to <%= @state.state %> residents.
+		<% else %>
+		<% #**** for states where payday lending is prohibited %>
+			<p>The only lenders offering payday loans in <%= @state.state %> are tribal, out-of-state or foreign based lenders.</p> 
+			<p>There are no <%= @state.state %> licensed and regulated lenders offering loans to <%= @state.state %> residents. In states where payday lending is permited the state will license and regulate lenders. See <%= link_to("#{@state.state} Payday Loan Laws", "/payday-loan-laws/#{@state.state_abbr}") %> for links to <%= @state.state %> banking and finance regulators. <p><%= @state.state %> residents are provided payday loans from unlicensed lenders.			
+		<% end %>
+		<% # ****this section is the closing </p> for both cases above %>
+ 		These lenders include tribe based lenders and lenders licensed in other states. The basis of their position is that they export their tribe or state laws into <%= @state.state %>. Under this position they are required to adhere to federal lending laws but not <%= @state.state %> regulations. In general Federal laws are less restrictive and less frequently enforced. There are reputable tribal based lenders but quality varies. The final group of lenders is foreign-based payday loan lenders. Their position is that they export their country's laws into <%= @state.state %> and are a bad choice as they are highly unregulated. See <%= link_to("Choosing A Payday Loan", "/choosing-a-payday-loan/") %> for more details. </p>
+		</div>
+    <%=  render(:partial => "shared/tables/payday_loan_table")%>
+
+		
+	</section>
+</div>
+

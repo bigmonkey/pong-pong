@@ -1,6 +1,7 @@
 
 $(document).ready(function () {
-
+ $("#pLoanAmt").html("$300"); 
+ $("#requested_amount").val(300);
 // ************** slider of payloan application ****************//
     $("#pSliderLoanAmt").slider({
         value: 300,

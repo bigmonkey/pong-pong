@@ -1,0 +1,463 @@
+/*variables */
+$mainColor: #666;
+$bigColor: #0E8B4D; /*headers, menu */
+$highColor: #E58D1F; /*hover, secondary headers */
+$softColor: #888; // used like bold
+$pageBackground: #fff; /* page background color */
+$contentBackground: #fff; /* content background */
+$boxBackground: #eee; /* highlight boxes */
+$boxBackgroundDarker: #bbb; /* highlight boxes darker */
+$dogFur: #e0a03e; /*color of our dogs fur */
+$dogEars: #d85936; /* color of our dogs ears */
+
+@mixin rounded($radius) {
+  border-radius: $radius;
+  -moz-border-radius: $radius;
+  -webkit-border-radius: $radius;
+}
+
+
+/*limited reset*/
+html, body, div, section, article, aside, header, hgroup, footer,nav , h1, h2, h3, h4, h5, h6, p, blockquote, address, time, span, em, strong, img, ol, ul, li, q, figure, canvas, video, th, td, tr, form {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	vertical-align:baseline;
+	font: inherit;
+}
+
+/*html5 display rule*/
+address, article, aside, canvas, details, figcaption, figure, footer, header, hgroup, nav, menu, section, summary {
+	display: block;
+}
+
+// main tag settings
+
+html, body{
+    height: 100%;
+    background: $pageBackground;
+}
+
+body {
+	font-family: 'Muli', Helvetica, Arial, sans-serif;
+	color: $mainColor;
+}
+
+th {
+	vertical-align: middle;
+	font-size: 0.9em;
+}
+
+td {
+  padding: 5px;
+	vertical-align: middle;
+	font-size: 0.9em;
+}
+
+
+tr {
+	border-bottom: 1px solid #ddd;
+	background: #fff;
+}
+
+h1, h2 {
+	color: #0E8B4D;
+}
+
+h2 {
+	margin-top: 10px;
+}
+h4 {
+	color: #666666;
+    font-size: 0.6em;
+    margin: 1px 0 0;
+    }
+
+a, a:link, a:visited {
+	color: #4169e1;
+	text-decoration: none;
+}
+
+a:hover, a:active {
+	color: #E58D1F;
+	text-decoration: none;
+}
+
+p {
+	text-align: justify;
+	margin-bottom: 10px;
+}
+
+option {
+	font-size: 0.8em;
+	font-family: helvetica, arial, san-serif;
+}
+
+
+
+form button {
+	width: 0px;
+	height: 0px;
+	border: 0px;
+	background: transparent;
+}
+
+nav {
+	background-color: $boxBackground;
+	width: 820px;
+	margin-top:60px;
+	height: 30px;
+	float: right;
+	@include rounded(15px)
+}
+
+
+#nav{
+    list-style:none;
+    margin-bottom:10px;
+    float:right;
+    width:100%;
+}
+#nav li {
+    float:right;
+    width: 115px;
+    position:relative;
+    text-align: center;
+    height: 30px;
+    line-height: 30px;
+
+}
+#nav a{
+    display:block;
+    color:$bigColor;
+    text-decoration:none;
+}
+#nav a:hover{
+    color:#fff;
+}
+
+
+#nav ul{
+    background:$boxBackground; 
+    list-style:none;
+    position:absolute;
+    top:-9999px; 
+}
+#nav ul li{
+    float:none;
+}
+
+#nav li ul {
+	font-size: .7em;
+	border-radius: 0px 0px 15px 15px;
+}
+
+#nav li:hover ul{
+		background: $boxBackground;
+    position: relative;
+    top:0; 
+}
+
+#nav li:hover a:hover{
+    background:$bigColor;
+    @include rounded (15px)
+}
+
+#nav ul li a:hover{
+    background:$bigColor;
+    @include rounded (15px);
+}
+
+#nav li.navApply {
+	width: 100px;
+	margin-left: 10px;
+}
+#nav li.navApply ul {
+	background: none;
+	position: relative;
+	top:0;
+  li, li:hover {
+		width:85px;
+		line-height: 20px;
+		height: 20px;
+		text-align: center;
+  }
+  li a, li a:hover {
+		color: #fff;
+		font-size: 1.1em;
+		background: $highColor;  
+		display: block;
+		border-radius: 0px 0px 5px 5px;
+	  -moz-border-radius: 0px 0px 5px 5px;
+	  -webkit-border-radius: 0px 0px 5px 5px;		
+  }
+}
+
+
+#clearboth {
+	clear: both;
+}
+
+.clearboth {
+	clear: both;
+}
+.code {
+    direction: rtl;
+    unicode-bidi: bidi-override;
+}
+
+#wrapper {
+	width: 980px;
+	min-height: 750px;
+  margin: 20px auto;
+  padding: 10px;
+  background-color: $contentBackground;
+  overflow: hidden;
+}
+
+.center {
+	text-align: center;
+	}
+
+/*header*/
+
+#mainHeaderOutter {
+	height: 79px;
+	border-bottom: 2px solid $boxBackground;
+	}
+
+#mainHeader {
+	height: 85px;
+	margin: 0 auto;
+	width: 980px;
+}
+
+#logo { 
+	float: left;
+}
+
+.socialMedia {
+	margin: 100px auto;
+	width: 100px;
+}
+
+
+// navivation bars
+
+
+
+// dropdown application on header
+
+
+#applicationDropContainer{
+	width: 900px;
+	margin: 65px auto;
+	height: 450px;
+	border-bottom: 1px solid $boxBackgroundDarker;
+	padding-bottom: 55px;
+	display: none;
+}
+
+/*sidebar Finders*/
+
+.criteria h2 {
+	background: #FFF;
+	color: #555;
+	font-size: 1em;
+//	font-weight: bold;
+	text-transform: none;
+	padding: 4px 0px;
+	border-top: 1px solid #666;
+	text-align: center;
+}
+
+#sidebarFinder {
+    background-color: #fff;
+    width: 185px;
+    float: left;
+    margin: 0px 15px 0px 0px;
+    
+}
+
+#sidebarWhyPDH h2{
+  color: #555;
+  font-size: 0.75em;
+  padding: 0px 0px 4px 0px;
+	margin: 0px;
+}
+
+#sidebarWhyPDH {
+    background: #eee;
+}
+
+#sidebarWhyPDH h2 {
+	background: #FFF;
+}
+
+#sidebarFinder ul, ol {
+  background: #fff;
+  vertical-align: middle;
+	padding: 0px 10px;
+	margin-bottom: 5px;
+}
+
+#sidebarFinder ul li {
+	margin-bottom: 5px;
+	font-size: 0.7em;
+  font-weight: none;
+  list-style: circle inside none;
+}
+
+#sidebarFinder a, #sidebarFinder a:link, #sidebarFinder a:visited {
+	color: #666;
+}
+
+#sidebarFinder a:hover, #sidebarFinder a:active {
+	color: #E58D1F;
+	text-decoration: none;
+}
+
+
+
+/*MainContent with aside on left*/
+	
+#mainContent {
+	width: 770px;
+	float: right;
+	margin: 0px;
+	font-size: 0.8em;
+	line-height: 1.4em;
+	padding: 0px;
+}
+
+#mainContent h1 {
+	font-size: 1.6em;
+}
+
+#mainContent h3 {
+	font-size: 1em;
+	color: #444;
+
+}
+
+#mainContent h2, .arh {
+	font-size: 1.2em;
+	color: $dogFur;
+
+}
+
+#mainContent ul li, #mainContent ol li {
+	margin-left: 40px;
+	background: none;	
+}
+
+#mainContent ul, #mainContent ol {
+	background: none;	
+}
+
+
+/* MainContent with section to the right */
+#mainContentFull {
+	width: 100%;
+	float: right;
+	margin: 0px;
+	font-size: 0.8em;
+	line-height: 1.4em;
+	padding: 0px;
+	h1 {
+		font-size: 1.6em;
+
+	}
+	h3 {
+		font-size: 1.1em;
+	}
+	h2 {
+		font-size: 1.2em;
+		color: $dogFur;
+
+	}	
+}
+
+
+
+
+// State Selector Boxes. Used on payday loan, installment loan and payday loan law page 3/19/13
+// styling for index page //
+#selectorStateBox {
+	@include rounded(5px);
+	margin: 10px 50px;
+	background: $boxBackgroundDarker;
+	overflow: hidden;
+
+}
+.selectorStatesCol {
+	float: left;
+	width: 20%;
+	background: $boxBackgroundDarker;
+	div:hover, div:active {
+		background: $bigColor;
+	}
+
+}
+
+.selectorState {
+	text-align: center;
+	font-size: 1.1em;
+	height: 25px;
+	line-height: 25px;
+	@include rounded(10px);
+	border: solid 0px #fff;
+	a, a:link, a:visited {
+		color: #fff;
+		display: block;
+	}
+}
+
+
+/*footer*/
+footer {
+	clear: both;
+	background: $boxBackground;
+	padding: 4px 0px;
+}
+
+.footerWrapper {
+	text-align: center;
+	font-size: 0.7em;
+	margin: 10px auto;
+	width: 980px;
+
+	ul, ul li {
+		list-style-type:none;
+		display: inline;
+		margin: 0px 10px;
+		}	
+
+	a, a:link, a:visited{
+		color: $bigColor;
+		}
+		
+	a:hover, a:active {
+		color: $dogFur;
+		text-decoration: none;
+		}
+}	
+		
+.footerLeft {
+		float: left;
+}	
+
+#copyright {
+	color: $bigColor;
+	float:right;
+}
+
+#disclaimer {
+	width: 980px;
+	color: $boxBackgroundDarker;
+   font-style: italic;
+   margin: 10px auto;
+}
+
+
+

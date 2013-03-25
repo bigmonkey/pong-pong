@@ -1,0 +1,90 @@
+// Place all the styles related to the PaydayLoanLaws controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+@import "custom";
+
+.lawSummaryContent {
+	h2 {
+		margin-top: 25px;
+	}
+	p {
+		margin:0px;
+	}
+}
+
+// styling for show pages -- individual state pages
+.lawContent {
+	margin: 10px 0px;
+}
+
+.lawSideBoxes{
+	width: 25%;
+	float: right;	
+
+}
+.lawSideBox{
+	background-color: $boxBackground;
+	@include rounded(3px);
+	padding: 5px 10px;
+	margin: 0px 0px 10px 10px;
+	h2 {
+		margin: 0px;
+	}
+}
+
+.lawContentMain {
+	margin:0px 0px 10px 0px;
+	width: 70%;
+	table {
+		width: 80%;
+		margin: 25px auto;
+		border-collapse: collapse;
+		font-size: 1em;
+	}
+	th {
+		background: $bigColor;
+		margin: 0px 5px;
+		color: #fff;
+	}
+	
+	th.lawCellLeft{
+		border-top-left-radius: 3px;
+	}	
+
+	th.lawCellRight{
+		border-top-right-radius: 3px;
+	}
+
+	td {
+		background: $boxBackground;
+		text-align: center;
+	}
+	td.lawData {
+		color: $softColor;
+	}
+	td.lawHeading {
+		text-align: left;
+		width: 35%;
+	}
+	caption {
+		caption-side: bottom;
+		color: $bigColor;
+		font-size: .9em;
+	}
+}
+
+.lawExcerpt {
+	font-style: italic;
+	margin: 5px 15px;
+}
+.lawCitation {
+	margin: 10px 0px;
+	font-size: .9em;
+	font-style: italic;
+}
+
+.lawDisclaimer {
+	margin: 10px, 0px;
+	color: $dogEars;
+	font-size: .9em;
+}

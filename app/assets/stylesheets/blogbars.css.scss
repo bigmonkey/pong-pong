@@ -1,3 +1,27 @@
 // Place all the styles related to the Blogbars controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+/* blog iFrame settings */
+
+.applyPaydayContent{
+	width: 770px;
+	font-size: 0.8em;
+	line-height: 1.4em;
+	padding: 0px;	
+}
+
+.applyPaydayContent h2{
+		font-size: 1.2em;
+		color: #E58D1F;
+		margin-top: 0px;
+		font-weight: bold;
+}
+
+.iframeSidebar {
+    background-color: #fff;
+    width: 185px;
+    float: left;
+    margin: 0px 15px 30px 0px;
+}

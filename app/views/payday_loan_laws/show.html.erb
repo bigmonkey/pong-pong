@@ -1,0 +1,165 @@
+<% # title and description for seo %>
+<% content_for :seotags do %>
+<title><%= @state.state_abbr %> Payday Loan Laws</title>
+<meta name="description" content= '<%= "Payday loans are #{@paydaylawstate.legal_status.downcase} in #{@state.state_abbr}. The Payday Hound provides summary data on payday loan laws in #{@state.state}." %>' />
+<% end %>
+
+<div id="wrapper">
+	<section id = "mainContentFull">
+		<h1><%= "#{@state.state} (#{@state.state_abbr})" %> Payday Loan Laws</h1>
+		<div class = "lawContent">
+			<div class = "lawSideBoxes">
+						<div class = "lawSideBox">
+							<h2>Regulator Details</h2>
+							<h3><%= @paydaylawstate.regulator %></h3>
+							<% if !@paydaylawstate.regulator_division.nil? %>
+								<div><%= @paydaylawstate.regulator_division %></div>
+							<% end %>
+							<div><%= @paydaylawstate.regulator_address %></div>
+							<div><%= "#{@paydaylawstate.regulator_city}, #{@paydaylawstate.state_abbr} #{@paydaylawstate.regulator_zip}" %></div>
+							<div>Phone: <%= @paydaylawstate.regulator_phone %></div>
+							<div>Fax: <%= @paydaylawstate.regulator_fax %></div>	
+							<% if !@paydaylawstate.regulator_contact.nil? %>
+								<div>Contact: <%= @paydaylawstate.regulator_contact %> </div>
+							<% end %>		
+							<div><%= link_to("#{@state.state}'s Regulator Website", @paydaylawstate.regulator_site) %></div>						
+						</div>
+						<% if @paydaylawstate.additional_resources %>
+							<div class = "lawSideBox">
+								<h2>Additional Resources</h2>
+								<% if !@paydaylawstate.license_database.nil? %>
+									<div><%= link_to("#{@state.state}'s Licensee Database", @paydaylawstate.license_database) %></div>
+								<% end %>						
+								<% if !@paydaylawstate.complaint_form.nil? %>
+									<div><%= link_to("#{@state.state}'s Complaint Form", @paydaylawstate.complaint_form) %></div>
+								<% end %>
+								<% if !@paydaylawstate.complaint_instructions.nil? %>
+									<div><%= link_to("#{@state.state}'s Complaint Instructions", @paydaylawstate.complaint_instructions) %></div>
+								<% end %>
+								<% if !@paydaylawstate.resource_one_title.nil? %>
+									<div><%= link_to("#{@paydaylawstate.resource_one_title}", @paydaylawstate.resource_one) %></div>
+								<% end %>																
+								<% if !@paydaylawstate.resource_two_title.nil? %>
+									<div><%= link_to("#{@paydaylawstate.resource_two_title}", @paydaylawstate.resource_two) %></div>
+								<% end %>				
+							</div>
+						<% end %>	
+			
+			</div>
+			<div class = "lawContentMain">
+				<p>Payday lending is <%= @paydaylawstate.legal_status.downcase %> in <%= @state.state %> 
+					<% if @paydaylawstate.legal_status_summary == "Legal" %>
+						(see reviews of <%= link_to("#{@state.state} payday lenders", "/payday-loans/#{@state.state_abbr}") %>)
+						<% else %>
+						but here maybe tribal or other lenders not licenced by <%= @state.state %> offering <%= link_to "#{@state.state} payday loans", "/payday-loans/#{@state.state_abbr}" %>.
+						<% end %>
+				</p>
+
+				<% if @paydaylawstate.legal_status_summary == "Legal" %>
+					<table>
+						<tr>
+							<th class = "lawCellLeft">Feature</th>
+							<th class = "lawCellRight">Specification</th>
+						</tr>
+						<tr>
+							<td class = "lawHeading">Amount (max)</td>
+							<td class = "lawData"><%= @paydaylawstate.max_loan %></td>
+						</tr>
+						<tr>
+							<td class = "lawHeading">Rates or Fees (max)</td>
+							<td class = "lawData"><%= @paydaylawstate.max_rates %></td>
+						</tr>
+						<tr>
+							<td class = "lawHeading ">Term Limitations</td>
+							<td class = "lawData"><%= @paydaylawstate.term %></td>
+						</tr>
+						<caption>General Loan Terms</caption>						
+					</table>
+					<div>
+						<p>
+							<% case @paydaylawstate.rollovers %>
+							<% when nil %>
+								<%= @state.state %> regulations mention nothing about rollovers.
+							<% when "no" %>
+								Rollovers are not permitted in <%= @state.state %>.
+							<% else %>
+								In <%= @state.state %>, <%= @paydaylawstate.rollovers %>.
+							<% end %>	
+	
+							<% case @paydaylawstate.cooling_period %>
+							<% when nil %>
+								Nothing is mentioned about cooling periods between loans.
+							<% when "None" %>
+								There is no cooling period specified between loans.
+							<% else %>
+								The cooling period between loans is <%= @paydaylawstate.cooling_period %>.
+							<% end %>	
+							
+							<% case @paydaylawstate.repay_plan %>
+							<% when nil %>
+								<%= @state.state %> has no requirements for extended repayment plans.
+							<% when "Yes" %>
+								<%= @state.state %> requires extended repayment plans.
+							<% else %>
+								<%= @state.state %> <%= @paydaylawstate.repay_plan %>.
+							<% end %>	
+						</p>
+					</div>
+					<p>For example, in <%= @state.state %> the rates and fees on a 14 day, $100 loan are,</p>
+					<table>
+						<tr>
+							<th class = "lawCellLeft">Terms</th>
+							<th class = "lawCellRight">Amount</th>
+						</tr>					
+						<tr>
+							<td class = "lawHeading">Loan Amount</td>
+							<td class = "lawData">$100</td>
+						</tr>
+						<tr>
+							<td class = "lawHeading ">Fees</td>
+							<td class = "lawData"><%= @paydaylawstate.fee_14day_100 %></td>
+						</tr>
+						<tr>
+							<td class = "lawHeading ">APR</td>
+							<td class = "lawData"><%= @paydaylawstate.apr_14day_100 %></td>
+						</tr>																
+						<caption>Sample Loan Terms</caption>						
+					</table>	
+
+					<% if @paydaylawstate.collection_terms %>
+						<p><%= @state.state %> also defines regulations around collections. If available, the table below lists the fees lenders are permitted to charge if the loan is not repaid and/or whether the lender can threaten use of or use criminal action if a borrower is unable to repay the loan.</p>
+						<table>
+							<tr>
+								<th class = "lawCellLeft">Feature</th>
+								<th class = "lawCellRight">Specification</th>
+							</tr>
+							<% if !@paydaylawstate.collect_fee.nil? %>
+								<tr>
+									<td class = "lawHeading">Collection Fees</td>
+									<td class = "lawData"><%= @paydaylawstate.collect_fee %></td>
+								</tr>
+							<% end %>
+							<% if !@paydaylawstate.criminal_action.nil? %>
+							<tr>
+								<td class = "lawHeading ">Criminal Action</td>
+								<td class = "lawData"><%= @paydaylawstate.criminal_action %></td>
+							</tr>								
+							<% end %>
+							<caption>Regulations on Collections</caption>						
+						</table>	
+					<% end %>	
+					<% if !@paydaylawstatedetails.ncsl_citation_excerpt.nil? %>
+						<div> Finally, a more detailed excerpt from <%= @state.state %>'s statutes on finance charges is listed below. In general the tables above summarize this.
+							<p class = "lawExcerpt"><%= @paydaylawstatedetails.ncsl_citation_excerpt %></p>
+						</div>
+					<% end %>	
+
+					<div class = "lawCitation">Citation: <%= @paydaylawstate.citation %><%= @paydaylawstate.citation.last != "." ? "." : ""%></div>
+				<% end # if statement for states where payday lending is Legal%> 
+				<div class = "lawDisclaimer">The data provided here is for general informational purposes and should not be used as legal reference. If you have questions regarding <%= @state.state %> payday loan laws contact the <%= @paydaylawstate.regulator %>.</div>
+			</div> 
+			<% # end lawContentMain %>
+		</div> 
+		<% # end lawContent %>
+	</section>
+</div>

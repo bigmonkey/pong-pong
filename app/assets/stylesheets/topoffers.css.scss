@@ -55,7 +55,7 @@
 	color: #fff;
 	padding: 5px 0px 0px;
 	border-radius: 3px;
-  background-image: url(<%= asset_path "lp/CompareDesign/topbannner.png" %>);
+  background-image: url(asset-path("lp/CompareDesign/topbannner.png", image));
   background-repeat: no-repeat;
   height: 40px;
   text-shadow: 0 -1px #0e8b4d;
@@ -63,7 +63,7 @@
 	
 .topCardBox {
 	height: 200px;
-  background-image: url(<%= asset_path "lp/CompareDesign/topbox.png" %>);
+  background-image: url(asset-path("lp/CompareDesign/topbox.png", image));
   background-repeat: no-repeat;
 }
 
@@ -84,7 +84,7 @@
 	border-radius: 3px;
 	padding: 5px 0px 0px;
 	height: 37px;
-	background-image: url(<%= asset_path "lp/CompareDesign/comparebannner.png" %>);
+	background-image: url(asset-path("lp/CompareDesign/comparebannner.png", image));
 	background-repeat: no-repeat;
 	text-shadow: 0 -1px #0e8b4d;
 }
@@ -118,7 +118,7 @@
 	border-radius: 3px;
 	padding: 5px 0px 0px;
 	height: 37px;
-	background-image: url(<%= asset_path "lp/CompareDesign/detailsbannner.png" %>);
+	background-image: url(asset-path("lp/CompareDesign/detailsbannner.png", image));
 	background-repeat: no-repeat;
 	text-shadow: 0 -1px #4169E1;
 }
@@ -163,7 +163,7 @@
 
 .topCardBoxLeft ul li {
 	list-style-type: none;
-	background: url(<%= asset_path "check-mark.png", :size=> "15x12" %>) no-repeat left;
+	background: url(asset-path("check-mark.png", image)) no-repeat left;
 	padding-left: 15px;
 }
 

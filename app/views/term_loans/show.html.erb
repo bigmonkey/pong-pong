@@ -1,0 +1,22 @@
+<% # title and description for seo %>
+<% content_for :seotags do %>
+<title><%= @state.state_abbr %> Installment Loans</title>
+<meta name="description" content= '<%= "Find the best #{@state.state_abbr} installment loans. The Payday Hound ranks,  reviews, and analyzes #{@state.state} installment loans." %>' />
+<% end %>
+
+<div id="wrapper">
+	<aside id ="sidebarFinder">	
+
+			<%= render(:partial => "shared/sidebars/paydayfinder")%>
+	    <%= render(:partial => "shared/sidebars/sidebar")%>	
+
+	</aside>
+
+	<section id = "mainContent">
+		<h1><%= "#{@state.state} (#{@state.state_abbr})" %> Installment Loans</h1>
+	  <%=  render(:partial => "shared/tables/term_loan_table")%>
+
+		
+	</section>
+</div>
+

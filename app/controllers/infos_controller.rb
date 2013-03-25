@@ -1,6 +1,6 @@
 class InfosController < ApplicationController
  	
-	layout 'public'
+	layout 'paydayAppNav'
 	
   before_filter :set_tracking
   
@@ -29,7 +29,8 @@ class InfosController < ApplicationController
   def why
   end
 
-  def sitemap
+  def code
+    
   end
-  
+
 end

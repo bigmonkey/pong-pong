@@ -2,27 +2,60 @@
 <div id="wrapper">
 <aside id ="sidebarFinder">
 
-		<%= render(:partial => "shared/sidebar")%>
+		<%= render(:partial => "shared/sidebars/sidebar")%>
 
 </aside>
 
 <section id ="mainContent">
 		
-	<h1>About The Payday Hound</h1>
-							
-		<h2>Who are we?</h2>
-		<p>The Payday Hound ranks and reviews alternative financial products such as prepaid cards, secured cards and payday loans. Although one in four households use these products this market is largely neglected. There is a general lack of informed, fact-based tools and reviews to help users sort through the numerous product variations.</p> 
-		<p>We want to change this. We focus on the needs of the unbanked or underbanked. We understand secured credit cards, pre-paid cards, payday loans and installment loans better than anyone else. We aim to review more of these products and in more depth than any other resource. We visit each lender’s site, fill out applications, read the fine print and call the phone numbers. We basically kick the tires and then bring you the facts in easy to use tools and concise reviews. </p> 
-		<p>Our aim is to provide an impartial, fact based, space for consumers to make informed financial decisions.</p>
-		<p>Each product section includes tools and analyses to help you quickly and easily find the products that best meet your needs. Unlike other credit card evaluation tools our Secured Card Cost and Pre-paid Cost Calulators are custom designed around the unique features of these products to evaluate the cost using a secured or pre-paid card. Each calculater can be customized based on your usage patterns. Our Payday Loan Finder filters available lenders by geography and ranks them based on a variety of criteria. See <%= link_to("How Our Rankings Work", {:controller => 'infos', :action => 'why'}) %> for more details.</p>
-		<p>Our resources sections provides custom analyses and reviews on how to evaluate and understand the different products. Each reviews generally includes simple, easy to understand graphics and tables. The aim of our resources section is to help users make informed financial decisions.</p>
-		<p>The Pay Day Hound is operated by Contigo Direct LLC, a Nevada-based company.</p>
-		<h2>What we do?</h2>
-		<p>We are consumer finance professionals who have worked in the consumer loan and credit card industry for twenty years. We combine this experience with a belief that clear and honest reviews in a simple, well-designed site will help users make better buying decisions.</p>
-		<h2>Are you storing my personal information?</h2>
-		<p>No, we do not store any personal information. You will notice when you apply for a product we do not even ask for your name or eamil address. Instead when you are ready to apply, you are sent directly to the financial providers’s site.</p>
-		<p>If you use our <%= link_to("payday loan application service", "http://payday-loan-apply.thepaydayhound.com") %> we collect application information to submit to multiple lenders in our network making it very easy to apply to multiple lenders with one form.</p> 
+		<h2>Why use The Payday Hound</h2>
+		<p>The Payday Hound aims to help you make informed decisions about payday loans.</p>
+		<p>Payday loans are a controversial product. They have high APR's when compared to other credit products like credit cards or personal loans but have similar fees when compared to unintended credit products like bank overdraft charges or late fees. Most concerning are the many stories of predatory lending practices where surprised borrower's accumulate enormous fees over a very short period of time. Some advocate banning the product completely but we believe this limits choice for consumers who already have few options. (see <%= link_to 'Payday Loans Too Taboo to Touch', '/payday-loans-too-taboo-to-touch' %>).</p>
 
+		<p> This view is supported by studies from the <%= link_to 'Federal Reserve Board','http://www.federalreserve.gov/pubs/feds/2009/200934/200934pap.pdf' %>, initial research by the <%= link_to 'Consumer Financial Protection Bureau', 'http://www.consumerfinance.gov/pressreleases/consumer-financial-protection-bureau-examines-payday-lending/' %>, and most likely by your own experiences. A ban on payday lending does not address the need for emergency credit. So as we wait for regulations to protect you, we believe the best way to protect yourself is to educate yourself. To that end we seek to help you arm yourself with facts and tools on payday lending.</p>
+		<p>In addition to our reviews and analyses we offer a payday loan application. This application gives access to payday lenders and it helps to offset some of our costs as described in the next section. We do our best to remain impartial but the best measure of success is you -- if we do not remain trustworthy you will not use us.</p>
+		<p>We truly hope The Payday Hound helps and is doing the right thing. Please let us know how are doing at <span class="code">&#x6d;&#x6f;&#x63;&#x2e;&#x64;&#x6e;&#x75;&#x6f;&#x68;&#x79;&#x61;&#x64;&#x79;&#x61;&#x70;&#x65;&#x68;&#x74;&#x40;&#x6b;&#x63;&#x61;&#x62;&#x64;&#x65;&#x65;&#x66;</span>. Learn more about us <%= link_to 'here', '/infos/who' %>. </p>
 
+		<h2>How we get paid</h2>
+		<p>The Payday Hound gets paid by selling payday loan applications to payday lenders.</p>
+		<p>When a user applies on our site the application is sent to our network of payday lenders. If a lender accepts the application they pay us a fee. The fee ranges from $1 to $170. On average this fee is between $2-$9.</p>		
+		<p>We sell our leads to affiliate networks and direct payday lenders. We are approved by the largest networks in the industry and represent as many or more lenders than other sites offering payday loans. This increases your chances of getting a loan if you decide a payday loan is right for you. These lenders and networks change over time but currently include,
+
+			<ul>
+				<li><%= link_to 'Ace Cash Express', partner_path(5), :rel => "nofollow" %></li>
+				<li><%= link_to 'CashNetUSA', partner_path(10), :rel => "nofollow" %></li>
+				<li><%= link_to 'Cash Central', partner_path(9), :rel => "nofollow" %></li>		
+				<li><%= link_to 'Check City', partner_path(12), :rel => "nofollow" %></li>		
+				<li><%= link_to 'Commission Junction', 'http://www.cj.com', :rel => "nofollow" %></li>		
+				<li><%= link_to 'Discount Advances', partner_path(14), :rel => "nofollow" %></li>		
+				<li><%= link_to 'Great Plains Lending', partner_path(16), :rel => "nofollow" %></li>
+				<li><%= link_to 'Payday Max', partner_path(24), :rel => "nofollow" %></li>		
+				<li><%= link_to 'Plain Green Loans', partner_path(26), :rel => "nofollow" %></li>		
+				<li><%= link_to 'RoundSky', 'http://www.roundsky.com/.com', :rel => "nofollow" %></li>
+				<li><%= link_to 'T3 Leads', 'https://www.t3leads.com', :rel => "nofollow" %></li>			
+			</ul>
+		</p>
+
+		<h2>How do our Payday Loan rankings work?</h2>
+		<p>We rank each site based on a &#8220;Sniff Test,&#8221; pricing, and features.</p>
+		<p>SNIFF TEST: Lenders score higher on the Sniff Test if they are licensed in each state in which they operate, have physical storefronts, are US based, display contact information, and have a privacy policy. The Sniff Test also incorporates Better Business Bureau ratings, accreditation and complaints. Finally, we also interview and talk with lenders. This is a subjective score where we try to capture lender integrity</p>
+		<p>COST: Pricing is based on the cost of a $300, 14-day, payday loan in the State of Delaware.</p>
+		<p>FEATURES: The Features sections located in each lender's individual review is based on features that differentiate lenders. For example, some lenders provide live chat or phone support, have applications in Spanish, or do not require references. Standard features, such as faxless applications and next business day funding only impact lenders if they do not provide these standard features.</p>
+
+    <!--
+		<h2>How do our Secured Card rankings work? (BETA)</h2>
+		<p>The Payday Hound ranks each secured card based on pricing. We also provide a description capturing features that can get lost in the fine print. For example, some cards do not have a Grace Period meaning they charge interest immediately on your purchases even if you pay you balance off in full each month. </p>
+		<p>PRICING: Pricing includes annual fees, monthly fees, purchase APR and cash advance APR.</p>
+		<p>PRICING DOES NOT INCLUDE: Pricing does not include other fees such as late penalties, re-load fees, or application fees. It also does not include the impact of Grace Periods and additional revenue some cards may offer like interest on deposits. We highlight these differences in our description but final terms must always be reviewed on the lender's website.</p>
+
+	 	<h2>How do our Prepaid Cards rankings work? (BETA)</h2>
+		<p>The Payday Hound ranks each prepaid card based on pricing. We also provide a description for what type of user benefits most from each card. </p>
+		<p>PRICING: Pricing includes activation fees, monthly fees, ATM fees and signature transaction fees.</p>
+		<p>PRICING DOES NOT INCLUDE: Pricing does not include other fees such as bill payment, paper statement fees, or call center fees. These fees are listed in the more information section. We highlight differences in our description but final terms must always be reviewed on the lender's website.</p>		
+		-->
+
+	</div>	
+
+	
 </section>
 </div>

@@ -1,0 +1,36 @@
+<div id="wrapper">
+<aside id ="sidebarFinder">
+
+		<%= render(:partial => "shared/sidebars/sidebar")%>
+
+</aside>
+
+<section id ="mainContent">
+		
+	<h1>The Payday Hound Set Up</h1>
+							
+		<h2>Me and Coding</h2>
+		<p>One of the reasons I started The Payday Hound was to learn how to code.</p>
+		<p>I started with the courses below and followed that up with a lot of <%= link_to'Googling','http://bing.com/' %> and <%= link_to'stackoverflow','http://stackoverflow.com/' %>,
+			<ul>
+		 		<li><%= link_to "Kevin Skoglund's Ruby on Rails 3 Essential Training", "http://www.lynda.com/Ruby-on-Rails-3-tutorials/essential-training/55960-2.html" %></li>
+			 	<li><%= link_to "Michael Hartl's Ruby on Rails Tutorial", "http://ruby.railstutorial.org/" %></li>
+		 		<li><%= link_to "Simion Allardice's JavaScript Essential Training", "http://www.lynda.com/JavaScript-tutorials/Essential-Training-2011/81266-2/transcript" %></li> 
+			</ul>
+		</p>
+		<p>Through out the process I have received help from people I have never met. I have been inspired by many developers who continue to create, share and help. I've been saved multiple times by someone, somewhere in the world, in the middle of the night, debuging my code online. Thank you.</p>
+		<p>The set up for The Payday Hound is below. The goal was to leverage the ease of Wordpress for its CMS while using Rails for web development. I ended up with the set up below.</p>
+			<ul>
+				<li><%= link_to 'EC2', 'http://aws.amazon.com/ec2/' %> for web server and php hosting</li>
+				<li><%= link_to 'Heroku', 'http://www.heroku.com/' %> for Rails hosting</li>
+				<li><%= link_to 'WordPress', 'http://wordpress.org/' %> for articles</li>
+				<li><%= link_to 'Rails', 'http://rubyonrails.org/' %> for rest of site</li>
+				<li><%= link_to 'nginx', 'http://nginx.org/' %> for web server</li>
+				<li><%= link_to 'Apache', 'http://www.apache.org/' %> for php application server </li>
+				<li><%= link_to 'Unicorn', 'http://unicorn.bogomips.org/' %> for rails application server</li>
+				<li><%= link_to 'Sass', 'http://sass-lang.com/' %> for CSS</li>
+			</ul>
+		</p>
+		<p>I use <%= link_to 'GitHub', 'http://github.com' %> for version control and <%= link_to 'Asana', 'http://asana.com/' %> for task management</p>
+</section>
+</div>

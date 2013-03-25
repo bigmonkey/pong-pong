@@ -1,3 +1,304 @@
 // Place all the styles related to the Prepaids controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+@import "custom";
+
+/* hidden class for javacript calculations use 'none' for live and 'block' for debugging*/
+.jsData {
+	display: none;
+
+}
+/* card sliders */
+.cardCalc {
+	padding: 10px;
+    background: #eee;
+    //border: 1px solid #ddd;
+    vertical-align: bottom;
+    margin-bottom: 15px;
+    color: #555;
+    @include rounded (5px);    
+}
+
+.cardCalcTitles{
+	padding: 5px 0px;
+}
+
+.cardCalcLabel {
+	font-size: .80em;
+	text-transform: uppercase;
+	vertical-align: bottom;
+}
+
+.cardCalcLabelDesc {
+	font-size: 0.6em;
+	font-style: italic;
+	margin: 0px 0px 5px;
+}
+
+.calcValues{
+	color: #e58D1F;
+	padding-top: 0px;
+	text-transform: none;
+	float: right;
+	text-align: right;
+	font-size: 1em;
+	vertical-align: bottom;
+}
+
+.calcRadios{
+	font-weight: normal;
+  clear: both;
+  font-size: 0.8em;
+  margin: 3px 0px 3px 30px;
+  vertical-align: middle;
+}
+
+.cardSubLabel{
+	font-size: 0.7em;
+	font-style: normal;	
+}
+
+.sliderBars{
+	margin:3px 0px 0px;
+}
+
+/* end secured card slider */
+
+/* card table border. tr defaults to bottom border, remove every third from 2 and 1, then re-do header */
+
+.cardListing tr.tableHeader{
+	border-bottom: 1px solid #ddd;
+}
+
+.cardInfo tr{
+	border: 0px solid #ddd;
+}
+/* end border definition for secured card table */
+
+
+
+/* sets table heading spacing. Desc take 100%, others are defined by width of inside text */
+.securedTableHeader {
+	width: 100%;
+}
+
+.headDesc{
+	width: 100%;
+}
+.headCost{
+	width: 100px;
+}
+
+.headName{
+	width: 150px;
+}
+
+.headApply{
+	width: 140px;
+}
+
+.preHeadDesc{
+	width: 375px;
+}
+.preHeadCost{
+	width: 90px;
+}
+
+.preHeadName{
+	width: 125px;
+}
+
+.preHeadDetails{
+	width: 120px;
+}
+.preHeadApply{
+	width: 120px;
+}
+
+/* end set table space spacing */
+
+/* sets spacing for inside of table. Desc takes 100%, others are defined by width of inside text */
+.cardCost{
+    font-size: 1.75em;
+    color:green;
+    width: 100px;
+}
+
+.cardInfo {
+	font-size: 1em;
+	padding: 0px;
+}
+
+.cardNameUnderImage{
+	width: 150px;
+}
+
+.cardInstantDecision {
+	width: 90px;
+}
+
+.cardInfoName {
+	padding: 0px;
+}
+
+.cardInfoDesc {
+	width: 100%;
+	padding: 0px;
+}
+
+.cardInfoApply {
+	padding: 2px 15px;
+}
+
+.preCardCost{
+    font-size: 1.75em;
+    color:green;
+    width: 90px;
+}
+
+.preCardNameUnderImage{
+	width: 125px;
+}
+.preCardInfoDesc {
+	padding: 0px;
+	text-align: center;
+	width:315px;
+}
+
+.preCardInfoDesc a {
+	line-height: 200%;
+}
+.preCardInfoDetails {
+	width: 120px;
+	font-size: .9em;
+	line-height: 100%;
+	text-align: right;
+	vertical-align: baseline;
+}
+.preCardInfoApply {
+	padding: 2px 15px;
+}
+.cardApplyButton {
+	background-color: #E58D1F;
+  color: #fff;
+  font-weight: bold;
+  margin: 0px 0px 5px 5px;
+  display: block;
+  height: 25px;
+  line-height: 25px;
+  width: 70px;
+  border: 1px solid #E58D1F;
+  border-radius: 3px;
+  webkit-border-radius: 3px;
+  moz-border-radius: 3px;
+  padding: 0px;
+}
+
+.cardApplyButton:link, .cardApplyButton:visited {
+	color: #fff;
+}
+
+.cardApplyButton:hover {
+	box-shadow: 0 0 5px rgba(102, 102, 102, 0.6);
+	-webkit-box-shadow: 0 0 5px rgba(102, 102, 102, 0.6);
+	-moz-box-shadow: 0 0 5px rgba(102, 102, 102, 0.6);
+	color: #fff;
+	font-weight: normal;
+}
+/* end set spacing for inside of table */
+
+/*CardDetails -- more information dropdown. Card Features are the card terms*/
+.cardName{
+	font-size: 1.1em;
+	font-weight: bold;
+	color: #e58D1F;
+}
+
+.cardDetails{
+	background: #eee;
+	border-radius: 5px 5px 5px 5px;	
+	-moz-border-radius: 5px 5px 5px 5px;
+	-webkit-border-radius: 5px 5px 5px 5px; 
+}
+
+.cardDetails td{
+  padding: 5px;
+	text-align: left;
+	vertical-align: top;
+	background: #eee;
+	font-size: .95em;
+	max-width: 400px;
+}
+
+.cardFeatures{
+	border: 1px solid #fff;
+	background: #fff;
+	border-radius: 5px 5px 5px 5px;
+	-moz-border-radius: 5px 5px 5px 5px;
+	-webkit-border-radius: 5px 5px 5px 5px;	
+}
+.cardFeatures td{
+	padding: 0px;
+	margin: 5px;
+	border: 0px;
+	background: #F7ECD2;
+	line-height: 120%;
+}
+
+.cardFeatures th{
+	padding: 0px;
+	margin: 0px;
+	border: 0px;
+	background: #fff;
+	font-size: 1em;
+	text-align: center;
+	font-weight: bold;
+	color: #E58D1F;
+
+}
+.cardCostBreak{
+	border: 1px solid #fff;
+	background: #fff;
+	border-radius: 5px 5px 5px 5px;
+	-moz-border-radius: 5px 5px 5px 5px;
+	-webkit-border-radius: 5px 5px 5px 5px;
+}
+
+.cardCostBreakTitle {
+	margin:0px;
+	padding: 0px;
+	border: 0px;
+	text-align: center;
+	color: green;
+	font-size: 1em;
+	font-weight: bold;
+	background: #fff;
+}
+.cardCostBreakCost {
+	margin:0px;
+	padding: 0px;
+	border: 0px;
+	text-align: center;
+	color: green;
+	font-size: 1em;
+	font-weight: bold;
+	background: #fff;
+}
+
+.cardCostBreak th{
+	margin:0px;
+	padding: 0px 2px;
+	border: 0px;
+	font-weight: bold;
+	background: #fff;
+}
+
+.cardCostBreak td{
+	margin:0px;
+	padding: 0px 5px;
+	line-height: 110%;
+	border: 0px;
+	background: #fff;
+}
+

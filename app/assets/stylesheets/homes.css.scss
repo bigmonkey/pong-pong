@@ -1,3 +1,138 @@
 // Place all the styles related to the Homes controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+@import "custom";
+
+// centers three boxes
+
+.boxLeft{
+	float: left;
+}	
+.boxMiddle {
+	margin: 0px auto;
+}
+.boxRight{
+	float: right;
+}
+
+// end centers three boxes
+
+.introPaydayHound {
+	margin: 50px auto;
+	width: 65%;
+	h1 {
+		font-size: 2em;
+	}
+	ul li {
+    list-style-type: none;
+    margin: 10px 0px 0px 65px;
+	}
+
+}
+
+.introSelectCols {
+	margin: 80px auto;
+	width: 80%;
+	.introBox {
+		width: 30%
+	}
+}
+
+.introSelectBoxes {
+	margin: 0px auto;
+	width: 70%;
+	height: 150px;
+	background-color: $boxBackground;
+	border: 3px solid #ddd;
+	@include rounded(5px);
+	text-align: center;
+	line-height: 150px;
+
+	&:hover, &:active {
+		background: $boxBackgroundDarker;
+	}
+
+	a, a:link, a:visited {
+		font-size: 2.1em;
+		color: $boxBackgroundDarker;
+		display: block;
+	}	
+
+	a:hover, a:active {
+		color: #fff;
+	}
+}
+
+.introFree {
+	color: $softColor;
+	text-align: center;
+	a, a:link, a:visited {
+		color: $softColor;
+	}
+	a:hover, a:active {
+		color: $highColor;
+	}
+}
+
+.introArticles {
+	width: 100%;
+	margin: 0px auto;
+	border-top: solid 2px #ccc;
+	h2 {
+		color: $boxBackgroundDarker;
+		margin-top: 5px;
+	}
+}
+
+.introArticleCol {
+	width: 32%;
+	article {
+		border-top: solid 1px #ccc;
+		margin-bottom: 15px;
+		margin-top: 5px;
+		overflow: hidden;
+		padding-top: 7px;
+		height: 110px;
+	}
+
+	.introArticleContent {
+		font-size: .8em;
+		float: left;
+		width: 67%;
+
+	}	
+	.introArticleBlurb {
+
+	}
+}
+
+// Why PDH for homepage
+#homeWhyPDH {
+	display: none;
+	clear: both;
+	width: 100%;
+	border-top: 1px solid #999999;
+	text-align: center;
+	font-size: 0.7em;
+	padding: 10px 0px 0px 0px;
+	margin: 0px;
+}
+
+#homeWhyPDH ul, #homeWhyPDH ul li {
+	list-style-type:none;
+	display: inline;
+	padding: 10px 25px 0px 25px;
+	color: #fff;
+	}
+
+#homeWhyPDH a, #homeWhyPDH a:link, #homeWhyPDH a:visited{
+	color: #666;
+	text-decoration: none;
+}
+
+#homeWhyPDH a:hover, #homeWhyPDH a:active {
+	color: #E58D1F;
+	text-decoration: none;
+}
+

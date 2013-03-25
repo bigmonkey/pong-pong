@@ -19,9 +19,6 @@
 	border-radius: 5px;
 	-moz-border-radius: 5px;
 	-webkit-border-radius: 5px;
-	box-shadow: 0 3px 3px #555;
-	-webkit-box-shadow: 0 3px 3px #555;
-	-moz-box-shadow: 0 3px 3px #555;	
 }
 
 .borStatusText {
@@ -40,7 +37,6 @@
 .borLoans h1 {
 	color: #e85d1f;
 	text-align: center;
-	font-weight: bold;
 	font-size: 1em;
 }
 
@@ -48,6 +44,7 @@ h1.borStatusBottom {
 	margin-top: 5px;
 }
 .borLoans h2 {
+	font-family: Helvetica, Arial, sans-serif;
 	color: #281880;
 	font-size: 1.3em;
 	text-align: center;
@@ -55,6 +52,7 @@ h1.borStatusBottom {
 }
 
 .borLoans h3 {
+	font-family: Helvetica, Arial, sans-serif; 
 	color: #281880;
 	font-size: 1em;
 	text-align: center;
@@ -74,7 +72,6 @@ h1.borStatusBottom {
 	color: #006633;
 	font-size: .9em;
 	text-align: center;
-	font-weight: bold;
 	margin: 5px 0px;
 }
 
@@ -209,7 +206,7 @@ h1.borStatusBottom {
 	padding: 3px;
 	float: left;
 	overflow: hidden;
-  background: url(<%= asset_path 'downarrow.png' %>) no-repeat right #fff;
+  background: url( asset-path("downarrow.png", image) ) no-repeat right #fff;
 	border: 1px solid #C6C6C6;
   border-radius: 4px;
 	-moz-border-radius: 4px;
@@ -361,8 +358,8 @@ label.error{
 
 /* = ICON
 ----------------------------------------------------------------------------------------------------------------------*/
-button.Zebra_DatePicker_Icon                { position: absolute; width: 16px; height: 16px; background: url(<%= asset_path 'application/calendar.png' %>) no-repeat left top; text-indent: -9000px; border: none; cursor: pointer; margin: 0 0 0 5px; padding: 0; line-height: 0 }
-button.Zebra_DatePicker_Icon_Disabled       { background-image: url(<%= asset_path 'application/calendar-disabled.png' %>) }
+button.Zebra_DatePicker_Icon                { position: absolute; width: 16px; height: 16px; background: url(asset-path("application/calendar.png", image)) no-repeat left top; text-indent: -9000px; border: none; cursor: pointer; margin: 0 0 0 5px; padding: 0; line-height: 0 }
+button.Zebra_DatePicker_Icon_Disabled       { background-image: url(asset-path('application/calendar-disabled.png', image)) } 
 button.Zebra_DatePicker_Icon_Inside         { margin: 0 3px 0 0 }
 
 /* Fix icon position in Chrome & Safari */

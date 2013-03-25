@@ -1,0 +1,40 @@
+<% # shows lenders in a table
+# used by lenders and index views %>
+
+  <!-- calls matching service apply section -->
+  <% # render(:partial => "shared/applypayday")%>
+  <!-- calls matching service apply section -->
+
+  <div id="clearboth"></div>
+  <p>We have reviewed <%= pluralize(@lenders.size, !(defined? @state.state).nil? ? "#{@state.state} payday installment loan lender" : "payday installment loan lender") %> with a Sniff score of <%= @criteria.sniff.sniff_desc.downcase %> or better and a Rating of <%= pluralize(number_to_human(@criteria.ranking), 'star') %> or better.</p>
+  <table class="listing" summary="full lender list">
+    <tr class="tableHeader">
+     <th><%= !(defined? @state.state_abbr).nil? ? "#{@state.state_abbr} Lender" : "Company Name" %></th>
+     <th>Description</th>
+     <th>Costs</th>
+     <th>Sniff</th>
+     <th>Rating</th>
+
+    </tr>
+    <% @lenders.each do |l| %>
+    <tr>
+      <td>
+        <div><%= link_to(image_tag("lendersm/#{l.image_file}", :alt => l.name ), !l.review_url? ? (partner_path(l.partner_id)) : l.review_url)  %></div>
+        <div><%= link_to(l.name, partner_path(l.partner_id), :page => @page) %></div>
+      </td>
+      <td>
+        <div><%= l.first_comment %></div>
+        <div>Governing Law: <%= l.governing_law %></div>
+      </td>
+      <td class = "termTableCosts">
+        <div>APR: <%= l.apr.nil? ? "?" : number_to_percentage(l.apr*100, :precision => 0) %></div>
+        <div>Amount: <%= l.loan_amt.nil? ? "?" : number_to_currency(l.loan_amt) %></div>
+        <div>Payments: <%= l.payments.nil? ? "?" : number_with_precision(l.payments, :precision => 0) %></div>
+        <div>Freq (days): <%= l.pmt_freq_in_days.nil? ? "?" : number_with_precision(l.pmt_freq_in_days, :precision => 0) %></div>
+        <div>Cost: <%= l.cost.nil? ? "?" : number_to_currency(l.cost, :precision => 0) %></div>
+      </td>
+      <td><%= l.sniff.sniff_desc %></td>
+      <td class = <%= "rank#{l.ranking.round}" %>></td>
+    </tr>
+    <% end %>
+  </table>

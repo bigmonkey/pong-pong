@@ -117,7 +117,7 @@ class BorrowersController < ApplicationController
     when "create"
       "partner"
     else 
-      "public"
+      "plainNav"
     end
   end
 

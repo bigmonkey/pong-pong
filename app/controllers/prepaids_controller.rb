@@ -1,6 +1,6 @@
 class PrepaidsController < ApplicationController
 
-  layout 'public'
+  layout 'plainNav'
   
   before_filter :set_tracking
   before_filter :set_prepaid_constants

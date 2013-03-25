@@ -8,13 +8,14 @@ Pdh::Application.routes.draw do
   
   get "footer" => "homes#footer"
 
-  get "lenders/installment" => "lenders#installment"
+  get "lenders" => "lenders#index"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
   # Sample of regular route:
   #   match 'products/:id' => 'catalog#view'
+  
   # Keep in mind you can assign values other than :controller and :action
 
   # Sample of named route:
@@ -29,7 +30,15 @@ Pdh::Application.routes.draw do
   resources :lenders
   resources :prepaids
   resources :homes
+  resources :payday_loans
+  resources :term_loans
+  resources :payday_loan_laws
+  resources :partners
 
+  resources "payday-loans", :as => :payday_loans, :controller => :payday_loans
+  resources "installment-loans", :as => :term_loans, :controller => :term_loans
+  resources "payday-loan-laws", :as => :payday_loan_laws, :controller => :payday_loan_laws
+  resources "payday-loan-apply", :as => :applicants, :controller => :applicants
   # Sample resource route with options:
   #   resources :products do
   #     member do

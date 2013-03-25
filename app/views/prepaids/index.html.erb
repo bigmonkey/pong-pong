@@ -7,16 +7,16 @@
 <div id="wrapper">
   <aside id ="sidebarFinder"> 
 
-      <%= render(:partial => "shared/prepaidfinder")%>
-      <%= render(:partial => "shared/sidebar")%>  
+      <%= render(:partial => "shared/sidebars/prepaidfinder")%>
+      <%= render(:partial => "shared/sidebars/sidebar")%>  
 
   </aside>  
   
 
   <section id="mainContent">
     <h1>Prepaid Cards</h1> 
-   	<p>Finding the best prepaid card can be difficult because there are so many variations on activation, monthly, ATM, or transaction fees. We've found the key differences in the best cards boil down to monthly, ATM, customer service and 3rd party load fees. Even when just focusing on these differences some cards reduce or waive these fees for direct deposit customers or those that load a certain amount to the card. Our Pre-Paid Card Cost Calculator calculates the total cost to own a card based on your usage and accounts for the different fee waivers. Just use the sliders to the left and to find the best bard for you.</p>
-    <p>Remember that unlike many checking accounts prepaids do not require a credit check so you can just sign up. But also remember that prepaids do not build credit. If you want to build credit we recommend <%= link_to("Secured Cards", secureds_path) %></p> 
+   	<p>Finding the best prepaid card can be difficult because there are so many variations on activation, monthly, ATM, or transaction fees. We've found the key differences in the best cards boil down to monthly, ATM, customer service and 3rd party load fees. Even when just focusing on these differences some cards reduce or waive these fees for direct deposit customers or those that load a certain amount to the card. Our Pre-Paid Card Cost Calculator calculates the total cost to own a card based on your usage and accounts for the different fee waivers. Use the sliders to the left and to find the best bard for you.</p>
+    <p>Remember that unlike many checking accounts prepaids do not require a credit check but also remember that prepaids do not build credit. If you want to build credit we recommend <%= link_to("Secured Cards", secureds_path) %></p> 
 
 <% #-- data from Rails for javaScript to use -- %>
     <span id = "prepaidCards" class = "jsData"><%= @prepaids.size %></span> 

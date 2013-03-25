@@ -7,8 +7,8 @@
 <div id="wrapper">
 <aside id ="sidebarFinder">
 
-		<%= render(:partial => "shared/securedfinder")%>
-    <%= render(:partial => "shared/sidebar")%>
+		<%= render(:partial => "shared/sidebars/securedfinder")%>
+    <%= render(:partial => "shared/sidebars/sidebar")%>
 
 
 </aside>
@@ -16,7 +16,7 @@
 
 <section id="mainContent">
   <h1>Secured Credit Cards</h1> 
- 	<p>Secured credit cards can be a great way to build and repair credit ratings. To learn more visit <%= link_to('What is a Secured Card', "/secured-credit-cards/") %> and <%= link_to('The Best Secured Cards.', "/bad-credit-credit-card-secured-card/") %> Use our industry-first, Secured Card Cost Calculator to the left to help you find the secured card best for you.</p>
+ 	<p>Secured credit cards can help build and repair credit ratings. To learn more visit <%= link_to('What is a Secured Card', "/secured-credit-cards/") %> and <%= link_to('The Best Secured Cards.', "/bad-credit-credit-card-secured-card/") %> Use our Secured Card Cost Calculator to the left to help you find a secured card.</p>
 
   <span id = "securedCards" class = "jsData"><%= @secureds.size %></span>
   <span id = "duration" class = "jsData"><%= @duration %></span>

@@ -1,0 +1,43 @@
+class CreatePaydayLoanLaws < ActiveRecord::Migration
+  def change
+    create_table :payday_loan_laws do |t|	
+			t.string "state_abbr"
+			t.string "name"
+			t.string "legal_status_summary"
+			t.string "legal_status"
+			t.text "citation"
+			t.string "max_loan"
+			t.string "term"
+			t.text "max_rates"
+			t.string "fee_14day_100"
+			t.string "apr_14day_100"
+			t.string "max_loans_out"
+			t.string "rollovers"
+			t.string "cooling_period"
+			t.string "repay_plan"
+			t.boolean "collection_terms"
+			t.string "collect_fee"
+			t.string "criminal_action"
+			t.string "regulator"
+			t.string "regulator_division"
+			t.string "regulator_address"
+			t.string "regulator_city"
+			t.string "regulator_zip"
+			t.string "regulator_phone"
+			t.string "regulator_fax"
+			t.string "regulator_contact"
+			t.string "regulator_site"
+			t.boolean "additional_resources"
+			t.string "license_database"
+			t.string "complaint_form"
+			t.string "complaint_instructions"
+			t.string "resource_one_title"
+			t.string "resource_one"
+			t.string "resource_two_title"
+			t.string "resource_two"
+			t.string "created_at"
+			t.string "updated_at"
+      t.timestamps
+    end
+  end
+end

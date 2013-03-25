@@ -12,47 +12,41 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 	<div id="mainHeaderOutter">
 		<header id="mainHeader">
 		<div id="logo"><%= link_to(image_tag("thepaydayhound-logo.png", :alt => "logo" ), {:controller => 'homes', :action => 'index'})%></div>
-		<div id="socialmediaicons">
-			<%= link_to(image_tag("rss.png", :alt => "RSS Feed" ), "http://www.thepaydayhound.com/feed", :title => "The Payday Hound Feed") %>
-			<%= link_to(image_tag("facebook.png", :alt => "Facebook" ), "http://www.facebook.com/thepaydayhound", :title => "The Payday Hound Facebook Page") %>
-			<%= link_to(image_tag("twitter.png", :alt => "Twitter" ), "http://www.twitter.com/thepaydayhound", :title => "The Payday Hound Twitter Page") %>
-			<%= link_to(image_tag("googleplus.png", :alt => "Google +" ), "https://plus.google.com/114318301384219988110", :title => "The Payday Hound Google Page") %>
- 		</div>
 
 		<nav>
-			<div id = "chromemenu">
-				<ul>
-					<li><%= link_to("Home", "/") %></li>
-					<li><%= link_to("Apply", applicants_path) %></li>
-					<li><%= link_to("Payday Loans", lenders_path) %></li>
-				  <li><%= link_to("Installment Loans", :controller => "lenders", :action => "installment") %></li>
-				  <li><%= link_to("Cards", secureds_path, :rel => "dropmenu1") %></li>
-				  <% # below works ecause nginx redirects to wordpress server %>
-					<li><%= link_to("Learn", "/learn/") %></li> 
-				</ul>	
-			</div>	
+				<ul id="nav">
+			    <li class = "navApply">
+			        <%= link_to("Apply", applicants_path) %>
+			        <ul>
+			            <li><a href="javascript:TogApplication()" id="showApp">application [+]</a></li>			
+			        </ul>
+			    </li>
+			    <li>
+			        <%= link_to("Find", "#") %>		
+			        <ul>
+			            <li><%= link_to("Payday Loans", "/payday-loans/") %></li>
+			            <li><%= link_to("Installment Loans", "/installment-loans/") %></li>			
+			            <li><%= link_to("Prepaid Cards", prepaids_path, :class => "dropdownSubTitles") %></li>			
+			            <li><%= link_to("Secured Cards", secureds_path, :class => "dropdownSubTitles") %></li>			
+			        </ul>			
 
-
-			<%# credit card drop down menu %>                                                   
-			<div id="dropmenu1" class="dropmenudiv">
-			<%= link_to("Prepaid Cards", prepaids_path) %>	
-			<%= link_to("Secured Cards", secureds_path) %>
-			</div>
-
-			<% # payday loan drop down menu  %>
-			<% # <div id="dropmenu2" class="dropmenudiv"> %>
-			<% # link_to("Apply Now", applicants_path) %>
-			<% # link_to("Payday Loans", lenders_path) %>	
-			<% #link_to("Installment Loans", {:controller => 'lenders', :action => 'installment'}) %>
-			<% #</div>	%>
-
-			<script type="text/javascript">
-
-			cssdropdown.startchrome("chromemenu")
-
-			</script>
-
-
+			    </li>
+			    <li>
+			        <%= link_to("Learn", "#") %>
+			        <ul>
+			            <li><%= link_to("Articles", "/learn/", :class => "dropdownSubTitles") %></li>			
+			            <li><%= link_to("Payday Loan Laws", "/payday-loan-laws/", :class => "dropdownSubTitles") %></li>
+			        </ul>
+			    </li>
+			    <li>
+			        <%= link_to("Home", "/") %>
+			    </li>			
+				</ul>
 		</nav>
+	
 		</header>
 	</div>
+	
+	<section id = "applicationDropContainer">
+  		<%= render 'shared/application/applicationFinder' %>
+	</section>

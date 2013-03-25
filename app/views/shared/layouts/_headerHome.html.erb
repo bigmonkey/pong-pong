@@ -1,0 +1,45 @@
+
+<!-- Google Tag Manager -->
+<noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-K4WS"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-K4WS');</script>
+<!-- End Google Tag Manager -->	
+
+	<div id="mainHeaderOutter">
+		<header id="mainHeader">
+		<div id="logo"><%= link_to(image_tag("thepaydayhound-logo.png", :alt => "logo" ), {:controller => 'homes', :action => 'index'})%></div>
+
+		<nav>
+				<ul id="nav">
+			    <li>
+			        <%= link_to("Apply", applicants_path) %>
+			    </li>
+			    <li>
+			        <%= link_to("Find", "#") %>		
+			        <ul>
+			            <li><%= link_to("Payday Loans", "/payday-loans/") %></li>
+			            <li><%= link_to("Installment Loans", "/installment-loans/") %></li>			
+			            <li><%= link_to("Prepaid Cards", prepaids_path, :class => "dropdownSubTitles") %></li>			
+			            <li><%= link_to("Secured Cards", secureds_path, :class => "dropdownSubTitles") %></li>			
+			        </ul>			
+
+			    </li>
+			    <li>
+			        <%= link_to("Learn", "#") %>
+			        <ul>
+			            <li><%= link_to("Articles", "/learn/", :class => "dropdownSubTitles") %></li>			
+			            <li><%= link_to("Payday Loan Laws", "/payday-loan-laws/", :class => "dropdownSubTitles") %></li>
+			        </ul>
+			    </li>
+			    <li>
+			        <%= link_to("Home", "/") %>
+			    </li>			
+				</ul>
+		</nav>
+	
+		</header>
+	</div>

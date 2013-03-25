@@ -1,3 +1,178 @@
 // Place all the styles related to the Lenders controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+@import "custom";
+
+/*LenderTableListing*/
+
+.listing, .cardListing {
+	text-align: center;
+	border-collapse: collapse;
+    border-spacing: 0;
+    border-top: 1px solid #666;
+    margin-top: 20px;
+    width: 780px;
+}
+
+.tableHeader, .securedTableHeader{
+    color: #666;
+    //font-weight: bold;
+}
+
+
+.tableApplyButton {
+	background-color: #FFF;
+    margin: 0px 0px 5px 5px;
+    display: block;
+    height: 25px;
+    line-height: 25px;
+    width: 70px;
+    border: 1px solid #888;
+    border-radius: 3px;
+    webkit-border-radius: 3px;
+    moz-border-radius: 3px;
+    padding: 0px;
+}
+
+.tableApplyButton:link, .tableApplyButton:visited {
+	color: #666;
+}
+
+.tableApplyButton:hover {
+	box-shadow: 0 0 5px rgba(102, 102, 102, 0.6);
+	-webkit-box-shadow: 0 0 5px rgba(102, 102, 102, 0.6);
+	-moz-box-shadow: 0 0 5px rgba(102, 102, 102, 0.6);
+	color: #666;
+}
+
+td .instantDecision {
+	width: 80px;
+	font-size: 0.95em;
+}
+
+/*SniffRankings*/
+.ratingSpace {
+	margin-top: 23px;
+}
+
+.rank0 {
+	background:url(asset-path("rankings/Payday-Loan-Rank-Star-0.png", image)) no-repeat center ;
+	width: 100px;
+}
+
+.rank1 {
+	background:url(asset-path("rankings/Payday-Loan-Rank-Star-1.png", image)) no-repeat center ;
+	width: 100px;
+}
+
+.rank2 {
+	background:url(asset-path("rankings/Payday-Loan-Rank-Star-2.png", image)) no-repeat center ;
+	width: 100px;
+}
+
+.rank3 {
+	background:url(asset-path("rankings/Payday-Loan-Rank-Star-3.png", image))  no-repeat center ;
+	width: 100px;
+
+}
+
+.rank4 {
+	background:url(asset-path("rankings/Payday-Loan-Rank-Star-4.png", image))  no-repeat center ;
+	width: 100px;
+
+}
+
+.rank5 {
+	background:url(asset-path("rankings/Payday-Loan-Rank-Star-5.png", image))  no-repeat center ;
+	width: 100px;
+
+}
+
+/*FindAPaydayLoan*/
+
+.criteria form {
+	padding: 0px 0px 20px 10px;
+  background: $boxBackground;
+  @include rounded(7px);
+  vertical-align: middle;
+  margin-bottom: 15px;
+  color: #555;
+
+}
+
+.criteria form p {
+	margin: 2px 0px 0px 20px;
+}
+
+
+.formLabel {
+	float: left;
+	font-size: 0.75em;
+	text-transform: uppercase;
+	//font-weight: bold;
+}
+
+.formInput {
+	clear: both;
+	font-size: 0.7em;
+	padding: 5px 0px 0px 0px;
+}
+
+.formLabelDesc {
+	clear: both;
+	font-size: 0.6em;
+	font-style: italic;
+}
+
+.formSection {
+	clear: both;
+	padding: 10px 0px 5px 0px;
+	margin-left: 10px;
+}
+
+.state_id_container {
+	height: 20px;
+	width: 120px;
+  overflow: hidden;
+  margin: 0px 5px;
+  background: url(asset-path('downarrow.png', image)) no-repeat right #fff;
+  border: 1px solid #C6C6C6;
+	@include rounded(4px); 
+	}
+
+#state_id {
+	color: #666;
+	width: 135px;
+	height: 20px;
+	vertical-align: middle;
+	margin: -2px 5px;
+   background: none repeat scroll 0 0 transparent;
+   border: 0 none;
+   border-radius: 0 0 0 0;
+}
+
+
+.findLoanButton {
+		background: #fff;
+   	height: 24px;
+   	line-height: 24px;
+   	width: 110px;
+   	margin: 10px 0px 0px 22px;
+   	border: 1px solid #bbb;
+   	color: #555;
+   	font-family: helvetica, arial, san-serif;
+   	font-size: 0.75em;
+   	cursor: pointer;
+   	cursor: hand;
+   	-webkit-border-radius: 3px;
+   	-moz-border-radius: 3px;
+   	border-radius: 3px;
+   	padding: 0px 0px 2px;
+}
+
+.findLoanButton:hover {
+	box-shadow: 0 0 5px rgba(102, 102, 102, 0.6);
+	-webkit-box-shadow: 0 0 5px rgba(102, 102, 102, 0.6);
+	-moz-box-shadow: 0 0 5px rgba(102, 102, 102, 0.6);
+}

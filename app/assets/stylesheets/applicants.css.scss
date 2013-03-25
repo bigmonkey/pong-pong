@@ -1,0 +1,252 @@
+// Place all the styles related to the PaydayLoanLaws controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+@import "custom";
+
+.appTextLeft {
+	text-align: left;
+}
+.appTextRight {
+	text-align: right;
+}
+
+/* holds appSidebar and appform */
+.appMain {
+	margin: 30px auto;
+	width: 800px;
+	overflow: hidden;
+	height: 100%;
+	font-family: 'Muli', Helvetica, Arial, sans-serif;
+}
+
+
+/*SIDEBAR*/
+
+#appSidebar {
+    background-color: #fff;
+    width: 280px;
+    float: left;
+    margin: 20px auto; 
+}
+
+.appSidebarSeals img{
+	vertical-align: middle;
+}
+
+.appSidebarSeals {
+	margin: 0px 0px;
+}
+
+.quote{
+	margin: 20px 10px;
+	font-size: .9em;
+	font-style: italic;
+}
+
+.benefits{
+	margin-top: 25px;
+	margin-left: 10px;
+}
+.benefits ul li, .benefits ul li{
+	list-style-type: none;
+	padding: 6px 0px;
+	//background: url(asset-path('check-mark.png', image)) no-repeat left;
+	font-size: 1em;
+	color: #006633;
+	line-height: 1.8em
+}
+
+
+/* Form */
+.appFormBox{
+	height: 445px;
+	width: 450px;
+	margin: 0px;
+	float: right;
+	@include rounded(7px);
+	background: $bigColor; 
+}
+
+.appForm h1{
+	font-family: Helvetica, Arial, sans-serif;
+	font-size: 1.3em;
+	text-shadow: 0px 0px;
+	margin: 10px auto;
+	text-align: center;
+	font-weight: bold;
+	color: $boxBackground;
+}
+
+.appForm form{
+	font-size: .9em;
+	color: #555;
+}
+.appLoanAmtBox {
+	width: 270px;
+	height: 55px;
+	background: $boxBackground;
+	margin: 10px auto;
+	padding: 18px 20px 0px;
+	@include rounded(7px);
+}
+
+#pLoanAmt {
+	font-family: Helvetica, Arial, sans-serif;
+	color: $bigColor;
+	margin-top: 8px;
+	font-size:1.3em;
+	text-align: center;
+	font-weight: bold;
+}
+
+.appDataBox {
+	background-color: $boxBackground;
+	width: 385px;
+	height: 225px;
+	margin: 15px auto 0px;
+	padding: 15px 7px 0px;
+	@include rounded(7px);
+}
+
+.appSelectContainer {
+	float:left;
+	width: 50%;
+	font-size: 0.9em;
+	margin: 0px 10px 5px 0px;
+
+}
+
+.appStyleSelect select{
+  background: transparent;
+  width: 142px;
+  padding: 2px 3px;
+  font-size: .8em;
+  color: #221B70;
+  border: 0;
+  border-radius: 0;
+  height: 25px;
+  -webkit-appearance: none;
+}
+
+.appStyleSelect {
+  width: 120px;
+  height: 20px;
+  overflow: hidden;
+  background: url(asset-path('downarrow.png', image)) no-repeat right #fff;
+	@include rounded(4px);  
+}
+
+.appDataBox option {
+	font-size: 1.0em;
+	}
+
+.appImportanceContainer {
+	margin: 10px auto;
+	width: 80%;
+}
+.appImportance {
+	font-family: Helvetica, Arial, sans-serif;
+	float: left;
+	color: $bigColor;
+	width: 170px;
+	height: 25px;
+	line-height: 25px;
+	font-size: 0.9em;
+}
+
+.appImportanceQuestions {
+	font-family: Helvetica, Arial, sans-serif;
+	float: left;
+	width: 140px;
+	height: 20px;
+	line-height: 20px;
+	font-size: 0.75em;
+	padding: 0px 0px 0px 30px;
+}
+
+.appImportanceOptions {
+	color: $bigColor;
+	float: left;
+	width: 45px;
+	height: 10px;
+	line-height: 10px;
+	font-size: 0.7em;
+  text-align: center;
+}
+
+.appImportanceOptionsSelects {
+	float: left;
+	width: 45px;
+	height: 20px;
+	line-height: 20px;
+	font-size: 0.7em;
+	font-weight: bold;
+  text-align: center;
+}
+
+.appYNContainer{
+	margin: 10px auto;
+	width: 90%;	
+}
+
+.appYNContainer input {
+	vertical-align: middle;
+	margin: 0px;
+}
+.appYNQuestions {
+	float: left;
+	width: 72%;
+	height: 25px;
+	line-height: 25px;
+	font-size: 0.9em;
+}
+
+.appYNOptions {
+	float: left;
+	width: 45px;
+	height: 25px;
+	line-height: 25px;
+	font-size: 0.7em;
+	text-align: center;
+	margin:0px;
+}
+
+.appFindLoanButton {
+	background: $boxBackground;
+	color: $bigColor;
+	border: 0px;
+ 	cursor: pointer;
+	@include rounded(5px);
+  font-family: helvetica,arial,san-serif;
+  font-size: 1.1em;
+  height: 35px;
+  line-height: 35px;
+  margin: 15px auto;
+  padding: 0 0 2px;
+  width: 180px;
+  display: block;
+}
+
+.appFindLoanButton:hover {
+  color: $highColor;
+  }	
+
+/* Form End */
+
+/*Content is the stuff on the bottom*/
+	
+.appContent {
+	width: 920px;
+	margin: 55px auto;
+	padding: 10px 20px;
+	font-size: 0.8em;
+	background: $boxBackground;
+	@include rounded(7px);
+}
+
+
+.appContent h1 {
+	margin-top: 10px;
+	font-size: 1em;
+	color: $bigColor;
+}

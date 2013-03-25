@@ -1,0 +1,29 @@
+<% # title and description for seo %>
+<% content_for :seotags do %>
+<title>Payday Loans: In-Depth Reviews and Independent Rankings</title>
+<meta name="description" content="Detailed, independent reviews and rankings of payday loan lenders. The Payday Hound provides more reviews of direct payday lenders than anyone else we know."/>
+<% end %>
+
+<div id="wrapper">
+<aside id ="sidebarFinder">
+
+		<% # render(:partial => "shared/sidebars/paydayfinder")%>
+    <%= render(:partial => "shared/sidebars/sidebar")%>
+
+</aside>
+
+
+<section id="mainContent">
+
+<h1>Payday Loans</h1>
+
+		<%= render 'shared/state_selector' %>
+
+<p>Payday loans are expensive and costs can quickly spiral out of control. The lure of payday loans is that they are quick and easy and do not require good credit but their use must be managed carefully to avoid a vicious debt cycle. They are designed for short-term, emergency funding and are best used as a last resort if other options have been exhausted. </p>
+<p>If a payday loan is your only choice you will find the application process can be quick taking 5-10 minutes and approval is often instant. You must be employed, have direct deposit and be over 18 years old. If approved the money is generally deposited into your checking account by the next business day. The cash is a loan and is due in full your next pay period plus fees. Fees vary but can be anywhere from $10 to $45 for $100 borrowed. These loans can sometimes be renewed but additional fees are incurred. These costs add up quickly as your end up paying fees on your fees. Renewing is not a good option so if you believe you are unable to pay your loan in full your next pay period you may consider an installment loan. These loans are due over a longer period of time. To learn more about installment loans versus payday loans see <a href="/payday-loan-or-installment-loan/" >Installment Loan or Payday Loan</a>. To learn more about payday lending visit <%= link_to('Choosing a Payday Loan', "/choosing-a-payday-loan/") %> and <%= link_to('How Payday Loans Work', "/how-payday-loans-work/") %>.</p>
+<p>The table below contains all our lender reviews. We rank lenders them according our Sniff Test (reputation), costs and licensing. Click on your state to see lenders that provide loans in your state.</p> 
+
+    <%= render(:partial => "shared/tables/payday_loan_table")%>
+
+</section>
+</div>

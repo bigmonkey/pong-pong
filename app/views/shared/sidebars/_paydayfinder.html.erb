@@ -1,8 +1,8 @@
 <div class = "criteria">
 
-  <h2>Loan Finder</h2>
+  <h2>Loan Filter</h2>
 
-<%= form_for(:lender, :url => {:controller => 'lenders', :action => 'lenders'}, :html => {:id => "findPaydayForm", :class => "cardCalc", :target => "_parent"}) do |f| %>
+<%= form_for(:lender, :url => {:controller =>'lenders', :action => 'show'}, :method => 'get', :html => {:id => "findPaydayForm", :class => "cardCalc", :target => "_parent"}) do |f| %>
   <div class="formSection">
 
     <div class="formLabel"><%= f.label(:sniff_id) %></div>
@@ -86,16 +86,14 @@
 
   <div class="formSection">
     <div class="formLabel"><%= label(:state, :state) %></div>
-    <div class="formInput"><%= select(:state, :id, State.all.collect {|s| [s.state, s.id]}) %></div>
+    <div class="state_id_container formInput"><%= select(:state, :id, State.all.collect {|s| [s.state, s.id]}) %></div>
   </div>
   
   <div class="formSection">
     <div class="formLabel"><%= f.label(:lender_type) %></div>
-    <% if @criteria.nil? %>
-        <div class="formInput"><%= f.radio_button(:lender_type, "payday", options = {:checked => true}) %> Payday<%= f.radio_button(:lender_type, "term") %> Installment</div>
-    <% else %>
-        <div class="formInput"><%= f.radio_button(:lender_type, "payday", options = {:checked => @criteria.lender_type == "term" ? false : true}) %>Payday<%= f.radio_button(:lender_type, "term", options = {:checked => @criteria.lender_type == "term" ? true : false}) %>Installment</div>
-    <% end %>                              
+    <div class="formInput">
+      <%= f.radio_button(:lender_type, "payday") %> Payday
+      <%= f.radio_button(:lender_type, "term") %> Installment</div>
   </div>
   <%= submit_tag "FIND LOAN", :class => "findLoanButton" %>
 <% end %>

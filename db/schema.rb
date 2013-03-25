@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130224020759) do
+ActiveRecord::Schema.define(:version => 20130315185514) do
 
   create_table "applicants", :force => true do |t|
     t.string   "token"
@@ -158,6 +158,102 @@ ActiveRecord::Schema.define(:version => 20130224020759) do
     t.string   "name",        :limit => 100
   end
 
+  create_table "payday_loan_law_details", :force => true do |t|
+    t.string   "state_abbr"
+    t.string   "ncsl_citation"
+    t.text     "ncsl_max_loans"
+    t.text     "ncsl_max_term"
+    t.text     "ncsl_citation_excerpt"
+    t.datetime "created_at",            :null => false
+    t.datetime "updated_at",            :null => false
+  end
+
+  create_table "payday_loan_laws", :force => true do |t|
+    t.string  "state_abbr"
+    t.string  "name"
+    t.string  "legal_status_summary"
+    t.string  "legal_status"
+    t.text    "citation"
+    t.string  "max_loan"
+    t.string  "term"
+    t.text    "max_rates"
+    t.string  "fee_14day_100"
+    t.string  "apr_14day_100"
+    t.string  "max_loans_out"
+    t.string  "rollovers"
+    t.string  "cooling_period"
+    t.string  "repay_plan"
+    t.boolean "collection_terms"
+    t.string  "collect_fee"
+    t.string  "criminal_action"
+    t.string  "regulator"
+    t.string  "regulator_division"
+    t.string  "regulator_address"
+    t.string  "regulator_city"
+    t.string  "regulator_zip"
+    t.string  "regulator_phone"
+    t.string  "regulator_fax"
+    t.string  "regulator_contact"
+    t.string  "regulator_site"
+    t.boolean "additional_resources"
+    t.string  "license_database"
+    t.string  "complaint_form"
+    t.string  "complaint_instructions"
+    t.string  "resource_one_title"
+    t.string  "resource_one"
+    t.string  "resource_two_title"
+    t.string  "resource_two"
+    t.string  "created_at",             :null => false
+    t.string  "updated_at",             :null => false
+  end
+
+  create_table "payday_loans", :force => true do |t|
+    t.integer  "sniff_id"
+    t.integer  "partner_id"
+    t.string   "name",                                            :default => ""
+    t.boolean  "active"
+    t.string   "lender_type"
+    t.string   "image_file"
+    t.decimal  "ranking",           :precision => 3, :scale => 1
+    t.string   "first_comment"
+    t.string   "second_comment"
+    t.string   "third_comment"
+    t.string   "review_url"
+    t.string   "since"
+    t.string   "governing_law",                                   :default => ""
+    t.boolean  "BBB_accredit"
+    t.string   "BBB_score"
+    t.integer  "BBB_complaints"
+    t.integer  "BBB_unresponded"
+    t.string   "max_loan",                                        :default => ""
+    t.boolean  "spanish"
+    t.boolean  "state_lic"
+    t.boolean  "privacy_policy"
+    t.boolean  "https"
+    t.boolean  "phone_contact"
+    t.boolean  "live_chat"
+    t.boolean  "time_at_residence"
+    t.boolean  "rent_or_own"
+    t.boolean  "rent_mort_amt"
+    t.boolean  "time_w_employer"
+    t.boolean  "reference"
+    t.decimal  "loan_amt",          :precision => 6, :scale => 2
+    t.decimal  "payments",          :precision => 4, :scale => 1
+    t.decimal  "pmt_freq_in_days",  :precision => 5, :scale => 1
+    t.decimal  "pmt_amt",           :precision => 7, :scale => 2
+    t.decimal  "cost",              :precision => 7, :scale => 2
+    t.decimal  "apr",               :precision => 3, :scale => 2
+    t.datetime "created_at",                                                      :null => false
+    t.datetime "updated_at",                                                      :null => false
+  end
+
+  create_table "payday_loans_states", :id => false, :force => true do |t|
+    t.integer "payday_loan_id"
+    t.integer "state_id"
+  end
+
+  add_index "payday_loans_states", ["payday_loan_id", "state_id"], :name => "index_payday_loans_states_on_payday_loan_id_and_state_id"
+
   create_table "prepaids", :force => true do |t|
     t.integer  "partner_id"
     t.string   "name",                    :limit => 100
@@ -253,6 +349,53 @@ ActiveRecord::Schema.define(:version => 20130224020759) do
     t.string   "state",      :limit => 15
     t.datetime "created_at",               :null => false
     t.datetime "updated_at",               :null => false
+  end
+
+  create_table "states_term_loans", :id => false, :force => true do |t|
+    t.integer "term_loan_id"
+    t.integer "state_id"
+  end
+
+  add_index "states_term_loans", ["term_loan_id", "state_id"], :name => "index_states_term_loans_on_term_loan_id_and_state_id"
+
+  create_table "term_loans", :force => true do |t|
+    t.integer  "sniff_id"
+    t.integer  "partner_id"
+    t.string   "name",                                            :default => ""
+    t.boolean  "active"
+    t.string   "lender_type"
+    t.string   "image_file"
+    t.decimal  "ranking",           :precision => 3, :scale => 1
+    t.string   "first_comment"
+    t.string   "second_comment"
+    t.string   "third_comment"
+    t.string   "review_url"
+    t.string   "since"
+    t.string   "governing_law",                                   :default => ""
+    t.boolean  "BBB_accredit"
+    t.string   "BBB_score"
+    t.integer  "BBB_complaints"
+    t.integer  "BBB_unresponded"
+    t.string   "max_loan",                                        :default => ""
+    t.boolean  "spanish"
+    t.boolean  "state_lic"
+    t.boolean  "privacy_policy"
+    t.boolean  "https"
+    t.boolean  "phone_contact"
+    t.boolean  "live_chat"
+    t.boolean  "time_at_residence"
+    t.boolean  "rent_or_own"
+    t.boolean  "rent_mort_amt"
+    t.boolean  "time_w_employer"
+    t.boolean  "reference"
+    t.decimal  "loan_amt",          :precision => 6, :scale => 2
+    t.decimal  "payments",          :precision => 4, :scale => 1
+    t.decimal  "pmt_freq_in_days",  :precision => 5, :scale => 1
+    t.decimal  "pmt_amt",           :precision => 7, :scale => 2
+    t.decimal  "cost",              :precision => 7, :scale => 2
+    t.decimal  "apr",               :precision => 3, :scale => 2
+    t.datetime "created_at",                                                      :null => false
+    t.datetime "updated_at",                                                      :null => false
   end
 
   create_table "term_states", :force => true do |t|
