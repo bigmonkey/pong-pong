@@ -19,7 +19,7 @@
       <div class = "borStatusBox borSystem">
         <h2>Application System Status</h2>
         <h1>Lender Systems Live</h1>
-        <h2><%=Time.now.strftime('%a  %m/%d/%Y  %l:%M%p') %> </h2>
+        <h2><%=Time.now.localtime.strftime('%a  %m/%d/%Y  %l:%M%p') %> </h2>
       </div>
       <div class="appSidebarSeals">
         <%= image_tag("SSL_Seal.gif", :alt => "Security Seal", :style => "margin: 0px 23px") %>
@@ -103,6 +103,7 @@
     				
     </div>
   </div>  
-
+  <div class = "clearboth"></div>
+  <%= render 'shared/application/applicationExplain' %>  
  
 </div> 
