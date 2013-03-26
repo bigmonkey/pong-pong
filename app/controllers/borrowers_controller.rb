@@ -43,7 +43,7 @@ class BorrowersController < ApplicationController
 
   def new
   	if ( params[:active_military].nil? || params[:bank_account_type].nil? || params[:state].nil? || params[:requested_amount].nil? ) 
-  		redirect_to :controller => 'applicants', :action => 'new'  	
+  		redirect_to :controller => 'applicants', :action => 'index'  	
   	elsif	
 	  	 (params[:active_military]=="true") or (params[:bank_account_type]=="NONE") or (params[:eighteen]=="false")
 	  		@redirect = "/topoffers/prepaid_b"
