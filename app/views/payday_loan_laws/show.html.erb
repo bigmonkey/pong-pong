@@ -24,25 +24,25 @@
 							<% if !@paydaylawstate.regulator_contact.nil? %>
 								<div>Contact: <%= @paydaylawstate.regulator_contact %> </div>
 							<% end %>		
-							<div><%= link_to("#{@state.state}'s Regulator Website", @paydaylawstate.regulator_site) %></div>						
+							<div><%= link_to("#{@state.state}'s Regulator Website", @paydaylawstate.regulator_site, :target => '_blank') %></div>						
 						</div>
 						<% if @paydaylawstate.additional_resources %>
 							<div class = "lawSideBox">
 								<h2>Additional Resources</h2>
 								<% if !@paydaylawstate.license_database.nil? %>
-									<div><%= link_to("#{@state.state}'s Licensee Database", @paydaylawstate.license_database) %></div>
+									<div><%= link_to("#{@state.state}'s Licensee Database", @paydaylawstate.license_database, :target => '_blank') %></div>
 								<% end %>						
 								<% if !@paydaylawstate.complaint_form.nil? %>
-									<div><%= link_to("#{@state.state}'s Complaint Form", @paydaylawstate.complaint_form) %></div>
+									<div><%= link_to("#{@state.state}'s Complaint Form", @paydaylawstate.complaint_form, :target => '_blank') %></div>
 								<% end %>
 								<% if !@paydaylawstate.complaint_instructions.nil? %>
-									<div><%= link_to("#{@state.state}'s Complaint Instructions", @paydaylawstate.complaint_instructions) %></div>
+									<div><%= link_to("#{@state.state}'s Complaint Instructions", @paydaylawstate.complaint_instructions, :target => '_blank') %></div>
 								<% end %>
 								<% if !@paydaylawstate.resource_one_title.nil? %>
-									<div><%= link_to("#{@paydaylawstate.resource_one_title}", @paydaylawstate.resource_one) %></div>
+									<div><%= link_to("#{@paydaylawstate.resource_one_title}", @paydaylawstate.resource_one, :target => '_blank') %></div>
 								<% end %>																
 								<% if !@paydaylawstate.resource_two_title.nil? %>
-									<div><%= link_to("#{@paydaylawstate.resource_two_title}", @paydaylawstate.resource_two) %></div>
+									<div><%= link_to("#{@paydaylawstate.resource_two_title}", @paydaylawstate.resource_two, :target => '_blank') %></div>
 								<% end %>				
 							</div>
 						<% end %>	
