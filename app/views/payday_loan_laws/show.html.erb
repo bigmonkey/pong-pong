@@ -18,7 +18,9 @@
 							<div><%= @paydaylawstate.regulator_address %></div>
 							<div><%= "#{@paydaylawstate.regulator_city}, #{@paydaylawstate.state_abbr} #{@paydaylawstate.regulator_zip}" %></div>
 							<div>Phone: <%= @paydaylawstate.regulator_phone %></div>
-							<div>Fax: <%= @paydaylawstate.regulator_fax %></div>	
+							<% if !@paydaylawstate.regulator_fax.nil? %>
+								<div>Fax: <%= @paydaylawstate.regulator_fax %></div>
+							<% end %>	
 							<% if !@paydaylawstate.regulator_contact.nil? %>
 								<div>Contact: <%= @paydaylawstate.regulator_contact %> </div>
 							<% end %>		

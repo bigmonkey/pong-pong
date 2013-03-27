@@ -40,7 +40,7 @@
             <table width = 100% >
               <tr>    
                 <td class = "cardInfoName">
-                    <div><%= link_to(image_tag("secured/#{s.image_file}", :alt => s.name ),  {:controller => 'partners', :action => 'go', :id => s.partner_id, :page=>@page}, :target => "_blank") %></div>
+                    <div><%= link_to(image_tag("secured/#{s.image_file}", :alt => s.name ),  partner_path(s.partner_id), :page=>@page, :rel =>'nofollow', :target => "_blank") %></div>
                     <div class = "cardNameUnderImage"><%= s.name %></div>
                 </td>
                 <td class = "cardInfoDesc">
@@ -50,8 +50,8 @@
                   <div><a href=<%="javascript:Tog(#{s.id})" %>>More Info</a></div>
                 </td>  
                 <td class = "cardInfoApply">
-                    <%= link_to("APPLY", {:controller => 'partners', :action => 'go', :id => s.partner_id, :page=>@page}, :class => "cardApplyButton", :target => "_blank") %>
-                  <div class = "cardInstantDecision"><%= !s.inst_decision? ? "":link_to("instant decision", {:controller => 'partners', :action => 'go', :id => s.partner_id, :page => @page}, :target => "_blank") %></div>
+                    <%= link_to("APPLY", partner_path(s.partner_id), :page=>@page, :rel =>'nofollow', :class => "cardApplyButton", :target => "_blank") %>
+                  <div class = "cardInstantDecision"><%= !s.inst_decision? ? "":link_to("instant decision", partner_path(s.partner_id), :page => @page, :rel=>'nofollow', :target => "_blank") %></div>
                 </td>
               </tr>    
               <tr>

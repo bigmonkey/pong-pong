@@ -80,7 +80,7 @@
               <table width = 100% >
                 <tr>    
                   <td class = "cardInfoName">
-                      <div><%= link_to(image_tag("prepaid/#{p.image_file}", :alt => p.name ),  {:controller => 'partners', :action => 'go', :id => p.partner_id, :page=>@page}, :target => "_blank") %></div>
+                      <div><%= link_to(image_tag("prepaid/#{p.image_file}", :alt => p.name ),  partner_path(p.partner_id), :page=>@page,:rel => 'nofollow', :target => "_blank") %></div>
                       <div class = "preCardNameUnderImage"><%= p.name %></div>
                   </td>
                   <td class = "preCardInfoDesc">
@@ -96,7 +96,7 @@
                     <div>ATM: <%= p.max_atm.nil? ? "?" : number_to_currency(p.max_atm, :precision =>0) %></div>
                   </td>
                   <td class = "preCardInfoApply">
-                      <%= link_to("SIGN UP", {:controller => 'partners', :action => 'go', :id => p.partner_id, :page=>@page}, :class => "cardApplyButton", :target => "_blank") %>
+                      <%= link_to("SIGN UP", partner_path(p.partner_id), :page=>@page, :rel =>'nofollow', :class => "cardApplyButton", :target => "_blank") %>
                   </td>
                 </tr>    
                 <tr>
