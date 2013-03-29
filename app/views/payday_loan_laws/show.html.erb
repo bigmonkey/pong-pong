@@ -51,9 +51,9 @@
 			<div class = "lawContentMain">
 				<p>Payday lending is <%= @paydaylawstate.legal_status.downcase %> in <%= @state.state %> 
 					<% if @paydaylawstate.legal_status_summary == "Legal" %>
-						(see reviews of <%= link_to("#{@state.state_abbr} payday lenders", "/payday-loans/#{@state.state_abbr}") %>).
+						(see reviews of <%= link_to("#{@state.state_abbr} payday lenders", "/payday-loans/#{@state.state_abbr.downcase}") %>).
 						<% else %>
-						but there maybe tribal-based or lenders not licenced by <%= @state.state %> offering <%= link_to "#{@state.state_abbr} payday loans", "/payday-loans/#{@state.state_abbr}" %>.
+						but there maybe tribal-based or lenders not licenced by <%= @state.state %> offering <%= link_to "#{@state.state_abbr} payday loans", "/payday-loans/#{@state.state_abbr.downcase}" %>.
 						<% end %>
 				</p>
 

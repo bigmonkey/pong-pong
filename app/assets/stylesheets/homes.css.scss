@@ -27,8 +27,13 @@
 	ul li {
     list-style-type: none;
     margin: 10px 0px 0px 65px;
+		a, a:link, a:visited{
+			color: inherit;
+		}
+		a:hover, a:active {
+			color: $highColor;
+		}
 	}
-
 }
 
 .introSelectCols {
