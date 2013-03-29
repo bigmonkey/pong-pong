@@ -6,7 +6,11 @@
   <!-- calls matching service apply section -->
 
   <div id="clearboth"></div>
-  <p>We have reviewed <%= pluralize(@lenders.size, !(defined? @state.state).nil? ? "#{@state.state} payday installment loan lender" : "payday installment loan lender") %> with a Sniff score of <%= @criteria.sniff.sniff_desc.downcase %> or better and a Rating of <%= pluralize(number_to_human(@criteria.ranking), 'star') %> or better.</p>
+  <p>We have reviewed <%= pluralize(@lenders.size, !(defined? @state.state).nil? ? "#{@state.state} payday installment loan lender" : "payday installment loan lender") %> with a 
+    <% if @criteria.sniff.sniff_desc.downcase != 'bad' %>
+    Sniff score of <%= @criteria.sniff.sniff_desc.downcase %> or better and a 
+    <% end %>
+    Rating of <%= pluralize(number_to_human(@criteria.ranking), 'star') %> or better.</p>
   <table class="listing" summary="full lender list">
     <tr class="tableHeader">
      <th><%= !(defined? @state.state_abbr).nil? ? "#{@state.state_abbr} Lender" : "Company Name" %></th>
