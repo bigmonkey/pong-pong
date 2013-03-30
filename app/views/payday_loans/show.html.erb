@@ -27,7 +27,7 @@
 		<% end %>
 		<% # ****this section is the closing </p> for both cases above %>
  		<p>Unlicensed lenders include tribe-based lenders and lenders licensed in other states. Our understanding is that these lenders export their tribe or state laws into <%= @state.state %> and are required to adhere to federal lending laws but not <%= @state.state %> regulations. Federal laws may be less restrictive and less frequently enforced. There are reputable tribal-based lenders, but quality varies. The final group of lenders is foreign-based payday loan lenders. They export their countries' laws into <%= @state.state %> and are highly unregulated. See <%= link_to("Choosing A Payday Loan", "/choosing-a-payday-loan/") %> for more details. </p>
- 		<p>The above is our understanding of how payday lending works in <%= @state.state %>, but we are not a law firm. Please contact the <%= link_to("#{@paydaylawstate.regulator}", "/payday-loan-laws/#{@state.state_abbr.downcase}") %> for more information. </p>
+ 		<p>The above is our understanding of how payday lending works in <%= @state.state %>, but we are not a law firm. Please contact the <%= link_to("#{@paydaylawstate.regulator}", @paydaylawstate.regulator_site) %> for more information. </p>
 		</div>
     <%=  render(:partial => "shared/tables/payday_loan_table")%>
 
