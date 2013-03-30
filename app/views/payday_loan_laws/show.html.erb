@@ -51,9 +51,10 @@
 			<div class = "lawContentMain">
 				<p>Payday lending is <%= @paydaylawstate.legal_status.downcase %> in <%= @state.state %> 
 					<% if @paydaylawstate.legal_status_summary == "Legal" %>
-						(see reviews of <%= link_to("#{@state.state_abbr} payday lenders", "/payday-loans/#{@state.state_abbr.downcase}") %>).
+						(see reviews of <%= link_to("#{@state.state} payday lenders", "/payday-loans/#{@state.state_abbr.downcase}") %>).
 						<% else %>
-						but there maybe tribal-based or lenders not licenced by <%= @state.state %> offering <%= link_to "#{@state.state_abbr} payday loans", "/payday-loans/#{@state.state_abbr.downcase}" %>.
+						but there might be tribal-based or lenders not licenced by <%= @state.state %> offering payday loans in <%= @state.state %>.</p> 
+						<p>Theses out-of-state lenders export either their tribal or state laws into <%= @state.state %>. Not all states permit this exportation of laws and some states enforce their ban more strictly but we do see some lenders offering payday loans in states where it is prohibited. In any event remember these lenders are not licensed or regulated by <%= @state.state %> and may even be operating illegally so proceed with caution. See <%= link_to "#{@state.state_abbr} payday loans", "/payday-loans/#{@state.state_abbr.downcase}" %> to see if any of the lenders we have reviewed are offering payday loans in <%= @state.state %>.
 						<% end %>
 				</p>
 
@@ -107,7 +108,7 @@
 							<% end %>	
 						</p>
 					</div>
-					<p>For example, in <%= @state.state %> the rates and fees on a 14 day, $100 loan are,</p>
+					<p>For example, in <%= @state.state %> the rates and fees on a 14 day, $100 loan are:</p>
 					<table>
 						<tr>
 							<th class = "lawCellLeft">Terms</th>
@@ -129,7 +130,7 @@
 					</table>	
 
 					<% if @paydaylawstate.collection_terms %>
-						<p><%= @state.state %> also defines regulations around collections. If available, the table below lists the fees lenders are permitted to charge if the loan is not repaid and/or whether the lender can threaten use of or use criminal action if a borrower is unable to repay the loan.</p>
+						<p><%= @state.state %> also defines regulations around collections. If available, the table below lists the fees lenders are permitted to charge if the loan is not repaid and/or whether a lender can threaten use of or use criminal action if a borrower is unable to repay a loan.</p>
 						<table>
 							<tr>
 								<th class = "lawCellLeft">Feature</th>

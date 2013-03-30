@@ -236,11 +236,6 @@ nav {
 	float: left;
 }
 
-.socialMedia {
-	margin: 100px auto;
-	width: 100px;
-}
-
 
 // navivation bars
 
@@ -430,7 +425,10 @@ footer {
 	ul, ul li {
 		list-style-type:none;
 		display: inline;
-		margin: 0px 10px;
+		margin: 0px 5px;
+		line-height: 20px;
+		height: 20px;
+		vertical-align: center;
 		}	
 
 	a, a:link, a:visited{
@@ -441,6 +439,16 @@ footer {
 		color: $dogFur;
 		text-decoration: none;
 		}
+	#disclaimer {
+		a, a:link, a:visited{
+		color: $boxBackgroundDarker;
+		text-decoration: underline;
+		}
+		a:hover, a:active {
+		color: $dogFur;	
+		}
+	}	
+	
 }	
 		
 .footerLeft {
@@ -450,6 +458,8 @@ footer {
 #copyright {
 	color: $bigColor;
 	float:right;
+	line-height: 20px;
+	height: 20px;
 }
 
 #disclaimer {

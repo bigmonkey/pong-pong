@@ -1,14 +1,18 @@
 	<footer>
 		<div class = "footerWrapper">
-		 <div id="disclaimer">*Disclaimer: We aim to keep our information accurate and updated, however we cannot make warranties regarding its accuracy. Please verify fees, interest rates, and other terms during the application process. The Payday Hound may be compensated if consumers choose to utilize some of the links located throughout the content on this site.</div>	
+		 <div id="disclaimer">*Disclaimer: We aim to keep our information accurate and updated, however we cannot make warranties regarding its accuracy. Please verify fees, interest rates, and other terms during the application process. The Payday Hound <%= link_to 'may be compensated', '/infos/about' %> if consumers choose to utilize some of the links located throughout the content on this site.</div>	
 		<ul class = "footerLeft">
 			 <li><%= link_to("About Us", {:controller => 'infos', :action => 'about'}) %></li>|
 			 <li><%= link_to("Contact Us", {:controller => 'infos', :action => 'contact'}) %></li>|
-			 <li><%= link_to("Press", {:controller => 'infos', :action => 'press'}) %></li>    			    
+			 <li><%= link_to("Press", {:controller => 'infos', :action => 'press'}) %></li>| 			
+			 <li><%= link_to("Privacy Policy", {:controller => 'infos', :action => 'privacy'}) %></li>|
+			 <li><%= link_to("Terms of Use", {:controller => 'infos', :action => 'terms'}) %></li> 	     
+		
 		</ul>
+
 		<ul>
-			 <li><%= link_to("Privacy Policy", {:controller => 'infos', :action => 'privacy'}) %></li>  |  
-			 <li><%= link_to("Terms of Use", {:controller => 'infos', :action => 'terms'}) %></li> 	    
+  		<li><%= link_to(image_tag("facebook.png", :alt => "Facebook"), "http://www.facebook.com/thepaydayhound", :title => "The Payday Hound Facebook Page", :class => "navFB navSocialFirst") %> <%= link_to(image_tag("twitter.png", :alt => "Twitter" ), "http://www.twitter.com/thepaydayhound", :title => "The Payday Hound Twitter Page", :class => "navTwit") %> <%= link_to(image_tag("googleplus.png", :alt => "Google +" ), "https://plus.google.com/114318301384219988110", :title => "The Payday Hound Google Page", :class => "navG") %> <%= link_to(image_tag("rss.png", :alt => "RSS Feed" ), "http://www.thepaydayhound.com/feed", :title => "The Payday Hound Feed", :class => "navRSS") %>
+		</li>
 		</ul>
 		<div id="copyright">Copyright © 2013 The Payday Hound. All rights reserved.</div>
 		</div>
