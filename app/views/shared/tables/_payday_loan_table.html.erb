@@ -25,7 +25,7 @@
     <% @lenders.each do |l| %>
     <tr>
       <td>
-        <div><%= link_to(image_tag("lendersm/#{l.image_file}", :alt => l.name ), !l.review_url? ? (partner_path(l.partner_id)) : l.review_url, :rel =>'nofollow', :page => @page, :target => 'blank')  %></div>
+        <div><%= link_to(image_tag("lendersm/#{l.image_file}", :alt => l.name ), !l.review_url? ? (partner_path(l.partner_id)) : "/#{l.review_url}", :rel =>'nofollow', :page => @page, :target => 'blank')  %></div>
         <div><%= link_to(l.name, partner_path(l.partner_id), :page => @page, :rel => 'nofollow', :target => 'blank') %></div>
       </td>
       <td>

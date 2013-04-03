@@ -10,6 +10,8 @@ Pdh::Application.routes.draw do
 
   get "lenders" => "lenders#index"
 
+  get "lenders/finder" => "lenders#finder"
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
