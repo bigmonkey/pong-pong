@@ -15,28 +15,20 @@ class TermLoansController < ApplicationController
 
 	def show
 		# is it random or coming from index or paydayfinder
-		if ( !params.has_key?(:lender) && State.find_by_state_abbr(params[:id].upcase).nil?)
+		if State.find_by_state_abbr(params[:id].upcase).nil?
 			redirect_to("/installment-loans/")
 		else	
-			@criteria = PaydayLoan.new    #@criteria gets used on view
-
-			# coming from finder
-			if params.has_key?(:lender)	 
-				@criteria.sniff_id = params[:lender][:sniff_id]
-    		@criteria.ranking = params[:lender][:ranking]			
+			@criteria = TermLoan.new    #@criteria gets used on view
+			@criteria.sniff_id = !params[:sniff_id].nil? ? params[:sniff_id] : 3
+   		@criteria.ranking = !params[:ranking].nil?	? params[:ranking] : 1
     	
-    	# coming from index	
-    	else	
-				@criteria.sniff_id = 3
-	    	@criteria.ranking = 1	
-			end
 
     	@state = State.find_by_state_abbr(params[:id].upcase)
     	@paydaylawstate = @state.payday_loan_law
     	@lenders = @state.term_loans.by_top_rank.sniff_level(@criteria.sniff_id).rank_level(@criteria.ranking)
 
     	# defined so the radio button defaults to correct button
-    	@lender=Lender.new      
+    	@lender=TermLoan.new      
     	@lender.lender_type="term"
     	
 		end	
