@@ -1,5 +1,5 @@
 class LendersController < ApplicationController
-  
+  #comment out when going to production so show pages called without layout
   #layout 'paydayAppNav'
   
   before_filter :set_tracking
