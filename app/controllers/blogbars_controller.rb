@@ -6,7 +6,8 @@ class BlogbarsController < ApplicationController
   before_filter :set_prepaid_constants
 
   def payday
-  	
+      @lender=PaydayLoan.new      
+      @lender.lender_type="payday" 	
   end
 
   def prepaid
