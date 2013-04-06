@@ -1,0 +1,88 @@
+<div id = "wrapper">
+<div id="content">
+<% if @lender.nil? %>
+We have not reviewed this lender.
+<% else %>
+
+
+<div class = "lenderIntroBoxes">
+	<h1><%= @lender.name %></h1>
+	<div class = "lenderIntroBox lenderLeft">
+		
+		<div class = "lenderStars"><%= image_tag("rankings/Payday-Loan-Rank-Star-#{@lender.ranking.round}.png") %></div>
+		<div class = "lenderRating">The Payday Hound Rating</div>
+		<ul>
+			<li><%= @lender.first_comment %></li>
+			<li><%= @lender.second_comment %></li>
+			<li><%= @lender.third_comment %></li>
+		</ul>	
+
+	</div>
+	<div class = "lenderIntroBox lenderRight">
+
+		<div><%= link_to(image_tag("lendersbig/#{@lender.image_file_big}", :alt => @lender.name ), partner_path(@lender.partner_id), :rel => 'nofollow', :page => @page, :target => 'blank')  %></div>
+		<div class = "lenderApply"><%= link_to('Apply Direct', partner_path(@lender.partner_id), :rel => 'nofollow', :page => @page, :target => 'blank') %></div>
+	</div>
+</div>
+
+<div class ="clearboth"></div>
+
+<div class = "lenderMidBoxes">
+	<div class = "lenderMidBox lenderLeft">
+		<div class ="lenderBoxTitle">Sniff</div>
+		<div class = "lenderBoxHighlight"><%= @lender.sniff.sniff_desc %></div>
+		<div class = "lenderBoxSubtitle">GREAT, FAIR, or BAD</div>
+	</div>
+	<div class = "lenderMidBox lenderRight">
+		<div class = "lenderBoxTitle">States</div>
+		<div class = "lenderBoxStates">
+			<% @lender.states.each do |l|%>
+			<%= l.state_abbr %> 
+			<% end %>
+		</div>
+	</div>
+	<div class = "lenderMidBox lenderCenter">
+		<div class = "lenderBoxTitle">Costs</div>
+		<div class = "lenderBoxHighlight"><%= !@lender.cost.nil? ? number_to_currency(@lender.cost) : "?" %> / <%= !@lender.apr.nil? ? number_to_percentage(@lender.apr*100, :precision => 0) : "?" %> apr</div>
+		<div class = "lenderBoxSubtitle">$300, 14 day loan</div>
+	</div>
+</div>
+
+<div class = "clearboth"></div>
+<div class = "lenderBottomBoxes">
+	<div class = "lenderBottomBox lenderLeft">
+		<div class = "lenderBoxTitle">Detailed Reviews</div>
+		<div class = "lenderBoxReview">
+			<div><%= @lender.full_desc %> </div>
+			<div>
+				<% if !@lender.bbb_link.nil? %>
+				<div><%= link_to('Better Business Bureau Page', @lender.bbb_link) %></div>
+				<% end %>
+				<% if !@lender.link1.nil? %>
+				<div><%= link_to(@lender.link1_desc, @lender.link1) %></div>
+				<% end %>
+				<% if !@lender.link2.nil? %>
+				<div><%= link_to(@lender.link2_desc, @lender.link2) %></div>
+				<% end %>								
+			</div>
+		</div>	
+	</div>
+	<div class = "lenderBottomBox lenderRight">
+		<div class = "lenderBoxTitle">Company Features</div>
+		<table>
+			<tr>
+				<td colspan = "2" class = "lenderTableTitle">LOAN FEATURES</td>
+			<tr>
+			<tr>
+				<td><%= @lender.max_loan %></td>
+				<td>Maximum First Loan</td>
+			</tr>	
+<%= render 'usabilityfirst' %>						
+		</table>
+	</div>
+</div>
+
+<%end %>	
+</div>
+
+</div>

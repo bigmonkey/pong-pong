@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130315185514) do
+ActiveRecord::Schema.define(:version => 20130405145354) do
 
   create_table "applicants", :force => true do |t|
     t.string   "token"
@@ -245,6 +245,13 @@ ActiveRecord::Schema.define(:version => 20130315185514) do
     t.decimal  "apr",               :precision => 3, :scale => 2
     t.datetime "created_at",                                                      :null => false
     t.datetime "updated_at",                                                      :null => false
+    t.text     "full_desc"
+    t.string   "image_file_big"
+    t.string   "bbb_link"
+    t.string   "link1_desc"
+    t.string   "link1"
+    t.string   "link2_desc"
+    t.string   "link2"
   end
 
   create_table "payday_loans_states", :id => false, :force => true do |t|
@@ -396,6 +403,13 @@ ActiveRecord::Schema.define(:version => 20130315185514) do
     t.decimal  "apr",               :precision => 3, :scale => 2
     t.datetime "created_at",                                                      :null => false
     t.datetime "updated_at",                                                      :null => false
+    t.text     "full_desc"
+    t.string   "image_file_big"
+    t.string   "bbb_link"
+    t.string   "link1_desc"
+    t.string   "link1"
+    t.string   "link2_desc"
+    t.string   "link2"
   end
 
   create_table "term_states", :force => true do |t|

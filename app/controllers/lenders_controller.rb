@@ -18,7 +18,13 @@ class LendersController < ApplicationController
   end
 
   def show
-    
-    
+    @lender = nil
+    if !params[:id].nil?
+      if !PaydayLoan.find_by_review_url(params[:id]).nil?
+        @lender=PaydayLoan.find_by_review_url(params[:id])
+      else !TermLoan.find_by_review_url(params[:id]).nil?
+        @lender=TermLoan.find_by_review_url(params[:id])
+      end
+    end      
   end
 end

@@ -176,3 +176,161 @@ td .instantDecision {
 	-webkit-box-shadow: 0 0 5px rgba(102, 102, 102, 0.6);
 	-moz-box-shadow: 0 0 5px rgba(102, 102, 102, 0.6);
 }
+
+
+// for lender show developemnt
+
+#content {
+    float: right;
+    font-size: 0.8em;
+    line-height: 1.4em;
+    margin: 25px 0 30px;
+    padding: 0;
+    width: 770px;
+}
+
+// lender reviews
+
+
+// floats main boxes
+.lenderLeft{
+	float: left;
+}
+
+.lenderRight{
+	float: right;
+}
+
+.lenderCenter{
+	margin: 0px auto;
+}
+
+
+.lenderIntroBoxes{
+	width: 99%;
+	margin: 0px auto 5px;
+	border: 1px solid $boxBackground;
+	@include rounded(5px);
+	overflow: hidden;
+	h1{
+		margin: 5px 20px;
+		font-size: 1.5em
+	}
+}
+
+.lenderIntroBox{
+	margin: 5px 20px;
+	ul{
+		margin: 10px 15px;
+	}
+}
+
+.lenderApply{
+	margin: 10px auto;
+	border: none;
+	background: $boxBackgroundDarker;
+	color: #fff;
+	line-height: 25px;
+	height: 25px;
+	width: 120px;
+	text-align: center;
+	@include rounded(5px);
+	&:hover, &:active{
+		background: #fff;
+		border: solid 1px $boxBackgroundDarker;
+	}
+	a, a:link, a:visited{
+		color: #fff;
+		display: block;
+	}
+	a:hover, a:active{
+		color: $boxBackgroundDarker;
+	}
+}
+
+.lenderStars{
+	margin:-3px 0px;
+}
+.lenderRating{
+	font-size: .8em;
+	color:$highColor;
+}
+
+// the titles with the green background
+.lenderBoxTitle{
+	color: #fff;
+	font-size: 1.2em;
+	line-height: 25px;
+	height: 25px;
+	background: $bigColor;
+	text-align: center;
+	@include rounded(5px);
+}
+.lenderMidBoxes{
+	width: 100%;
+	margin: 15px auto;
+}
+.lenderMidBox{
+	width: 32%;
+	min-height: 100px;
+	background: $boxBackground;
+	@include rounded (5px);
+	text-align: center;
+}
+
+.lenderBoxHighlight{
+	font-size: 1.3em;
+	color: $bigColor;
+	margin: 15px auto 5px;
+}
+
+.lenderBoxSubtitle{
+	font-size: .8em;
+}
+
+.lenderBoxStates{
+	font-size: .8em;
+	line-height: 1.6em;
+	padding: 0px 10px;
+	margin-top: 5px;
+}
+.lenderBottomBoxes{
+	margin: 10px auto;
+}
+.lenderBottomBox{
+	min-height: 340px;
+	width: 48%;
+	background: $boxBackground;
+	@include rounded (5px);
+	table{
+		margin: 10px auto;
+	}
+	td{
+		background: $boxBackground;
+		line-height: 7px;
+		font-size: .9em;
+		&.lenderTableTitle{
+				color: $bigColor;
+				line-height: 15px;
+				font-size: 1em;
+		}
+		&.lenderYes{
+			background:url(asset-path("check-mark-green.png", image)) no-repeat center;
+			background-color: $boxBackground;
+		}
+		&.lenderNo{
+			background:url(asset-path("x-mark-red.png", image)) no-repeat center;
+			background-color: $boxBackground;
+		}
+		&:first-child {
+			text-align: center;
+		}
+	}
+}
+
+.lenderBoxReview{
+	margin: 10px 20px;
+	div{
+		margin-bottom: 5px;
+	}
+}

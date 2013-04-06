@@ -1,0 +1,12 @@
+<tr>
+				<td><%= !@lender.BBB_score.nil? ? @lender.BBB_score : "?" %></td>
+				<td>BBB Score</td>
+			</tr>
+			<tr>
+				<td><%= !@lender.BBB_complaints.nil? ? @lender.BBB_complaints : "?" %></td>
+				<td>BBB complaints</td>
+			</tr>			
+			<tr>
+				<td><%= !@lender.BBB_unresponded.nil? ? @lender.BBB_unresponded : "?" %></td>
+				<td>BBB unresponded complaints</td>
+			</tr>
