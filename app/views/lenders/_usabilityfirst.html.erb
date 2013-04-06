@@ -1,9 +1,21 @@
 <tr>
 	<td colspan = "2" class = "lenderTableTitle">USABILITY</td>
 </tr>
-<%= render 'usability1' %>
+	<% if rand < 0.5 %>
+		<%= render 'usability1' %>
+	<% else %>
+		<%= render 'usability2' %>
+	<% end %>	
 <tr>
 	<td colspan = "2" class = "lenderTableTitle">TRUST</td>
 </tr>
-<%= render 'trust1' %>
-<%= render 'bbb1' %>	
+	<% if rand < 0.5 %>
+		<%= render 'trust1' %>
+	<% else %>
+		<%= render 'trust2' %>
+	<% end %>
+		<% if rand < 0.5 %>
+		<%= render 'bbb1' %>
+	<% else %>
+		<%= render 'bbb2' %>
+	<% end %>	

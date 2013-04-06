@@ -40,6 +40,7 @@ We have not reviewed this lender.
 			<%= l.state_abbr %> 
 			<% end %>
 		</div>
+		<%= link_to 'find lenders in your state','/payday-loans' %>
 	</div>
 	<div class = "lenderMidBox lenderCenter">
 		<div class = "lenderBoxTitle">Costs</div>
@@ -53,16 +54,16 @@ We have not reviewed this lender.
 	<div class = "lenderBottomBox lenderLeft">
 		<div class = "lenderBoxTitle">Detailed Reviews</div>
 		<div class = "lenderBoxReview">
-			<div><%= @lender.full_desc %> </div>
+			<div><%= raw(@lender.full_desc) %> </div>
 			<div>
 				<% if !@lender.bbb_link.nil? %>
-				<div><%= link_to('Better Business Bureau Page', @lender.bbb_link) %></div>
+				<div><%= link_to('Better Business Bureau Page', @lender.bbb_link, :rel => 'nofollow', :target => 'blank') %></div>
 				<% end %>
 				<% if !@lender.link1.nil? %>
-				<div><%= link_to(@lender.link1_desc, @lender.link1) %></div>
+				<div><%= link_to(@lender.link1_desc, @lender.link1, :rel => 'nofollow', :target => 'blank') %></div>
 				<% end %>
 				<% if !@lender.link2.nil? %>
-				<div><%= link_to(@lender.link2_desc, @lender.link2) %></div>
+				<div><%= link_to(@lender.link2_desc, @lender.link2, :rel => 'nofollow', :target => 'blank') %></div>
 				<% end %>								
 			</div>
 		</div>	
@@ -77,7 +78,12 @@ We have not reviewed this lender.
 				<td><%= @lender.max_loan %></td>
 				<td>Maximum First Loan</td>
 			</tr>	
-<%= render 'usabilityfirst' %>						
+			<% # flips order to make scraping difficult %>
+			<% if rand < 0.5 %>
+				<%= render 'usabilityfirst' %>						
+			<% else %>
+				<%= render 'usabilitysecond' %>						
+			<% end %>	
 		</table>
 	</div>
 </div>

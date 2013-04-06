@@ -16,11 +16,11 @@ source 'https://rubygems.org'
 # 2)WEBSERVER: Heroku/unbuntu/Mac uses thin so need gem execjs, therubyracer, thin 
 # uncomment for ubuntu/thin and comment out for Windows
 
-# gem 'unicorn'
+ gem 'unicorn'
 
  #gem 'thin'
-# gem 'execjs'
-# gem 'therubyracer', :platform => 'ruby'
+ gem 'execjs'
+ gem 'therubyracer', :platform => 'ruby'
  #gem 'therubyracer', '~> 0.10.2' #update to 0.11 crashes install
 
 # Gems used only for assets and not required
