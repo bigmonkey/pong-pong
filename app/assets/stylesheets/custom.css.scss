@@ -414,6 +414,15 @@ nav {
 	margin: 15px 0px 10px;
 	text-align: center;
 }
+
+
+// the line before the listing of lenders
+p.tableIntro {
+	color: $bigColor;
+	font-size: 1.2em;
+	margin-top: 20px;
+}
+
 /*footer*/
 footer {
 	clear: both;

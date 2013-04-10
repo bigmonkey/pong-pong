@@ -6,7 +6,7 @@
   <!-- calls matching service apply section -->
 
   <div id="clearboth"></div>
-  <p>We have reviewed <%= pluralize(@lenders.size, !(defined? @state.state).nil? ? "#{@state.state} payday installment loan lender" : "payday installment loan lender") %> with a 
+  <p class = "tableIntro">We have reviewed <%= pluralize(@lenders.size, !(defined? @state.state).nil? ? "#{@state.state} payday installment loan lender" : "payday installment loan lender") %> with a 
     <% if @criteria.sniff.sniff_desc.downcase != 'bad' %>
     Sniff score of <%= @criteria.sniff.sniff_desc.downcase %> or better and a 
     <% end %>
