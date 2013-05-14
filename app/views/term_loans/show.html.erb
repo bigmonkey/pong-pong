@@ -13,9 +13,20 @@
 	</aside>
 
 	<section id = "mainContent">
-		<h1><%= "#{@state.state} (#{@state.state_abbr})" %> Installment Loans</h1>
-	  <%=  render(:partial => "shared/tables/term_loan_table")%>
+		<h1><%= "#{@state.state}" %> Installment Loans</h1>
+		<% if @lenders.size > 0 %>
+			<p><%= @state.state %> residents can choose from <%= pluralize(@lenders.size, "payday installment loan lender") %>.</p>
+			<p>Installment loans do not require good credit and, unlike traditional payday loans, are paid back over multiple pay periods. These loans are relatively expensive loans so make sure you have considered other options such as bank loans, credit cards, or friends and family before taking one.</p>			
 
+			<p>Estimated fees and payments for <%= "#{@state.state}" %> installment lenders are provided in the table below. Many consumers prefer installment loans over payday loans because loan repayment is spread out over a longer period of time which often makes these loans cheaper than payday loans if you need multiple pay periods to repay your loan. See <a href = "/payday-loan-or-installment-loan/")>Payday Loans or Installment Loans</a> for more information.<p>
+			<p>In terms of <%= "#{@state.state}" %> installment loan regulations these loans can fall into a bit of a gray area as they sometimes fall outside of the technical definition of a payday loan. See <%= link_to("#{@state.state} Payday Loan Laws", "/payday-loan-laws/#{@state.state_abbr.downcase}") %> for additional resources or visit <%= "#{@state.state}" %>'s payday loan regulator, the <%= link_to("#{@paydaylawstate.regulator}", @paydaylawstate.regulator_site, :rel => 'nofollow') %> for more information.</p>	
+			<p>The Payday Hound reviews online payday installment lenders and ranks them according to our <%= link_to "Sniff Test", '/infos/about' %> (reputation), costs, and licensing.</p> 
+		  <%=  render(:partial => "shared/tables/term_loan_table")%>
+		<% else %>
+			<p>There are no installment lenders in <%= @state.state %>.</p>
+			<p>Visit <%= link_to("#{@state.state} payday lenders", "/payday-loans/#{@state.state_abbr.downcase}") %> to see if there are any payday loan options or see <%= link_to("#{@state.state} Payday Loan Laws", "/payday-loan-laws/#{@state.state_abbr.downcase}") %> for information on <%= "#{@state.state}" %> payday lending laws and additional resources.</p>
+			<p>You can also visit <%= "#{@state.state}" %>'s payday loan regulator, the <%= link_to("#{@paydaylawstate.regulator}", @paydaylawstate.regulator_site, :rel => 'nofollow') %> for additional information.</p>
+		<% end %>
 		
 		<div class = "socialMedia">
 			<span class='st_facebook_hcount' displayText='Facebook'></span>

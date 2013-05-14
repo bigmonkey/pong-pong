@@ -6,7 +6,7 @@
 
 <div id="wrapper">
 	<section id = "mainContentFull">
-		<h1><%= "#{@state.state} (#{@state.state_abbr})" %> Payday Loan Laws</h1>
+		<h1><%= "#{@state.state}" %> Payday Loan Laws</h1>
 		<div class = "lawContent">
 			<div class = "lawSideBoxes">
 						<div class = "lawSideBox">
@@ -51,10 +51,10 @@
 			<div class = "lawContentMain">
 				<p>Payday lending is <%= @paydaylawstate.legal_status.downcase %> in <%= @state.state %> 
 					<% if @paydaylawstate.legal_status_summary == "Legal" %>
-						(see reviews of <%= link_to("#{@state.state} payday lenders", "/payday-loans/#{@state.state_abbr.downcase}") %>).
+						(see <%= link_to("#{@state.state_abbr} Payday Loans", "/payday-loans/#{@state.state_abbr.downcase}") %> or <%= link_to("#{@state.state_abbr} Installment Loans", "/installment-loans/#{@state.state_abbr.downcase}") %>) for detailed reviews on individual lenders.
 						<% else %>
-						but there might be tribal-based or lenders not licenced by <%= @state.state %> offering payday loans in <%= @state.state %>.</p> 
-						<p>Theses out-of-state lenders export either their tribal or state laws into <%= @state.state %>. Not all states permit this exportation of laws and some states enforce their ban more strictly but we do see some lenders offering payday loans in states where it is prohibited. In any event remember these lenders are not licensed or regulated by <%= @state.state %> and may even be operating illegally so proceed with caution. See <%= link_to "#{@state.state_abbr} payday loans", "/payday-loans/#{@state.state_abbr.downcase}" %> to see if any of the lenders we have reviewed are offering payday loans in <%= @state.state %>.
+						but there may be unlicenced lenders offering payday loans in <%= @state.state %>.</p> 
+						<p>These lenders export their tribal or state laws into <%= @state.state %>. Not all states permit exportation of laws and some states enforce their ban more strictly but we do see lenders offering payday loans in states where it is prohibited. In any event remember these lenders are not licensed or regulated by <%= @state.state %> and may even be operating illegally so proceed with caution. See <%= link_to "#{@state.state_abbr} payday loans", "/payday-loans/#{@state.state_abbr.downcase}" %> or <%= link_to "#{@state.state_abbr} installment loans", "/installment-loans/#{@state.state_abbr.downcase}" %> to see if any of the lenders we have reviewed are offering loans in <%= @state.state %>.
 						<% end %>
 				</p>
 
