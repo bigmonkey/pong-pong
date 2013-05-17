@@ -27,11 +27,12 @@
       <tr>
         <td>
           <div><%= link_to(image_tag("lendersm/#{l.image_file}", :alt => l.name ), partner_path(l.partner_id), :rel =>'nofollow', :page => @page, :target => 'blank')  %></div>
-          <div><%= link_to('see review', "/#{l.review_url}") %></div>
+        <div><%= link_to(l.name, partner_path(l.partner_id), :rel =>'nofollow', :page => @page, :target => 'blank')  %></div>
         </td>
         <td>
           <div><%= l.first_comment %></div>
           <div>Governing Law: <%= l.governing_law %></div>
+          <div><%= link_to('see review', "/#{l.review_url}") %></div>
         </td>    
         <td><%= l.cost.nil? ? "?" : number_to_currency(l.cost) %></td>
         <td><%= l.apr.nil? ? "?" : number_to_percentage(l.apr*100, :precision => 0) %></td>
