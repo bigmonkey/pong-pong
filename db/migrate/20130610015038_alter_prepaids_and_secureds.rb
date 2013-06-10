@@ -7,8 +7,8 @@ class AlterPrepaidsAndSecureds < ActiveRecord::Migration
   end
 
   def down
-  	remove_index("secureds", "review_url")
-  	remove_index("prepaids", "review_url")  	
+  	remove_index("secureds", :column => "review_url")
+  	remove_index("prepaids", :column => "review_url")  	
   	remove_column("secureds", "review_url")  
 		remove_column("prepaids", "review_url")
   end

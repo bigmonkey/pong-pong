@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130405145354) do
+ActiveRecord::Schema.define(:version => 20130610015038) do
 
   create_table "applicants", :force => true do |t|
     t.string   "token"
@@ -302,7 +302,10 @@ ActiveRecord::Schema.define(:version => 20130405145354) do
     t.integer  "card_syn_id"
     t.datetime "created_at",                                                           :null => false
     t.datetime "updated_at",                                                           :null => false
+    t.string   "review_url"
   end
+
+  add_index "prepaids", ["review_url"], :name => "index_prepaids_on_review_url"
 
   create_table "secureds", :force => true do |t|
     t.string   "name",           :limit => 70
@@ -334,7 +337,10 @@ ActiveRecord::Schema.define(:version => 20130405145354) do
     t.string   "min_deposit",    :limit => 20
     t.string   "credit_rating",  :limit => 20
     t.boolean  "live"
+    t.string   "review_url"
   end
+
+  add_index "secureds", ["review_url"], :name => "index_secureds_on_review_url"
 
   create_table "sniffs", :force => true do |t|
     t.string   "sniff_desc", :limit => 5

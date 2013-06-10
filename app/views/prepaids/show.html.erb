@@ -1,6 +1,17 @@
 <% # title and description for seo %>
 <% content_for :seotags do %>
-<title><%= @prepaid.name %></title>
-<meta name="description" content= '<%= "#{@prepaid.name} Review. Compare usage, ATM, load and other fees with #{pluralize(@prepaids.size,"other prepaid card")}." %>' />
+<title>Compare <%= @prepaid.name %> Prepaid Card to <%= "#{pluralize(@prepaids.size,"Other Prepaid Card")}." %></title>
+<meta name="description" content= '<%= "Compare all of #{@prepaid.name} Prepaid Card's fees against #{pluralize(@prepaids.size,"other prepaid card")} customized to your usage." %>' />
 <% end %>
-<%= @prepaid.name %>
+
+<div id = "wrapper">
+	<aside id = "sidebarFinder">
+	    <%= render(:partial => "shared/sidebars/sidebar")%>			
+	</aside>
+	<section id = "mainContent">
+		<%= @prepaid.name %>
+
+    <%=  render(:partial => "shared/media_counters")%>	
+	</section>
+
+</div>

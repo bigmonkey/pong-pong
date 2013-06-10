@@ -60,6 +60,6 @@ class PrepaidsController < ApplicationController
 
   def show
     @prepaids = Prepaid.live 
-    @prepaid = Prepaid.find(params[:id])
+    @prepaid = Prepaid.find_by_review_url(params[:id])
   end
 end

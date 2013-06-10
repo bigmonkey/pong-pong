@@ -36,6 +36,7 @@ FactoryGirl.define do
 		sequence(:issuer) { |n| "Isser #{n}" }
 		sequence(:live) {|n| true}
 		sequence(:rating) {|n| 1}
+		sequence(:review_url) { |n| "card-url-#{n}"}
 	end
 end
 

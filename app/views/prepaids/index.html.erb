@@ -7,7 +7,7 @@
 <div id="wrapper">
   <aside id ="sidebarFinder"> 
 
-      <%= render(:partial => "shared/sidebars/prepaidfinder")%>
+      <%= render(:partial => "shared/sidebars/prepaidcriteria")%>
       <%= render(:partial => "shared/sidebars/sidebar")%>  
 
   </aside>  
@@ -81,7 +81,7 @@
                 <tr>    
                   <td class = "cardInfoName">
                       <div><%= link_to(image_tag("prepaid/#{p.image_file}", :alt => p.name ),  partner_path(p.partner_id), :page=>@page,:rel => 'nofollow', :target => "_blank") %></div>
-                      <div class = "preCardNameUnderImage"><%= p.name %></div>
+                      <div class = "preCardNameUnderImage"><%= link_to p.name, "/prepaid-card/#{p.review_url.downcase}" %></div>
                   </td>
                   <td class = "preCardInfoDesc">
                     <div><%= p.first_comment %></div>
@@ -341,13 +341,7 @@
       </tbody>    
     </table>	
 
-    <div class = "socialMedia">
-      <span class='st_facebook_hcount' displayText='Facebook'></span>
-      <span class='st_googleplus_hcount' displayText='Google +'></span>
-      <span class='st_twitter_hcount' displayText='Tweet'></span>
-      <span class='st_email_hcount' displayText='Email'></span>
-      <span class='st_sharethis_hcount' displayText='ShareThis'></span>
-    </div>
+    <%=  render(:partial => "shared/media_counters")%>
         
 
   </section>
