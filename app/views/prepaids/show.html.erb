@@ -1,0 +1,6 @@
+<% # title and description for seo %>
+<% content_for :seotags do %>
+<title><%= @prepaid.name %></title>
+<meta name="description" content= '<%= "#{@prepaid.name} Review. Compare usage, ATM, load and other fees with #{pluralize(@prepaids.size,"other prepaid card")}." %>' />
+<% end %>
+<%= @prepaid.name %>

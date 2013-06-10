@@ -479,9 +479,18 @@ footer {
 #disclaimer {
 	width: 980px;
 	color: $boxBackgroundDarker;
-   font-style: italic;
-   margin: 10px auto;
+  font-style: italic;
+  margin: 10px auto;
 }
 
 
-
+// debugging styles
+.debug_dump {
+	clear: both;
+	color: #fff;
+	width: 700px;
+	margin: 30px auto;
+	padding: 10px;
+	background: $softColor;
+	@include rounded(5px)
+}

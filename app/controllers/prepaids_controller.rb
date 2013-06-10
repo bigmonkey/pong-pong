@@ -54,8 +54,12 @@ class PrepaidsController < ApplicationController
           	  end
             end
       end  
-      @prepaids = Prepaid.live.by_top_rank    
+      @prepaids = Prepaid.live     
   	  @page = "0008" #sets page for tracking to 'pre-paid-cards'
   end
 
+  def show
+    @prepaids = Prepaid.live 
+    @prepaid = Prepaid.find(params[:id])
+  end
 end

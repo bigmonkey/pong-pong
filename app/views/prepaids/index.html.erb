@@ -1,7 +1,7 @@
 <% # title and description for seo %>
 <% content_for :seotags do %>
-<title>Pre-Paid Cards: In-Depth Reviews and Independent Rankings</title>
-<meta name="description" content="Reviews and rankings of pre-paid cards. Calculate and compare the cost of ownership on <%= pluralize(@prepaids.size,"prepaid card") %>"/>
+<title>Prepaid Cards: In-Depth Reviews and Independent Rankings</title>
+<meta name="description" content="Prepaid card reviews and rankings. Calculate and compare the cost of ownership on <%= pluralize(@prepaids.size,"prepaid card") %>"/>
 <% end %>
 
 <div id="wrapper">
@@ -15,7 +15,7 @@
 
   <section id="mainContent">
     <h1>Prepaid Cards</h1> 
-   	<p>Selecting a prepaid card can be difficult.  There are variations on activation, monthly, ATM, or transaction fees. We've found the key differences in the best cards boil down to monthly, ATM, customer service and 3rd party load fees. The fee structure for these fees vary as some cards reduce or waive these fees for direct deposit customers or those customers that load a certain amount to the card. Our Pre-Paid Card Cost Calculator calculates the total cost to own a card based on your usage and accounts for these different fee waivers. Use the sliders to the left to compare the cost of ownership on <%= pluralize(@prepaids.size,"prepaid card") %>.</p>
+   	<p>Selecting a prepaid card can be difficult. There are numerous fees including variations on activation, monthly, ATM, or transaction fees. The key differences in the best cards boil down to monthly, ATM, customer service, and 3rd party load fees. The fee structure for these fees vary as some cards reduce or waive these fees for direct deposit customers or those customers that load a certain amount to the card. Our Prepaid Card Calculator estimates the total cost to own a card based on your usage and accounts for these different fee waivers. Use the sliders to the left to compare the cost of ownership on <%= pluralize(@prepaids.size,"prepaid card") %>.</p>
     <p>Remember that unlike many checking accounts prepaids do not require a credit check but also remember that prepaids do not build credit. If you want to build credit we recommend <%= link_to("Secured Cards", secureds_path) %></p> 
 
 <% #-- data from Rails for javaScript to use -- %>
@@ -319,7 +319,7 @@
                                     <td colspan ="2">**Out of Network ATM owners charge an average fee of $2.50 fees in addition to the fees above. Cards with In Network ATM access waive this owner's charge (but may charge a card fee). We include the different variations of all these fees based on your usage.</td>
                                   </tr>
                                   <tr>
-                                    <td colspan ="2">****<%= "In Network withdrawals are #{number_to_currency(p.atm_in_net_fee_dep, :precision => 0)} w/ direct deposit and #{number_to_currency(p.atm_in_net_fee_no_dep, :precision => 0)} w/o" if ( !p.atm_in_net_fee_no_dep.nil? and !( p.atm_in_net_fee_no_dep == p.atm_in_net_fee_dep ))%></td>
+                                    <td colspan ="2"><%= "****In Network withdrawals are #{number_to_currency(p.atm_in_net_fee_dep, :precision => 0)} w/ direct deposit and #{number_to_currency(p.atm_in_net_fee_no_dep, :precision => 0)} w/o" if ( !p.atm_in_net_fee_no_dep.nil? and !( p.atm_in_net_fee_no_dep == p.atm_in_net_fee_dep ))%></td>
                                   </tr>                                  
                                 </table>
                               </td>

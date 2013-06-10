@@ -8,7 +8,22 @@ source 'https://rubygems.org'
 
 # converting between windows and ubuntu/mac/thin (heroku) set up 1) choose DATABASE 2) choose WEBSERVER 
 # 1)DATABASE: Heroku uses postgresql so must use 'gem pg'. CW Windows and Alison Mac set up for PostgreSQL
- gem 'pg'
+ gem 'pg', '0.15.1'
+
+
+# testing
+group :test do
+	gem 'selenium-webdriver', '2.0'
+	gem 'capybara', '2.1.0'
+	gem 'factory_girl_rails', '4.1.0'	
+end
+
+#testing 
+group :development, :test do
+ 	gem 'rspec-rails', '2.13.1'
+  gem 'spork', '0.9.2' 	
+end
+
 
 # uncomment for windows if using mysql database and also need to chnage database.yml file
 # gem 'mysql2'
@@ -16,10 +31,10 @@ source 'https://rubygems.org'
 # 2)WEBSERVER: Heroku/unbuntu/Mac uses thin so need gem execjs, therubyracer, thin 
 # uncomment for ubuntu/thin and comment out for Windows
 
- gem 'unicorn'
+ gem 'unicorn', '4.6.2'
 
  #gem 'thin'
- gem 'execjs'
+ gem 'execjs', '1.4.0'
  gem 'therubyracer', :platform => 'ruby'
  #gem 'therubyracer', '~> 0.10.2' #update to 0.11 crashes install
 
@@ -35,8 +50,8 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 
-gem 'jquery-rails'
-gem 'nokogiri'
+gem 'jquery-rails', '2.2.1'
+gem 'nokogiri', '1.5.10'
 
 # to get heroku db:push to work need taps
 # gem 'sqlite3'

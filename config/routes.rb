@@ -41,6 +41,7 @@ Pdh::Application.routes.draw do
   resources "installment-loans", :as => :term_loans, :controller => :term_loans
   resources "payday-loan-laws", :as => :payday_loan_laws, :controller => :payday_loan_laws
   resources "payday-loan-apply", :as => :applicants, :controller => :applicants
+  resources "prepaid-card", :as => :prepaids, :controller => :prepaids  
   # Sample resource route with options:
   #   resources :products do
   #     member do
