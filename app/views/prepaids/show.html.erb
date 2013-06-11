@@ -1,17 +1,50 @@
 <% # title and description for seo %>
 <% content_for :seotags do %>
-<title>Compare <%= @prepaid.name %> Prepaid Card to <%= "#{pluralize(@prepaids.size,"Other Prepaid Card")}." %></title>
-<meta name="description" content= '<%= "Compare all of #{@prepaid.name} Prepaid Card's fees against #{pluralize(@prepaids.size,"other prepaid card")} customized to your usage." %>' />
+<title>Compare <%= @prepaid.name %> Prepaid Card to <%= "#{pluralize(@prepaids.size,"Other Card")} -The Payday Hound" %></title>
+<meta name="description" content= '<%= "See #{@prepaid.name} Prepaid Card's fees, requirements, and features. Compare costs to #{pluralize(@prepaids.size,"other card")}  with a calculator customized to your usage and needs." %>' />
 <% end %>
 
 <div id = "wrapper">
 	<aside id = "sidebarFinder">
-	    <%= render(:partial => "shared/sidebars/sidebar")%>			
+		<%= render '/shared/sidebars/prepaid_compare' %>
+	  <%= render(:partial => "shared/sidebars/sidebar")%>			
 	</aside>
-	<section id = "mainContent">
-		<%= @prepaid.name %>
+	<section id = "prepaidContent">
+		<div class = "prepaidIntroBoxes">
+			<h1><%= raw(@prepaid.card_name) %></h1>
+			<div class = "prepaidLeftBox">
+				<%= link_to(image_tag("prepaid/#{@prepaid.image_file}", :alt => @prepaid.name ),  partner_path(@prepaid.partner_id), :page=>@page,:rel => 'nofollow', :target => "_blank") %>
+			</div>
+			<div class = "prepaidMiddleBox">
+			    <div class = "prepaidSubTitle"><b>Issuer:</b> <%= raw(@prepaid.issuer) %>&nbsp;&nbsp;&nbsp;&nbsp;<b>Credit:</b> <%= raw(@prepaid.credit_needed) %></div>	
+			    <ul>
+				    <li><%= @prepaid.first_comment %></li>
+				    <li><%= @prepaid.second_comment %></li>
+				    <li><%= @prepaid.third_comment %></li>  
+				  </ul>  
+			</div>	   
+			<div class = "prepaidRightBox">
+				<div class = "lenderApply"><%= link_to('Sign Up', partner_path(@prepaid.partner_id), :rel => 'nofollow', :page => @page, :target => 'blank') %></div>
+			</div> 
+		</div>			
 
-    <%=  render(:partial => "shared/media_counters")%>	
+		<div class ="clearboth"></div>
+		
+		<div class = "prepaidCardDetails">	
+			<div class = "prepaidCardDetailsTitle">Card Details</div>
+			<%= raw(@prepaid.bullets) %>
+		</div>			
+
+		<div class ="clearboth"></div>		
+		
+		<div class = "prepaidCardFeatures">
+			<%= render 'card_features', :p => @prepaid %>
+		</div>
+
+		<div class ="clearboth"></div>
+		
+		<%= render(:partial => "shared/media_counters")%>	
+	
 	</section>
 
 </div>

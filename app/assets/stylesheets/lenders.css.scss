@@ -191,6 +191,9 @@ td .instantDecision {
 // floats main boxes
 .lenderLeft{
 	float: left;
+	img {
+		margin: 10px 0px;
+	}
 }
 
 .lenderRight{
@@ -214,6 +217,7 @@ td .instantDecision {
 	}
 }
 
+
 .lenderIntroBox{
 	margin: 5px 20px;
 	ul{
@@ -223,7 +227,7 @@ td .instantDecision {
 
 .lenderApply{
 	margin: 10px auto;
-	border: none;
+	border: solid 1px $boxBackgroundDarker;
 	background: $boxBackgroundDarker;
 	color: #fff;
 	line-height: 25px;
