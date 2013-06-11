@@ -18,7 +18,7 @@ describe "Prepaid Pages" do
     # prepaid-cards routing
     it { should have_selector('h1', text: 'Prepaid Cards') }
     # chooser is showing
-    it { should have_content('Find a Card') }
+    it { should have_content('Compare Cards') }
   
     # cards are showing
     it "should list each prepaid card" do
@@ -33,9 +33,13 @@ describe "Prepaid Pages" do
 
   describe "Individual Prepaid Card Pages" do
     let(:prepaid) { FactoryGirl.create(:prepaid) }
-    before { visit "/prepaid-card/#{prepaid.review_url.downcase}" }
+    before { visit "/prepaid-card/#{prepaid.review_url}" }
 
-    it { should have_content(prepaid.name) }
+    it { should have_content('Compare Cards') }
+    it { should have_content(prepaid.card_name) }
+    it { should have_content(prepaid.first_comment) }
+    it { should have_content(prepaid.activation_fee) }
+    #it { should have_content(prepaid.bullets) }  #how to test raw content inside cell
     it_should_behave_like "all prepaid pages"
   end
 

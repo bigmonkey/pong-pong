@@ -1,13 +1,13 @@
 <% # title and description for seo %>
 <% content_for :seotags do %>
-<title>Prepaid Cards: In-Depth Reviews and Independent Rankings</title>
-<meta name="description" content="Prepaid card reviews and rankings. Calculate and compare the cost of ownership on <%= pluralize(@prepaids.size,"prepaid card") %>"/>
+<title>Compare the Top <%= pluralize(@prepaids.size,"Prepaid Card") %> - The Payday Hound</title>
+<meta name="description" content="Compare prepaid card fees, features, and requirements. Calculate and compare the cost of ownership on <%= pluralize(@prepaids.size,"prepaid card") %> based on your usage behavior."/>
 <% end %>
 
 <div id="wrapper">
   <aside id ="sidebarFinder"> 
 
-      <%= render(:partial => "shared/sidebars/prepaidcriteria")%>
+      <%= render(:partial => "shared/sidebars/prepaid_criteria")%>
       <%= render(:partial => "shared/sidebars/sidebar")%>  
 
   </aside>  

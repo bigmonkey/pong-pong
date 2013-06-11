@@ -1,11 +1,11 @@
-<div class = "criteria">
-	<h2>Find a Card</h2>
+<div class = "prepaidCriteria">
+	<h2>Compare Cards</h2>
 		<div class="cardCalc">
 
 
 		    <div class = "cardCalcTitles">	
 		    	<div class="cardCalcLabel">DIRECT DEPOSIT<span class = "calcValues" id="calcDirectDep" ><%= @direct_dep ? "Yes" : "No" %></span></div>
-		    	<div class="cardCalcLabelDesc">Will you use direct deposit?</div>
+
 
 		       	<p class = "calcRadios">
 		       		<input type="radio" name="radioDirectDep" value="true" <%= "checked" if @direct_dep %> >Yes</input>
@@ -15,13 +15,13 @@
 
 		    <div class = "cardCalcTitles">	
 		    	<div class="cardCalcLabel">Purchases<span class = "calcValues"><span id="calcWklyTrans"><%= @wkly_trans %></span> /week</span></div>
-		      <div class="cardCalcLabelDesc">How many will you make?</div>
+
 		      <p class = "sliderBars"><div id="sliderWklyTrans"></div></p>
 		    </div>
 
 		    <div class = "cardCalcTitles">	
 		    	<div class="cardCalcLabel">ATM WITHDRAWALS</div>
-		    	<div class="cardCalcLabelDesc">How many will you make...</div>
+
 		      <div class="cardSubLabel">In Network?<span class = "calcValues"><span id="calcATMIn" ><%= @wkly_atm_in_net %></span> /week</span></div>
 		    	<p class ="sliderBars"><div id="sliderATMIn"></div></p>
 		      <div class="cardSubLabel">Out of Network?<span class = "calcValues"><span id="calcATMOut" ><%= @wkly_atm_out_net %></span> /week</span></div>		       	
@@ -30,25 +30,25 @@
 
 		    <div class = "cardCalcTitles">			    	
 		    	<div class="cardCalcLabel">LOADING YOUR CARD</div>
-		      <div class="cardCalcLabelDesc">Deposits incld direct deposits?</div>
+
 		      <div class="cardSubLabel">Total Deposits<span class = "calcValues"><span id="calcMthlyLoad"><%= number_to_currency(@mthly_load, :precision => 0) %></span> /month</span></div>
 		      <p class ="sliderBars"><div id="sliderMthlyLoad"></div></p>
-		      <div class="cardSubLabel">Number of cash loads<span class = "calcValues"><span id="calcMthlyLoads"><%= @mthly_loads %></span> /month</span></div>
+		      <div class="cardSubLabel">Cash Loads<span class = "calcValues"><span id="calcMthlyLoads"><%= @mthly_loads %></span> /month</span></div>
 		      <p class ="sliderBars"><div id="sliderMthlyLoads"></div></p>
 		    </div>
 
 		    <div class = "cardCalcTitles">	
 		    	<div class="cardCalcLabel">ACCOUNT CHECKS</div>
-		    	<div class="cardCalcLabelDesc">How often will you make...</div>
+
 		      <div class="cardSubLabel">ATM Balance Checks?<span class = "calcValues"><span id="calcATMInq" ><%= @wkly_atm_inq %></span> /week</span></div>
 		    	<p class ="sliderBars"><div id="sliderATMInq"></div></p>
-		      <div class="cardSubLabel">Cust. Service calls?<span class = "calcValues"><span id="calcCalls" ><%= @calls %></span> /month</span></div>		       	
+		      <div class="cardSubLabel">Cust. Service Calls?<span class = "calcValues"><span id="calcCalls" ><%= @calls %></span> /month</span></div>		       	
 		    	<p class ="sliderBars"><div id="sliderCalls"></div></p>
 		    </div>
 
 		    <div class = "cardCalcTitles">	
-		    	<div class="cardCalcLabel">TIME<span class = "calcValues"><span id="calcPrepaidDur"> <%= @prepaid_duration %></span> months</span></div>
-	       	<div class="cardCalcLabelDesc">How long will you keep the card?</div>
+		    	<div class="cardCalcLabel">OWNERSHIP<span class = "calcValues"><span id="calcPrepaidDur"> <%= @prepaid_duration %></span> months</span></div>
+
 		    	<p class ="sliderBars"><div id="sliderPrepaidDuration"></div></p>
 		    </div>
 
