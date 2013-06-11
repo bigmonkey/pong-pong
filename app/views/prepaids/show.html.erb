@@ -1,7 +1,7 @@
 <% # title and description for seo %>
 <% content_for :seotags do %>
 <title>Compare <%= @prepaid.name %> Prepaid Card to <%= "#{pluralize(@prepaids.size,"Other Card")} -The Payday Hound" %></title>
-<meta name="description" content= '<%= "See #{@prepaid.name} Prepaid Card's fees, requirements, and features. Compare costs to #{pluralize(@prepaids.size,"other card")}  with a calculator customized to your usage and needs." %>' />
+<meta name="description" content= '<%= "See #{@prepaid.name} Prepaid Card fees, requirements, and features. Compare costs to #{pluralize(@prepaids.size,"other card")}  with a calculator customized to your usage and needs." %>' />
 <% end %>
 
 <div id = "wrapper">
