@@ -382,7 +382,7 @@ nav {
 // styling for index page //
 #selectorStateBox {
 	@include rounded(5px);
-	margin: 10px 50px;
+	margin: 10px 85px;
 	background: $boxBackgroundDarker;
 	overflow: hidden;
 
@@ -399,9 +399,9 @@ nav {
 
 .selectorState {
 	text-align: center;
-	font-size: 1.1em;
-	height: 25px;
-	line-height: 25px;
+	font-size: .9em;
+	height: 17px;
+	line-height: 17px;
 	@include rounded(10px);
 	border: solid 0px #fff;
 	a, a:link, a:visited {

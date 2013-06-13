@@ -16,7 +16,7 @@
 				<%= link_to(image_tag("prepaid/#{@prepaid.image_file}", :alt => @prepaid.name ),  partner_path(@prepaid.partner_id), :page=>@page,:rel => 'nofollow', :target => "_blank") %>
 			</div>
 			<div class = "prepaidMiddleBox">
-			    <div class = "prepaidSubTitle"><b>Issuer:</b> <%= raw(@prepaid.issuer) %>&nbsp;&nbsp;&nbsp;&nbsp;<b>Credit:</b> <%= raw(@prepaid.credit_needed) %></div>	
+			    <div class = "prepaidSubTitle">Issuer: <%= raw(@prepaid.issuer) %>&nbsp;&nbsp;&nbsp;&nbsp;Credit: <%= raw(@prepaid.credit_needed) %></div>	
 			    <ul>
 				    <li><%= @prepaid.first_comment %></li>
 				    <li><%= @prepaid.second_comment %></li>

@@ -10,23 +10,23 @@
       <td>      
         <table>   
           <tr>
-            <td><b>Activation Fee</b></td>
+            <td>Activation Fee</td>
             <td><%= number_to_currency(p.activation_fee) %></td>
           </tr>
           <tr>
-            <td><b>Monthly Fee<%= "*" if !p.reduce_mth_fee_load_amt.nil? %></b></td>
+            <td>Monthly Fee<%= "*" if !p.reduce_mth_fee_load_amt.nil? %></td>
             <td><%= p.mth_fee_dep.nil? ? "?" : number_to_currency(p.mth_fee_dep) %> w/ direct dep</td>
           </tr>
           <tr>
-            <td><b></b></td>
+            <td></td>
             <td><%= p.mth_fee_no_dep.nil? ? "?" : number_to_currency(p.mth_fee_no_dep) %> no direct dep</td>
           </tr>                 
           <tr>
-            <td><b>Call Center</b></td>
+            <td>Call Center</td>
             <td><%= p.call_center_desc %></td>
           </tr>                              
           <tr>
-            <td><b>LOAD FEES</b></td>
+            <td>LOAD FEES</td>
             <td></td>
           </tr>
           <tr>
@@ -48,7 +48,7 @@
       <td>
         <table>                              
           <tr>
-            <td><b>ATM**</b></td>
+            <td>ATM**</td>
           </tr>
           <tr>
             <td>&nbsp- Balance Inquiry</td>
@@ -63,15 +63,15 @@
             <td><%= p.atm_in_net_fee_no_dep.nil? ? "N/A" : "#{number_to_currency( @direct_dep ? p.atm_in_net_fee_dep : p.atm_in_net_fee_no_dep)} /withdrawal" %></td>
           </tr>   
           <tr>
-            <td><b>Transaction Fee (signature)</b></td>
+            <td>Transaction Fee (signature)</td>
             <td><%= p.trans_fee_signature.nil? ? "?" : number_to_currency(p.trans_fee_signature) %> /transaction</td>
           </tr>
           <tr>
-            <td><b>Online Bill Pay</b></td>
+            <td>Online Bill Pay</td>
             <td><%= p.bill_pay_elec %></td>
           </tr>
           <tr>
-            <td><b>Online Acct Access</b></td>
+            <td>Online Acct Access</td>
             <td><%= p.online_acct %></td>
           </tr>  
           <tr>
