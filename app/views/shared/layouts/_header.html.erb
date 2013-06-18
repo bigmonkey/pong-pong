@@ -16,7 +16,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 		<nav>
 				<ul id="nav">
 			    <li class = "navApply">
-			        <%= link_to("Apply", applicants_path) %>
+			        <%= link_to("Apply", "get-payday-loan") %>
 			        <ul>
 			            <li><a href="javascript:TogApplication()" id="showApp">application [+]</a></li>			
 			        </ul>
@@ -24,9 +24,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 			    <li>
 			        <%= link_to("Compare", "#") %>		
 			        <ul>
-			            <li><%= link_to("Payday Loans", "/payday-loans/") %></li>
-			            <li><%= link_to("Installment Loans", "/installment-loans/") %></li>			
-			            <li><%= link_to("Prepaid Cards", "/prepaid-card/", :class => "dropdownSubTitles") %></li>			
+			            <li><%= link_to("Payday Loans", payday_loans_path) %></li>
+			            <li><%= link_to("Installment Loans", term_loans_path) %></li>			
+			            <li><%= link_to("Prepaid Cards", prepaids_path, :class => "dropdownSubTitles") %></li>			
 			            <li><%= link_to("Secured Cards", secureds_path, :class => "dropdownSubTitles") %></li>			
 			        </ul>			
 
@@ -37,7 +37,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 			            <li><%= link_to("All Articles", "/learn/") %></li>
 			            <li><%= link_to("Payday Loans", "/category/payday-loans/") %></li>
 			            <li><%= link_to("Installment Loans","/category/installment-loans/") %></li>			
-			            <li><%= link_to("Payday Loan Laws", "/payday-loan-laws/") %></li>
+			            <li><%= link_to("Payday Loan Laws", payday_loan_laws_path) %></li>
 			        </ul>
 			    </li>
 			    <li>

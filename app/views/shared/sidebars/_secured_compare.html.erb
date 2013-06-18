@@ -1,0 +1,28 @@
+<div class = "prepaidCriteria">
+  <h2>Compare Cards</h2>
+
+		<%= form_for(:criteria,:url => "/secured-credit-cards", :html => {:class => "cardCalc", :method => :get, :target => "_parent"} ) do |f| %>
+	        <%= f.hidden_field('PurBal', :value => @pur_balance) %>
+	        <%= f.hidden_field('CashBal', :value => @cash_balance) %>
+	        <%= f.hidden_field('Duration', :value => @duration) %>
+	        <div class = "cardCalcTitles"> 
+	          <div class="cardCalcLabel">Purchases<span id="blogCalcPurBal" class = "calcValues"><%= number_to_currency(@pur_balance, :precision => 0) %></span></div>
+	          <div class="cardCalcLabelDesc">Average purchase balances</div>
+
+	          <p><div id="blogSliderPurBal"></div></p>
+	        </div>
+	        <div class = "cardCalcTitles">
+	          <div class="cardCalcLabel">Cash Advances<span id="blogCalcCashBal" class = "calcValues"><%= number_to_currency(@cash_balance, :precision => 0) %></span></div>
+	          <div class="cardCalcLabelDesc">Average cash advance balances</div>
+	          <p><div id="blogSliderCashBal"></div></p>
+	        </div>        
+	        <div class = "cardCalcTitles">
+	          <div class="cardCalcLabel">Time<span class = "calcValues"><span id="blogCalcDuration"><%= @duration.ceil %></span> months</span></div>
+	          <div class="cardCalcLabelDesc">How long you will have the card</div>
+	          <p><div id="blogSliderDuration"></div></p>
+	        </div>
+	      <%= submit_tag "COMPARE", :class => "findLoanButton" %>
+	  <% end %>
+
+
+</div>

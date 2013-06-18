@@ -24,7 +24,7 @@
 <% #-- data from Rails for javaScript to use -- %>
 
 	<h2>Compare Cards</h2>
-		<%= form_for(:criteria,:url => "/prepaid-card/", :html => {:class => "cardCalc", :method => :get, :target => "_parent"} ) do |f| %>
+		<%= form_for(:criteria,:url => "/prepaid-cards/", :html => {:class => "cardCalc", :method => :get, :target => "_parent"} ) do |f| %>
 
 <% # this is how javascript variables get pased. id = #criteria_<hiddenfieldname> %>
 	        <%= f.hidden_field('CalcDirectDep', :value => @direct_dep) %>
@@ -87,6 +87,6 @@
 
 		    	<p class ="sliderBars"><div id="blogSliderPrepaidDuration"></div></p>
 		    </div>
-	      <%= submit_tag "COMPARE CARDS", :class => "findLoanButton" %>
+	      <%= submit_tag "COMPARE", :class => "findLoanButton" %>
    	<% end %>
 </div>

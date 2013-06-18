@@ -29,4 +29,10 @@ class SecuredsController < ApplicationController
   	  @page = "0005" #sets page for tracking to 'secured-cards'
   end
 
+  def show
+    # get entire list of active secured cards
+    @secureds = Secured.live 
+    # find record for the specific secured card
+    @secured = Secured.find_by_review_url(params[:id])
+  end
 end

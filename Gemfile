@@ -21,7 +21,7 @@ end
 #testing 
 group :development, :test do
  	gem 'rspec-rails', '2.13.1'
-  gem 'spork', '0.9.2' 	
+  gem 'spork-rails' 	
 end
 
 

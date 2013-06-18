@@ -59,7 +59,9 @@ class PrepaidsController < ApplicationController
   end
 
   def show
+    # get entire list of active cards
     @prepaids = Prepaid.live 
+    # get record for specific card
     @prepaid = Prepaid.find_by_review_url(params[:id])
   end
 end

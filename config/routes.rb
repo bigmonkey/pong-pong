@@ -12,6 +12,8 @@ Pdh::Application.routes.draw do
 
   get "lenders/finder" => "lenders#finder"
 
+  post "/borrowers/new" => "borrowers#new"
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
@@ -26,22 +28,26 @@ Pdh::Application.routes.draw do
 
   # Sample resource route (maps HTTP verbs to controller actions automatically):
   #   resources :products
-  resources :applicants
+  # Create SEO friendly URL keeping original path names
+  resources :applicants, :path => "get-payday-loan"
   resources :borrowers
-  resources :secureds
-  resources :lenders
-  resources :prepaids
-  resources :homes
-  resources :payday_loans
-  resources :term_loans
-  resources :payday_loan_laws
-  resources :partners
+  resources :secureds, :path => "secured-credit-cards", :only => [:index, :show]
+  resources :lenders, :only => [:index, :show]
+  resources :prepaids, :path => "prepaid-cards", :only => [:index, :show]
+  resources :homes, :only => :index
+  resources :payday_loans, :path => "payday-loans", :only => [:index, :show]
+  resources :term_loans, :path => "installment-loans", :only => [:index, :show]
+  resources :payday_loan_laws, :path => "payday-loan-laws", :only => [:index, :show]
+  resources :partners, :only => [ :index, :show ]
 
-  resources "payday-loans", :as => :payday_loans, :controller => :payday_loans
-  resources "installment-loans", :as => :term_loans, :controller => :term_loans
-  resources "payday-loan-laws", :as => :payday_loan_laws, :controller => :payday_loan_laws
-  resources "payday-loan-apply", :as => :applicants, :controller => :applicants
-  resources "prepaid-card", :as => :prepaids, :controller => :prepaids  
+  match "/prepaid-card" => redirect("/prepaid-cards")
+  match "/prepaid-card/:name" => redirect("/prepaid-cards/%{name}")
+  match "/secureds" => redirect("/secured-credit-cards")
+  match "/prepaids" => redirect("/prepaid-cards")
+
+  # Another way to create SEO friendly URL's 
+  #resources "payday-loans", :as => :payday_loans, :controller => :payday_loans
+  
   # Sample resource route with options:
   #   resources :products do
   #     member do
@@ -81,8 +87,14 @@ Pdh::Application.routes.draw do
 
   # See how all your routes lay out with "rake routes"
 
+  # Non-RESTful Routes
+  # infos is site information
+  # blogbars are sidebars for Wordpress and show action for prepaids and secureds
+  get ':controller/:action', :controller => /infos|blogbars/ 
+  
+
   # This is a legacy wild controller route that's not recommended for RESTful applications.
   # Note: This route will make all actions in every controller accessible via GET requests.
-  match ':controller(/:action(/:id))(.:format)'
+  # match ':controller(/:action(/:id))(.:format)'
 
 end

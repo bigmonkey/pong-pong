@@ -13,7 +13,7 @@ describe "Prepaid Pages" do
         num_cards = 2
         num_cards.times { FactoryGirl.create(:prepaid) }
         Prepaid.live.size.should eq(num_cards)
-        visit '/prepaid-card/' 
+        visit prepaids_path 
     }
     # prepaid-cards routing
     it { should have_selector('h1', text: 'Prepaid Cards') }
@@ -25,7 +25,7 @@ describe "Prepaid Pages" do
       Prepaid.all.each do |p|
         page.should have_content("Company Name")
         page.should have_selector('div', text: p.first_comment)
-        page.should have_link(p.name, href: "/prepaid-card/#{p.review_url}")
+        page.should have_link(p.name, href: prepaid_path(p.review_url))
       end
     end
     it_should_behave_like "all prepaid pages"
@@ -33,7 +33,7 @@ describe "Prepaid Pages" do
 
   describe "Individual Prepaid Card Pages" do
     let(:prepaid) { FactoryGirl.create(:prepaid) }
-    before { visit "/prepaid-card/#{prepaid.review_url}" }
+    before { visit prepaid_path(prepaid.review_url) }
 
     it { should have_content('Compare Cards') }
     it { should have_content(prepaid.card_name) }
@@ -44,3 +44,4 @@ describe "Prepaid Pages" do
   end
 
 end
+

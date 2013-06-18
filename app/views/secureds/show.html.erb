@@ -1,0 +1,50 @@
+<% # title and description for seo %>
+<% content_for :seotags do %>
+<title>Compare <%= @secured.name %> Secured Credit Card to <%= "#{pluralize(@secureds.size,"Other Card")}" %></title>
+<meta name="description" content= '<%= "See #{@secured.name} Secured Credit Card fees, requirements, and features. Use a secured credit card caluculator to compare costs with #{pluralize(@secureds.size,"other card")} customized to your usage and needs." %>' />
+<% end %>
+
+<div id = "wrapper">
+	<aside id = "sidebarFinder">
+		<%= render '/shared/sidebars/secured_compare' %>
+	  <%= render(:partial => "shared/sidebars/sidebar")%>			
+	</aside>
+	<section id = "prepaidContent">
+		<div class = "prepaidIntroBoxes">
+			<h1><%= raw(@secured.card_name) %></h1>
+			<div class = "prepaidLeftBox">
+				<%= link_to(image_tag("secured/#{@secured.image_file}", :alt => @secured.name ),  partner_path(@secured.partner_id), :page=>@page,:rel => 'nofollow', :target => "_blank") %>
+			</div>
+			<div class = "prepaidMiddleBox">
+			    <div class = "prepaidSubTitle">Issuer: <%= raw(@secured.issuer) %>&nbsp;&nbsp;&nbsp;&nbsp;Credit: <%= raw(@secured.credit_rating) %></div>	
+			    <ul>
+				    <li><%= @secured.first_comment %></li>
+				    <li><%= @secured.second_comment %></li>
+				    <li><%= @secured.third_comment %></li>  
+				  </ul>  
+			</div>	   
+			<div class = "prepaidRightBox">
+				<div class = "lenderApply"><%= link_to('Sign Up', partner_path(@secured.partner_id), :rel => 'nofollow', :page => @page, :target => 'blank') %></div>
+			</div> 
+		</div>			
+
+		<div class ="clearboth"></div>
+		
+		<div class = "prepaidCardDetails">	
+			<div class = "prepaidCardDetailsTitle">Card Details</div>
+			<%= raw(@secured.bullets) %>
+		</div>			
+
+		<div class ="clearboth"></div>		
+		
+		<div class = "prepaidCardFeatures">
+			<% #render 'card_features', :p => @secured %>
+		</div>
+
+		<div class ="clearboth"></div>
+		
+		<%= render(:partial => "shared/media_counters")%>	
+	
+	</section>
+
+</div>

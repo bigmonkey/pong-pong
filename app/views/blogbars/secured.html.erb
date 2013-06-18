@@ -1,45 +1,18 @@
-<!--  
+<%
 
-This is used by the WordPress blog at www.thepaydayhound.com. It pulls this in as an iFrame. 
+# This is used by the WordPress blog at www.thepaydayhound.com. It pulls this in as an iFrame. It is also use on the show.html sidebar
 
-The secureds controller handles the params and checks them.
+# The secureds controller handles the params and checks them.
 
-The page relies on jquery and public.js.
+# The page relies on jquery and public.js.
 
-There are separate javascript functions for this section: blogSlidePurBal, blogSlideCashBal, blogSliderDuration
+# There are separate javascript functions for this section: blogSlidePurBal, blogSlideCashBal, blogSliderDuration
 
--->
+%>
 
 
 <aside class = "iframeSidebar">
 
-<div class = "criteria">
-  <h2>Find a Card</h2>
-
-		<%= form_for(:criteria,:url => "/secureds", :html => {:class => "cardCalc", :method => :get, :target => "_parent"} ) do |f| %>
-	        <%= f.hidden_field('PurBal', :value => @pur_balance) %>
-	        <%= f.hidden_field('CashBal', :value => @cash_balance) %>
-	        <%= f.hidden_field('Duration', :value => @duration) %>
-	        <div class = "cardCalcTitles"> 
-	          <div class="cardCalcLabel">Purchases<span id="blogCalcPurBal" class = "calcValues"><%= number_to_currency(@pur_balance, :precision => 0) %></span></div>
-	          <div class="cardCalcLabelDesc">Average purchase balances</div>
-	            
-	          <p><div id="blogSliderPurBal"></div></p>
-	        </div>
-	        <div class = "cardCalcTitles">
-	          <div class="cardCalcLabel">Cash Advances<span id="blogCalcCashBal" class = "calcValues"><%= number_to_currency(@cash_balance, :precision => 0) %></span></div>
-	          <div class="cardCalcLabelDesc">Average cash advance balances</div>
-	          <p><div id="blogSliderCashBal"></div></p>
-	        </div>        
-	        <div class = "cardCalcTitles">
-	          <div class="cardCalcLabel">Time<span class = "calcValues"><span id="blogCalcDuration"><%= @duration.ceil %></span> months</span></div>
-	          <div class="cardCalcLabelDesc">How long you will have the card</div>
-	          <p><div id="blogSliderDuration"></div></p>
-	        </div>
-	      <%= submit_tag "FIND LOAN", :class => "findLoanButton" %>
-	  <% end %>
-
-        
-</div>
+	<%= render '/shared/sidebars/secured_compare' %>
 
 </aside>
