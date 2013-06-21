@@ -238,7 +238,7 @@
 	vertical-align: top;
 	background: #eee;
 	font-size: .95em;
-	max-width: 400px;
+	max-width: 450px;
 }
 
 .cardFeatures{
@@ -251,7 +251,7 @@
 .cardFeatures td{
 	padding: .2em;
 	border: 0px;
-	background: #F7ECD2;
+	background: $peach;
 	line-height: 120%;
 	@include rounded(3px);
 	vertical-align: top;
@@ -365,7 +365,7 @@
 	border: 1px solid $boxBackground;
 	@include rounded(5px);
 	ul{
-		margin: 10px 115px;
+		margin: 10px 60px;
 	}
 }
 

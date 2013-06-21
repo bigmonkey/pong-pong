@@ -2,4 +2,16 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-//ALL STYLING IN PREPAIDS.CSS.SCSS
+//MOST STYLING is re-use of PREPAIDS.CSS.SCSS
+
+@import "custom";
+
+.securedCardFeatures{
+	background-color: $peach;
+}
+
+.securedCardFees{
+	color: $highColor;
+	text-align: center;
+	font-size: 1em;
+}

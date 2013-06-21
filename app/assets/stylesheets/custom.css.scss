@@ -9,6 +9,7 @@ $boxBackground: #eee; /* highlight boxes */
 $boxBackgroundDarker: #bbb; /* highlight boxes darker */
 $dogFur: #e0a03e; /*color of our dogs fur */
 $dogEars: #d85936; /* color of our dogs ears */
+$peach: #F7ECD2; /* peach background color */
 
 @mixin rounded($radius) {
   border-radius: $radius;

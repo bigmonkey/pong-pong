@@ -1,0 +1,61 @@
+<tr>
+  <td>
+    <div class = "cardName"><%= raw(s.card_name) %></div>
+    <div><b>Issuer:</b> <%= raw(s.issuer) %></div>
+    <div><b>Network:</b> <%= raw(s.card_type) %></div>
+    <div><b>Credit Rating:</b> <%= raw(s.credit_rating.titlecase) %></div>
+    <div><%= raw(s.bullets) %></div>
+  </td>
+  <td>
+    <div class = "cardFeatures"> 
+      <div class = "securedCardFees">Card Fees</div>
+      <table class = "securedCardFeatures">
+        <tbody> 
+          <tr>
+            <td>Minimum Deposit:</td>
+            <td><%= s.min_deposit %></td>
+          </tr>
+          <tr>
+            <td>Annual Fee</td>
+            <td><%= s.annual_fee.nil? ? "?" : number_to_currency(s.annual_fee) %></td>
+          </tr>
+          <tr>
+            <td>Monthly Fee</td>
+            <td><%= s.monthly_fee.nil? ? "?" : number_to_currency(s.monthly_fee) %></td>
+          </tr>
+          <tr>
+            <td>Purchase APR:</td>
+            <td><%= number_to_percentage(s.purchase_apr, :precision => 2) %> <%= raw(s.purchase_base) %></td>
+          </tr>
+          <tr>
+            <td>Cash APR:</td>
+            <td><%= number_to_percentage(s.cash_apr, :precision => 2) %> <%= raw(s.cash_base) %></td>
+          </tr>
+          <tr>
+            <td>Grace Period:</td>
+            <td><%= s.grace %></td>
+          </tr>
+          <tr>
+            <td>Late Fee:</td>
+            <td><%= s.late_fee %></td>
+          </tr>
+          <tr>
+            <td>Overlimit Fee:</td>
+            <td><%= s.overlimit_fee %></td>
+          </tr>
+          <tr>
+            <td>Return Item Fee:</td>
+            <td><%= s.return_pmt %></td>
+          </tr>
+          <tr>
+            <td>Max Credit Limit:</td>
+            <td><%= s.max_credit %></td>
+          </tr>
+          <tr>
+            <td colspan = 2><I>V=Variable, F=Fixed</I></td>
+          </tr>
+        <tbody>  
+      </table>
+    </div>  
+  </td>
+</tr> 

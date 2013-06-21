@@ -45,6 +45,9 @@ Spork.prefork do
     #     --seed 1234
     config.order = "random"
 
+    # Includes spec/support/helpers.rb file 
+    config.include Helpers
+
     config.include Capybara::DSL    
   
   end  

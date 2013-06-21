@@ -31,15 +31,10 @@
 		<div class ="clearboth"></div>
 		
 		<div class = "prepaidCardDetails">	
-			<div class = "prepaidCardDetailsTitle">Card Details</div>
-			<%= raw(@secured.bullets) %>
+			<table class = "cardDetails">
+				<%= render 'secured_card_features_row', :s => @secured %>
+			</table>
 		</div>			
-
-		<div class ="clearboth"></div>		
-		
-		<div class = "prepaidCardFeatures">
-			<% #render 'card_features', :p => @secured %>
-		</div>
 
 		<div class ="clearboth"></div>
 		

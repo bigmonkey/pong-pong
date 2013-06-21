@@ -10,7 +10,7 @@ describe "Prepaid Pages" do
 
   describe "Ranking Page" do
     before { 
-        num_cards = 2
+        num_cards = 5
         num_cards.times { FactoryGirl.create(:prepaid) }
         Prepaid.live.size.should eq(num_cards)
         visit prepaids_path 
@@ -26,6 +26,7 @@ describe "Prepaid Pages" do
         page.should have_content("Company Name")
         page.should have_selector('div', text: p.first_comment)
         page.should have_link(p.name, href: prepaid_path(p.review_url))
+        page.should have_link("SIGN UP", href: partner_path(p.partner_id))
       end
     end
     it_should_behave_like "all prepaid pages"
@@ -39,6 +40,7 @@ describe "Prepaid Pages" do
     it { should have_content(prepaid.card_name) }
     it { should have_content(prepaid.first_comment) }
     it { should have_content(prepaid.activation_fee) }
+    it { should have_link("Sign Up", href: partner_path(prepaid.partner_id)) }
     #it { should have_content(prepaid.bullets) }  #how to test raw content inside cell
     it_should_behave_like "all prepaid pages"
   end
