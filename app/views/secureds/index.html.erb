@@ -1,7 +1,7 @@
 <% # title and description for seo %>
 <% content_for :seotags do %>
-<title>Best Secured Credit Cards: In-Depth Reviews and Independent Rankings</title>
-<meta name="description" content="Reviews and rankings of secured credit cards. Calculate and compare the cost of ownership on <%= pluralize(@secureds.size,"secured card") %>"/>
+<title>Compare the Top <%= pluralize(@secureds.size, "Secured Card") %> - The Payday Hound</title>
+<meta name="description" content="Compare secured card fees, features, and requirements. Calculate and compare the cost of ownership on <%= pluralize(@secureds.size,"secured card") %>"/>
 <% end %>
 
 <div id="wrapper">
@@ -16,7 +16,11 @@
 
 <section id="mainContent">
   <h1>Secured Credit Cards</h1> 
- 	<p>Secured credit cards can help build and repair credit ratings. To learn more visit <%= link_to('What is a Secured Card', "/what-is-a-secured-credit-card/") %> and <%= link_to('The Best Secured Cards.', "/bad-credit-credit-card-secured-card/") %> Use our Secured Card Cost Calculator to the left to help you find a secured card.</p>
+ 	<p>Secured credit cards can help build and repair credit. Secured cards do not require a good credit score and many secured card companies do not even check your credit report. Secured cards are great for students, ex-pats, and people rebuilding their credit.</p>
+  <p>Secured cards are real credit cards and their usage is reported to the three major bureaus. This means that unlike prepaid or debit cards, responsible usage of a secured card can build and improve your credit history. To get a secured card banks require a deposit that they hold as collateral for your credit card. This deposit is fully refundable when you close your account if you have paid off your account in full.</p>
+  <p>Secured cards are a great tool for people who need to build or rebuild their credit. The Payday Hound believes they are a great choice.</p>
+  <p>To learn more visit <%= link_to('What is a Secured Card', "/what-is-a-secured-credit-card/") %> and <%= link_to('The Best Secured Cards.', "/bad-credit-credit-card-secured-card/") %> Use our Secured Card Cost Calculator to the left to help you find a secured card.</p>
+  <p class = "tableIntro">We have reviewed <%= pluralize(@secureds.size, "secured card") %>.</p>
 
   <span id = "securedCards" class = "jsData"><%= @secureds.size %></span>
   <span id = "duration" class = "jsData"><%= @duration %></span>

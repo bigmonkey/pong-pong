@@ -6,34 +6,25 @@ source 'https://rubygems.org'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-# converting between windows and ubuntu/mac/thin (heroku) set up 1) choose DATABASE 2) choose WEBSERVER 
-# 1)DATABASE: Heroku uses postgresql so must use 'gem pg'. CW Windows and Alison Mac set up for PostgreSQL
  gem 'pg', '0.15.1'
 
-
-# testing
 group :test do
 	gem 'selenium-webdriver', '2.0'
 	gem 'capybara', '2.1.0'
 	gem 'factory_girl_rails', '4.1.0'	
 end
 
-#testing 
 group :development, :test do
  	gem 'rspec-rails', '2.13.1'
   gem 'spork-rails' 	
 end
 
 
-# uncomment for windows if using mysql database and also need to chnage database.yml file
-# gem 'mysql2'
+# use unicorn for production and ubuntu
+ gem 'unicorn', '4.6.2'
 
-# 2)WEBSERVER: Heroku/unbuntu/Mac uses thin so need gem execjs, therubyracer, thin 
-# uncomment for ubuntu/thin and comment out for Windows
-
-# gem 'unicorn', '4.6.2'
-
- gem 'thin', '1.5.1'
+# use thin for windows
+# gem 'thin', '1.5.1'
  gem 'execjs', '1.4.0'
  gem 'therubyracer', :platform => 'ruby'
  #gem 'therubyracer', '~> 0.10.2' #update to 0.11 crashes install

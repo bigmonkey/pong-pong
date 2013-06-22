@@ -1,7 +1,7 @@
 <% # title and description for seo %>
 <% content_for :seotags do %>
 <title>Compare <%= @secured.name %> Secured Credit Card to <%= "#{pluralize(@secureds.size,"Other Card")}" %></title>
-<meta name="description" content= '<%= "See #{@secured.name} Secured Credit Card fees, requirements, and features. Use a secured credit card caluculator to compare costs with #{pluralize(@secureds.size,"other card")} customized to your usage and needs." %>' />
+<meta name="description" content= '<%= "See #{@secured.name} Secured Credit Card fees, requirements, and features. Compare costs to #{pluralize(@secureds.size,"other card")} with a calculator customized to your usage and needs." %>' />
 <% end %>
 
 <div id = "wrapper">
