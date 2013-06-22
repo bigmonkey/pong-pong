@@ -40,10 +40,11 @@ Pdh::Application.routes.draw do
   resources :payday_loan_laws, :path => "payday-loan-laws", :only => [:index, :show]
   resources :partners, :only => [ :index, :show ]
 
-  match "/prepaid-card/" => redirect("/prepaid-cards")
-  match "/prepaid-card/:name" => redirect("/prepaid-cards/%{name}")
-  match "/secureds/" => redirect("/secured-credit-cards")
-  match "/prepaids/" => redirect("/prepaid-cards")
+  # Redirect old URLS to new URL's. Use redirect_to hardcard b/c of nginx/heroku/wordpress set up
+  match "/prepaid-card/" => redirect("http://www.thepaydayhound.com/prepaid-cards/")
+  match "/prepaid-card/:name" => redirect("http://www.thepaydayhound/prepaid-cards/%{name}/")
+  match "/secureds/" => redirect("http://www.thepaydayhound/secured-credit-cards/")
+  match "/prepaids/" => redirect("http://www.thepaydayhound/prepaid-cards/")
 
   # Another way to create SEO friendly URL's 
   #resources "payday-loans", :as => :payday_loans, :controller => :payday_loans
