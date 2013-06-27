@@ -1,5 +1,5 @@
 class HomesController < ApplicationController
-  layout 'plainNav'    
+  layout 'homeNav'    
 
   before_filter :set_tracking
   	
@@ -7,10 +7,8 @@ class HomesController < ApplicationController
 
   end
 
-  def wrapper
-  	render :partial => "shared/layouts/wrapper"
-  end
-
+# Following three methods are called from within Wordpress installation to
+# bring in styles, footer and header to the Learn section.
   def jstyle
   	render :partial => "shared/layouts/jstyle"  	
   end

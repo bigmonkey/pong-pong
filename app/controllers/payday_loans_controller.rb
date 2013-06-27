@@ -1,6 +1,6 @@
 class PaydayLoansController < ApplicationController
 
-  layout 'paydayAppNav'
+  layout 'paydayNav'
   
   before_filter :set_tracking
   

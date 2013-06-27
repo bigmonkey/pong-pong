@@ -2,16 +2,18 @@ Pdh::Application.routes.draw do
 
   root :to => 'homes#index'
 
+  # Called from Wordpress site for header, footer and styles
   get "jstyle" => "homes#jstyle"
-
   get "header" => "homes#header"
-  
   get "footer" => "homes#footer"
 
+  # Old URL redirects to payday-loans
   get "lenders" => "lenders#index"
 
+  # Routing for payday and installment loan finder sidebar
   get "lenders/finder" => "lenders#finder"
 
+  # Payday loan application
   post "/borrowers/new" => "borrowers#new"
 
   # The priority is based upon order of creation:

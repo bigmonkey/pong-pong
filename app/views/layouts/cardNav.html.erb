@@ -1,0 +1,54 @@
+<!DOCTYPE html><!-- HTML 5 -->
+<html dir="ltr" lang="en-US">
+<% # This is the main layout used for all public facing views %>
+<head>
+	<%= render '/layouts/header_tags' %>
+</head>
+
+<body>
+	<%= render '/layouts/google_tag_manager' %>
+
+	<div id="mainHeaderOutter">
+		<header id="mainHeader">
+		<div id="logo"><%= link_to(image_tag("thepaydayhound-logo.png", :alt => "logo" ), {:controller => 'homes', :action => 'index'})%></div>
+
+		<nav>
+				<ul id="nav">
+			    <li>
+			        <%= link_to("Compare", "#") %>		
+			        <ul>
+			            <li><%= link_to("Payday Loans", payday_loans_path) %></li>
+			            <li><%= link_to("Installment Loans", term_loans_path) %></li>			
+			            <li><%= link_to("Prepaid Cards", prepaids_path) %></li>			
+			            <li><%= link_to("Secured Cards", secureds_path) %></li>			
+			        </ul>			
+
+			    </li>
+			    <li>
+			        <%= link_to("Learn", "#") %>
+			        <ul>
+			            <li><%= link_to("All Articles", "/learn/") %></li>
+			            <li><%= link_to("Payday Loans", "/category/payday-loans/") %></li>
+			            <li><%= link_to("Installment Loans","/category/installment-loans/") %></li>			
+			            <li><%= link_to("Payday Loan Laws", payday_loan_laws_path) %></li>
+			        </ul>
+			    </li>
+			    <li>
+			        <%= link_to("Home", "/") %>
+			    </li>			
+				</ul>
+		</nav>
+	
+		</header>
+	</div>
+
+<!-- everything between header and footer -->
+
+	<%= yield %>
+
+<!-- wrap everything between header and footer -->		
+ 
+	<%= render :partial => 'shared/layouts/footer' %>	  
+	<%= debug(params) if Rails.env.development? %>	
+</body>
+</html>

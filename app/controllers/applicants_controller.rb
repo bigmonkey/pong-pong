@@ -1,6 +1,6 @@
 class ApplicantsController < ApplicationController
 
-  layout 'plainNav'
+  layout 'homeNav'
   
   before_filter :set_tracking
 

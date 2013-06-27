@@ -1,6 +1,6 @@
 class InfosController < ApplicationController
  	
-	layout 'paydayAppNav'
+	layout 'homeNav'
 	
   before_filter :set_tracking
   
