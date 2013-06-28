@@ -45,8 +45,8 @@ production:
   adapter: postgresql
   encoding: unicode
   reconnect: false
-  database: pdh_development
+  database: 
   pool: 5
-  username: pdh_read
-  password: pony4588
+  username: 
+  password: 
   host: localhost
