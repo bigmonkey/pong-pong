@@ -1,8 +1,7 @@
-alpha version
+Payday Loan Review Site
 
-base rails application. no css
+The main site is designed to run on one domain with sub-directorys but actually runs on Wordpress and Rails.
 
-database: pdh_development
-username: conway
+Main websever is nginx which reverse proxys to Wordpress for articles and to Heroku for rankings and tools. The rankings are done using Rails.
 
-added two gems to run in linux: therubyracer and exec js
+This is the Rails code.
