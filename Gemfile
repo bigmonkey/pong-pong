@@ -15,16 +15,16 @@ group :test do
 end
 
 group :development, :test do
- 	gem 'rspec-rails', '2.13.1'
-  gem 'spork-rails' 	
+	gem 'rspec-rails', '2.13.1'
+  gem 'spork-rails', '4.0.0' 	
 end
 
 
 # use unicorn for production and ubuntu
- gem 'unicorn', '4.6.2'
+# gem 'unicorn', '4.6.2'
 
 # use thin for windows
-# gem 'thin', '1.5.1'
+ gem 'thin', '1.5.1'
  gem 'execjs', '1.4.0'
  gem 'therubyracer', :platform => 'ruby'
  #gem 'therubyracer', '~> 0.10.2' #update to 0.11 crashes install
@@ -32,13 +32,13 @@ end
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
-  gem 'sass-rails',   '~> 3.2.3'
-  gem 'coffee-rails', '~> 3.2.1'
+  gem 'sass-rails',   '3.2.3'
+  gem 'coffee-rails', '3.2.1'
 
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
   # gem 'therubyracer', :platform => :ruby
 
-  gem 'uglifier', '>= 1.0.3'
+  gem 'uglifier', '1.0.3'
 end
 
 gem 'jquery-rails', '2.2.1'

@@ -6,7 +6,7 @@ class TermLoansController < ApplicationController
   def index
   	@selectorPath = "/installment-loans/" #for State Selector Partial
   	@states=State.all
-	  @lenders = TermLoan.by_top_rank.by_low_cost
+	  @lenders = TermLoan.by_top_rank.by_low_cost.active_lender
 		@criteria = TermLoan.new    #@criteria gets used on view
 		@criteria.sniff_id = 3
    	@criteria.ranking = 0	

@@ -7,7 +7,7 @@ class PaydayLoansController < ApplicationController
   def index
   	@selectorPath = "/payday-loans/" #for State Selector Partial
   	@states=State.all
-	  @lenders = PaydayLoan.by_top_rank
+	  @lenders = PaydayLoan.by_top_rank.active_lender
 		@criteria = PaydayLoan.new    #@criteria gets used on view
 		@criteria.sniff_id = 3
    	@criteria.ranking = 0	
