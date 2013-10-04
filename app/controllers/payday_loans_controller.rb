@@ -25,7 +25,7 @@ class PaydayLoansController < ApplicationController
 
     	@state = State.find_by_state_abbr(params[:id].upcase)
     	@paydaylawstate = @state.payday_loan_law
-    	@lenders = @state.payday_loans.by_top_rank.sniff_level(@criteria.sniff_id).rank_level(@criteria.ranking)
+    	@lenders = @state.payday_loans.by_top_rank.sniff_level(@criteria.sniff_id).rank_level(@criteria.ranking).active_lender
 
     	# defined so the radio button defaults to correct button
     	@lender=PaydayLoan.new      
