@@ -49,7 +49,9 @@
 			
 			</div>
 			<div class = "lawContentMain">
-				<p>Payday lending is <%= @paydaylawstate.legal_status.downcase %> in <%= @state.state %> 
+				<div class = "lawDisclaimer"><p>The data provided here is for general informational purposes and should not be used as legal reference. If you have questions regarding <%= @state.state %> payday loan laws contact the <%= link_to("#{@paydaylawstate.regulator}", @paydaylawstate.regulator_site,:target => '_blank') %>.</p></div>
+
+				<p>Payday loans are <%= @paydaylawstate.legal_status.downcase %> in <%= @state.state %>   
 					<% if @paydaylawstate.legal_status_summary == "Legal" %>
 						(see <%= link_to("#{@state.state} Payday Loans", payday_loan_path(@state.state_abbr.downcase)) %> or <%= link_to("#{@state.state} Installment Loans", term_loan_path(@state.state_abbr.downcase)) %> to compare fees and requirements for individual lenders).
 						<% else %>
@@ -160,7 +162,7 @@
 
 					<div class = "lawCitation">Citation: <%= @paydaylawstate.citation %><%= @paydaylawstate.citation.last != "." ? "." : ""%></div>
 				<% end # if statement for states where payday lending is Legal%> 
-				<div class = "lawDisclaimer">The data provided here is for general informational purposes and should not be used as legal reference. If you have questions regarding <%= @state.state %> payday loan laws contact the <%= @paydaylawstate.regulator %>.</div>
+
 			</div> 
 			<% # end lawContentMain %>
 		</div> 
