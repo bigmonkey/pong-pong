@@ -330,7 +330,9 @@ nav {
 }
 
 #mainContent h1 {
-	font-size: 1.6em;
+	font-size: 1.8em;
+	padding-bottom: .5em;
+	line-height: 1.2em;
 }
 
 #mainContent h3 {
@@ -341,7 +343,7 @@ nav {
 
 #mainContent h2, .arh {
 	font-size: 1.2em;
-	color: $dogFur;
+	color: $bigColor;
 
 }
 
@@ -365,7 +367,6 @@ nav {
 	padding: 0px;
 	h1 {
 		font-size: 1.6em;
-
 	}
 	h3 {
 		font-size: 1.1em;
@@ -382,9 +383,15 @@ nav {
 
 // State Selector Boxes. Used on payday loan, installment loan and payday loan law page 3/19/13
 // styling for index page //
+
+#selectorStateWrapper {
+	margin: 1em 5em;
+	h2 { color: $dogEars; }
+}
+
 #selectorStateBox {
 	@include rounded(5px);
-	margin: 10px 85px;
+	margin: 0;
 	background: $boxBackgroundDarker;
 	overflow: hidden;
 
@@ -422,8 +429,8 @@ nav {
 
 // the line before the listing of lenders
 p.tableIntro {
-	color: $bigColor;
-	font-size: 1.2em;
+	color: $dogEars;
+	font-size: 1em;
 	margin-top: 20px;
 }
 

@@ -3,25 +3,57 @@ class TermLoansController < ApplicationController
   
   before_filter :set_tracking
   
+  def set_seo_vars(src)
+      # for customizing articles for SEO
+      
+      if src == "index"
+        @selectorPath =  request.fullpath[0..-1] #used for linking takes whole string
+      else
+        @selectorPath =  request.fullpath[0..-4] #used for linking drops state abbr
+      end    
+      @keyWord = @selectorPath.gsub('-',' ')[1..-1] #pulls out kw from url and drop first slash
+      # categorize kw's into loans or lenders. copy is different for the two
+      # copy assyme kw's are plural, i.e. loanS and lenderS
+      loans = ["installment loans", 
+              "short term installment loans",
+              "installment loans online"]
+      lenders = ["online installment loan direct lenders",
+              "installment loan lenders",
+              "bad credit installment loan direct lenders",
+              "direct installment loan lenders"]        
+      case @keyWord
+        when *loans
+          @keyWordType = "loans"
+        when *lenders  
+          @keyWordType = "lenders"
+        else #if something is routed but mistakenly not added to kw list above
+          @keyWordType = "loans"
+          @keyWord = "installment loans"  
+      end   
+  end
+
+
   def index
-  	@selectorPath = "/installment-loans/" #for State Selector Partial
   	@states=State.all
 	  @lenders = TermLoan.by_top_rank.by_low_cost.active_lender
 		@criteria = TermLoan.new    #@criteria gets used on view
 		@criteria.sniff_id = 3
    	@criteria.ranking = 0	
-  	@page = "0014" #sets page for tracking to 'payday-loans-main'
+
+    set_seo_vars("index")
+    
   end
 
 	def show
 		# is it random or coming from index or paydayfinder
 		if State.find_by_state_abbr(params[:id].upcase).nil?
-			redirect_to("/installment-loans/")
+			redirect_to term_loans_path
 		else	
 			@criteria = TermLoan.new    #@criteria gets used on view
 			@criteria.sniff_id = !params[:sniff_id].nil? ? params[:sniff_id] : 3
    		@criteria.ranking = !params[:ranking].nil?	? params[:ranking] : 1
     	
+      set_seo_vars("state")
 
     	@state = State.find_by_state_abbr(params[:id].upcase)
     	@paydaylawstate = @state.payday_loan_law

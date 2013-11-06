@@ -1,11 +1,22 @@
-<h2>Select Your State</h2>
-<p>Click on your state to see lenders who offer loans in your state.</p>
-<div id = "selectorStateBox">
-	<%  @states.each_slice(10) do |slice| %>
-		<div class = "selectorStatesCol">
-			<% slice.each do |s| %>
-			<div class = "selectorState" <%= (s.state_abbr == "AL") ? "id = stateAL" : ""  %>><%= link_to("#{s.state}", "#{@selectorPath}#{s.state_abbr.downcase}") %></div>
-			<% end %>
-		</div>
+<%# Show a list of states that can be selected %>
+<%# Used for payday loans, term loans and state laws %>
+<%# @selectorPath is set in each controller and controls link to pages %>
+<div id = "selectorStateWrapper">
+	<% if !@keyWordType.nil? # payday and term loans will have this populated %>
+	<h2>Compare <%= @keyWord.titleize %></h2>
+	<p>Select your state to see lenders offering loans in your state.</p>
+	<% else #state laws page will be nil %>
+	<h2>Lending Laws by State</h2>
+	<p>Select your state to see lending law and regulator information.</p>
 	<% end %>
+
+	<div id = "selectorStateBox">
+		<%  @states.each_slice(10) do |slice| %>
+			<div class = "selectorStatesCol">
+				<% slice.each do |s| %>
+				<div class = "selectorState" <%= (s.state_abbr == "AL") ? "id = stateAL" : ""  %>><%= link_to("#{s.state}", "#{@selectorPath}/#{s.state_abbr.downcase}") %></div>
+				<% end %>
+			</div>
+		<% end %>
+	</div>
 </div>

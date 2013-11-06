@@ -6,7 +6,7 @@ class PaydayLoanLawsController < ApplicationController
 
 	def index
 		@states=State.all
-		@selectorPath = "/payday-loan-laws/" #for State Selector Partial
+		@selectorPath = request.fullpath #for State Selector Partial
 		
 	end
 

@@ -5,12 +5,29 @@ class PaydayLoansController < ApplicationController
   before_filter :set_tracking
   
   def index
-  	@selectorPath = "/payday-loans/" #for State Selector Partial
   	@states=State.all
 	  @lenders = PaydayLoan.by_top_rank.active_lender
 		@criteria = PaydayLoan.new    #@criteria gets used on view
 		@criteria.sniff_id = 3
-   	@criteria.ranking = 0	
+   	@criteria.ranking = 0
+
+    # for customizing articles for SEO
+    @selectorPath = request.fullpath #for State Selector used in link_to
+    @keyWord = @selectorPath.gsub('-',' ')[1..-1] #pulls kw from URL
+    # categorize kw's into loans or lenders. copy is different for the two 
+    loans = ["payday loans"]
+    lenders = ["payday lenders"]        
+    case @keyWord
+      when *loans
+        @keyWordType = "loans"
+      when *lenders  
+        @keyWordType = "lenders"
+      else 
+        @keyWordType = nil #routing ensures nothing gets here but the above 
+    end  
+
+
+
     @page = "0013" #sets page for tracking to 'payday-loans-main'
   end
 
