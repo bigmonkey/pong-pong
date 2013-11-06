@@ -23,8 +23,8 @@ development:
   reconnect: false
   database: pdh_development
   pool: 5
-  username: conway
-  password: pony
+  username: <%= ENV['DB_USERNAME'] %>
+  password: <%= ENV['DB_PASSWORD'] %>
   host: localhost
 
 # Warning: The database defined as "test" will be erased and
@@ -36,8 +36,8 @@ test:
   reconnect: false
   database: pdh_test
   pool: 5
-  username: conway
-  password: pony
+  username: <%= ENV['DB_USERNAME'] %>
+  password: <%= ENV['DB_PASSWORD'] %>
   host: localhost
 
 
@@ -47,6 +47,6 @@ production:
   reconnect: false
   database: 
   pool: 5
-  username: 
-  password: 
+  username: <%= ENV['DB_USERNAME'] %>
+  password: <%= ENV['DB_PASSWORD'] %>
   host: localhost

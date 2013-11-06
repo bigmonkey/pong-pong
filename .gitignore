@@ -34,3 +34,5 @@ doc/
 .DS_Store
 .idea
 .secret
+# Ignore application configuration
+/config/application.yml

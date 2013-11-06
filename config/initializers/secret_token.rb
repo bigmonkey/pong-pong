@@ -4,4 +4,4 @@
 # If you change this key, all old signed cookies will become invalid!
 # Make sure the secret is at least 30 characters and all random,
 # no regular words or you'll be exposed to dictionary attacks.
-Pdh::Application.config.secret_token = 'ae65f0cde7f906689feb4a1cc9ca278fb16c39f05aa08bbdf9c6e7bc827ea4951dd1489024853bfe35bf0037e9cfc231710c07968a75aef8c13ae845093e8e33'
+Pdh::Application.config.secret_token = ENV['COOKIE_SECRET_TOKEN']
