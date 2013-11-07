@@ -15,13 +15,13 @@ class TermLoansController < ApplicationController
       # categorize kw's into loans or lenders. copy is different for the two
       # copy assyme kw's are plural, i.e. loanS and lenderS
       # add kw's to routing
-      loans = ["installment loans", 
-              "short term installment loans",
+      loans = ["installment loans",   #customized in index
+              "short term installment loans",   #customized in index
               "installment loans online"]
-      lenders = ["online installment loan direct lenders",
-              "installment loan lenders",
-              "bad credit installment loan direct lenders",
-              "direct installment loan lenders"]        
+      lenders = ["online installment loan direct lenders",  #customized in index
+              "installment loan lenders", 
+              "bad credit installment loan direct lenders",  #customized in index
+              "direct installment loan lenders"]  #customized in index
       case @keyWord
         when *loans
           @keyWordType = "loans"

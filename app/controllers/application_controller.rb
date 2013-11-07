@@ -58,5 +58,37 @@ class ApplicationController < ActionController::Base
     @max_prepaid_duration = 48 #length of ownership
 
   end
-   
+
+  def set_seo_vars(src)
+      # for customizing articles for SEO
+      
+      if src == "index"
+        @selectorPath =  request.fullpath[0..-1] #used for linking takes whole string
+      else
+        @selectorPath =  request.fullpath[0..-4] #used for linking drops state abbr
+      end    
+      @keyWord = @selectorPath.gsub('-',' ')[1..-1] #pulls out kw from url and drop first slash
+      # categorize kw's into loans or lenders. copy is different for the two
+      # copy assyme kw's are plural, i.e. loanS and lenderS
+      # add kw's to routing
+      loans = ["payday loans",  # customized in index
+              "direct lender payday loans", #customized in index
+              "online payday loans",
+              "payday loans online"]
+      lenders = ["payday loan direct lenders",  #customized in index
+              "direct payday lenders online", #customized in index
+              "payday lenders",
+              "direct lenders for payday loans",
+              "direct online payday lenders"]        
+      case @keyWord
+        when *loans
+          @keyWordType = "loans"
+        when *lenders  
+          @keyWordType = "lenders"
+        else #if something is routed but mistakenly not added to kw list above
+          @keyWordType = "loans"
+          @keyWord = "payday loans"  
+      end   
+  end
+
 end
