@@ -14,6 +14,7 @@ class TermLoansController < ApplicationController
       @keyWord = @selectorPath.gsub('-',' ')[1..-1] #pulls out kw from url and drop first slash
       # categorize kw's into loans or lenders. copy is different for the two
       # copy assyme kw's are plural, i.e. loanS and lenderS
+      # add kw's to routing
       loans = ["installment loans", 
               "short term installment loans",
               "installment loans online"]
@@ -47,7 +48,7 @@ class TermLoansController < ApplicationController
 	def show
 		# is it random or coming from index or paydayfinder
 		if State.find_by_state_abbr(params[:id].upcase).nil?
-			redirect_to term_loans_path
+			redirect_to("/installment-loans/")
 		else	
 			@criteria = TermLoan.new    #@criteria gets used on view
 			@criteria.sniff_id = !params[:sniff_id].nil? ? params[:sniff_id] : 3

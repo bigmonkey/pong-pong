@@ -2,7 +2,7 @@
 <% content_for :seotags do %>
 <% # Make sure search query is 43 characters or less for title tag and 55 characters or less for description %> 
 <title>Compare <%= @keyWord.titleize %> | The Payday Hound</title>
-<meta name="description" content="Compare <%=@keyWord.titleize %>. Search for the lowest fees and apply direct. Get the best rates at The Payday Hound."/>
+<meta name="description" content="Compare <%=@keyWord %>. Search for the lowest fees. Apply direct. Get the best rates at The Payday Hound."/>
 <% end %>
 
 <div id="wrapper">
@@ -25,7 +25,7 @@
 
 	 	<%= render 'shared/state_selector' %>   	
 
-	 	<h2>What are <%= @keyWord.titleize %></h2>
+	 	<h2>What Are <%= @keyWord.titleize %></h2>
 
 		<p>
 		<% # add in custom content for loan kw. the default is installment loans %>	
@@ -40,7 +40,8 @@
 	 	<% 		end %>
 	 	</p>
 		<p>Traditionally, installment loans are loans paid back over multiple periods with a set payment amount. The payment amount for these loans is calculated based on the interest rate, payment periods, and loan amount. The borrower then makes a set payment at every period. Each payment consists of interest and principal. Once the borrower has completed all payments the entire loan is paid off. Fixed mortgages, auto loans, and student loans are examples of installment loans.
-		<h2>Secured or Unsecured</h2> 
+
+		<h2>Secured Or Unsecured</h2> 
 		<p>There are two types of installment loans: secured and unsecured. Secured loans have collateral so, if the borrower fails to re-pay the loan, the lender can seize the collateral. Secured loans are generally cheaper than unsecured loans. Mortgages and auto loans are examples of secured loans</p>
 		<p>Unsecured loans are loans that have no collateral. 
 		<% # add in custom content for loan kw. the default is installment loans %>	
@@ -55,6 +56,7 @@
 	 	<% 		end %>
 	 
 		With unsecured loans if the borrower fails to re-pay the lender often has no recourse to recover their funds. When a lender makes an unsecured loan the lending decision is highly dependent on evaluating the ability of the borrow to repay the loan. To make these loans lenders general rely on credit history and income to estimate the propensity of the borrow to repay. Personal loans made by banks are examples of unsecured installment loans.</p>
+
 		<h2>Paycheck Installment Loans</h2>
 		<p> 
 		<% # add in custom content for loan kw. the default is installment loans %>	
@@ -96,7 +98,7 @@
 	 	<%= @keyWord.humanize %> offer quick, simple, unsecured loans that do not require good credit. The fees for these loans are often very high so borrowers should only consider taking these loans as a last resort. The advantage of these loans is installment loan lenders are willing to make loans to individuals with poor credit.
 	 	<% 		end %>
 	 	</p>
-	 	<p><%= @keyWord.humanize %> make actual loans. They differ from other companies who provide matching services because <%= @keyWord %> actually underwrite and lend money. Sites that provide matching services pass your information on to direct lenders who then make loans. One can distinguish direct lenders from matching services by looking at the fine print of most websites. Matching services will say something like, "the operator of this website is NOT A LENDER."</p>
+	 	<p><%= @keyWord.humanize %> make actual loans. They differ from other companies who provide matching services because <%= @keyWord %> actually underwrite and lend money. Sites that provide matching services pass your information on to direct lenders who then make loans. One can distinguish direct lenders from matching services by looking at the fine print of most websites. Matching services will say something like, "the operator of this website is NOT A LENDER." Direct lenders will not include this disclaimer.</p>
 	 	<h2>Direct Lenders Versus Matching Service</h2>
 	 	<p>The advantage of a matching service is that only one application is required to apply to multiple lenders. This can save a lot of time and effort as applications can take anywhere from 5 to 15 minutes to complete. The downside to matching services is you are unable to pick the lenders to whom you are applying. This often means the lenders with whom you are matched include unlicensed lenders as well as licensed lenders. The Payday Hound generally sees nothing wrong with a matching service as it can be more convenient but we do strongly prefer licensed lenders to unlicensed lenders. This means if you use a matching service, once you are offered a loan, make sure to evaluate your lender to decide if they are licensed or not. For more information see <a href = "http://www.thepaydayhound.com/payday-direct/">Direct Lenders versus Matching Service</a></p>
 

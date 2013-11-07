@@ -38,13 +38,12 @@ Pdh::Application.routes.draw do
   resources :prepaids, :path => "prepaid-cards", :only => [:index, :show]
   resources :homes, :only => :index
   resources :payday_loans, :path => "payday-loans", :only => [:index, :show]
-
+  resources :term_loans,:path => "installment-loans", :only => [:index, :show]
   resources :payday_loan_laws, :path => "payday-loan-laws", :only => [:index, :show]
   resources :partners, :only => [ :index, :show ]
 
 
   # Term Loan URL's based on Nov 3, 2013 SEO analysis
-  resources :term_loans,:path => "installment-loans", :only => [:index, :show]
   resources :term_loans,:path => "short-term-installment-loans", :only => [:index, :show]
   resources :term_loans,:path => "installment-loans-online", :only => [:index, :show]
   resources :term_loans,:path => "online-installment-loan-direct-lenders", :only => [:index, :show]
@@ -52,6 +51,15 @@ Pdh::Application.routes.draw do
   resources :term_loans,:path => "bad-credit-installment-loan-direct-lenders", :only => [:index, :show]
   resources :term_loans,:path => "direct-installment-loan-lenders", :only => [:index, :show]
 
+  # Payday Loan URL's based on Nov 3, 2013 SEO analysis
+  resources :payday_loans,:path => "online-payday-loans", :only => [:index, :show]
+  resources :payday_loans,:path => "payday-loans-online", :only => [:index, :show]
+  resources :payday_loans,:path => "direct-lender-payday-loans", :only => [:index, :show]
+  resources :payday_loans,:path => "payday-loan-direct-lenders", :only => [:index, :show]
+  resources :payday_loans,:path => "direct-payday-lenders-online", :only => [:index, :show]
+  resources :payday_loans,:path => "payday-lenders", :only => [:index, :show]
+  resources :payday_loans,:path => "direct-lenders-for-payday-loans", :only => [:index, :show]
+  resources :payday_loans,:path => "direct-online-payday-lenders", :only => [:index, :show]
 
 
   # Redirect old URLS to new URL's. Use redirect_to hardcard b/c of nginx/heroku/wordpress set up
