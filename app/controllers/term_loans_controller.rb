@@ -3,36 +3,6 @@ class TermLoansController < ApplicationController
   
   before_filter :set_tracking
   
-  def set_seo_vars(src)
-      # for customizing articles for SEO
-      
-      if src == "index"
-        @selectorPath =  request.fullpath[0..-1] #used for linking takes whole string
-      else
-        @selectorPath =  request.fullpath[0..-4] #used for linking drops state abbr
-      end    
-      @keyWord = @selectorPath.gsub('-',' ')[1..-1] #pulls out kw from url and drop first slash
-      # categorize kw's into loans or lenders. copy is different for the two
-      # copy assyme kw's are plural, i.e. loanS and lenderS
-      # add kw's to routing
-      loans = ["installment loans",   #customized in index
-              "short term installment loans",   #customized in index
-              "installment loans online"]
-      lenders = ["online installment loan direct lenders",  #customized in index
-              "installment loan lenders", 
-              "bad credit installment loan direct lenders",  #customized in index
-              "direct installment loan lenders"]  #customized in index
-      case @keyWord
-        when *loans
-          @keyWordType = "loans"
-        when *lenders  
-          @keyWordType = "lenders"
-        else #if something is routed but mistakenly not added to kw list above
-          @keyWordType = "loans"
-          @keyWord = "installment loans"  
-      end   
-  end
-
 
   def index
   	@states=State.all
@@ -41,7 +11,7 @@ class TermLoansController < ApplicationController
 		@criteria.sniff_id = 3
    	@criteria.ranking = 0	
 
-    set_seo_vars("index")
+    set_seo_vars("index", "term")
     
   end
 
@@ -54,7 +24,7 @@ class TermLoansController < ApplicationController
 			@criteria.sniff_id = !params[:sniff_id].nil? ? params[:sniff_id] : 3
    		@criteria.ranking = !params[:ranking].nil?	? params[:ranking] : 1
     	
-      set_seo_vars("state")
+      set_seo_vars("state", "term")
 
     	@state = State.find_by_state_abbr(params[:id].upcase)
     	@paydaylawstate = @state.payday_loan_law

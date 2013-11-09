@@ -46,18 +46,24 @@ Pdh::Application.routes.draw do
   # Term Loan URL's based on Nov 3, 2013 SEO analysis
   resources :term_loans,:path => "short-term-installment-loans", :only => [:index, :show]
   resources :term_loans,:path => "installment-loans-online", :only => [:index, :show]
+  resources :term_loans,:path => "bad-credit-installment-loans", :only => [:index, :show]
+
   resources :term_loans,:path => "online-installment-loan-direct-lenders", :only => [:index, :show]
   resources :term_loans,:path => "installment-loan-lenders", :only => [:index, :show]
   resources :term_loans,:path => "bad-credit-installment-loan-direct-lenders", :only => [:index, :show]
   resources :term_loans,:path => "direct-installment-loan-lenders", :only => [:index, :show]
 
   # Payday Loan URL's based on Nov 3, 2013 SEO analysis
+  resources :payday_loans,:path => "direct-lender-payday-loans", :only => [:index, :show]
   resources :payday_loans,:path => "online-payday-loans", :only => [:index, :show]
   resources :payday_loans,:path => "payday-loans-online", :only => [:index, :show]
-  resources :payday_loans,:path => "direct-lender-payday-loans", :only => [:index, :show]
+  resources :payday_loans,:path => "payday-advances", :only => [:index, :show]
+  resources :payday_loans,:path => "online-cash-advances", :only => [:index, :show]
+
   resources :payday_loans,:path => "payday-loan-direct-lenders", :only => [:index, :show]
   resources :payday_loans,:path => "direct-payday-lenders-online", :only => [:index, :show]
   resources :payday_loans,:path => "payday-lenders", :only => [:index, :show]
+  resources :payday_loans,:path => "online-payday-lenders", :only => [:index, :show]
   resources :payday_loans,:path => "direct-lenders-for-payday-loans", :only => [:index, :show]
   resources :payday_loans,:path => "direct-online-payday-lenders", :only => [:index, :show]
 

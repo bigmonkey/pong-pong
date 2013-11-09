@@ -69,5 +69,10 @@ FactoryGirl.define do
 		sequence(:live) { |n| TRUE }
 		sequence(:review_url) { |n| "card-url-#{n}" }
 	end		
+
+	factory :sniff do
+		sequence(:sniff_desc) { |n| "des#{n}" }
+	end	
+
 end
 

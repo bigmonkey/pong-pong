@@ -1,3 +1,13 @@
+<%
+# This page is is broken into two main sections: loans and lenders
+# Each section has a link refering back to the other using the kws: 
+# payday loans or payday loan lenders
+# These copy for these two kw's also include a section that links
+# to all other related kw's, i.e. payday loans or payday lenders.
+# The copy is varied based on the kw that are found in the application controller
+%>
+
+
 <% # title and description for seo %>
 <% content_for :seotags do %>
 <% # Make sure search query is 43 characters or less for title tag and 52 characters or less for description. Target is 70 for title and 155 for description. %> 
@@ -27,19 +37,25 @@
 	 	Payday loans are quick, easy loans that can get cash into your bank account overnight. They do not require good credit or collateral but when compared to other options they can be very expensive. If banks, credit cards, friends, or family are an option getting cash from them is generally cheaper. Payday loans are best used for emergency, short-term cash situations and when full repayment can be done with the next paycheck. 
 	 	<%		when "direct lender payday loans" %>
 	 	Direct lender payday loans can provide quick cash even if you have bad credit. These loans do not require collateral or credit history so getting cash can be quite easy but the cost for this cash can be expensive. Be sure to try other options such as banks, credit unions, friends, and family before taking out direct lender payday loans. These loans generally only make economic sense if there are no other options and the expense is unavoidable, short-term, and one-off.
+	 	<%		when "payday advances", "cash advances online" %>
+	 	<%= @keyWord.humanize %> are quick loans that can get cash into your checking account as soon as the next day. <%= @keyWord.humanize %> are also known as payday loans. These loans are a very expensive form of borrowing and should be used cautiously. Other options such as credit unions, friends, banks, and family should be exhausted before considering a payday advance. The advantage of <%= @keyWord %> or payday loans is that these loans do not require collateral or credit history so getting cash can be quite easy.
 	 	<% 		else # other keywords default paragraph %>
 		<%= @keyWord.humanize %> are quick, simple loans that can get you cash very quickly and do not require good credit. These loans are very expensive when compared to other options such as banks, credit cards, friends, and family so be sure to exhaust other options before considering a payday loan. <%= @keyWord.humanize %> are best used for emergency expenses that are unavoidable such as a necessary car repair or urgent medical care and where repayment from the next paycheck is feasible.
 	 	<% 		end %>
 	 	</p>
-
 
 		<%= render 'shared/state_selector' %>
 
 		<h2>What Are <%= @keyWord.titleize %></h2>		
 		<p><%= @keyWord.humanize %> are loans based on your pay check. The typical process is once approved for a loan the payday lender will deposit funds directly into your checking account. At your next pay date the lender will automatically deduct the principal and fees from your checking account. These fees range from around $9 to $30 per $100 borrowed. So if you get $300 deposited into your checking account, on your next payday $327 to $390 will be automatically deducted from your account depending on the fee for your particular loan. If the full deduction can be made then the loan is paid in full and you are done. If you are unable to make this full payment some payday lenders allow you to renew the loan. The externsion is at the same rate and you will pay fees on the unpaid fees from the previous loan. This means at your next payday (now the second payday since you took the loan) $356 to $507 will be automatically deducted from your account. As you can see the fees add up fast and one can end up owing in fees way more than the original loan so please be careful with these loans. If you think you will be unable to pay the loan off in one or two pay periods an <%= link_to 'installment loan', '/installment-loans/' %> may be a better option. </p>
 
+		<% if @keyWord == "payday loans"  %>
+			<p>These online payday loans are also referred to as <%= @loan_kws.to_sentence.html_safe %>.</p>		
+		<% end %>
+		
+
 		<h2>Why Are <%= @keyWord.titleize %> So Expensive</h2>
-		<p>Payday loans are unsecured loans and not based on credit history. Traditionally, lenders make loans based on a person's credit history and also take collateral. This helps lenders predict the likelikhood of being repaid and in the event of not being repaid they can seize the collateral to cover the loan. <%= @keyWord.humanize %> have neither security nor credit history. This makes them fairly risky loans for lenders so they charge more to cover the loans for people that do not pay back their loans. In addition, there is adverse selection. This means individuals who do have credit history and collateral are taking other loans so people applying for payday loans are already, on average, high risk. So one of the reasons <%= @keyword %> are expensive is the nature of the loan. Another reason payday loans are expensive is the lack of consistent regulations, enforcement, and tranparency. This is why pricing varies so much. The market is very inefficient. See <%= link_to 'Payday Loans Too Taboo To Touch', "http://www.thepaydayhound.com/payday-loans-too-taboo-to-touch/" %> for more information on improving the payday lending space. Regardless of why payday loans are expensive users should approach them with caution. </p>
+		<p><%= @keyWord.humanize %> are generally unsecured loans and not based on credit history. Traditionally, when lenders make loans they evaluate person's credit history and also take collateral. This helps lenders predict the likelikhood of being repaid and in the event of not being repaid they can seize the collateral to cover the loan. <%= @keyWord.humanize %> have neither security nor credit history. This makes them fairly risky loans for lenders so they charge more to cover the loans for people that do not pay back their loans. In addition, there is adverse selection. This means individuals who do have credit history and collateral are taking other types of loans so people applying for payday loans are already, on average, high risk. So one of the reasons <%= @keyword %> are expensive is the nature of the loan. Another reason payday loans are expensive is the lack of consistent regulation, enforcement, and tranparency. This is why pricing varies so much. The market is very inefficient. See <%= link_to 'Payday Loans Too Taboo To Touch', "http://www.thepaydayhound.com/payday-loans-too-taboo-to-touch/" %> for more information on improving the payday lending space. Finally, these types of loans can be very expensive because some lenders take advantage of the emergency nature of loan and charge very high rates. Regardless of why payday loans are expensive users should approach them with caution. </p>
 		<h2>Avoid a Vicious Debt Cycle</h2>
 		<p><%= @keyWord.humanize %> are a very expensive form of borrowing. As described above, if one is unable to pay off the loan at the next payday, costs can quickly spiral out of control. This what people mean when they refer to a debt cycle. One starts off in a bind with a small amount of debt but within weeks the debt quickly escalates into an unimaginable amount. For this reason The Payday Hound believe payday loans should only be used for emergency situations. This means one should almost never take out a payday loan but if they do it shoudl be at most taking 1 or 2 times a year. See <%= link_to "Don't Use A Payday Loan for Summer Vacation Cash", "http://www.thepaydayhound.com/payday-loan-vacation-cash/" %> to determine if there are other options to taking a payday loan.</p>
 		<h2>How <%= @keyWord.titleize %> Work</h2>
@@ -47,7 +63,7 @@
 		<h2>Installment Loans Versus Payday Loans</h2>
 		<p>The difference between installment loans and payday loans is that installment loan payments are spread out over time. This reduces the amount of individual payments and your APR for an installment loan but the total amount of fees paid increases a well. See <a href = "/payday-loan-or-installment-loan/")>Payday Loans or Installment Loans</a> for more information. Many consumers prefer installment loans because paying the entire loan at your next pay period, as payday loans require, is often too difficult or impossible and renewing payday loans becomes extremely expensive.<p>
 		<h2>Payday Loan Lenders</h2>
-		<p>Companies offering payday loans vary greatly from those matching services to direct lenders, and from state licensed lenders to fly-by-night lenders. There are numerous stories in the press of individuals being taken advantage of by unscrupulous payday lenders. The Payday Hound strongly prefers using established state licensed lenders. See <%= link_to 'Payday Loan Lenders', '/payday-lenders/' %> to learn more about lenders.</p>		
+		<p>Companies offering payday loans vary greatly from those matching services to direct lenders, and from state licensed lenders to fly-by-night lenders. There are numerous stories in the press of individuals being taken advantage of by unscrupulous payday lenders. The Payday Hound strongly prefers using established state licensed lenders. See <%= link_to 'Payday Lenders', '/payday-lenders/' %> to learn more about lenders.</p>		
 		
 	<% 		when "lenders" %>
 		<p>
@@ -67,6 +83,10 @@
 		<h2>Who Are <%= @keyWord.titleize %> </h2>
 		<p><%= @keyWord.humanize %> make actual loans. As a direct lender they differ from other companies who provide matching services because <%= @keyWord %> actually underwrite and lend money. Many sites will advertise payday loans, and even take an application, but they are not lenders. Instead, they are actually matching services. These sites sell your information on to <%= @keyWord %> who then make loans. In some cases direct lenders may pass your information along if they are unable to make a loan to you. One can distinguish direct lenders from matching services by looking at the fine print of most websites. Matching services will say something like, "the operator of this website is NOT A LENDER." Direct lenders will not include this disclaimer. </p>
 		
+		<% if @keyWord == "payday lenders"  %>
+			<p>These online payday lenders are also referred to as <%= @lender_kws.to_sentence.html_safe %>.</p>		
+		<% end %>		
+
 		<h2>Direct Lenders Versus Matching Service</h2>
 		<p>The main advantage of using a matching service is that only one application is required to apply to multiple lenders. This can save a lot of time and effort as applications can take anywhere from 5 to 15 minutes to complete. The downside to matching services is you are unable to pick the lenders to whom you are applying and you expose yourself to having your data sold to unknown entites. In the first situation, being unable to chose your lenders, this often means the lenders with whom you are matched include unlicensed lenders as well as licensed lenders. The Payday Hound strongly prefers licensed lenders to unlicensed lenders. This means if you use a matching service, once you are offered a loan, make sure to evaluate your lender to decide if they are licensed or not. In the second situation, exposing your data to multiple entites, when you agree to the matching service's terms you permit them to sell you information to third parties. This information includes your personal data including bank account data. In most cased the buyers are other lenders but there may be buyers with unscrupulous practices as well. An article on the <%= link_to 'NPR blog', 'http://www.npr.org/blogs/money/2013/11/06/242351534/i-applied-for-an-online-payday-loan-heres-what-happened-next' %> recounts a story where after applying to a matching service (with fake data) the author received calls months later from possible lenders. The Payday Hound generally does not see anything wrong with a matching service in concept but one should be aware what they are agreeing to when they use one of these services. For more information see <a href = "http://www.thepaydayhound.com/payday-direct/">Direct Lenders versus Matching Service</a></p>
 		<h2>Licensed Lenders</h2>

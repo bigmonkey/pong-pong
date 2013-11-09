@@ -14,6 +14,7 @@ describe "Prepaid Pages" do
         num_cards.times { FactoryGirl.create(:prepaid) }
         Prepaid.live.size.should eq(num_cards)
         visit prepaids_path 
+        #puts page.body
     }
     # prepaid-cards routing
     it { should have_selector('h1', text: 'Prepaid Cards') }
