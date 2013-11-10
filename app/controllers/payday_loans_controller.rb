@@ -13,7 +13,7 @@ class PaydayLoansController < ApplicationController
    	@criteria.ranking = 0
 
     # for customizing articles for SEO
-    set_seo_vars("index", "payday")
+    set_seo_vars
 
 
     @page = "0013" #sets page for tracking to 'payday-loans-main'
@@ -29,7 +29,7 @@ class PaydayLoansController < ApplicationController
    		@criteria.ranking = !params[:ranking].nil? ? params[:ranking]	: 1	
 
       # for customizing articles for SEO
-      set_seo_vars("state", "payday")
+      set_seo_vars
 
     	@state = State.find_by_state_abbr(params[:id].upcase)
     	@paydaylawstate = @state.payday_loan_law

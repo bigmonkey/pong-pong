@@ -20,6 +20,10 @@
 
 	<section id = "mainContent">
 		<h1><%= "#{@state.state}" %></br><%= @keyWord.titleize %></h1>
+
+		<p><%= @selectorPath %></p>
+
+
 		<div>
 			<% case @paydaylawstate.legal_status_summary %>
 			<% when "Legal" %>

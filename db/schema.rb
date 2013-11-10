@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130610015038) do
+ActiveRecord::Schema.define(:version => 20131110033241) do
 
   create_table "applicants", :force => true do |t|
     t.string   "token"
@@ -84,6 +84,18 @@ ActiveRecord::Schema.define(:version => 20130610015038) do
     t.text     "error_description"
     t.datetime "created_at",                                                              :null => false
     t.datetime "updated_at",                                                              :null => false
+  end
+
+  create_table "keywords", :force => true do |t|
+    t.string "word"
+    t.string "meta_title_phrase"
+    t.string "slug"
+    t.string "category"
+    t.text   "article"
+    t.string "parent_page"
+    t.string "controller"
+    t.string "created_at",        :null => false
+    t.string "updated_at",        :null => false
   end
 
   create_table "lenders", :force => true do |t|

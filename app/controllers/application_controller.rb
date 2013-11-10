@@ -75,84 +75,80 @@ class ApplicationController < ActionController::Base
       # and installment loan lenders
       # The kw's are listed here for SEO. This is how they enter the site tree
       
-      @loan_kws = [ 
-            # Term loan terms
-              "installment loans",   #customized in index
-              "short term installment loans",   #customized in index
-              "installment loans online",
-              "bad credit installment loans",
+#      @loan_kws = [ 
+#            # Term loan terms
+#              "installment loans",   #customized in index
+#              "short term installment loans",   #customized in index
+#              "installment loans online",
+#              "bad credit installment loans",#
 
-            # Payday loans terms
-              "payday loans",  # customized in index
-              "direct lender payday loans", #customized in index
-              "online payday loans",
-              "pay day loans online",
-              "payday advances", #customized
-              "online cash advances" #customized
-              ]
+#            # Payday loans terms
+#              "payday loans",  # customized in index
+#              "direct lender payday loans", #customized in index
+#              "online payday loans",
+#              "pay day loans online",
+#              "payday advances", #customized
+#              "online cash advances" #customized
+#              ]#
 
-      @lender_kws = [
-            # Term lenders terms
-              "online installment loan direct lenders",  #customized in index
-              "installment loan lenders", 
-              "bad credit installment loan direct lenders",  #customized in index
-              "direct installment loan lenders",
+#      @lender_kws = [
+#            # Term lenders terms
+#              "online installment loan direct lenders",  #customized in index
+#              "installment loan lenders", 
+#              "bad credit installment loan direct lenders",  #customized in index
+#              "direct installment loan lenders",#
 
-            # Payday lenders terms
-              "payday loan direct lenders",  #customized in index
-              "direct payday lenders online", #customized in index
-              "payday lenders",
-              "online payday lenders",
-              "direct lenders for payday loans",
-              "direct online payday lenders"]  #customized in index
+#            # Payday lenders terms
+#              "payday loan direct lenders",  #customized in index
+#              "direct payday lenders online", #customized in index
+#              "payday lenders",
+#              "online payday lenders",
+#              "direct lenders for payday loans",
+#              "direct online payday lenders"]  #customized in index
   end
   
-  def set_seo_vars(src, srcType)
+  def set_seo_vars
       # for customizing articles for SEO
       
-      if src == "index"
-        @selectorPath =  request.fullpath[0..-1] #used for linking takes whole string
-      else
-        @selectorPath =  request.fullpath[0..-4] #used for linking drops state abbr
-      end    
-      @keyWord = @selectorPath.gsub('-',' ')[1..-1] #pulls out kw from url and drop first slash
+      kw = Keyword.find_by_slug(request.fullpath.split(/\//)[1])
+      @selector_path = "/"+kw.slug
+      @keyWord = kw.word 
+      @keyWordType = kw.category
+      related_keywords = Keyword.where(:parent_page => kw.parent_page).pluck(:word) - [].push(kw.word)
+      @related_kw_links = []
+      related_keywords.each do |word|
+        @related_kw_links.push("<a href = \"/#{word.gsub(' ','-')}\">#{word}</a>")
+      end  
+#binding.pry
 
-      get_kws  
-
+      #get_kws
+      
       # categorizes kw's into loans or lenders. copy is different for the two
       # copy assumes kw's are plural, i.e. loanS and lenderS
       # add kw's to routing, routing directs to term or payday controller
-      case @keyWord
-        when *@loan_kws
-          @keyWordType = "loans"
-        when *@lender_kws  
-          @keyWordType = "lenders"
-        else #if something is routed but mistakenly not added to kw list above
-          @keyWordType = "loans"
-          @keyWord = (srcType == "term" ? "installment loans" : "payday loans")  
-      end   
+
 
       # Remove installment loan terms from list for payday loans and vice versa. The
       # same is done for lenders.
       # Pared down list is used in index.html to list other search terms for the main
       # kw's: payday loans, payday lenders, installment loans, and installment lenders
-      filter = srcType == "term" ? "installment" : "payday"  #filter to remove payday or installment terms
+      # filter = srcType == "term" ? "installment" : "payday"  #filter to remove payday or installment terms
 
       # create pared down list for loans
-      hold=[] 
-      @loan_kws = @loan_kws - ["installment loans", "payday loans"] #pulls out the main terms, the list is used on these pages only
-      @loan_kws.each do |kw|
-        hold.push("<a href= \"/#{kw.gsub(' ','-')}\">#{kw}</a>") if kw.include? filter #creates link from each remaining term
-      end  
-      @loan_kws = hold
+      #hold=[] 
+      #@loan_kws = @loan_kws - ["installment loans", "payday loans"] #pulls out the main terms, the list is used on these pages only
+      #@loan_kws.each do |kw|
+      #  hold.push("<a href= \"/#{kw.gsub(' ','-')}\">#{kw}</a>") if kw.include? filter #creates link from each remaining term
+      #end  
+      #@loan_kws = hold
 
       #creates pared list for lenders
-      hold=[] 
-      @lender_kws = @lender_kws - ["installment loan lenders", "payday lenders"] #pulls out the main terms, the list is used on these pages only
-      @lender_kws.each do |kw|
-        hold.push("<a href= \"/#{kw.gsub(' ','-')}\">#{kw}</a>") if kw.include? filter #creates link from each remaining term
-      end  
-      @lender_kws = hold
+      #hold=[] 
+      #@lender_kws = @lender_kws - ["installment loan lenders", "payday lenders"] #pulls out the main terms, the list is used on these pages only
+      #@lender_kws.each do |kw|
+      #  hold.push("<a href= \"/#{kw.gsub(' ','-')}\">#{kw}</a>") if kw.include? filter #creates link from each remaining term
+      #end  
+      #@lender_kws = hold
 
   end
 

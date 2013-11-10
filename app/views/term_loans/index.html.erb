@@ -83,7 +83,7 @@
 
 
 		<% if @keyWord == "installment loans"  %>
-			<p>These paycheck installment loans also referred to as <%= @loan_kws.to_sentence.html_safe %>.</p>
+			<p>These paycheck installment loans also referred to as <%= @related_kw_links.to_sentence.html_safe %>.</p>
 		<% end %>
 
 
@@ -119,7 +119,7 @@
 	 	<p><%= @keyWord.humanize %> make actual loans. They differ from other companies who provide matching services because <%= @keyWord %> actually underwrite and lend money. Sites that provide matching services pass your information on to direct lenders who then make loans. One can distinguish direct lenders from matching services by looking at the fine print of most websites. Matching services will say something like, "the operator of this website is NOT A LENDER." Direct lenders will not include this disclaimer.</p>
 
 		<% if @keyWord == "installment loan lenders"  %>
-			<p>These online installment lenders are also referred to as <%= @lender_kws.to_sentence.html_safe %>.</p>		
+			<p>These online installment lenders are also referred to as <%= @related_keywords.to_sentence.html_safe %>.</p>		
 		<% end %>
 
 	 	<h2>Direct Lenders Versus Matching Service</h2>
