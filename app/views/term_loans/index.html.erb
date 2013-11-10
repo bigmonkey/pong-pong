@@ -30,7 +30,9 @@
 	<% case @keyword.category %>
 	<% 		when "custom" %>
 
- 	<%= render 'shared/state_selector' %>   	
+		<%= @keyword.article.html_safe %>
+
+		<%= render 'shared/state_selector' %>
 
 
 	<%		when "loans" %>

@@ -68,9 +68,23 @@ Pdh::Application.routes.draw do
   resources :payday_loans,:path => "direct-lenders-for-payday-loans", :only => [:index, :show]
   resources :payday_loans,:path => "direct-online-payday-lenders", :only => [:index, :show]
 
-  resources :payday_loans,:path => "borrow-money-options", :onlye => [:index, :show]
-  resources :payday_loans,:path => "ez-payday", :onlye => [:index, :show]  
-  resources :term_loans,:path => "fast-cash-loan", :onlye => [:index, :show]  
+  #URLS from previous blog
+  resources :payday_loans,:path => "borrow-money-options", :only => [:index, :show]
+  resources :payday_loans,:path => "ez-payday", :only => [:index, :show]  
+  resources :term_loans,:path => "fast-cash-loan", :only => [:index, :show]  
+  resources :term_loans,:path => "fast-loan", :only => [:index, :show] 
+  resources :payday_loans,:path => "instant-payday-loans", :only => [:index, :show]
+  resources :payday_loans,:path => "no-credit-check-payday-loans", :only => [:index, :show]  
+  resources :payday_loans,:path => "payday-loan-in-an-hour", :only => [:index, :show]
+  resources :payday_loans,:path => "quick-payday-loans", :only => [:index, :show]  
+  resources :term_loans,:path => "quik-cash-loans", :only => [:index, :show]  
+  resources :term_loans,:path => "quick-fast-loans", :only => [:index, :show] 
+  resources :payday_loans,:path => "no-faxing-payday", :only => [:index, :show]
+ 
+
+
+
+
   # Redirect old URLS to new URL's. Use redirect_to hardcard b/c of nginx/heroku/wordpress set up
   match "/prepaid-card/" => redirect("http://www.thepaydayhound.com/prepaid-cards/")
   match "/prepaid-card/:name/" => redirect("http://www.thepaydayhound.com/prepaid-cards/%{name}/")
