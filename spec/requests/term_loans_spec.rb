@@ -13,7 +13,8 @@ describe "Installment Loan Pages" do
     
     before { 
       3.times { FactoryGirl.create(:sniff) } 
-
+      FactoryGirl.create(:keyword)
+binding.pry
     	visit term_loans_path 
     }
     it_should_behave_like "all installment loan pages"

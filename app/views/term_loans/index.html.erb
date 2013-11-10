@@ -9,10 +9,10 @@
 
 <% # title and description for seo %>
 <% content_for :seotags do %>
-<% # Make sure search query is 43 characters or less for title tag and 55 characters or less for description %> 
-<title>Compare <%= @keyWord.titleize %> | The Payday Hound</title>
-<meta name="description" content="Compare <%=@keyWord %>. Search for the lowest fees. Apply direct. Get the best rates at The Payday Hound."/>
+<title><% if "Compare #{@keyword.phrase.titleize} | The Payday Hound".length < 70 %><%= "Compare #{@keyword.phrase.titleize} | The Payday Hound"%><% else %><%="Compare #{@keyword.phrase.titleize}" %><% end %></title>
+<meta name="description" content= "<%= "Compare #{@keyword.phrase}. Search for the lowest fees. Apply direct. Get the best rates at The Payday Hound." %>" />
 <% end %>
+
 
 <div id="wrapper">
 <aside id ="sidebarFinder">
@@ -25,26 +25,31 @@
 
 <section id="mainContent">
  
-	<h1><%= @keyWord.titleize %></h1>
+	<h1><%= @keyword.phrase.titleize %></h1>
 
-	<% case @keyWordType %>
+	<% case @keyword.category %>
+	<% 		when "custom" %>
+
+ 	<%= render 'shared/state_selector' %>   	
+
+
 	<%		when "loans" %>
 
-		<p><%= @keyWord.humanize %> are quick, simple, do not require good credit, and have lower payments than payday loans. <%= @keyWord.humanize %> are an expensive option so make sure you have considered other options such as bank loans, credit cards, or friends and family before taking one of these loans. They are best used for short-term, emergency funding only.</p>	
+		<p><%= @keyword.phrase.humanize %> are quick, simple, do not require good credit, and have lower payments than payday loans. <%= @keyword.phrase.humanize %> are an expensive option so make sure you have considered other options such as bank loans, credit cards, or friends and family before taking one of these loans. They are best used for short-term, emergency funding only.</p>	
 
 	 	<%= render 'shared/state_selector' %>   	
 
-	 	<h2>What Are <%= @keyWord.titleize %></h2>
+	 	<h2>What Are <%= @keyword.phrase.titleize %></h2>
 
 		<p>
 		<% # add in custom content for loan kw. the default is installment loans %>	
-	 	<% case @keyWord %>
+	 	<% case @keyword.phrase %>
 	 	<% 		when "installment loans"  %>
 	 	Installment loans are available to individuals with bad or no credit, typically unsecured, and linked to your pay date. This means it is generally easy to get one of these loans but the tradeoff of installment loans is they can be very expensive. They should generally not be used except to meet unavoidable emergency expense like utility bills or medical bills	 	
 	 	<%		when "short term installment loans" %>
 	 	Short term installment loans are a type of installment loan. These short term loans are generally unsecured loans, are not based on credit history, and are tied to your pay date. These loans can be very expensive and designed to cover emergency expenses that can't be avoided such as medical or utility bills.
 	 	<% 		else # other keywords default paragraph %>
-	 	<%= @keyWord.humanize %> are a type of installment loan. These loans are available to individuals with poor credit, generally unsecured, and tied to your pay date. This means they are very easy to qualify for but the tradeoff is the cost of these installment loans can be very high and are best used to meet unavoidable emergency expense like utility bills or medical bills.
+	 	<%= @keyword.phrase.humanize %> are a type of installment loan. These loans are available to individuals with poor credit, generally unsecured, and tied to your pay date. This means they are very easy to qualify for but the tradeoff is the cost of these installment loans can be very high and are best used to meet unavoidable emergency expense like utility bills or medical bills.
 	 	
 	 	<% 		end %>
 	 	</p>
@@ -54,13 +59,13 @@
 		<p>There are two types of installment loans: secured and unsecured. Secured loans have collateral so, if the borrower fails to re-pay the loan, the lender can seize the collateral. Secured loans are generally cheaper than unsecured loans. Mortgages and auto loans are examples of secured loans</p>
 		<p>Unsecured loans are loans that have no collateral. 
 		<% # add in custom content for loan kw. the default is installment loans %>	
-	 	<% case @keyWord %>
+	 	<% case @keyword.phrase %>
 	 	<%		when "installment loans"%>
 	 	The installment loans offered on this site are unsecured loans. This means no collateral is needed.
 	 	<%		when "short term installment loans" %>
 	 	Short term installment loans are generally unsecured loans meaning no collateral is required. 
 	 	<% 		else #{other keywords default paragraph %>
-	 	<%= @keyWord.humanize %> are generally this category of loans -- unsecured loans, so no collateral is required.
+	 	<%= @keyword.phrase.humanize %> are generally this category of loans -- unsecured loans, so no collateral is required.
 
 	 	<% 		end %>
 	 
@@ -69,43 +74,43 @@
 		<h2>Paycheck Installment Loans</h2>
 		<p> 
 		<% # add in custom content for loan kw. the default is installment loans %>	
-	 	<% case @keyWord %>
+	 	<% case @keyword.phrase %>
 	 	<%		when "installment loans" %>
 	 	Installment loans offered on this site are generally paycheck installment loans. This means that the payments for these loans often occur on your paydate. 
 	 	<%		when "short term installment loans" %>
 	 	Short term installment loans are paycheck installment loans. In other words short term installment loans are often tied to your pay date. 
 	 	<% 		else # default paragraph for other kw's %>
-	 	<%= @keyWord.humanize %> are a type of paycheck installment loans. This means your payments for these installment loans are linked to your paydate. 
+	 	<%= @keyword.phrase.humanize %> are a type of paycheck installment loans. This means your payments for these installment loans are linked to your paydate. 
 	 	
 	 	<% 		end %>
-		These loans do not consider your credit history and instead are based solely on the pay check. To increase the likelihood of being repaid most lenders offering <%= @keyWord %> require access to the account where you receive your paycheck so they can deduct your loans payments as soon as you are paid.</p>
-		<p>Companies offering paycheck <%= @keyWord %> have made these loans very attractive. These loans are quick, simple, do not require good credit, and have lower payments. Yet, users must approach these <%= @keyWord %> with caution as their fees do make them an expensive option so make sure you have considered other options such as bank loans, credit cards, or friends and family before taking one of these loans. <%= @keyWord %> are designed for short-term, emergency funding and are best used for this purpose.</p>	
+		These loans do not consider your credit history and instead are based solely on the pay check. To increase the likelihood of being repaid most lenders offering <%= @keyword.phrase %> require access to the account where you receive your paycheck so they can deduct your loans payments as soon as you are paid.</p>
+		<p>Companies offering paycheck <%= @keyword.phrase %> have made these loans very attractive. These loans are quick, simple, do not require good credit, and have lower payments. Yet, users must approach these <%= @keyword.phrase %> with caution as their fees do make them an expensive option so make sure you have considered other options such as bank loans, credit cards, or friends and family before taking one of these loans. <%= @keyword.phrase %> are designed for short-term, emergency funding and are best used for this purpose.</p>	
 
 
-		<% if @keyWord == "installment loans"  %>
+		<% if @keyword.phrase == "installment loans"  %>
 			<p>These paycheck installment loans also referred to as <%= @related_kw_links.to_sentence.html_safe %>.</p>
 		<% end %>
 
 
 
-		<h2>How <%= @keyWord.titleize %> Work</h2>
-		<p>If <%= @keyWord %> are right for you, the application process can take only 5 to 25 minutes. In general the lender will require that you are 18+ years old, are employed, and have direct deposit.  Money can be deposited into you account within one business day. This money is a loan and must be repaid in full. Payments are generally automatically deducted from your checking account on payday.</p> 
+		<h2>How <%= @keyword.phrase.titleize %> Work</h2>
+		<p>If <%= @keyword.phrase %> are right for you, the application process can take only 5 to 25 minutes. In general the lender will require that you are 18+ years old, are employed, and have direct deposit.  Money can be deposited into you account within one business day. This money is a loan and must be repaid in full. Payments are generally automatically deducted from your checking account on payday.</p> 
 		</p>When taking out installment loans, your lender will give you a payment plan. For example, $1,000 could have a repayment plan with a ~$125 payment every pay period (14 days) over the next 24 pay periods. In the end ~$1,000 costs ~$2,400. This is cheaper than what you would have to pay if you took out a payday loan for the same time-frame, but clearly not cheap so be careful to make sure you really need this loan.</p>
 
 		<h2>Licensed Versus Unlicensed Lenders</h2>
-		<p><%= @keyWord.humanize %> are regulated by both federal and state laws. State licensed lenders are regulated and monitored by the state so are more closely regulated than lenders not licensed by your state. Unlicensed lenders operate in states under the assumption they can export laws from their state or tribe (Indian Tribes are generally treated as federal entites) into other states. The validity of this assumption is unclear. The Payday Hound believes licensed lenders are a safer choice for borrowers and would avoid unlicensed lenders. For more information see <%= link_to "Payday Loan Laws", payday_loan_laws_path %> or <%= link_to "Installment Loan Lenders", "/installment-loan-lenders/" %></p>
+		<p><%= @keyword.phrase.humanize %> are regulated by both federal and state laws. State licensed lenders are regulated and monitored by the state so are more closely regulated than lenders not licensed by your state. Unlicensed lenders operate in states under the assumption they can export laws from their state or tribe (Indian Tribes are generally treated as federal entites) into other states. The validity of this assumption is unclear. The Payday Hound believes licensed lenders are a safer choice for borrowers and would avoid unlicensed lenders. For more information see <%= link_to "Payday Loan Laws", payday_loan_laws_path %> or <%= link_to "Installment Loan Lenders", "/installment-loan-lenders/" %></p>
 		<h2>Installment Loans Versus Payday Loans</h2>
 		<p>The difference between installment loans and payday loans is that payments are spread out over time. This reduces the amount of individual payments and your APR for an installment loan but the total amount of fees paid increases a well. See <a href = "/payday-loan-or-installment-loan/")>Payday Loans or Installment Loans</a> for more information. Many consumers prefer installment loans because paying the entire loan at your next pay period, as payday loans require, is often too difficult or impossible and renewing payday loans becomes extremely expensive.<p>
 
 	<% when "lenders" %>
-		<p><%= @keyWord.humanize %> make loans which are quick, simple, do not require good credit, and have lower payments than payday loans. These loans are an expensive option so make sure you have considered loans from other options such as banks, credit card companies, or friends and family before borrowing from <%= @keyWord %>. Loans from these lenders are best used for short-term, emergency funding only.</p>	
+		<p><%= @keyword.phrase.humanize %> make loans which are quick, simple, do not require good credit, and have lower payments than payday loans. These loans are an expensive option so make sure you have considered loans from other options such as banks, credit card companies, or friends and family before borrowing from <%= @keyword.phrase %>. Loans from these lenders are best used for short-term, emergency funding only.</p>	
 
 	 	<%= render 'shared/state_selector' %>   	
 
-	 	<h2>Who Are <%= @keyWord.titleize %></h2>
+	 	<h2>Who Are <%= @keyword.phrase.titleize %></h2>
 		<p>
 		<% # add in custom content for loan kw. the default is installment loans %>	
-	 	<% case @keyWord %>
+	 	<% case @keyword.phrase %>
 	 	<%		when "online installment loan direct lenders" %>
 	 	Online, installment, loan direct lenders make quick loans that do not require good credit. The downside of these loans is they are expensive so are best used for unavoidable emergency expenses only. The upside of online, installment loan lenders is they generally do not require collateral and can get cash to you very quickly.  
 	 	<% 		when "bad credit installment loan direct lenders" %>
@@ -113,27 +118,27 @@
 	 	<% 		when "direct installment loan lenders" %>
 	 	Direct installment loan lenders offer installment loans that are quick, simple, and do not require good credit. These loans can be expensive compared to traditional loans and are designed to be used for emergencies only. The advantage of using direct installment loan lenders is even users with bad credit can qualify for a loan.
 	 	<%		else # default paragraph %>
-	 	<%= @keyWord.humanize %> offer quick, simple, unsecured loans that do not require good credit. The fees for these loans are often very high so borrowers should only consider taking these loans as a last resort. The advantage of these loans is installment loan lenders are willing to make loans to individuals with poor credit.
+	 	<%= @keyword.phrase.humanize %> offer quick, simple, unsecured loans that do not require good credit. The fees for these loans are often very high so borrowers should only consider taking these loans as a last resort. The advantage of these loans is installment loan lenders are willing to make loans to individuals with poor credit.
 	 	<% 		end %>
 	 	</p>
-	 	<p><%= @keyWord.humanize %> make actual loans. They differ from other companies who provide matching services because <%= @keyWord %> actually underwrite and lend money. Sites that provide matching services pass your information on to direct lenders who then make loans. One can distinguish direct lenders from matching services by looking at the fine print of most websites. Matching services will say something like, "the operator of this website is NOT A LENDER." Direct lenders will not include this disclaimer.</p>
+	 	<p><%= @keyword.phrase.humanize %> make actual loans. They differ from other companies who provide matching services because <%= @keyword.phrase %> actually underwrite and lend money. Sites that provide matching services pass your information on to direct lenders who then make loans. One can distinguish direct lenders from matching services by looking at the fine print of most websites. Matching services will say something like, "the operator of this website is NOT A LENDER." Direct lenders will not include this disclaimer.</p>
 
-		<% if @keyWord == "installment loan lenders"  %>
-			<p>These online installment lenders are also referred to as <%= @related_keywords.to_sentence.html_safe %>.</p>		
+		<% if @keyword.phrase == "installment loan lenders"  %>
+			<p>These online installment lenders are also referred to as <%= @related_kw_links.to_sentence.html_safe %>.</p>		
 		<% end %>
 
 	 	<h2>Direct Lenders Versus Matching Service</h2>
 	 	<p>The advantage of a matching service is that only one application is required to apply to multiple lenders. This can save a lot of time and effort as applications can take anywhere from 5 to 15 minutes to complete. The downside to matching services is you are unable to pick the lenders to whom you are applying. This often means the lenders with whom you are matched include unlicensed lenders as well as licensed lenders. The Payday Hound generally sees nothing wrong with a matching service as it can be more convenient but we do strongly prefer licensed lenders to unlicensed lenders. This means if you use a matching service, once you are offered a loan, make sure to evaluate your lender to decide if they are licensed or not. For more information see <a href = "http://www.thepaydayhound.com/payday-direct/">Direct Lenders versus Matching Service</a></p>
 
 		<h2>Licensed Versus Unlicensed Installment Lenders</h2>
-		<p><%= @keyWord.humanize %> can be regulated by both federal and state laws. Federal regulations are generally less stringent and less enforced than state regulations. <%= @keyWord.humanize %> licensed in your state are regulated and monitored by your state so are more closely regulated than lenders not licensed by your state. To become state licensed lenders generally must apply, register, and remain compliant in every state in which they are licensed. Each state has a separate process so the licensing process can be very expensive and time consuming. As a result state licensed <%= @keyWord %> are generally not fly-by-night entities. Instead, they are usually larger more permenant companies.</p>
-		<p>Unlicensed <%= @keyWord %> operate in states under the assumption they can export laws from their state or tribe into other states. Tribes refers to formally recognized American Indian Tribes that are generally treated as separate federal entites and operate under their own laws. Tribal lenders were becoming very common with tribes partnering with financing partners. The tribes would contribute their legal status and the financing partner would provide the capital and operations. Recently, the position that tribes or states could export their laws into other states has been challenged. The result has been a slow down in the growth of tribal based <%= @keyWord %>. The Payday Hound believes this change is good for the industry as we believe licensed lenders are a safer choice for borrowers. For more information see <%= link_to "Payday Loan Laws", payday_loan_laws_path %></p>
+		<p><%= @keyword.phrase.humanize %> can be regulated by both federal and state laws. Federal regulations are generally less stringent and less enforced than state regulations. <%= @keyword.phrase.humanize %> licensed in your state are regulated and monitored by your state so are more closely regulated than lenders not licensed by your state. To become state licensed lenders generally must apply, register, and remain compliant in every state in which they are licensed. Each state has a separate process so the licensing process can be very expensive and time consuming. As a result state licensed <%= @keyword.phrase %> are generally not fly-by-night entities. Instead, they are usually larger more permenant companies.</p>
+		<p>Unlicensed <%= @keyword.phrase %> operate in states under the assumption they can export laws from their state or tribe into other states. Tribes refers to formally recognized American Indian Tribes that are generally treated as separate federal entites and operate under their own laws. Tribal lenders were becoming very common with tribes partnering with financing partners. The tribes would contribute their legal status and the financing partner would provide the capital and operations. Recently, the position that tribes or states could export their laws into other states has been challenged. The result has been a slow down in the growth of tribal based <%= @keyword.phrase %>. The Payday Hound believes this change is good for the industry as we believe licensed lenders are a safer choice for borrowers. For more information see <%= link_to "Payday Loan Laws", payday_loan_laws_path %></p>
 
 
 	 	<h2>What Are Installment Loans</h2>
-		<p>Installment loans are paid back over multiple periods with a set payment amount. <%= @keyWord.humanize %> calculate the payment amount based on the interest rate, payment periods, and loan amount. The borrower then makes this set payment at every period. Each payment consists of interest and principal. Once the borrower has completed all payments the entire loan is paid off.</p>
-		<p><%= @keyWord.humanize %> generally make two types of installment loans: secured and unsecured. Secured loans have collateral so the lender can seize the collateral if loans go unpaid. Secured loans are generally cheaper than unsecured loans. Unsecured loans are loans that have no collateral. 
-	 	<% case @keyWord %>
+		<p>Installment loans are paid back over multiple periods with a set payment amount. <%= @keyword.phrase.humanize %> calculate the payment amount based on the interest rate, payment periods, and loan amount. The borrower then makes this set payment at every period. Each payment consists of interest and principal. Once the borrower has completed all payments the entire loan is paid off.</p>
+		<p><%= @keyword.phrase.humanize %> generally make two types of installment loans: secured and unsecured. Secured loans have collateral so the lender can seize the collateral if loans go unpaid. Secured loans are generally cheaper than unsecured loans. Unsecured loans are loans that have no collateral. 
+	 	<% case @keyword.phrase %>
 	 	<%		when "online installment loan direct lenders" %>
 	 	Online installment loan direct lenders generally make unsecured loans not based on credit. This means their lending decision is based on your paycheck and pay date.  
 	 	<% 		when "bad credit installment loan direct lenders" %>
@@ -141,10 +146,10 @@
 	 	<% 		when "direct installment loan lenders" %>
 	 	Direct installment loan lenders make unsecured loans based on your paycheck amount and pay date. This means your credit history is generally not considered so individuals with poor credit can qualify for loans from these lenders. 
 	 	<%		else # default paragraph %>
-	 	<%= @keyWord.humanize %> offer unsecured loans based on your pay date and the amount of your pay check. Credit history is generally not an issue meaning if an individual has bad credit they can still qualify for a loan from these lenders. 
+	 	<%= @keyword.phrase.humanize %> offer unsecured loans based on your pay date and the amount of your pay check. Credit history is generally not an issue meaning if an individual has bad credit they can still qualify for a loan from these lenders. 
 	 	<% 		end %>
-		In order to get an installment loans based on your paycheck most <%= @keyWord %> require access to the account where you receive your paycheck so they can deduct your loan payments as soon as you are paid.</p>
-		<p><%= @keyWord.humanize %> have made these loans very attractive. They are quick, simple, do not require good credit, and have lower payments than traditional payday loans. Yet, users must approach these installment loans with caution as the fees make them an expensive option when compared to bank loans, credit cards, or friends and family. Borrowers can often find better rates from other lenders if those option exists. Installment loans are designed for short-term, emergency funding and are best used for this purpose.</p>
+		In order to get an installment loans based on your paycheck most <%= @keyword.phrase %> require access to the account where you receive your paycheck so they can deduct your loan payments as soon as you are paid.</p>
+		<p><%= @keyword.phrase.humanize %> have made these loans very attractive. They are quick, simple, do not require good credit, and have lower payments than traditional payday loans. Yet, users must approach these installment loans with caution as the fees make them an expensive option when compared to bank loans, credit cards, or friends and family. Borrowers can often find better rates from other lenders if those option exists. Installment loans are designed for short-term, emergency funding and are best used for this purpose.</p>
 		<p>To learn more about installment loans visit <%= link_to "Installment Loans", term_loans_path %>. </p>	
 
 	<% end %>	

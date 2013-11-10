@@ -74,5 +74,15 @@ FactoryGirl.define do
 		sequence(:sniff_desc) { |n| "des#{n}" }
 	end	
 
+	factory :keyword do
+		word			"payday loan"
+		phrase		"payday loans"
+		slug			"payday-loan"
+		category	"loans"
+		article		"I'm the article"
+		parent_page	"payday loans"
+		controller	"payday"
+	end
+		
 end
 

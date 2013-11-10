@@ -59,97 +59,24 @@ class ApplicationController < ActionController::Base
 
   end
 
-  def get_kws 
-      
-      # used in set_seo_var
-      # KW's ADDED TO THIS LIST must also be added to routes.rb
-      # kw's broken into loans and lenders and within each by installment and payday
-      # KW REQUIREMENTS
-      # -- must have be plural and have either loans or lenders
-      # -- must include installment or payday
-      # These requirements are because the copy is written for plural and
-      # the payday and installment are used to pull out correct kw's when
-      # they are listed as other relevant terms. This list occurs on the 
-      # index.html for payday_loans and term_loans. The list only shows up
-      # for the main four terms: payday loans, installment loans, payday lenders,
-      # and installment loan lenders
-      # The kw's are listed here for SEO. This is how they enter the site tree
-      
-#      @loan_kws = [ 
-#            # Term loan terms
-#              "installment loans",   #customized in index
-#              "short term installment loans",   #customized in index
-#              "installment loans online",
-#              "bad credit installment loans",#
-
-#            # Payday loans terms
-#              "payday loans",  # customized in index
-#              "direct lender payday loans", #customized in index
-#              "online payday loans",
-#              "pay day loans online",
-#              "payday advances", #customized
-#              "online cash advances" #customized
-#              ]#
-
-#      @lender_kws = [
-#            # Term lenders terms
-#              "online installment loan direct lenders",  #customized in index
-#              "installment loan lenders", 
-#              "bad credit installment loan direct lenders",  #customized in index
-#              "direct installment loan lenders",#
-
-#            # Payday lenders terms
-#              "payday loan direct lenders",  #customized in index
-#              "direct payday lenders online", #customized in index
-#              "payday lenders",
-#              "online payday lenders",
-#              "direct lenders for payday loans",
-#              "direct online payday lenders"]  #customized in index
-  end
-  
   def set_seo_vars
       # for customizing articles for SEO
-      
-      kw = Keyword.find_by_slug(request.fullpath.split(/\//)[1])
-      @selector_path = "/"+kw.slug
-      @keyWord = kw.word 
-      @keyWordType = kw.category
-      related_keywords = Keyword.where(:parent_page => kw.parent_page).pluck(:word) - [].push(kw.word)
+      # @keyword.category broken into three categories: custom, loans, and lenders. Used for copy choices in index
+      # @keyword.controller is used in routes in keyword controller. once here payday or term controller is this
+      # @keyword.word seo target kw
+      # @keyword.phrase seo target kw in plural phrase. Copy assume plural. Quick Loan becomes Quick Loan Options
+      # routing is done in keywords controller
+
+      @keyword = Keyword.find_by_slug(request.fullpath.split(/\//)[1]) #captures stuff between first two slases
+      @selector_path = "/"+@keyword.slug #need for state_selector b/c payday_loan_laws uses @selector_path
+
+      # related_kw_links is used to make sure all kw's are hooked into site tree
+      # the major topics show related kw's. parent_page identifies major topics and related_kw_links show up on these pages
+      related_keywords = Keyword.where(:parent_page => @keyword.parent_page).pluck(:word) - [].push(@keyword.word)  #pull related kw's remove current kw because don't want list of related kw containing the same kw
       @related_kw_links = []
       related_keywords.each do |word|
-        @related_kw_links.push("<a href = \"/#{word.gsub(' ','-')}\">#{word}</a>")
+        @related_kw_links.push("<a href = \"/#{word.gsub(' ','-')}\">#{word}</a>") #creates links for the related kws
       end  
-#binding.pry
-
-      #get_kws
-      
-      # categorizes kw's into loans or lenders. copy is different for the two
-      # copy assumes kw's are plural, i.e. loanS and lenderS
-      # add kw's to routing, routing directs to term or payday controller
-
-
-      # Remove installment loan terms from list for payday loans and vice versa. The
-      # same is done for lenders.
-      # Pared down list is used in index.html to list other search terms for the main
-      # kw's: payday loans, payday lenders, installment loans, and installment lenders
-      # filter = srcType == "term" ? "installment" : "payday"  #filter to remove payday or installment terms
-
-      # create pared down list for loans
-      #hold=[] 
-      #@loan_kws = @loan_kws - ["installment loans", "payday loans"] #pulls out the main terms, the list is used on these pages only
-      #@loan_kws.each do |kw|
-      #  hold.push("<a href= \"/#{kw.gsub(' ','-')}\">#{kw}</a>") if kw.include? filter #creates link from each remaining term
-      #end  
-      #@loan_kws = hold
-
-      #creates pared list for lenders
-      #hold=[] 
-      #@lender_kws = @lender_kws - ["installment loan lenders", "payday lenders"] #pulls out the main terms, the list is used on these pages only
-      #@lender_kws.each do |kw|
-      #  hold.push("<a href= \"/#{kw.gsub(' ','-')}\">#{kw}</a>") if kw.include? filter #creates link from each remaining term
-      #end  
-      #@lender_kws = hold
-
   end
 
 

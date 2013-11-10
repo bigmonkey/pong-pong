@@ -57,6 +57,7 @@ Pdh::Application.routes.draw do
   resources :payday_loans,:path => "direct-lender-payday-loans", :only => [:index, :show]
   resources :payday_loans,:path => "online-payday-loans", :only => [:index, :show]
   resources :payday_loans,:path => "payday-loans-online", :only => [:index, :show]
+  resources :payday_loans,:path => "pay-day-loans-online", :only => [:index, :show]
   resources :payday_loans,:path => "payday-advances", :only => [:index, :show]
   resources :payday_loans,:path => "online-cash-advances", :only => [:index, :show]
 
@@ -67,7 +68,9 @@ Pdh::Application.routes.draw do
   resources :payday_loans,:path => "direct-lenders-for-payday-loans", :only => [:index, :show]
   resources :payday_loans,:path => "direct-online-payday-lenders", :only => [:index, :show]
 
-
+  resources :payday_loans,:path => "borrow-money-options", :onlye => [:index, :show]
+  resources :payday_loans,:path => "ez-payday", :onlye => [:index, :show]  
+  resources :term_loans,:path => "fast-cash-loan", :onlye => [:index, :show]  
   # Redirect old URLS to new URL's. Use redirect_to hardcard b/c of nginx/heroku/wordpress set up
   match "/prepaid-card/" => redirect("http://www.thepaydayhound.com/prepaid-cards/")
   match "/prepaid-card/:name/" => redirect("http://www.thepaydayhound.com/prepaid-cards/%{name}/")

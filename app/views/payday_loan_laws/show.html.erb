@@ -1,7 +1,7 @@
 <% # title and description for seo %>
 <% content_for :seotags do %>
-<title>Payday Loans Are <%= @paydaylawstate.legal_status_summary %> in <%= @state.state %> -The Payday Hound</title>
-<meta name="description" content= '<%= "Learn more about #{@state.state} payday loan laws and compare #{@state.state} payday lenders. Make an informed decision based on your needs." %>' />
+<title><% if "Payday Loans Are #{@paydaylawstate.legal_status_summary} in #{@state.state} | The Payday Hound".length < 70 %><%= "Payday Loans Are #{@paydaylawstate.legal_status_summary} in #{@state.state} | The Payday Hound"%><% else %><%= "Payday Loans Are #{@paydaylawstate.legal_status_summary} in #{@state.state}" %><% end %></title>
+<meta name="description" content= '<%= "Learn about #{@state.state} payday loan laws. Compare compare #{@state.state} payday lenders. Make informed decisions based on your needs." %>' />
 <% end %>
 
 <div id="wrapper">

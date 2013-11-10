@@ -2,8 +2,8 @@
 <%# Used for payday loans, term loans and state laws %>
 <%# @selector_path is set in each controller (application and payday_loan_laws and controls link to pages %>
 <div id = "selectorStateWrapper">
-	<% if !@keyWordType.nil? # payday and term loans will have this populated %>
-	<h2>Compare <%= @keyWord.titleize %></h2>
+	<% if !@keyword.nil? # payday and term loans will have this populated %>
+	<h2>Compare <%= @keyword.phrase.titleize %></h2>
 	<p>Select your state to see lenders offering loans in your state.</p>
 	<% else #state laws page will be nil %>
 	<h2>Lending Laws by State</h2>

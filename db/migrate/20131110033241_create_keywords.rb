@@ -2,7 +2,7 @@ class CreateKeywords < ActiveRecord::Migration
   def change
     create_table :keywords do |t|
       t.string "word"
-      t.string "meta_title_phrase" #plural version of keyword for copy in index and show for term_loans and payday_loans
+      t.string "phrase" #plural version of keyword for copy in index and show for term_loans and payday_loans
       t.string "slug"
       t.string "category"
       t.text "article"

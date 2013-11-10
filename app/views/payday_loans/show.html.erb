@@ -1,13 +1,7 @@
 <% # title and description for seo %>
 <% content_for :seotags do %>
-<title>
-	<% if "Find the best".length + @state.state.length + @keyWord.length + " | The Payday Hound".length < 71 %>
-	Find The Best <%= @state.state %> <%= @keyWord.titleize %> | The Payday Hound
-	<% else %>
-	Find The Best <%= @state.state %> <%= @keyWord.titleize %>
-	<% end %>
-</title>
-<meta name="description" content= '<%= "Compare #{@state.state} #{@keyWord}. Find the lowest fees. Apply direct. Get the best rates in #{@state.state_abbr} at The Payday Hound." %>' />
+<title><% if "Compare #{@state.state} #{@keyword.phrase.titleize} | The Payday Hound".length < 70 %><%= "Compare #{@state.state} #{@keyword.phrase.titleize} | The Payday Hound"%><% else %><%="Compare #{@state.state} #{@keyword.phrase.titleize}"%><% end %></title>
+<meta name="description" content= "<%= "Compare #{@state.state} #{@keyword.phrase}. Search for the lowest fees. Apply direct. Get the best rates in #{@state.state_abbr} at The Payday Hound." %>" />
 <% end %>
 
 <div id="wrapper">
@@ -19,24 +13,20 @@
 	</aside>
 
 	<section id = "mainContent">
-		<h1><%= "#{@state.state}" %></br><%= @keyWord.titleize %></h1>
-
-		<p><%= @selectorPath %></p>
-
-
+		<h1><%= "#{@state.state}" %></br><%= @keyword.phrase.titleize %></h1>
 		<div>
 			<% case @paydaylawstate.legal_status_summary %>
 			<% when "Legal" %>
 			<% #**** for states that regulate payday lending *** %> 
-				<p><%= @state.state %> residents can choose from <%= @state.state %> licensed, out-of-state licensed, tribal-based and foreign-based lenders for their <%= @keyWordType=="loans" ? @keyWord : "payday loans" %>.</p>	
+				<p><%= @state.state %> residents can choose from <%= @state.state %> licensed, out-of-state licensed, tribal-based and foreign-based lenders for their <%= @keyword.category=="loans" ? @keyword.phrase : "payday loans" %>.</p>	
 
-				<p>The Payday Hound strongly prefers licensed <%= @keyWordType=="lenders" ? @keyWord : "payday lenders" %> as the <%= @paydaylawstate.regulator %> evaluates, regulates, and monitors the <%= @keyWordType=="loans" ? @keyWord : "payday loans" %> made by these lenders. See <%= link_to("#{@state.state} Payday Loan Laws", payday_loan_law_path(@state.state_abbr.downcase)) %> for more details on <%= @state.state %> laws and regulations or <%= link_to @keyWord.titleize, @selectorPath %> for more general information.</p>
+				<p>The Payday Hound strongly prefers licensed <%= @keyword.category=="lenders" ? @keyword.phrase : "payday lenders" %> as the <%= @paydaylawstate.regulator %> evaluates, regulates, and monitors the <%= @keyword.category=="loans" ? @keyword.phrase : "payday loans" %> made by these lenders. See <%= link_to("#{@state.state} Payday Loan Laws", payday_loan_law_path(@state.state_abbr.downcase)) %> for more details on <%= @state.state %> laws and regulations or <%= link_to @keyword.phrase.titleize, "/#{@keyword.slug}" %> for more general information.</p>
 			<% else %>
 			<% #**** for states where payday lending is prohibited %>
-				<p><%= @keyWordType=="lenders" ? @keyWord.humanize : "Payday lenders" %> are prohibited by <%= @state.state %> regulators from offering <%= @keyWordType=="loans" ? @keyWord : "payday loans" %> to <%= @state.state %> residents. This means there are no <%= @state.state %> licensed or regulated <%= @keyWordType=="lenders" ? @keyWord : "payday lenders" %> in <%= @state.state %>. Although The Payday Hound discourages it, <%= @state.state %> residents may be able to choose from tribal, out-of-state, or foreign-based lenders for <%= @keyWordType=="loans" ? @keyWord : "payday loans" %>. See <%= link_to("#{@state.state} Payday Loan Laws", payday_loan_law_path(@state.state_abbr.downcase)) %> for links to <%= @state.state %> banking and finance regulators. These links will provide more information on the legal aspects of payday lending in <%= @state.state %>. In states where payday lending is permitted, lenders are licensed and regulated by the state. </p>  			
+				<p><%= @keyword.category=="lenders" ? @keyword.phrase.humanize : "Payday lenders" %> are prohibited by <%= @state.state %> regulators from offering <%= @keyword.category=="loans" ? @keyword.phrase : "payday loans" %> to <%= @state.state %> residents. This means there are no <%= @state.state %> licensed or regulated <%= @keyword.category=="lenders" ? @keyword.phrase : "payday lenders" %> in <%= @state.state %>. Although The Payday Hound discourages it, <%= @state.state %> residents may be able to choose from tribal, out-of-state, or foreign-based lenders for <%= @keyword.category=="loans" ? @keyword.phrase : "payday loans" %>. See <%= link_to("#{@state.state} Payday Loan Laws", payday_loan_law_path(@state.state_abbr.downcase)) %> for links to <%= @state.state %> banking and finance regulators. These links will provide more information on the legal aspects of payday lending in <%= @state.state %>. In states where payday lending is permitted, lenders are licensed and regulated by the state. </p>  			
 			<% end %>
 			<% # ****this section is the closing </p> for both cases above %>
-	 		<p>Unlicensed <%= @keyWordType=="lenders" ? @keyWord : "payday lenders" %> include tribe-based lenders, lenders licensed in other states, and foriegn-based lenders. Tribal and out-of-state licensed <%= @keyWordType=="lenders" ? @keyWord : "payday lenders" %> operate under the interpretation that they can export their tribe or state laws into <%= @state.state %> and are required to adhere to federal lending laws but not <%= @state.state %> regulations. Federal laws may be less restrictive and less frequently enforced. The final group of lenders is foreign-based payday loan lenders. They export their countries' laws into <%= @state.state %> and are highly unregulated. See <%= link_to("Choosing A Payday Loan", "/choosing-a-payday-loan/") %> for more details. </p>
+	 		<p>Unlicensed <%= @keyword.category=="lenders" ? @keyword.phrase : "payday lenders" %> include tribe-based lenders, lenders licensed in other states, and foriegn-based lenders. Tribal and out-of-state licensed <%= @keyword.category=="lenders" ? @keyword.phrase : "payday lenders" %> operate under the interpretation that they can export their tribe or state laws into <%= @state.state %> and are required to adhere to federal lending laws but not <%= @state.state %> regulations. Federal laws may be less restrictive and less frequently enforced. The final group of lenders is foreign-based payday loan lenders. They export their countries' laws into <%= @state.state %> and are highly unregulated. See <%= link_to("Choosing A Payday Loan", "/choosing-a-payday-loan/") %> for more details. </p>
 
 	 		<p>The above is our understanding of how payday lending works in <%= @state.state %>, but we are not a law firm. Please contact the <%= link_to("#{@paydaylawstate.regulator}", @paydaylawstate.regulator_site, :rel => 'nofollow') %> for more information. </p>
 		</div>
