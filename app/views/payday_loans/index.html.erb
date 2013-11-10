@@ -29,12 +29,6 @@
 	<h1><%= @keyword.phrase.titleize %></h1>
 
 	<% case @keyword.category %>
-	<% 		when "custom" %>
-
-		<%= @keyword.article.html_safe %>
-
-		<%= render 'shared/state_selector' %>
-	
 	<%		when "loans" %>
 		<p>
 		<% # add in custom content for loan kw. the default is installment loans %>	
@@ -70,6 +64,10 @@
 		<p>The difference between installment loans and payday loans is that installment loan payments are spread out over time. This reduces the amount of individual payments and your APR for an installment loan but the total amount of fees paid increases a well. See <a href = "/payday-loan-or-installment-loan/")>Payday Loans or Installment Loans</a> for more information. Many consumers prefer installment loans because paying the entire loan at your next pay period, as payday loans require, is often too difficult or impossible and renewing payday loans becomes extremely expensive.<p>
 		<h2>Payday Loan Lenders</h2>
 		<p>Companies offering payday loans vary greatly from those matching services to direct lenders, and from state licensed lenders to fly-by-night lenders. There are numerous stories in the press of individuals being taken advantage of by unscrupulous payday lenders. The Payday Hound strongly prefers using established state licensed lenders. See <%= link_to 'Payday Lenders', '/payday-lenders/' %> to learn more about lenders.</p>		
+
+		<h2>Full List of <%= @keyword.phrase.titleize %></h2>
+		<p>The Payday Hound reviews payday lenders and ranks them according to our <%= link_to "Sniff Test", '/infos/about' %> (reputation), costs, and licensing. To see lenders who provide payday loans in your state select your state from the table above</p> 
+
 		
 	<% 		when "lenders" %>
 		<p>
@@ -103,10 +101,29 @@
 		<p>Payday loans are short-term loans tied to your paycheck. The do not require collateral and individuals with bad credit can fairly easily qualify. Typically <%= @keyword.phrase %> can deposit funds into your checking account over night. Payment which includes the principal and fees are due in full the next pay period. These loans can be very expensive so are best taken to cover emergency, unavoidable expenses. See <%= link_to 'Payday Loans', '/payday-loans/' %> to learn more about these loans.</p>
 		<h2>Avoid a Vicious Debt Cycle</h2>
 		<p><%= @keyword.phrase.humanize %> provide a very expensive form of borrowing. Their fees range from around $9 to $30 per $100 borrowed. This means if you borrow $300, and your fee is $15 per $100 borrowed, then on your next payday $345 will be automatically deducted from your account. If full payment is made then the loan is paid off and you are done. On the other hand if you are unable to pay in full some payday lenders allow, and even encourage, you to renew the loan. The renewal is generally at the same rate and you will pay fees on the unpaid fees from the previous loan. This means at your next payday (now the second payday since you took the loan) $397 will be pulled from your checking account. Clearly, these fees add up very fast and one can end up owing the lender way more than the original loan. This is what people mean when they refer to a debt cycle. One starts off needing a small amount of cash but within weeks the debt quickly escalates into an unimaginable amount. For this reason The Payday Hound believes payday loans should only be used for emergency situations. This means one should almost never take out a payday loan but if they do it should be at most taking 1 or 2 times a year. See <%= link_to "Don't Use A Payday Loan for Summer Vacation Cash", "http://www.thepaydayhound.com/payday-loan-vacation-cash/" %> to determine if there are other options to taking a payday loan.</p>		
+
+		<h2>Full List of <%= @keyword.phrase.titleize %></h2>
+		<p>The Payday Hound reviews payday lenders and ranks them according to our <%= link_to "Sniff Test", '/infos/about' %> (reputation), costs, and licensing. To see lenders who provide payday loans in your state select your state from the table above</p> 
+
+	<% 		when "custom_state" %>
+
+		<%= @keyword.article.html_safe %>
+
+		<%= render 'shared/state_selector' %>
+
+		<h2>Payday Loan Lenders</h2>	
+		<p>The Payday Hound reviews installment lenders and ranks them according to our <%= link_to "Sniff Test", '/infos/about' %> (reputation), costs, and licensing. To see lenders who provide installment loans in your state select your state from the table above.</p>		
+
+	<% 		when "custom" %>
+
+		<%= @keyword.article.html_safe %>
+
+		<h2>Payday Loan Lenders</h2>	
+		<p>The Payday Hound reviews installment lenders and ranks them according to our <%= link_to "Sniff Test", '/infos/about' %> (reputation), costs, and licensing. </p>		
+
 	<%		end %>
 
-	<h2>Full List of <%= @keyword.phrase.titleize %></h2>
-	<p>The Payday Hound reviews payday lenders and ranks them according to our <%= link_to "Sniff Test", '/infos/about' %> (reputation), costs, and licensing. To see lenders who provide payday loans in your state select your state from the table above</p> 
+
 
 	
   <%= render(:partial => "shared/tables/payday_loan_table")%>

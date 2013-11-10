@@ -3,6 +3,7 @@ class CreateKeywords < ActiveRecord::Migration
     create_table :keywords do |t|
       t.string "word"
       t.string "phrase" #plural version of keyword for copy in index and show for term_loans and payday_loans
+      t.string "state_phrase"
       t.string "slug"
       t.string "category"
       t.text "article"

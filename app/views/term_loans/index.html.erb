@@ -34,6 +34,8 @@
 
 		<%= render 'shared/state_selector' %>
 
+		<h2>Installment Loan Lenders</h2>	
+		<p>The Payday Hound reviews installment lenders and ranks them according to our <%= link_to "Sniff Test", '/infos/about' %> (reputation), costs, and licensing. To see lenders who provide installment loans in your state select your state from the table above.</p>
 
 	<%		when "loans" %>
 
@@ -104,6 +106,9 @@
 		<h2>Installment Loans Versus Payday Loans</h2>
 		<p>The difference between installment loans and payday loans is that payments are spread out over time. This reduces the amount of individual payments and your APR for an installment loan but the total amount of fees paid increases a well. See <a href = "/payday-loan-or-installment-loan/")>Payday Loans or Installment Loans</a> for more information. Many consumers prefer installment loans because paying the entire loan at your next pay period, as payday loans require, is often too difficult or impossible and renewing payday loans becomes extremely expensive.<p>
 
+		<h2>Full List of <%= @keyword.phrase.titleize %></h2>
+		<p>The Payday Hound reviews payday lenders and ranks them according to our <%= link_to "Sniff Test", '/infos/about' %> (reputation), costs, and licensing. To see lenders who provide payday loans in your state select your state from the table above</p> 
+
 	<% when "lenders" %>
 		<p><%= @keyword.phrase.humanize %> make loans which are quick, simple, do not require good credit, and have lower payments than payday loans. These loans are an expensive option so make sure you have considered loans from other options such as banks, credit card companies, or friends and family before borrowing from <%= @keyword.phrase %>. Loans from these lenders are best used for short-term, emergency funding only.</p>	
 
@@ -154,12 +159,12 @@
 		<p><%= @keyword.phrase.humanize %> have made these loans very attractive. They are quick, simple, do not require good credit, and have lower payments than traditional payday loans. Yet, users must approach these installment loans with caution as the fees make them an expensive option when compared to bank loans, credit cards, or friends and family. Borrowers can often find better rates from other lenders if those option exists. Installment loans are designed for short-term, emergency funding and are best used for this purpose.</p>
 		<p>To learn more about installment loans visit <%= link_to "Installment Loans", term_loans_path %>. </p>	
 
+		<h2>Full List of <%= @keyword.phrase.titleize %></h2>
+		<p>The Payday Hound reviews payday lenders and ranks them according to our <%= link_to "Sniff Test", '/infos/about' %> (reputation), costs, and licensing. To see lenders who provide payday loans in your state select your state from the table above</p> 
+
 	<% end %>	
 
 
-
-	<h2>Full List of Lenders</h2>	
-	<p>The Payday Hound reviews installment lenders and ranks them according to our <%= link_to "Sniff Test", '/infos/about' %> (reputation), costs, and licensing. To see lenders who provide installment loans in your state select your state from the table above.</p>
   <%= render(:partial => "shared/tables/term_loan_table")%>
 
   <%=  render(:partial => "shared/media_counters")%>

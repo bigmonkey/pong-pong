@@ -89,13 +89,14 @@ ActiveRecord::Schema.define(:version => 20131110033241) do
   create_table "keywords", :force => true do |t|
     t.string "word"
     t.string "phrase"
+    t.string "state_phrase"
     t.string "slug"
     t.string "category"
     t.text   "article"
     t.string "parent_page"
     t.string "controller"
-    t.string "created_at",  :null => false
-    t.string "updated_at",  :null => false
+    t.string "created_at",   :null => false
+    t.string "updated_at",   :null => false
   end
 
   create_table "lenders", :force => true do |t|
