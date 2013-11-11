@@ -1,10 +1,9 @@
 <%
-# This page is is broken into two main sections: loans and lenders
-# Each section has a link refering back to the other using the kws: 
-# installment loans or installment loan lenders
-# These copy for these two kw's also include a section that links
-# to all other related kw's, i.e. installment loans or installment lenders.
-# The copy is varied based on the kw that are found in the application controller
+# This page is is broken into four  main sections: custom_state, custom, loans and lenders
+# The loan and lenders section has a link referring back to the other using the kws: installment loans or installment loan lenders
+# These copy for these two kw's also include a section that links to all other related kw's, i.e. installment loans or installment loan lenders.
+# custom pulls data from the Keyword table. custom does not show state selector table.
+# The copy is varied based on the kw found in Keyword table
 %>
 
 <% # title and description for seo %>
@@ -56,11 +55,11 @@
 		<% # add in custom content for loan kw. the default is installment loans %>	
 	 	<% case @keyword.phrase %>
 	 	<% 		when "installment loans"  %>
-	 	Installment loans are available to individuals with bad or no credit, typically unsecured, and linked to your pay date. This means it is generally easy to get one of these loans but the tradeoff of installment loans is they can be very expensive. They should generally not be used except to meet unavoidable emergency expense like utility bills or medical bills	 	
+	 	Installment loans are available to individuals with bad or no credit, typically unsecured, and linked to your pay date. This means it is generally easy to get one of these loans but the trade-off of installment loans is they can be very expensive. They should generally not be used except to meet unavoidable emergency expense like utility bills or medical bills	 	
 	 	<%		when "short term installment loans" %>
 	 	Short term installment loans are a type of installment loan. These short term loans are generally unsecured loans, are not based on credit history, and are tied to your pay date. These loans can be very expensive and designed to cover emergency expenses that can't be avoided such as medical or utility bills.
 	 	<% 		else # other keywords default paragraph %>
-	 	<%= @keyword.phrase.humanize %> are a type of installment loan. These loans are available to individuals with poor credit, generally unsecured, and tied to your pay date. This means they are very easy to qualify for but the tradeoff is the cost of these installment loans can be very high and are best used to meet unavoidable emergency expense like utility bills or medical bills.
+	 	<%= @keyword.phrase.humanize %> are a type of installment loan. These loans are available to individuals with poor credit, generally unsecured, and tied to your pay date. This means they are very easy to qualify for but the trade-off is the cost of these installment loans can be very high and are best used to meet unavoidable emergency expense like utility bills or medical bills.
 	 	
 	 	<% 		end %>
 	 	</p>
@@ -87,11 +86,11 @@
 		<% # add in custom content for loan kw. the default is installment loans %>	
 	 	<% case @keyword.phrase %>
 	 	<%		when "installment loans" %>
-	 	Installment loans offered on this site are generally paycheck installment loans. This means that the payments for these loans often occur on your paydate. 
+	 	Installment loans offered on this site are generally paycheck installment loans. This means that the payments for these loans often occur on your pay date. 
 	 	<%		when "short term installment loans" %>
 	 	Short term installment loans are paycheck installment loans. In other words short term installment loans are often tied to your pay date. 
 	 	<% 		else # default paragraph for other kw's %>
-	 	<%= @keyword.phrase.humanize %> are a type of paycheck installment loans. This means your payments for these installment loans are linked to your paydate. 
+	 	<%= @keyword.phrase.humanize %> are a type of paycheck installment loans. This means your payments for these installment loans are linked to your pay date. 
 	 	
 	 	<% 		end %>
 		These loans do not consider your credit history and instead are based solely on the pay check. To increase the likelihood of being repaid most lenders offering <%= @keyword.phrase %> require access to the account where you receive your paycheck so they can deduct your loans payments as soon as you are paid.</p>
@@ -106,10 +105,10 @@
 
 		<h2>How <%= @keyword.phrase.titleize %> Work</h2>
 		<p>If <%= @keyword.phrase %> are right for you, the application process can take only 5 to 25 minutes. In general the lender will require that you are 18+ years old, are employed, and have direct deposit.  Money can be deposited into you account within one business day. This money is a loan and must be repaid in full. Payments are generally automatically deducted from your checking account on payday.</p> 
-		</p>When taking out installment loans, your lender will give you a payment plan. For example, $1,000 could have a repayment plan with a ~$125 payment every pay period (14 days) over the next 24 pay periods. In the end ~$1,000 costs ~$2,400. This is cheaper than what you would have to pay if you took out a payday loan for the same time-frame, but clearly not cheap so be careful to make sure you really need this loan.</p>
+		</p>When taking out installment loans, your lender will give you a payment plan. For example, $1,000 could have a repayment plan with a ~$125 payment every pay period (14 days) over the next 24 pay periods. In the end ~$1,000 costs ~$2,400. This is cheaper than what you would have to pay if you took out a payday loan for the same time-frame, but clearly not cheap so be careful to make sure you really need this loan. Also consider other <%= link_to "borrow money options", "/borrow-money-options" %> such as delaying the expense or getting help from a friend.</p>
 
 		<h2>Licensed Versus Unlicensed Lenders</h2>
-		<p><%= @keyword.phrase.humanize %> are regulated by both federal and state laws. State licensed lenders are regulated and monitored by the state so are more closely regulated than lenders not licensed by your state. Unlicensed lenders operate in states under the assumption they can export laws from their state or tribe (Indian Tribes are generally treated as federal entites) into other states. The validity of this assumption is unclear. The Payday Hound believes licensed lenders are a safer choice for borrowers and would avoid unlicensed lenders. For more information see <%= link_to "Payday Loan Laws", payday_loan_laws_path %> or <%= link_to "Installment Loan Lenders", "/installment-loan-lenders/" %></p>
+		<p><%= @keyword.phrase.humanize %> are regulated by both federal and state laws. State licensed lenders are regulated and monitored by the state so are more closely regulated than lenders not licensed by your state. Unlicensed lenders operate in states under the assumption they can export laws from their state or tribe (Indian Tribes are generally treated as federal entities) into other states. The validity of this assumption is unclear. The Payday Hound believes licensed lenders are a safer choice for borrowers and would avoid unlicensed lenders. For more information see <%= link_to "Payday Loan Laws", payday_loan_laws_path %> or <%= link_to "Installment Loan Lenders", "/installment-loan-lenders/" %></p>
 		<h2>Installment Loans Versus Payday Loans</h2>
 		<p>The difference between installment loans and payday loans is that payments are spread out over time. This reduces the amount of individual payments and your APR for an installment loan but the total amount of fees paid increases a well. See <a href = "/payday-loan-or-installment-loan/")>Payday Loans or Installment Loans</a> for more information. Many consumers prefer installment loans because paying the entire loan at your next pay period, as payday loans require, is often too difficult or impossible and renewing payday loans becomes extremely expensive.<p>
 
@@ -145,8 +144,8 @@
 	 	<p>The advantage of a matching service is that only one application is required to apply to multiple lenders. This can save a lot of time and effort as applications can take anywhere from 5 to 15 minutes to complete. The downside to matching services is you are unable to pick the lenders to whom you are applying. This often means the lenders with whom you are matched include unlicensed lenders as well as licensed lenders. The Payday Hound generally sees nothing wrong with a matching service as it can be more convenient but we do strongly prefer licensed lenders to unlicensed lenders. This means if you use a matching service, once you are offered a loan, make sure to evaluate your lender to decide if they are licensed or not. For more information see <a href = "http://www.thepaydayhound.com/payday-direct/">Direct Lenders versus Matching Service</a></p>
 
 		<h2>Licensed Versus Unlicensed Installment Lenders</h2>
-		<p><%= @keyword.phrase.humanize %> can be regulated by both federal and state laws. Federal regulations are generally less stringent and less enforced than state regulations. <%= @keyword.phrase.humanize %> licensed in your state are regulated and monitored by your state so are more closely regulated than lenders not licensed by your state. To become state licensed lenders generally must apply, register, and remain compliant in every state in which they are licensed. Each state has a separate process so the licensing process can be very expensive and time consuming. As a result state licensed <%= @keyword.phrase %> are generally not fly-by-night entities. Instead, they are usually larger more permenant companies.</p>
-		<p>Unlicensed <%= @keyword.phrase %> operate in states under the assumption they can export laws from their state or tribe into other states. Tribes refers to formally recognized American Indian Tribes that are generally treated as separate federal entites and operate under their own laws. Tribal lenders were becoming very common with tribes partnering with financing partners. The tribes would contribute their legal status and the financing partner would provide the capital and operations. Recently, the position that tribes or states could export their laws into other states has been challenged. The result has been a slow down in the growth of tribal based <%= @keyword.phrase %>. The Payday Hound believes this change is good for the industry as we believe licensed lenders are a safer choice for borrowers. For more information see <%= link_to "Payday Loan Laws", payday_loan_laws_path %></p>
+		<p><%= @keyword.phrase.humanize %> can be regulated by both federal and state laws. Federal regulations are generally less stringent and less enforced than state regulations. <%= @keyword.phrase.humanize %> licensed in your state are regulated and monitored by your state so are more closely regulated than lenders not licensed by your state. To become state licensed lenders generally must apply, register, and remain compliant in every state in which they are licensed. Each state has a separate process so the licensing process can be very expensive and time consuming. As a result state licensed <%= @keyword.phrase %> are generally not fly-by-night entities. Instead, they are usually larger more permanent companies.</p>
+		<p>Unlicensed <%= @keyword.phrase %> operate in states under the assumption they can export laws from their state or tribe into other states. Tribes refers to formally recognized American Indian Tribes that are generally treated as separate federal entities and operate under their own laws. Tribal lenders were becoming very common with tribes partnering with financing partners. The tribes would contribute their legal status and the financing partner would provide the capital and operations. Recently, the position that tribes or states could export their laws into other states has been challenged. The result has been a slow down in the growth of tribal based <%= @keyword.phrase %>. The Payday Hound believes this change is good for the industry as we believe licensed lenders are a safer choice for borrowers. For more information see <%= link_to "Payday Loan Laws", payday_loan_laws_path %></p>
 
 
 	 	<h2>What Are Installment Loans</h2>
