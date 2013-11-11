@@ -65,6 +65,9 @@
 	 	</p>
 		<p>Traditionally, installment loans are loans paid back over multiple periods with a set payment amount. The payment amount for these loans is calculated based on the interest rate, payment periods, and loan amount. The borrower then makes a set payment at every period. Each payment consists of interest and principal. Once the borrower has completed all payments the entire loan is paid off. Fixed mortgages, auto loans, and student loans are examples of installment loans.
 
+		<%= render 'shared/related_kw_links' %>
+
+
 		<h2>Secured Or Unsecured</h2> 
 		<p>There are two types of installment loans: secured and unsecured. Secured loans have collateral so, if the borrower fails to re-pay the loan, the lender can seize the collateral. Secured loans are generally cheaper than unsecured loans. Mortgages and auto loans are examples of secured loans</p>
 		<p>Unsecured loans are loans that have no collateral. 
@@ -97,16 +100,11 @@
 		<p>Companies offering paycheck <%= @keyword.phrase %> have made these loans very attractive. These loans are quick, simple, do not require good credit, and have lower payments. Yet, users must approach these <%= @keyword.phrase %> with caution as their fees do make them an expensive option so make sure you have considered other options such as bank loans, credit cards, or friends and family before taking one of these loans. <%= @keyword.phrase %> are designed for short-term, emergency funding and are best used for this purpose.</p>	
 
 
-		<% if @keyword.phrase == "installment loans"  %>
-			<p>These paycheck installment loans also referred to as <%= @related_kw_links.to_sentence.html_safe %>.</p>
-		<% end %>
-
-
-
 		<h2>How <%= @keyword.phrase.titleize %> Work</h2>
 		<p>If <%= @keyword.phrase %> are right for you, the application process can take only 5 to 25 minutes. In general the lender will require that you are 18+ years old, are employed, and have direct deposit.  Money can be deposited into you account within one business day. This money is a loan and must be repaid in full. Payments are generally automatically deducted from your checking account on payday.</p> 
 		</p>When taking out installment loans, your lender will give you a payment plan. For example, $1,000 could have a repayment plan with a ~$125 payment every pay period (14 days) over the next 24 pay periods. In the end ~$1,000 costs ~$2,400. This is cheaper than what you would have to pay if you took out a payday loan for the same time-frame, but clearly not cheap so be careful to make sure you really need this loan. Also consider other <%= link_to "borrow money options", "/borrow-money-options" %> such as delaying the expense or getting help from a friend.</p>
 
+		
 		<h2>Licensed Versus Unlicensed Lenders</h2>
 		<p><%= @keyword.phrase.humanize %> are regulated by both federal and state laws. State licensed lenders are regulated and monitored by the state so are more closely regulated than lenders not licensed by your state. Unlicensed lenders operate in states under the assumption they can export laws from their state or tribe (Indian Tribes are generally treated as federal entities) into other states. The validity of this assumption is unclear. The Payday Hound believes licensed lenders are a safer choice for borrowers and would avoid unlicensed lenders. For more information see <%= link_to "Payday Loan Laws", payday_loan_laws_path %> or <%= link_to "Installment Loan Lenders", "/installment-loan-lenders/" %></p>
 		<h2>Installment Loans Versus Payday Loans</h2>
@@ -136,9 +134,7 @@
 	 	</p>
 	 	<p><%= @keyword.phrase.humanize %> make actual loans. They differ from other companies who provide matching services because <%= @keyword.phrase %> actually underwrite and lend money. Sites that provide matching services pass your information on to direct lenders who then make loans. One can distinguish direct lenders from matching services by looking at the fine print of most websites. Matching services will say something like, "the operator of this website is NOT A LENDER." Direct lenders will not include this disclaimer.</p>
 
-		<% if @keyword.phrase == "installment loan lenders"  %>
-			<p>These online installment lenders are also referred to as <%= @related_kw_links.to_sentence.html_safe %>.</p>		
-		<% end %>
+		<%= render 'shared/related_kw_links' %>
 
 	 	<h2>Direct Lenders Versus Matching Service</h2>
 	 	<p>The advantage of a matching service is that only one application is required to apply to multiple lenders. This can save a lot of time and effort as applications can take anywhere from 5 to 15 minutes to complete. The downside to matching services is you are unable to pick the lenders to whom you are applying. This often means the lenders with whom you are matched include unlicensed lenders as well as licensed lenders. The Payday Hound generally sees nothing wrong with a matching service as it can be more convenient but we do strongly prefer licensed lenders to unlicensed lenders. This means if you use a matching service, once you are offered a loan, make sure to evaluate your lender to decide if they are licensed or not. For more information see <a href = "http://www.thepaydayhound.com/payday-direct/">Direct Lenders versus Matching Service</a></p>

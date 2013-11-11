@@ -75,7 +75,8 @@ class ApplicationController < ActionController::Base
       @selector_path = "/"+@keyword.slug #need for state_selector b/c payday_loan_laws uses @selector_path
 
       # related_kw_links is used to make sure all kw's are hooked into site tree
-      # the major topics show related kw's. parent_page identifies major topics and related_kw_links show up on these pages
+      # All must be linked back to two major pages: /payday-loans, /installment-loans or /learn
+      # for /payday-loans and /installment-loans these pages show up automatically using related_kw_links
       related_keywords = Keyword.where(:parent_page => @keyword.parent_page).pluck(:word) - [].push(@keyword.word)  #pull related kw's remove current kw because don't want list of related kw containing the same kw
       @related_kw_links = []
       related_keywords.each do |word|

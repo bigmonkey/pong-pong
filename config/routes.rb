@@ -67,6 +67,7 @@ Pdh::Application.routes.draw do
   resources :payday_loans,:path => "online-payday-lenders", :only => [:index, :show]
   resources :payday_loans,:path => "direct-lenders-for-payday-loans", :only => [:index, :show]
   resources :payday_loans,:path => "direct-online-payday-lenders", :only => [:index, :show]
+  resources :payday_loans,:path => "direct-payday-loan-lenders", :only => [:index, :show]
 
   #URLS from previous blog
   resources :payday_loans,:path => "borrow-money-options", :only => [:index, :show]
