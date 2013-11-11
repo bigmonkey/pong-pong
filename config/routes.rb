@@ -91,6 +91,7 @@ Pdh::Application.routes.draw do
   match "/secureds/" => redirect("http://www.thepaydayhound.com/secured-credit-cards/")
   match "/prepaids/" => redirect("http://www.thepaydayhound.com/prepaid-cards/")
   match "/why-use-the-payday-hound/" => redirect("http://www.thepaydayhound.com")
+  match "/applicants" => redirect("/get-payday-loan/")
   # Another way to create SEO friendly URL's 
   #resources "payday-loans", :as => :payday_loans, :controller => :payday_loans
   

@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
  
   def wp    
-    redirect_to ("http://www.thepaydayhound.com/learn/" + request.fullpath), :status => 301
+    redirect_to ("http://www.thepaydayhound.com/learn" + request.fullpath), :status => 301
   end 
 
   protect_from_forgery

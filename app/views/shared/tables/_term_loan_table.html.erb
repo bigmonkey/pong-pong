@@ -33,7 +33,7 @@
       <td>
         <div><%= l.first_comment %></div>
         <div>Governing Law: <%= l.governing_law %></div>
-        <div><%= link_to('see review', "/#{l.review_url}") %></div>
+        <div><%= link_to('see review', "/learn/#{l.review_url}") %></div>
       </td>
       <td class = "termTableCosts">
         <div>APR: <%= l.apr.nil? ? "?" : number_to_percentage(l.apr*100, :precision => 0) %></div>
