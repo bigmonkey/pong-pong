@@ -1,4 +1,8 @@
 class ApplicationController < ActionController::Base
+ 
+  def wp    
+    redirect_to ("http://www.thepaydayhound.com/learn/" + request.fullpath), :status => 301
+  end 
 
   protect_from_forgery
 
@@ -78,6 +82,5 @@ class ApplicationController < ActionController::Base
         @related_kw_links.push("<a href = \"/#{word.gsub(' ','-')}\">#{word}</a>") #creates links for the related kws
       end  
   end
-
 
 end
