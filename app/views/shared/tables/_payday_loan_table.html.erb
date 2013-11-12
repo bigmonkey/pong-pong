@@ -41,7 +41,7 @@
         <td><%= l.cost.nil? ? "?" : number_to_currency(l.cost) %></td>
         <td><%= l.apr.nil? ? "?" : number_to_percentage(l.apr*100, :precision => 0) %></td>
         <td><%= l.sniff.sniff_desc %></td>
-        <td class = rank<%= l.ranking.round %>></td>
+        <td class = "rank<%= l.ranking.round %>"></td>
       </tr>
     <% end %>
     <% end %>
