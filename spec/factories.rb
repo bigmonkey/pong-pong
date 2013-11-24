@@ -77,7 +77,8 @@ FactoryGirl.define do
 	factory :keyword do
 		word			"payday loan"
 		phrase		"payday loans"
-		slug			"payday-loan"
+		slug			"installment-loans"
+		state_phrase "compare installment loans"
 		category	"loans"
 		article		"I'm the article"
 		parent_page	"payday loans"

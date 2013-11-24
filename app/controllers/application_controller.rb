@@ -71,7 +71,8 @@ class ApplicationController < ActionController::Base
       # @keyword.phrase seo target kw in plural phrase. Copy assume plural. Quick Loan becomes Quick Loan Options
       # routing is done in keywords controller
 
-      @keyword = Keyword.find_by_slug(request.fullpath.split(/\//)[1]) #captures stuff between first two slases
+
+      @keyword = Keyword.find_by_slug!(request.fullpath.split(/\//)[1]) #captures stuff between first two slases
       @selector_path = "/"+@keyword.slug #need for state_selector b/c payday_loan_laws uses @selector_path
 
       # related_kw_links is used to make sure all kw's are hooked into site tree
