@@ -42,8 +42,8 @@ class BorrowersController < ApplicationController
 	end
 
   def new
-  	if ( params[:active_military].nil? || params[:bank_account_type].nil? || params[:state].nil? || params[:requested_amount].nil? ) 
-  		redirect_to :controller => 'applicants', :action => 'index'  	
+  	if ( params[:active_military].blank? || params[:bank_account_type].blank? || params[:state].blank? || params[:requested_amount].blank? ) 
+  		redirect_to applicants_path  	
   	elsif	
 	  	 (params[:active_military]=="true") or (params[:bank_account_type]=="NONE") or (params[:eighteen]=="false")
 	  		@redirect = "/topoffers/prepaid_b"
@@ -51,7 +51,7 @@ class BorrowersController < ApplicationController
 	  		redirect_to(@redirect)
   	else	
   		case params[:state]
-	  	when "GA","VA","WV","AR"
+	  	when "GA","VA","WV","AR","NY"
 	  		@redirect = "http://www.mobilespinner.com"
 	  		save_tracking
 	  		redirect_to(@redirect)
