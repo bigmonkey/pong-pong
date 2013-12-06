@@ -53,6 +53,9 @@ module Pdh
     # Enable the asset pipeline
     config.assets.enabled = true
 
+    # Added by Con Way. Adds a trailing slash
+    config.action_controller.default_url_options = { trailing_slash: true }
+
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
   end
