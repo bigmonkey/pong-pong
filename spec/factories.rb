@@ -71,18 +71,36 @@ FactoryGirl.define do
 	end		
 
 	factory :sniff do
-		sequence(:sniff_desc) { |n| "des#{n}" }
+		id 	""
+		sniff_desc 	""
 	end	
 
+	factory :state do 
+		sequence(:state_abbr) { |n| "#{n}" }
+		sequence(:state) { |n| "State #{n}" }
+	end	
+
+	factory :term_loan do
+		sequence(:partner_id) { |n| n }
+		sequence(:active) { |n| true }
+		sequence(:sniff_id) { |n| [1,2,3].sample }
+		sequence(:ranking) { |n| [1,2,3,4,5].sample }
+		sequence(:image_file) { |n| "image#{n}"}
+		sequence(:name) { |n| "term lender #{n}"}
+		sequence(:first_comment) { |n| "first comment #{n}"}
+		sequence(:governing_law) { |n| "law #{n}"}
+		sequence(:review_url) { |n| "term-loan-url#{n}"}
+	end
+		
 	factory :keyword do
-		word			"payday loan"
-		phrase		"payday loans"
+		word			"installment loans"
+		phrase		"installment loans"
 		slug			"installment-loans"
 		state_phrase "compare installment loans"
 		category	"loans"
 		article		"I'm the article"
-		parent_page	"payday loans"
-		controller	"payday"
+		parent_page	"installment loans"
+		controller	"term"
 	end
 		
 end

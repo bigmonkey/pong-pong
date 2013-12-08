@@ -18,6 +18,7 @@ group :development, :test do
 	gem 'rspec-rails', '2.13.1'
   gem 'spork-rails', '4.0.0' 	
   gem "pry", "~> 0.9.12.2"  
+  gem "pry-nav", "0.2.3"  
 end
 
 
