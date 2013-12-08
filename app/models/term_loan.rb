@@ -1,6 +1,6 @@
 class TermLoan < ActiveRecord::Base
   # attr_accessible :title, :body
-    has_one :partner, {:foreign_key => "id"}
+    belongs_to :partner
     belongs_to :sniff
     has_and_belongs_to_many :states
 
