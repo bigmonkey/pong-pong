@@ -13,6 +13,7 @@ class PaydayLoansController < ApplicationController
    	@criteria.ranking = 0
 
     # for customizing articles for SEO
+    # in application_controller
     set_seo_vars
 
 
@@ -29,6 +30,7 @@ class PaydayLoansController < ApplicationController
    		@criteria.ranking = !params[:ranking].nil? ? params[:ranking]	: 1	
 
       # for customizing articles for SEO
+      # in application_controller
       set_seo_vars
 
     	@state = State.find_by_state_abbr(params[:id].upcase)

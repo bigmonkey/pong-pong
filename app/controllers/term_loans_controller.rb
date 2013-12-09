@@ -11,6 +11,7 @@ class TermLoansController < ApplicationController
 		@criteria.sniff_id = 3
    	@criteria.ranking = 0	
 
+    # in application_controller
     set_seo_vars
     
   end
@@ -24,7 +25,8 @@ class TermLoansController < ApplicationController
 			@criteria.sniff_id = !params[:sniff_id].nil? ? params[:sniff_id] : 3
    		@criteria.ranking = !params[:ranking].nil?	? params[:ranking] : 1
     	
-      set_seo_vars
+      # in application_controller
+      set_seo_vars 
 
     	@state = State.find_by_state_abbr(params[:id].upcase)
     	@paydaylawstate = @state.payday_loan_law

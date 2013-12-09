@@ -65,9 +65,13 @@ class ApplicationController < ActionController::Base
 
   def set_seo_vars
       # for customizing articles for SEO
-      # @keyword.category broken into three categories: custom, loans, and lenders. Used for copy choices in index
+      # @keyword.category broken into three categories: custom, custom_state, loans, and lenders. Used for copy choices in index
+      #   custom -- feeds text from table
+      #   custom_state -- feeds text from table plus adds state selector
+      #   loans/lenders -- uses copy for loans/lenders
       # @keyword.controller is used in routes in keyword controller. once here payday or term controller is this
       # @keyword.word seo target kw
+      # @keyword.state_phrase the title of the state selector table. ex compare plural
       # @keyword.phrase seo target kw in plural phrase. Copy assume plural. Quick Loan becomes Quick Loan Options
       # routing is done in keywords controller
 
@@ -78,7 +82,7 @@ class ApplicationController < ActionController::Base
       # related_kw_links is used to make sure all kw's are hooked into site tree
       # All must be linked back to two major pages: /payday-loans, /installment-loans or /learn
       # for /payday-loans and /installment-loans these pages show up automatically using related_kw_links
-      related_keywords = Keyword.where(:parent_page => @keyword.parent_page).pluck(:word) - [].push(@keyword.word)  #pull related kw's remove current kw because don't want list of related kw containing the same kw
+      related_keywords = Keyword.where(:parent_page => @keyword.word).pluck(:word) - [].push(@keyword.word)  #pull related kw's remove current kw because don't want list of related kw containing the same kw
       @related_kw_links = []
       related_keywords.each do |word|
         @related_kw_links.push("<a href = \"/#{word.gsub(' ','-')}\">#{word}</a>") #creates links for the related kws

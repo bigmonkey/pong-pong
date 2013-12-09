@@ -94,13 +94,13 @@ FactoryGirl.define do
 		
 	factory :keyword do
 		word			"installment loans"
-		phrase		"installment loans"
+		phrase		"installment loans |plural for copy"
 		slug			"installment-loans"
-		state_phrase "compare installment loans"
-		category	"loans"
+		state_phrase "compare installment loans |for state selector verb and plural"
+		category	"loans |selects copy on index"
 		article		"I'm the article"
-		parent_page	"installment loans"
-		controller	"term"
+		parent_page	"installment loans |where it gets shown"
+		controller	"term |not used but maybe in routes"
 	end
 		
 end
