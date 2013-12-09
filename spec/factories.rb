@@ -75,12 +75,14 @@ FactoryGirl.define do
 		sniff_desc 	""
 	end	
 
-	factory :state do 
+	factory :state do
+		sequence(:id) { |n| n} 
 		sequence(:state_abbr) { |n| "#{n}" }
 		sequence(:state) { |n| "State #{n}" }
 	end	
 
 	factory :term_loan do
+		sequence(:id) { |n| n} 		
 		sequence(:partner_id) { |n| n }
 		sequence(:active) { |n| true }
 		sequence(:sniff_id) { |n| [1,2,3].sample }
@@ -91,6 +93,10 @@ FactoryGirl.define do
 		sequence(:governing_law) { |n| "law #{n}"}
 		sequence(:review_url) { |n| "term-loan-url#{n}"}
 	end
+
+	#factory :states_term_loans, :parent => :state do
+	#	term_loans {[FactoryGirl.create(:term_loan)]}
+	#end
 		
 	factory :keyword do
 		word			"installment loans"
@@ -102,6 +108,14 @@ FactoryGirl.define do
 		parent_page	"installment loans |where it gets shown"
 		controller	"term |not used but maybe in routes"
 	end
-		
+	
+	factory :payday_loan_law do
+		id ""
+		state_abbr ""
+		name ""
+		regulator ""
+	end	
+
+
 end
 
