@@ -1,9 +1,9 @@
 require 'spec_helper'
 
-describe "Installment Loan Pages" do
+describe " Payday Loan Pages" do
 	subject { page }
 
-  shared_examples_for "all installment loan pages" do
+  shared_examples_for "all payday loan pages" do
     # keyword in title
     it { should have_title("#{@keyword.word.titleize}") }
     # sidebar
@@ -14,7 +14,7 @@ describe "Installment Loan Pages" do
     it { should have_link('About Us', href:"/infos/about/")}
   end
 
-  shared_examples_for "all index installment loan pages" do
+  shared_examples_for "all index payday loan pages" do
       # keyword in description
       it { should have_css("meta[name='description'][content='Compare #{@keyword.word}. Search for the lowest fees. Apply direct. Get the best rates at The Payday Hound.']", visible: false) }
       it "should have the state selector linking to 50 states" do  
@@ -24,7 +24,7 @@ describe "Installment Loan Pages" do
       end  
 
       it "should have table of lenders" do
-        TermLoan.all.each do |t|
+        PaydayLoan.all.each do |t|
           page.should have_content("Company Name")
           page.should have_selector('div', text: t.first_comment)
           page.should have_link("see review", href: "/learn/#{t.review_url}/" )      
@@ -35,7 +35,7 @@ describe "Installment Loan Pages" do
 
   end
 
-  describe "Installment Loan Index Pages" do
+  describe "Payday Loan Index Pages" do
     
     before(:all) { 
       # Create State table
@@ -45,50 +45,50 @@ describe "Installment Loan Pages" do
       FactoryGirl.create(:sniff, id: 2, sniff_desc: "Fair") 
       FactoryGirl.create(:sniff, id: 3, sniff_desc: "Poor") 
       # Create Terms table
-      5.times { FactoryGirl.create(:term_loan) }
+      5.times { FactoryGirl.create(:payday_loan) }
+      #binding.pry
     } 
 
-    # Installment Loan Main Page
-    describe "Installment Loan Main Page" do
+    # Payday Loan Main Page
+    describe "Payday Loan Main Page" do
       before { 
-        # create installment loan kw 
         FactoryGirl.create(
           :keyword,
-          word:      "installment loans",
-          phrase:    "installment loans",
-          slug:      "installment-loans",
-          state_phrase: "compare installment loans",
+          word:      "payday loans",
+          phrase:    "payday loans",
+          slug:      "payday-loans",
+          state_phrase: "compare payday loans",
           category:  "loans",
           article:   "I'm the article",
-          parent_page: "installment loans",
+          parent_page: "payday loans",
         )
         # @keyword is the keyword for the page being tested and must be in routes.rb
-        @keyword = Keyword.find_by_word("installment loans")
-        #create child of installment loan should show up
+        @keyword = Keyword.find_by_word("payday loans")
+        #create child of payday loan should show up
         FactoryGirl.create(
           :keyword,
           word:      "child",
           phrase:    "child phrase",
           slug:      "child",
-          state_phrase: "compare child of installment loans",
+          state_phrase: "compare child",
           category:  "loans",
           article:   "I'm the article",
           parent_page: "#{@keyword.word}",
         )        
         @child = Keyword.find_by_word("child")
-        #create child of payay loans it should not show up
+        #create child of installment loans it should not show up
         FactoryGirl.create(
           :keyword,
           word:      "not child",
-          phrase:    "not child phrase",
-          slug:      "not-child-slug",
-          state_phrase: "compare not child of installment loans",
+          phrase:    "not child",
+          slug:      "not-child",
+          state_phrase: "compare not child",
           category:  "loans",
           article:   "I'm the article",
           parent_page: "not #{@keyword.word}",
-        )            
-        @notchild = Keyword.find_by_word("not child")    
-        visit term_loans_path 
+        )                
+        @notchild = Keyword.find_by_word("not child")
+        visit payday_loans_path 
         #puts page.body
       }  
 
@@ -98,27 +98,28 @@ describe "Installment Loan Pages" do
       # tests application_controller set_seo_vars related kw
       it { should have_link("#{@child.word}", href: "/#{@child.slug}" )}
       it { should_not have_link("#{@notchild.slug}", href: "/#{@notchild.word.gsub(' ','-')}" )}
-      it_should_behave_like "all index installment loan pages"
-      it_should_behave_like "all installment loan pages"
+      it_should_behave_like "all index payday loan pages"
+      it_should_behave_like "all payday loan pages"
     end  
 
-    #Installment Loan SEO Pages
-    describe "Installment Loan SEO Child Pages" do
+    #Payday Loan SEO Pages
+    describe "Payday Loan SEO Child Pages" do
       before {
-        #create child of installment loan should show up
+
+        #create child of payday loan should show up
         #slug must be in routes.rb
         FactoryGirl.create(
           :keyword,
-          word:      "short term installment loans", #child of installment loans
-          phrase:    "short term installment loans",
-          slug:      "short-term-installment-loans",
-          state_phrase: "compare short term installment loans",
+          word:      "online payday loans", #child of payday loans
+          phrase:    "online payday loans",
+          slug:      "online-payday-loans",
+          state_phrase: "compare online payday loans",
           category:  "loans",
           article:   "I'm the article",
-          parent_page: "installment loans",
-        ) 
-        # @keyword is the keyword for the page and must be in routes.rb
-        @keyword = Keyword.find_by_word("short term installment loans")
+          parent_page: "payday loans",
+        )     
+        # @keyword.word is a child of payday loans keyword and must be in routes.rb
+        @keyword = Keyword.find_by_word("online payday loans")   
         #create grand child of payday loans it should show up and child of the @keyword above
         FactoryGirl.create(
           :keyword,
@@ -129,7 +130,7 @@ describe "Installment Loan Pages" do
           category:  "loans",
           article:   "I'm the article",
           parent_page: "#{@keyword.word}",
-        )                
+        )      
         @grandchild = Keyword.find_by_word("grandchild")          
         FactoryGirl.create(
           :keyword,
@@ -150,33 +151,34 @@ describe "Installment Loan Pages" do
       it { should have_content("#{@keyword.state_phrase.titleize}") }
 
       # tests application_controller set_seo_vars related kw
-      it { should have_link("#{@grandchild.word}", href: "/#{@grandchild.slug}" )}
-      it { should_not have_link("#{@notgrandchild.word}", href: "/#{@notgrandchild.word.gsub(' ','-') }" )}
+			it { should_not have_link("#{@notgrandchild.slug}", href: "/#{@notgrandchild.word.gsub(' ','-')}" )}
+      it { should_not have_link("#{@notgrandchild.word}", href: "/#{@notgrandchild.slug}" )}
 
-      it_should_behave_like "all index installment loan pages"
-      it_should_behave_like "all installment loan pages"      
+      it_should_behave_like "all index payday loan pages"
+      it_should_behave_like "all payday loan pages"      
     end
 
     after(:all){
       Sniff.destroy_all
       State.destroy_all
-      TermLoan.destroy_all
+      PaydayLoan.destroy_all
       Keyword.destroy_all
     }
   end
 
-  describe "Installment Loan State Pages" do
+  describe " Loan State Pages" do
     before(:all) { 
       FactoryGirl.create(
         :keyword,
-        word:      "installment loans",
-        phrase:    "installment loans",
-        slug:      "installment-loans",
-        state_phrase: "compare installment loans",
+        word:      "payday loans",
+        phrase:    "payday loans",
+        slug:      "payday-loans",
+        state_phrase: "compare payday loans",
         category:  "loans",
         article:   "I'm the article",
-        parent_page: "installment loans",
+        parent_page: "payday loans",
       ) 
+
       # Create State table
       FactoryGirl.create(:state, id: 1, state_abbr: "TX", state: "Texas" )
       FactoryGirl.create(:state, id: 2, state_abbr: "VA", state: "Virginia" )
@@ -186,7 +188,7 @@ describe "Installment Loan Pages" do
       FactoryGirl.create(:sniff, id: 2, sniff_desc: "Fair") 
       FactoryGirl.create(:sniff, id: 3, sniff_desc: "Poor") 
       # Create Terms table
-      #FactoryGirl.create(:term_loan, id: 1, partner_id: 1, active: true, sniff_id: [1,2,3].sample, ranking:[1,2,3,4,5].sample, image_file: "image", name: "term1", first_comment: "term1 comment", governing_law: "law 1", review_url: "term-loan-1")
+      #FactoryGirl.create(:payday_loan, id: 1, partner_id: 1, active: true, sniff_id: [1,2,3].sample, ranking:[1,2,3,4,5].sample, image_file: "image", name: "term1", first_comment: "term1 comment", governing_law: "law 1", review_url: "term-loan-1")
       # Create payday_loan_laws table
       FactoryGirl.create(:payday_loan_law, id: 1, state_abbr: "TX", regulator: "TX regulator")
       FactoryGirl.create(:payday_loan_law, id: 2, state_abbr: "VA", regulator: "VA regulator")
@@ -196,22 +198,22 @@ describe "Installment Loan Pages" do
     } 
     describe "Unlisted State Page" do
       before {
-        visit "/installment-loans/fr" 
+        visit "/payday-loans/fr" 
       }
-      it {should have_selector('h1', text: 'Installment Loans') }
+      it {should have_selector('h1', text: ' Loans') }
       it { should_not have_selector('h2', text: 'Loan Filter') }      
     end
 
     describe "State Page" do
       before {
         #binding.pry
-        @keyword = Keyword.find_by_word("installment loans")
-        visit "/installment-loans/tx"
+      	@keyword = Keyword.find_by_word("payday loans")
+        visit "/payday-loans/tx"
         #puts page.body
       }
 
       # keyword in description
-      it { should have_css("meta[name='description'][content='Compare Texas installment loans. Search for the lowest fees. Apply direct. Get the best rates in TX at The Payday Hound.']", visible: false) }      
+      it { should have_css("meta[name='description'][content='Compare Texas payday loans. Search for the lowest fees. Apply direct. Get the best rates in TX at The Payday Hound.']", visible: false) }      
       # Loan Filter in Sidebar
       it { should have_selector('h2', text: 'Loan Filter') }
       it { should have_selector('h1', text: 'Texas') }      
@@ -220,19 +222,16 @@ describe "Installment Loan Pages" do
           page.should_not have_link(s.state, href:"/#{@keyword.word.gsub(' ','-')}/#{s.state_abbr.downcase}/") 
         end  
       end 
-      it_should_behave_like "all installment loan pages"
+      it_should_behave_like "all payday loan pages"
     end
 
     after(:all){
       State.destroy_all
       Sniff.destroy_all
-      TermLoan.destroy_all
+      PaydayLoan.destroy_all
       Keyword.destroy_all
       PaydayLoanLaw.destroy_all
     }  
   end
     
 end
-
-#RAILS_ENV=test rake db:drop db:create db:migrate
-#bundle exec rspec spec/requests/term_loans_spec.rb:9
