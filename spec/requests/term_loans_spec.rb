@@ -106,10 +106,10 @@ describe "Installment Loan Pages" do
         #create child of installment loan should show up
         FactoryGirl.create(
           :keyword,
-          word:      "child of term loan",
-          phrase:    "child of term loans",
-          slug:      "child-of-term-loans",
-          state_phrase: "compare child of installment loans",
+          word:      "short term installment loans", #child of installment loans
+          phrase:    "short term installment loans",
+          slug:      "short-term-installment-loans",
+          state_phrase: "compare short term installment loans",
           category:  "loans",
           article:   "I'm the article",
           parent_page: "installment loans",
@@ -124,14 +124,33 @@ describe "Installment Loan Pages" do
           state_phrase: "compare grandchild of installment loans",
           category:  "loans",
           article:   "I'm the article",
-          parent_page: "child of term loan",
+          parent_page: "short term installment loans",
           controller:  "term"        
         )                
-        visit "/child-og-term-loans/" 
+        FactoryGirl.create(
+          :keyword,
+          word:      "not grandchild of term loan",
+          phrase:    "not grandchild of term loans",
+          slug:      "not-grandchild-of-term-loans",
+          state_phrase: "compare no grandchild of installment loans",
+          category:  "loans",
+          article:   "I'm the article",
+          parent_page: "installment loans",
+          controller:  "term"        
+        )                
+        visit "/short-term-installment-loans/" 
         #puts page.body
       }          
 
-      
+      it { should have_selector('h1', text: 'Short Term Installment Loans') }
+      it { should have_content('Compare Short Term Installment Loans') }
+
+      # tests application_controller set_seo_vars related kw
+      it { should have_link("grandchild of term loan", href: "/grandchild-of-term-loan" )}
+      it { should_not have_link("not grandchild of term loan", href: "/not-grandchild-of-term-loan" )}
+
+      it_should_behave_like "all index installment loan pages"
+      it_should_behave_like "all installment loan pages"      
     end
 
     after(:all){
