@@ -5,9 +5,9 @@ describe "Installment Loan Pages" do
 
   shared_examples_for "all installment loan pages" do
     # keyword in description
-    it { should have_css("meta[name='description'][content='Compare #{Keyword.limit(1)[0].phrase}. Search for the lowest fees. Apply direct. Get the best rates at The Payday Hound.']", visible: false) }
+    it { should have_css("meta[name='description'][content='Compare #{@keyword}. Search for the lowest fees. Apply direct. Get the best rates at The Payday Hound.']", visible: false) }
     # keyword in title
-    it { should have_title("#{Keyword.limit(1)[0].phrase.titleize}") }
+    it { should have_title("#{@keyword.titleize}") }
     # sidebar
     it { should have_link('Why Use Us', href:"/infos/about/") }
     # paday Nav Bar
@@ -18,7 +18,7 @@ describe "Installment Loan Pages" do
 
       it "should have the state selector linking to 50 states" do  
         State.all.each do |s|
-          page.should have_link(s.state, href:"/#{Keyword.limit(1)[0].slug}/#{s.state_abbr.downcase}/") 
+          page.should have_link(s.state, href:"/#{@keyword.gsub(' ','-')}/#{s.state_abbr.downcase}/") 
         end  
       end  
 
@@ -50,6 +50,8 @@ describe "Installment Loan Pages" do
     # Installment Loan Main Page
     describe "Installment Loan Main Page" do
       before { 
+        # @keyword is the keyword for the page being tested and must be in routes.rb
+        @keyword = "installment loans"
         # create installment loan kw MUST be first Factory 
         FactoryGirl.create(
           :keyword,
@@ -103,6 +105,8 @@ describe "Installment Loan Pages" do
     #Installment Loan SEO Pages
     describe "Installment Loan SEO Child Pages" do
       before {
+        # @keyword is the keyword for the page and must be in routes.rb
+        @keyword = "short term installment loans"
         #create child of installment loan should show up
         FactoryGirl.create(
           :keyword,
