@@ -205,6 +205,7 @@ describe "Installment Loan Pages" do
         visit "/installment-loans/fr" 
       }
       it {should have_selector('h1', text: 'Installment Loans') }
+      it { should_not have_selector('h2', text: 'Loan Filter') }      
     end
 
     describe "State Page" do
@@ -217,7 +218,14 @@ describe "Installment Loan Pages" do
 
       # keyword in description
       it { should have_css("meta[name='description'][content='Compare Texas installment loans. Search for the lowest fees. Apply direct. Get the best rates in TX at The Payday Hound.']", visible: false) }      
+      # Loan Filter in Sidebar
       it { should have_selector('h2', text: 'Loan Filter') }
+      it { should have_selector('h1', text: 'Texas') }      
+      it "should not have the state selector linking to 50 states" do  
+        State.all.each do |s|
+          page.should_not have_link(s.state, href:"/#{@keyword.gsub(' ','-')}/#{s.state_abbr.downcase}/") 
+        end  
+      end 
       it_should_behave_like "all installment loan pages"
     end
 
