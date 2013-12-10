@@ -30,12 +30,13 @@ describe TermLoansController do
 	describe "GET #show" do
 		it "assigns requested state to @state" do
 			state = FactoryGirl.create(:state)
-			get :show, id: state
+			get :show, id: state.state_abbr
 			assigns(:state).should eq(state)
 		end	
 
 		it "renders the #show view" do
-			get :show, id: FactoryGirl.create(:state)
+			state = FactoryGirl.create(:state)
+			get :show, id: state.state_abbr
 			response.should render_template :show
 		end
 	end

@@ -1,6 +1,9 @@
 class State < ActiveRecord::Base
   # attr_accessible :title, :body
-  
+  validates :state, :state_abbr, uniqueness: true 
+
+  before_validation :upcase_state_abbr
+
   has_and_belongs_to_many :lenders
   has_and_belongs_to_many :payday_loans
   has_and_belongs_to_many :term_loans
@@ -10,5 +13,11 @@ class State < ActiveRecord::Base
     def self.select_state_(id)
 		where("state_id = ?", id)
     end
-      
+
+  private
+
+  def upcase_state_abbr
+  	self.state_abbr.upcase!
+  end	
+
 end
