@@ -1,3 +1,3 @@
-<% if !@related_kw_links.nil? %>
+<% if !@related_kw_links.empty? %>
 	<p><%= @keyword.phrase.humanize %> are also referred to as <%= @related_kw_links.to_sentence.html_safe %>.</p>		
 <% end %>

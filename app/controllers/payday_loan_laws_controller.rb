@@ -11,9 +11,13 @@ class PaydayLoanLawsController < ApplicationController
 	end
 
 	def show
-		@state = State.find_by_state_abbr(params[:id].upcase)
-		@paydaylawstate=@state.payday_loan_law
-		@paydaylawstatedetails = @state.payday_loan_law_detail
+		if State.find_by_state_abbr(params[:id].upcase).nil?
+			then redirect_to payday_loan_laws_path
+			else
+				@state = State.find_by_state_abbr(params[:id].upcase)
+				@paydaylawstate=@state.payday_loan_law
+				@paydaylawstatedetails = @state.payday_loan_law_detail
+		end
 	end
 end
 

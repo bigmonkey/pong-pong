@@ -4,6 +4,9 @@ class PaydayLoan < ActiveRecord::Base
     belongs_to :sniff
     has_and_belongs_to_many :states
 
+    validates :partner_id, presence: true
+    validates :partner_id, uniqueness: true    
+
     scope :by_top_rank, order("payday_loans.ranking DESC")
     scope :by_low_cost, order("payday_loans.cost ASC")
     scope :by_low_apr, order("payday_loans.apr ASC")

@@ -11,10 +11,13 @@ source 'https://rubygems.org'
 group :test do
 	#gem 'selenium-webdriver', '2.0'
 	gem 'capybara', '2.1.0'
-	gem 'factory_girl_rails', '4.1.0'	
+  gem 'launchy'
+  gem 'faker'
+  gem 'guard-rspec'
 end
 
 group :development, :test do
+  gem 'factory_girl_rails', '4.1.0' 
 	gem 'rspec-rails', '2.13.1'
   gem 'spork-rails', '4.0.0' 	
   gem "pry", "~> 0.9.12.2"  
