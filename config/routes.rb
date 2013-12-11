@@ -1,6 +1,6 @@
 Pdh::Application.routes.draw do
 
-
+  match "/(*all)", constraints: {domain: /herokuapp.com/}, to: "application#heroku"
 
   root :to => 'homes#index'
 
