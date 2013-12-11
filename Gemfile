@@ -1,53 +1,49 @@
 source 'https://rubygems.org'
- ruby "1.9.3"		
- gem 'rails', '3.2.11'
+ ruby "2.0.0"		
+ gem 'rails', '4.0.2'
 
  
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
- gem 'pg', '0.15.1'
+ gem 'pg', '0.17.0'
 
 group :test do
-	gem 'selenium-webdriver'
+	gem 'selenium-webdriver', '2.35.1'
 	gem 'capybara', '2.1.0'
-  gem 'launchy'
-  gem 'faker'
-  gem 'guard-rspec'
+  gem 'launchy', '2.4.2'
+  gem 'faker', '1.1.2'
+  gem 'guard-rspec', '2.5.0'
 end
 
 group :development, :test do
-  gem 'factory_girl_rails', '4.1.0' 
+  gem 'factory_girl_rails', '4.2.0' 
 	gem 'rspec-rails', '2.13.1'
   gem 'spork-rails', '4.0.0' 	
-  gem "pry", "~> 0.9.12.2"  
+  gem "pry", "0.9.12.2"  
   gem "pry-nav", "0.2.3"  
 end
 
 
 # use unicorn for production and ubuntu
- gem 'unicorn', '4.6.2'
+ gem 'unicorn', '4.7.0'
 
 # use thin for windows
 #gem 'thin', '1.5.1'
- gem 'execjs', '1.4.0'
+ gem 'execjs', '2.0.2'
  gem 'therubyracer', :platform => 'ruby'
  #gem 'therubyracer', '~> 0.10.2' #update to 0.11 crashes install
 
 # Gems used only for assets and not required
 # in production environments by default.
-group :assets do
-  gem 'sass-rails',   '~>3.2.2'
-  gem 'coffee-rails', '~>3.2.1'
 
-  # See https://github.com/sstephenson/execjs#readme for more supported runtimes
-  # gem 'therubyracer', :platform => :ruby
+gem 'sass-rails',   '4.0.1'
+gem 'coffee-rails', '4.0.1'
 
-  gem 'uglifier', '1.0.3'
-end
+gem 'uglifier', '2.1.1'
 
-gem 'jquery-rails', '2.2.1'
-gem 'nokogiri', '1.5.10'
+gem 'jquery-rails', '3.0.4'
+gem 'nokogiri', '1.6.0'
 
 gem 'figaro', '0.7.0'  # used to conceal pw's and things. use rake figaro:heroku to push pw to heroku
 

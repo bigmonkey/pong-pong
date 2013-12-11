@@ -133,7 +133,7 @@
   width: 120px;
   height: 20px;
   overflow: hidden;
-  background: url(asset-path('downarrow.png', image)) no-repeat right #fff;
+  background: url(asset-path('downarrow.png')) no-repeat right #fff;
 	@include rounded(4px);  
 }
 

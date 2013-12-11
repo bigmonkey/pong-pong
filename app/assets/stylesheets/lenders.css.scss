@@ -57,34 +57,34 @@ td .instantDecision {
 }
 
 .rank0 {
-	background:url(asset-path("rankings/Payday-Loan-Rank-Star-0.png", image)) no-repeat center ;
+	background:url(asset-path("rankings/Payday-Loan-Rank-Star-0.png")) no-repeat center ;
 	width: 100px;
 }
 
 .rank1 {
-	background:url(asset-path("rankings/Payday-Loan-Rank-Star-1.png", image)) no-repeat center ;
+	background:url(asset-path("rankings/Payday-Loan-Rank-Star-1.png")) no-repeat center ;
 	width: 100px;
 }
 
 .rank2 {
-	background:url(asset-path("rankings/Payday-Loan-Rank-Star-2.png", image)) no-repeat center ;
+	background:url(asset-path("rankings/Payday-Loan-Rank-Star-2.png")) no-repeat center ;
 	width: 100px;
 }
 
 .rank3 {
-	background:url(asset-path("rankings/Payday-Loan-Rank-Star-3.png", image))  no-repeat center ;
+	background:url(asset-path("rankings/Payday-Loan-Rank-Star-3.png"))  no-repeat center ;
 	width: 100px;
 
 }
 
 .rank4 {
-	background:url(asset-path("rankings/Payday-Loan-Rank-Star-4.png", image))  no-repeat center ;
+	background:url(asset-path("rankings/Payday-Loan-Rank-Star-4.png"))  no-repeat center ;
 	width: 100px;
 
 }
 
 .rank5 {
-	background:url(asset-path("rankings/Payday-Loan-Rank-Star-5.png", image))  no-repeat center ;
+	background:url(asset-path("rankings/Payday-Loan-Rank-Star-5.png"))  no-repeat center ;
 	width: 100px;
 
 }
@@ -136,7 +136,7 @@ td .instantDecision {
 	width: 120px;
   overflow: hidden;
   margin: 0px 5px;
-  background: url(asset-path('downarrow.png', image)) no-repeat right #fff;
+  background: url(asset-path('downarrow.png')) no-repeat right #fff;
   border: 1px solid #C6C6C6;
 	@include rounded(4px); 
 	}
@@ -318,11 +318,11 @@ td .instantDecision {
 				font-size: 1em;
 		}
 		&.lenderYes{
-			background:url(asset-path("check-mark-green.png", image)) no-repeat center;
+			background:url(asset-path("check-mark-green.png")) no-repeat center;
 			background-color: $boxBackground;
 		}
 		&.lenderNo{
-			background:url(asset-path("x-mark-red.png", image)) no-repeat center;
+			background:url(asset-path("x-mark-red.png")) no-repeat center;
 			background-color: $boxBackground;
 		}
 		&:first-child {

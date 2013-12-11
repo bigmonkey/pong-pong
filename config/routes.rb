@@ -89,16 +89,16 @@ Pdh::Application.routes.draw do
 
 
   # Redirect old URLS to new URL's. Use redirect_to hardcard b/c of nginx/heroku/wordpress set up
-  match "/prepaid-card/" => redirect("http://www.thepaydayhound.com/prepaid-cards/")
-  match "/prepaid-card/:name/" => redirect("http://www.thepaydayhound.com/prepaid-cards/%{name}/")
-  match "/secureds/" => redirect("http://www.thepaydayhound.com/secured-credit-cards/")
-  match "/prepaids/" => redirect("http://www.thepaydayhound.com/prepaid-cards/")
-  match "/why-use-the-payday-hound/" => redirect("http://www.thepaydayhound.com")
-  match "/applicants" => redirect("/get-payday-loan/")
-  match "/payday-loans-direct-payday-lenders" => redirect("/direct-payday-lenders-online/")
-  match "/bad-credit-credit-card-secured-card" => redirect("/learn/best-secured-credit-card")
-  match "/find-apply-best-payday-loan-state" => redirect("/learn/payday-loan-finder")
-  match "/choosing-a-payday-loan" => redirect("/learn/how-to-choose-a-payday-loan")
+  get "/prepaid-card/" => redirect("http://www.thepaydayhound.com/prepaid-cards/")
+  match "/prepaid-card/:name/" => redirect("http://www.thepaydayhound.com/prepaid-cards/%{name}/"), via: :show
+  get "/secureds/" => redirect("http://www.thepaydayhound.com/secured-credit-cards/")
+  get "/prepaids/" => redirect("http://www.thepaydayhound.com/prepaid-cards/")
+  get "/why-use-the-payday-hound/" => redirect("http://www.thepaydayhound.com")
+  get "/applicants" => redirect("/get-payday-loan/")
+  get "/payday-loans-direct-payday-lenders" => redirect("/direct-payday-lenders-online/")
+  get "/bad-credit-credit-card-secured-card" => redirect("/learn/best-secured-credit-card")
+  get "/find-apply-best-payday-loan-state" => redirect("/learn/payday-loan-finder")
+  get "/choosing-a-payday-loan" => redirect("/learn/how-to-choose-a-payday-loan")
   # Another way to create SEO friendly URL's 
   #resources "payday-loans", :as => :payday_loans, :controller => :payday_loans
   
@@ -152,5 +152,5 @@ Pdh::Application.routes.draw do
   # match ':controller(/:action(/:id))(.:format)'
   
 
-  match "*rest" => "application#wp"
+  match "*rest" => "application#wp", via: :all
 end
