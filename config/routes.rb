@@ -1,8 +1,6 @@
 Pdh::Application.routes.draw do
 
-  constraints(host: /pongpong.herokuapp.com/) do
-    match "/(*all)", to: redirect(host: 'www.thepaydayhound.com')
-  end
+
 
   root :to => 'homes#index'
 
