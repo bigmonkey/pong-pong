@@ -19,7 +19,10 @@ describe BorrowersController do
 				it "redirects blank reqested_amount" do
 					post :new, FactoryGirl.attributes_for(:applicant, requested_amount: "")
 					response.should redirect_to applicants_path
-				end									
+				end	
+				it "does not save applicant data" do
+					expect {post :new, FactoryGirl.attributes_for(:applicant, requested_amount: "")}.to change(Applicant, :count).by(0)	
+				end
 			end
 			context "Unacceptable Underwriting" do
 				it "redirect military members" do
@@ -46,9 +49,11 @@ describe BorrowersController do
 			it "renders the :new view" do
 				post :new, FactoryGirl.attributes_for(:applicant)
 				response.should render_template :new
-			end			
+			end		
+			it "saves applicant data" do	
+				expect { post :new, FactoryGirl.attributes_for(:applicant) }.to change(Applicant, :count).by(1)
+			end
 		end
-
-
 	end
+	after(:all) {Applicant.destroy_all}
 end

@@ -41,7 +41,6 @@ FactoryGirl.define do
 	end
 
 	factory :partner do
-		id ""
 		lender_link "http://lender_link.com"
 		lender_tail ""
 	end
