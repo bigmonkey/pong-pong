@@ -6,9 +6,17 @@ class Lender < ActiveRecord::Base
     has_and_belongs_to_many :states
     has_and_belongs_to_many :term_states
 
-    scope :by_top_rank, order("lenders.ranking DESC")
-    scope :by_low_cost, order("lenders.cost ASC")
-    scope :by_low_apr, order("lenders.apr ASC")
+    def self.by_top_rank
+        order(ranking: :desc)
+    end
+
+    def self.by_low_cost
+        order(cost: :asc)
+    end
+
+    def self.by_low_apr
+        order(apr: :desc)
+    end
 
     def self.sniff_level(level)
 		where("sniff_id <= ?", level)

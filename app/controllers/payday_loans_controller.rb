@@ -11,7 +11,6 @@ class PaydayLoansController < ApplicationController
 		@criteria = PaydayLoan.new    #@criteria gets used on view
 		@criteria.sniff_id = 3
    	@criteria.ranking = 0
-
     # for customizing articles for SEO
     # in application_controller
     set_seo_vars

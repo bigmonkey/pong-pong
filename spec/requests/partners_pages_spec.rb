@@ -6,10 +6,11 @@ describe "Partner Pages" do
 
 	describe "Show" do
 		before {
-			FactoryGirl.create(:partner, id: 1, lender_link: "http://lender-link.com")
-			visit ("/partners/#{Partner.find(1).id}")
+			FactoryGirl.create(:partner, lender_link: "http://lender-link.com")
+			visit ("/partners/#{Partner.find_by_lender_link("http://lender-link.com").id.to_s}")
+
 		}
-		
+
 		it {should have_link('click here', href:"http://lender-link.com")}
 		
 	end

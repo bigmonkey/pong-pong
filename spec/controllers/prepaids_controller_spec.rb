@@ -22,7 +22,7 @@ describe PrepaidsController do
 
 		it "renders the #show view" do
 			get :show, id: FactoryGirl.create(:prepaid)
-			response.should render_template :prepaid
+			response.should render_template :show
 		end
 	end
 

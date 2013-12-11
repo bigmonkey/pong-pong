@@ -7,10 +7,21 @@ class PaydayLoan < ActiveRecord::Base
     validates :partner_id, presence: true
     validates :partner_id, uniqueness: true    
 
-    scope :by_top_rank, order("payday_loans.ranking DESC")
-    scope :by_low_cost, order("payday_loans.cost ASC")
-    scope :by_low_apr, order("payday_loans.apr ASC")
-    scope :active_lender, -> { where active: true }   
+    def self.by_top_rank
+        order(ranking: :desc)
+    end
+
+    def self.by_low_cost
+        order(cost: :asc)
+    end
+
+    def self.by_low_apr
+        order(apr: :desc)
+    end
+
+    def self.active_lender
+        where(active: :true)
+    end    
 
     def self.sniff_level(level)
 		where("sniff_id <= ?", level)

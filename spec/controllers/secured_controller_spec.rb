@@ -21,8 +21,9 @@ describe SecuredsController do
 		end	
 
 		it "renders the #show view" do
-			get :show, id: FactoryGirl.create(:secured)
-			response.should render_template :secured
+			secured = FactoryGirl.create(:secured, live: true)
+			get :show, id: secured.review_url			
+			response.should render_template :show
 		end
 	end
 

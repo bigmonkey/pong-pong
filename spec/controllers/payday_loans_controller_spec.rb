@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe PaydayLoansController do
-  before(:all) { 
+  before (:all){ 
     FactoryGirl.create(
       :keyword,
       word:      "payday loans",
@@ -21,6 +21,13 @@ describe PaydayLoansController do
 			get :index
 			assigns(:states).should eq([state])
 		end	
+		it "orders lender by rank" do
+			2.times {FactoryGirl.create(:payday_loan)}
+			state = FactoryGirl.create(:state)
+			get :index
+			assigns(:lenders).first.ranking.should be > assigns(:lenders).last.ranking
+		end
+
 		it "renders the :index view" do
 			get :index
 			response.should render_template :index
@@ -44,6 +51,7 @@ describe PaydayLoansController do
 	after(:all){
 		Keyword.destroy_all
 		State.destroy_all
+		PaydayLoan.destroy_all
 	}
 
 end
