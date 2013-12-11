@@ -51,6 +51,8 @@ gem 'nokogiri', '1.5.10'
 
 gem 'figaro', '0.7.0'  # used to conceal pw's and things. use rake figaro:heroku to push pw to heroku
 
+gem 'rails_12factor', '0.0.2', group: :production
+
 # to get heroku db:push to work need taps
 # gem 'sqlite3'
 # gem 'taps'
