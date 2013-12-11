@@ -4,6 +4,7 @@ class ApplicationController < ActionController::Base
     redirect_to ("http://www.thepaydayhound.com/learn" + request.fullpath), :status => 301
   end 
 
+  #not working because of heroku routing nginx reverse proxy
   def heroku
     redirect_to ("http://www.thepaydayhound.com" + request.fullpath), :status => 301
   end

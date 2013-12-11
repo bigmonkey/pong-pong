@@ -9,7 +9,7 @@ source 'https://rubygems.org'
  gem 'pg', '0.15.1'
 
 group :test do
-	#gem 'selenium-webdriver', '2.0'
+	gem 'selenium-webdriver'
 	gem 'capybara', '2.1.0'
   gem 'launchy'
   gem 'faker'
@@ -62,9 +62,6 @@ gem 'rails_12factor', '0.0.2', group: :production
 
 # To use Jbuilder templates for JSON
 # gem 'jbuilder'
-
-# Use unicorn as the app server
-# gem 'unicorn'
 
 # Deploy with Capistrano
 # gem 'capistrano'

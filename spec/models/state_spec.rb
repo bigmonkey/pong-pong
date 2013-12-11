@@ -1,6 +1,6 @@
 require 'spec_helper' 
 
-describe "State" do 
+describe "State Model" do 
 	it "has a valid factory" do
 		FactoryGirl.create(:state).should be_valid
 	end	

@@ -42,19 +42,22 @@ class BorrowersController < ApplicationController
 	end
 
   def new
+  	
+  	# @redirect is used in save_tracking
+  	#binding.pry
   	if ( params[:active_military].blank? || params[:bank_account_type].blank? || params[:state].blank? || params[:requested_amount].blank? ) 
   		redirect_to applicants_path  	
   	elsif	
 	  	 (params[:active_military]=="true") or (params[:bank_account_type]=="NONE") or (params[:eighteen]=="false")
-	  		@redirect = "/topoffers/prepaid_b"
+	  		@redirect = "http://usmilitary.about.com/od/millegislation/a/paydayloans.htm"
 	  		save_tracking
 	  		redirect_to(@redirect)
   	else	
   		case params[:state]
 	  	when "GA","VA","WV","AR","NY"
-	  		@redirect = "http://www.mobilespinner.com"
+	  		@redirect = "#{params[:state]} Loan Laws"
 	  		save_tracking
-	  		redirect_to(@redirect)
+	  		redirect_to("/payday-loans/#{params[:state]}")
 	  	else 
 	  		@redirect = "borrower/new"
 	  		save_tracking

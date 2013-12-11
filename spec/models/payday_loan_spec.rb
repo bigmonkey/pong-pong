@@ -1,6 +1,6 @@
 require 'spec_helper' 
 
-describe "PaydayLoan" do 
+describe "PaydayLoan Model" do 
 	it "has a valid factory" do
 		FactoryGirl.create(:payday_loan).should be_valid
 	end	

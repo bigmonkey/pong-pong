@@ -35,7 +35,7 @@ describe " Payday Loan Pages" do
 
   end
 
-  describe "Payday Loan Index Pages" do
+  describe "Index Pages" do
     
     before(:all) { 
       # Create State table
@@ -50,7 +50,7 @@ describe " Payday Loan Pages" do
     } 
 
     # Payday Loan Main Page
-    describe "Payday Loan Main Page" do
+    context "main page" do
       before { 
         FactoryGirl.create(
           :keyword,
@@ -103,7 +103,7 @@ describe " Payday Loan Pages" do
     end  
 
     #Payday Loan SEO Pages
-    describe "Payday Loan SEO Child Pages" do
+    context "SEO child" do
       before {
 
         #create child of payday loan should show up
@@ -166,7 +166,7 @@ describe " Payday Loan Pages" do
     }
   end
 
-  describe " Loan State Pages" do
+  describe "State Pages" do
     before(:all) { 
       FactoryGirl.create(
         :keyword,
@@ -196,7 +196,7 @@ describe " Payday Loan Pages" do
       #FactoryGirl.create(:states_term_loans)
       #binding.pry
     } 
-    describe "Unlisted State Page" do
+    context "unlisted state" do
       before {
         visit "/payday-loans/fr" 
       }
@@ -204,7 +204,7 @@ describe " Payday Loan Pages" do
       it { should_not have_selector('h2', text: 'Loan Filter') }      
     end
 
-    describe "State Page" do
+    context "listed state" do
       before {
         #binding.pry
       	@keyword = Keyword.find_by_word("payday loans")

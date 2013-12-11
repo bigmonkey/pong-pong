@@ -35,7 +35,7 @@ describe "Installment Loan Pages" do
 
   end
 
-  describe "Installment Loan Index Pages" do
+  describe "Index Pages" do
     
     before(:all) { 
       # Create State table
@@ -49,7 +49,7 @@ describe "Installment Loan Pages" do
     } 
 
     # Installment Loan Main Page
-    describe "Installment Loan Main Page" do
+    context "main page" do
       before { 
         # create installment loan kw 
         FactoryGirl.create(
@@ -103,7 +103,7 @@ describe "Installment Loan Pages" do
     end  
 
     #Installment Loan SEO Pages
-    describe "Installment Loan SEO Child Pages" do
+    context "SEO child pages" do
       before {
         #create child of installment loan should show up
         #slug must be in routes.rb
@@ -165,7 +165,7 @@ describe "Installment Loan Pages" do
     }
   end
 
-  describe "Installment Loan State Pages" do
+  describe "State Pages" do
     before(:all) { 
       FactoryGirl.create(
         :keyword,
@@ -194,7 +194,7 @@ describe "Installment Loan Pages" do
       #FactoryGirl.create(:states_term_loans)
       #binding.pry
     } 
-    describe "Unlisted State Page" do
+    context "unlisted state" do
       before {
         visit "/installment-loans/fr" 
       }
@@ -202,7 +202,7 @@ describe "Installment Loan Pages" do
       it { should_not have_selector('h2', text: 'Loan Filter') }      
     end
 
-    describe "State Page" do
+    context "listed state" do
       before {
         #binding.pry
         @keyword = Keyword.find_by_word("installment loans")

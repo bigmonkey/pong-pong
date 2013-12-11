@@ -14,7 +14,7 @@ describe "Secured Card Pages" do
     it { should have_link('About Us', href:"/infos/about/")}    
   end
 
-  describe "Ranking Page" do
+  describe "Main Page" do
     before(:all) { 
         num_cards = 5
         num_cards.times { FactoryGirl.create(:secured) }
@@ -48,7 +48,7 @@ describe "Secured Card Pages" do
     after(:all) {Secured.destroy_all}
   end
 
-  describe "Individual Secured Card Pages" do
+  describe "Individual Cards" do
     let(:secured) { FactoryGirl.create(:secured) }
     before { visit secured_path(secured.review_url) }
 

@@ -1,6 +1,6 @@
 require 'spec_helper' 
 
-describe "TermLoan" do 
+describe "TermLoan Model" do 
 	it "has a valid factory" do
 		FactoryGirl.create(:term_loan).should be_valid
 	end	

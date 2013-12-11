@@ -14,7 +14,7 @@ describe "Payday Loan Law Pages" do
     it { should have_link('About Us', href:"/infos/about/")}
 	end
 
-	describe "Payday Loan Law Index Page" do  
+	describe "Index Page" do  
 		before(:all){
       # Create State table
       10.times { FactoryGirl.create(:state) }
@@ -40,7 +40,7 @@ describe "Payday Loan Law Pages" do
 		}
 	end
 
-	describe "Payday Loan Law State Page" do 
+	describe "State Page" do 
 		before(:all){
 			FactoryGirl.create(
 				:state,
@@ -65,7 +65,7 @@ describe "Payday Loan Law Pages" do
 			@paydaylawstatedetails = @state.payday_loan_law_detail
 		}
 
-		describe "existing state" do 
+		context "existing state" do 
 
 			before { visit "/payday-loan-laws/TX" }	
 
@@ -76,7 +76,7 @@ describe "Payday Loan Law Pages" do
 		
 		end
 		
-		describe "non existing state" do 
+		context "non-existing state" do 
 
 			before { visit "/payday-loan-laws/fr" }
 

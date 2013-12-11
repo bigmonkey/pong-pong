@@ -15,7 +15,7 @@ describe "Prepaid Pages" do
 
   end
 
-  describe "Ranking Page" do
+  describe "Main Page" do
     before(:all) { 
         num_cards = 5
         num_cards.times { FactoryGirl.create(:prepaid) }
@@ -51,7 +51,7 @@ describe "Prepaid Pages" do
     }
   end
 
-  describe "Individual Prepaid Card Pages" do
+  describe "Individual Cards" do
     let(:prepaid) { FactoryGirl.create(:prepaid) }
     before { visit prepaid_path(prepaid.review_url) }
 
