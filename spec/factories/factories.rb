@@ -40,6 +40,11 @@ FactoryGirl.define do
 		ncsl_citation ""
 	end
 
+	factory :partner do
+		id ""
+		lender_link "http://lender_link.com"
+		lender_tail ""
+	end
 
 end
 

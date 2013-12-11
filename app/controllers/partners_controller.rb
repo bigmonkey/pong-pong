@@ -2,14 +2,9 @@ class PartnersController < ApplicationController
   layout 'partner'
   before_filter :set_tracking
 
-  def index
-  	show
-    render('show')
-  end
-  
   def get_url
     l = Partner.find(params[:id])
-    if l.lender_tail.nil?
+    if l.lender_tail.blank?
       @lender_url = l.lender_link
     else
       @lender_url = l.lender_link + l.lender_tail + @page + @source 
@@ -36,13 +31,13 @@ class PartnersController < ApplicationController
     end
     get_url
     @lender_url
-    @lenders = Partner.all
+    #@lenders = Partner.all
   end
 
   def show
   	#If there is an ID go to lender app else return to the hound
   	if params[:id].nil?
-  		redirect_to(:controller => 'homes', :action => 'index')
+  		redirect_to("/")
   	else
 	  redirect_values
     end

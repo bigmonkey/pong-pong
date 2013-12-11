@@ -42,7 +42,7 @@ Pdh::Application.routes.draw do
   resources :payday_loans, :path => "payday-loans", :only => [:index, :show]
   resources :term_loans,:path => "installment-loans", :only => [:index, :show]
   resources :payday_loan_laws, :path => "payday-loan-laws", :only => [:index, :show]
-  resources :partners, :only => [ :index, :show ]
+  resources :partners, :only => [ :show ]
 
 
   # Term Loan URL's based on Nov 3, 2013 SEO analysis
