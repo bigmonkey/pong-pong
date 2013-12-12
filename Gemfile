@@ -9,7 +9,7 @@ source 'https://rubygems.org'
  gem 'pg', '0.17.0'
 
 group :test do
-	gem 'selenium-webdriver', '2.35.1'
+	gem 'selenium-webdriver', "~>2.38.0"
 	gem 'capybara', '2.1.0'
   gem 'launchy', '2.4.2'
   gem 'faker', '1.1.2'

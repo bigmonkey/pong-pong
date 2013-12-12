@@ -22,6 +22,7 @@ describe "Apply Payday Loan Pages" do
 		it_should_behave_like "all apply pages"
 
 		describe "Application" do
+			# if fails to connect to Firefox check selenium webdriver gem version
 			context "state and bank account filled in" do
 				it "goes to application", js: true do
 					select "Texas", from: "state"
