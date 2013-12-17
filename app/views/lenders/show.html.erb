@@ -41,7 +41,7 @@ We have not reviewed this lender.
 		<%= link_to('find lenders in your state', (@lender.lender_type == "term") ? term_loans_path : payday_loans_path) %>
 	</div>
 	<div class = "lenderMidBox lenderCenter">
-		<div class = "lenderBoxTitle">Costs</div>
+		<div class = "lenderBoxTitle">Costs*</div>
 		<div class = "lenderBoxHighlight"><%= !@lender.cost.nil? ? number_to_currency(@lender.cost) : "?" %> / <%= !@lender.apr.nil? ? number_to_percentage(@lender.apr*100, :precision => 0) : "?" %> apr</div>
 		<div class = "lenderBoxSubtitle"><%= number_to_currency(@lender.loan_amt, :precision => 0) %>, <%= (@lender.payments * @lender.pmt_freq_in_days).ceil %> day loan</div>
 		<div class = "lenderBoxCostSubtitle">Fees and terms vary.<br /> See <%= link_to("#{@lender.name}", partner_path(@lender.partner_id), :rel => 'nofollow', :page => @page, :target => 'blank') %> for details.</div>
@@ -90,6 +90,9 @@ We have not reviewed this lender.
 
 <div class = "clearboth"></div>
 
+<p class = "tableIntro">* Costs vary by state. Pricing is generally for Delaware residents when available. Check <%= link_to("#{@lender.name}", partner_path(@lender.partner_id), :rel => 'nofollow', :page => @page, :target => 'blank') %> for updated information. Some lender's will not provide pricing data until an application is completed.</p>
+
+<div class = "clearboth"></div>  
 <%=  render(:partial => "shared/media_counters")%>
 
 <%end %>	
