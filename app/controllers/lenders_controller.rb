@@ -1,6 +1,7 @@
 class LendersController < ApplicationController
+  #lender pages are called form WP in production
   #comment out when going to production so show pages called without layout
-  #layout 'paydayAppNav'
+  #layout 'paydayNav'
   
   before_filter :set_tracking
   

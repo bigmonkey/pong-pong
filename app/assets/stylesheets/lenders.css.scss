@@ -268,7 +268,7 @@ td .instantDecision {
 }
 .lenderMidBox{
 	width: 32%;
-	min-height: 120px;
+	min-height: 10em;
 	background: $boxBackground;
 	@include rounded (5px);
 	text-align: center;
@@ -280,11 +280,16 @@ td .instantDecision {
 .lenderBoxHighlight{
 	font-size: 1.3em;
 	color: $bigColor;
-	margin: 30px auto 5px;
+	margin: 1.8em auto .1em;
 }
 
 .lenderBoxSubtitle{
 	font-size: .8em;
+}
+
+.lenderBoxCostSubtitle {
+	margin-top: 1em;
+	color: $dogFur;
 }
 
 .lenderBoxStates{
