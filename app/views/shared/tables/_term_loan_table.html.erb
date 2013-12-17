@@ -19,7 +19,7 @@
     <tr class="tableHeader">
      <th><%= !(defined? @state.state_abbr).nil? ? "#{@state.state_abbr} Lender" : "Company Name" %></th>
      <th>Description</th>
-     <th>Costs</th>
+     <th>Costs*</th>
      <th>Sniff</th>
      <th>Rating</th>
 
@@ -47,3 +47,5 @@
     </tr>
     <% end %>
   </table>
+
+  <p class = "tableIntro">* Costs vary by state. The comparisions above use pricing for Delaware residents when available. Check each lender's website for updated information. Some lender's will not provide pricing data until an application is completed.</p>

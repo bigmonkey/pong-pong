@@ -44,6 +44,7 @@ We have not reviewed this lender.
 		<div class = "lenderBoxTitle">Costs</div>
 		<div class = "lenderBoxHighlight"><%= !@lender.cost.nil? ? number_to_currency(@lender.cost) : "?" %> / <%= !@lender.apr.nil? ? number_to_percentage(@lender.apr*100, :precision => 0) : "?" %> apr</div>
 		<div class = "lenderBoxSubtitle"><%= number_to_currency(@lender.loan_amt, :precision => 0) %>, <%= (@lender.payments * @lender.pmt_freq_in_days).ceil %> day loan</div>
+		<div>Costs and terms vary by state. Delaware terms are shown. See <%= link_to("#{@lender.name}'s site", partner_path(@lender.partner_id), :rel => 'nofollow', :page => @page, :target => 'blank') %> for up-to-date pricing.</div>
 	</div>
 </div>
 
