@@ -1,0 +1,52 @@
+@media only screen and (max-width: 1280px) {
+	#mainHeaderOutter {
+		margin: 0;
+		border: none;
+	}
+	#mainHeader {
+		width: 100%;
+	}
+	#logo {
+		float: right;
+		img {
+			height: 4em;
+		}
+	}	
+
+	nav {
+		background-color: $pageBackground;
+		border:none;
+		float: none;
+		height: auto;
+		margin: 0;
+		width: auto;
+	}
+
+	#nav {
+		float: none;
+	}
+
+	#nav li {
+		float: none;
+		text-align: left;
+		height: auto;
+		line-height: 1.5em;
+		padding-left: 1.5em;
+	}
+
+	#nav li:hover ul {
+		background: none;
+	}	
+
+	#nav li:hover a:hover{
+		background: none;
+		color: $bigColor
+	}
+	#nav ul{
+    position:static;
+    background: none;
+}
+
+
+
+}
