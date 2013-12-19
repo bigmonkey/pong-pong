@@ -1,4 +1,4 @@
-@media only screen and (max-width: 1280px) {
+@media only screen and (max-width: 640px) {
 	#mainHeaderOutter {
 		margin: 0;
 		border: none;
@@ -60,6 +60,10 @@
 	#nav ul{
     position:static;
     background: none;
+	}
+
+	#wrapper {
+		width: 100%;
 	}
 	#sidebarFinder {
 		display:none

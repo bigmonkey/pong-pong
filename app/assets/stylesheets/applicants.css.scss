@@ -57,7 +57,7 @@
 .appFormBox{
 	height: 445px;
 	width: 450px;
-	margin: 0px;
+	margin: 1em 0;
 	float: right;
 	@include rounded(7px);
 	background: $bigColor; 

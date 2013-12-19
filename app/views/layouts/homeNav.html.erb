@@ -11,10 +11,14 @@
 	<%= render '/layouts/google_tag_manager' %>
 	
 	<div id="mainHeaderOutter">
+	</div>	
+
+	<div id = "wrapper">
 		<header id="mainHeader">
 		<div id="logo"><%= link_to(image_tag("thepaydayhound-logo.png", :alt => "logo" ), "/")%></div>
 
 		<nav>
+				<div><a href="javascript:TogNav()" id="hamburger">&#9776;</a></div>			
 				<ul id="nav">
 			    <li>
 			        <%= link_to("Apply", applicants_path) %>
@@ -45,14 +49,15 @@
 		</nav>
 	
 		</header>
-	</div>
+
 
 <!-- everything between header and footer -->
 
 	<%= yield %>
 
 <!-- wrap everything between header and footer -->		
- 
+	<div> <!-- end wrapper div --> 
+
 	<%= render :partial => 'shared/layouts/footer' %>	  
 	<%= debug(params) if Rails.env.development? %>	
 </body>
