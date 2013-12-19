@@ -54,7 +54,7 @@ class BorrowersController < ApplicationController
 	  		redirect_to(@redirect)
   	else	
   		case params[:state]
-	  	when "GA","VA","WV","AR","NY"
+	  	when "GA","VA","WV","AR","NY","PA","OH"
 	  		@redirect = "#{params[:state]} Loan Laws"
 	  		save_tracking
 	  		redirect_to("/payday-loans/#{params[:state]}")
