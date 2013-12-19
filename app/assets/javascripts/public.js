@@ -20,6 +20,11 @@ $("#applicationDropContainer").fadeToggle(750);
 info.innerHTML=(info.innerHTML=='application [+]')?'application [ - ]': 'application [+]';
 }
 
+function TogNav() {
+var expand=document.getElementById('nav');
+expand.style.display=(expand.style.display=='block')?'none': 'block';
+}
+
     $("#lesson").fadeIn(1000);
 
 // sort secured card table //

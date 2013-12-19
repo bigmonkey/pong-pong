@@ -1,6 +1,7 @@
 <!DOCTYPE html><!-- HTML 5 -->
 <html dir="ltr" lang="en-US">
-<% # This is the main layout used for all public facing views %>
+<% # This layout doesn't show the Apply menu %>
+<% # Not use as of 12/18/2013 %>
 <head>
 	<%= render '/layouts/header_tags' %>
 </head>
@@ -9,10 +10,13 @@
 	<%= render '/layouts/google_tag_manager' %>
 
 	<div id="mainHeaderOutter">
-		<header id="mainHeader">
+	<div>
+	<div id = "wrapper">	
+
 		<div id="logo"><%= link_to(image_tag("thepaydayhound-logo.png", :alt => "logo" ), "/")%></div>
 
 		<nav>
+				<div><a href="javascript:TogNav()" id="hamburger">&#9776;</a></div>
 				<ul id="nav">
 			    <li>
 			        <%= link_to("Compare", "#") %>		
@@ -40,14 +44,15 @@
 		</nav>
 	
 		</header>
-	</div>
+
 
 <!-- everything between header and footer -->
 
 	<%= yield %>
 
 <!-- wrap everything between header and footer -->		
- 
+	<div> <!-- end wrapper div -->
+
 	<%= render :partial => 'shared/layouts/footer' %>	  
 	<%= debug(params) if Rails.env.development? %>	
 </body>
