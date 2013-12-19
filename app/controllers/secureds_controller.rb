@@ -1,6 +1,6 @@
 class SecuredsController < ApplicationController
   
-  layout 'cardNav'
+  layout 'paydayNav'
   
   before_filter :set_tracking
   before_filter :set_secured_constants
