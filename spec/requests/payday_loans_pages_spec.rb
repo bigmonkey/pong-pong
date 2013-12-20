@@ -43,7 +43,7 @@ describe " Payday Loan Pages" do
       # Create Sniff table
       FactoryGirl.create(:sniff, id: 1, sniff_desc: "Great") 
       FactoryGirl.create(:sniff, id: 2, sniff_desc: "Fair") 
-      FactoryGirl.create(:sniff, id: 3, sniff_desc: "Poor") 
+      FactoryGirl.create(:sniff, id: 3, sniff_desc: "Bad") 
       # Create Terms table
       5.times { FactoryGirl.create(:payday_loan) }
       #binding.pry

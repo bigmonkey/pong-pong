@@ -1,9 +1,9 @@
 FactoryGirl.define do
 	factory :term_loan do
-		sequence(:id) { |n| n} 		
+		sequence(:sniff_id) { |n| Sniff.find_by_sniff_desc(['Great','Fair','Bad'].sample).id } 		
 		sequence(:partner_id) { |n| n }
 		sequence(:active) { |n| true }
-		sequence(:sniff_id) { |n| [1,2,3].sample }
+		#sequence(:sniff_id) { |n| [1,2,3].sample }
 		sequence(:ranking) { |n| [1,2,3,4,5].sample }
 		sequence(:image_file) { |n| "image#{n}"}
 		sequence(:name) { |n| "term lender #{n}"}
