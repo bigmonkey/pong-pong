@@ -12,6 +12,10 @@ describe TermLoansController do
       article:   "I'm the article",
       parent_page: "installment loans",
     )
+      # Create Sniff table
+      FactoryGirl.create(:sniff, sniff_rank: 1, sniff_desc: "Great") 
+      FactoryGirl.create(:sniff, sniff_rank: 2, sniff_desc: "Fair") 
+      FactoryGirl.create(:sniff, sniff_rank: 3, sniff_desc: "Bad")     
   }
 
 	describe "GET #index"	do
