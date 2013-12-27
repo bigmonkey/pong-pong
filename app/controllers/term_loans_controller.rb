@@ -8,7 +8,7 @@ class TermLoansController < ApplicationController
   	@states=State.all
 	  @lenders = TermLoan.by_top_rank.by_low_cost.active_lender
 		@criteria = TermLoan.new    #@criteria gets used on view
-		@criteria.sniff_id = 3
+		@criteria.sniff_id = Sniff.find_by_sniff_desc('Bad').id
    	@criteria.ranking = 0	
 
     # in application_controller
@@ -22,7 +22,7 @@ class TermLoansController < ApplicationController
 			redirect_to("/installment-loans/")
 		else	
 			@criteria = TermLoan.new    #@criteria gets used on view
-			@criteria.sniff_id = !params[:sniff_id].nil? ? params[:sniff_id] : 3
+			@criteria.sniff_id = !params[:sniff_id].nil? ? params[:sniff_id] : Sniff.find_by_sniff_desc('Bad').id
    		@criteria.ranking = !params[:ranking].nil?	? params[:ranking] : 1
     	
       # in application_controller

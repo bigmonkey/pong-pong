@@ -41,9 +41,9 @@ describe "Installment Loan Pages" do
       # Create State table
       10.times { FactoryGirl.create(:state) }
       # Create Sniff table
-      FactoryGirl.create(:sniff, id: 1, sniff_desc: "Great") 
-      FactoryGirl.create(:sniff, id: 2, sniff_desc: "Fair") 
-      FactoryGirl.create(:sniff, id: 3, sniff_desc: "Bad") 
+      FactoryGirl.create(:sniff, sniff_desc: "Great") 
+      FactoryGirl.create(:sniff, sniff_desc: "Fair") 
+      FactoryGirl.create(:sniff, sniff_desc: "Bad") 
       # Create Terms table
       #binding.pry
       5.times { FactoryGirl.create(:term_loan) }
@@ -183,9 +183,10 @@ describe "Installment Loan Pages" do
       FactoryGirl.create(:state, id: 2, state_abbr: "VA", state: "Virginia" )
       FactoryGirl.create(:state, id: 3, state_abbr: "CA", state: "California" )
       # Create Sniff table
-      FactoryGirl.create(:sniff, id: 1, sniff_desc: "Great") 
-      FactoryGirl.create(:sniff, id: 2, sniff_desc: "Fair") 
-      FactoryGirl.create(:sniff, id: 3, sniff_desc: "Poor") 
+      FactoryGirl.create(:sniff, sniff_desc: "Great", sniff_rank: 1) 
+      FactoryGirl.create(:sniff, sniff_desc: "Fair", sniff_rank: 2) 
+      FactoryGirl.create(:sniff, sniff_desc: "Bad", sniff_rank: 3) 
+      #binding.pry
       # Create Terms table
       #FactoryGirl.create(:term_loan, id: 1, partner_id: 1, active: true, sniff_id: [1,2,3].sample, ranking:[1,2,3,4,5].sample, image_file: "image", name: "term1", first_comment: "term1 comment", governing_law: "law 1", review_url: "term-loan-1")
       # Create payday_loan_laws table
@@ -197,6 +198,7 @@ describe "Installment Loan Pages" do
     } 
     context "unlisted state" do
       before {
+        #binding.pry
         visit "/installment-loans/fr" 
       }
       it {should have_selector('h1', text: 'Installment Loans') }

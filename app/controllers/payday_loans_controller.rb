@@ -9,7 +9,7 @@ class PaydayLoansController < ApplicationController
   	@states=State.all
 	  @lenders = PaydayLoan.by_top_rank.active_lender
 		@criteria = PaydayLoan.new    #@criteria gets used on view
-		@criteria.sniff_id = 3
+		@criteria.sniff_id = Sniff.find_by_sniff_desc('Bad').id
    	@criteria.ranking = 0
     # for customizing articles for SEO
     # in application_controller
@@ -25,7 +25,7 @@ class PaydayLoansController < ApplicationController
 			redirect_to("/payday-loans/")
 		else	
 			@criteria = PaydayLoan.new    #@criteria gets used on view
-			@criteria.sniff_id = !params[:sniff_id].nil? ? params[:sniff_id] : 3
+			@criteria.sniff_id = !params[:sniff_id].nil? ? params[:sniff_id] : Sniff.find_by_sniff_desc('Bad').id
    		@criteria.ranking = !params[:ranking].nil? ? params[:ranking]	: 1	
 
       # for customizing articles for SEO
