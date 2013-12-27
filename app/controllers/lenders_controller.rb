@@ -6,7 +6,7 @@ class LendersController < ApplicationController
   before_filter :set_tracking
   
   def index
-    redirect_to("http://www.thepaydayhound.com/payday-loans/")
+    redirect_to("/payday-loans/")
   end
 
   def finder
