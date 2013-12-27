@@ -1,6 +1,12 @@
 require 'spec_helper' 
 
 describe "PaydayLoan Model" do 
+	before(:all) {
+      FactoryGirl.create(:sniff, sniff_score: 1, sniff_desc: "Great") 
+      FactoryGirl.create(:sniff, sniff_score: 2, sniff_desc: "Fair") 
+      FactoryGirl.create(:sniff, sniff_score: 3, sniff_desc: "Bad") 		
+	}
+
 	it "has a valid factory" do
 		FactoryGirl.create(:payday_loan).should be_valid
 	end	
@@ -13,9 +19,9 @@ describe "PaydayLoan Model" do
 	end
 	describe "filter by sniff level" do
 		before {
-			@goodlender = FactoryGirl.create(:payday_loan, sniff_id: 1)
-			@fairlender = FactoryGirl.create(:payday_loan, sniff_id: 2)
-			@badlender = FactoryGirl.create(:payday_loan, sniff_id: 3)			
+			@goodlender = FactoryGirl.create(:payday_loan, sniff_id: Sniff.find_by_sniff_score(1).id)
+			@fairlender = FactoryGirl.create(:payday_loan, sniff_id: Sniff.find_by_sniff_score(2).id)
+			@badlender = FactoryGirl.create(:payday_loan, sniff_id: Sniff.find_by_sniff_score(3).id)			
 		}
 		it "returns less than equal to sniff level" do
 			PaydayLoan.sniff_level(2).should == [@goodlender, @fairlender]
@@ -50,4 +56,9 @@ describe "PaydayLoan Model" do
 			PaydayLoan.active_lender.should_not include @inactivelender
 		end	
 	end	
+
+	after(:all){
+		Sniff.destroy_all
+		PaydayLoan.destroy_all
+	}
 end

@@ -22,7 +22,7 @@ describe "Borrower Pages" do
 			click_button "Find a Loan"  		
   	}
  
-  	it { should have_selector('h1', text: "What Happens Next")}
+
 	  it_should_behave_like "all pages"
 	end  
 end

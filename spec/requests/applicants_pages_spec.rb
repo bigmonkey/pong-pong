@@ -19,6 +19,7 @@ describe "Apply Payday Loan Pages" do
 		it { should have_selector('h1', text: 'How Much Cash Do You Need') }
 		# sidebar
 		it { should have_selector('li', text: "Private") }
+		it { should have_selector('h1', text: "What Happens Next")}
 		it_should_behave_like "all apply pages"
 
 		describe "Application" do
@@ -28,7 +29,7 @@ describe "Apply Payday Loan Pages" do
 					select "Texas", from: "state"
 					select "Checking", from: "bank_account_type"
 					click_button "Find a Loan"
-					page.should have_selector('h1', text: 'Congratulations')
+					page.should have_selector('div', text: 'Congratulations!')
 				end
 			end
 			context "state not filled in" do

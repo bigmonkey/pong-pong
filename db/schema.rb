@@ -359,10 +359,10 @@ ActiveRecord::Schema.define(version: 20131226215859) do
   add_index "secureds", ["review_url"], name: "index_secureds_on_review_url", using: :btree
 
   create_table "sniffs", force: true do |t|
-    t.string   "sniff_desc", limit: 5
-    t.datetime "created_at",           null: false
-    t.datetime "updated_at",           null: false
-    t.integer  "sniff_rank"
+    t.string   "sniff_desc",  limit: 5
+    t.datetime "created_at",            null: false
+    t.datetime "updated_at",            null: false
+    t.integer  "sniff_score"
   end
 
   create_table "sources", force: true do |t|

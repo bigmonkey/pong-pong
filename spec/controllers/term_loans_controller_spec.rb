@@ -13,9 +13,9 @@ describe TermLoansController do
       parent_page: "installment loans",
     )
       # Create Sniff table
-      FactoryGirl.create(:sniff, sniff_rank: 1, sniff_desc: "Great") 
-      FactoryGirl.create(:sniff, sniff_rank: 2, sniff_desc: "Fair") 
-      FactoryGirl.create(:sniff, sniff_rank: 3, sniff_desc: "Bad")     
+      FactoryGirl.create(:sniff, sniff_score: 1, sniff_desc: "Great") 
+      FactoryGirl.create(:sniff, sniff_score: 2, sniff_desc: "Fair") 
+      FactoryGirl.create(:sniff, sniff_score: 3, sniff_desc: "Bad")     
   }
 
 	describe "GET #index"	do
@@ -30,7 +30,8 @@ describe TermLoansController do
 			response.should render_template :index
 		end	
 		it "orders lenders by rank" do
-			2.times {FactoryGirl.create(:term_loan)}
+			FactoryGirl.create(:term_loan, ranking: 5)
+			FactoryGirl.create(:term_loan, ranking: 1)
 			state = FactoryGirl.create(:state)
 			get :index
 			assigns(:lenders).first.ranking.should be > assigns(:lenders).last.ranking
@@ -64,6 +65,7 @@ describe TermLoansController do
 		Keyword.destroy_all
 		State.destroy_all
 		TermLoan.destroy_all
-	}
+		Sniff.destroy_all
+	}	
 
 end

@@ -9,7 +9,7 @@ class PaydayLoansController < ApplicationController
   	@states=State.all
 	  @lenders = PaydayLoan.by_top_rank.active_lender
 		@criteria = PaydayLoan.new    #@criteria gets used on view
-		@criteria.sniff_id = Sniff.find_by_sniff_desc('Bad').id
+		@criteria.sniff_id = Sniff.find_by_sniff_score(3).id
    	@criteria.ranking = 0
     # for customizing articles for SEO
     # in application_controller
@@ -25,7 +25,7 @@ class PaydayLoansController < ApplicationController
 			redirect_to("/payday-loans/")
 		else	
 			@criteria = PaydayLoan.new    #@criteria gets used on view
-			@criteria.sniff_id = !params[:sniff_id].nil? ? params[:sniff_id] : Sniff.find_by_sniff_desc('Bad').id
+			@criteria.sniff_id = !params[:sniff_score].nil? ? Sniff.find_by_sniff_score(params[:sniff_score]).id : Sniff.find_by_sniff_score(3).id
    		@criteria.ranking = !params[:ranking].nil? ? params[:ranking]	: 1	
 
       # for customizing articles for SEO
@@ -34,7 +34,7 @@ class PaydayLoansController < ApplicationController
 
     	@state = State.find_by_state_abbr(params[:id].upcase)
     	@paydaylawstate = @state.payday_loan_law
-    	@lenders = @state.payday_loans.by_top_rank.sniff_level(@criteria.sniff_id).rank_level(@criteria.ranking).active_lender
+    	@lenders = @state.payday_loans.by_top_rank.sniff_level(@criteria.sniff.sniff_score).rank_level(@criteria.ranking).active_lender
 
     	# defined so the radio button defaults to correct button
     	@lender=PaydayLoan.new      

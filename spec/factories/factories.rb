@@ -2,7 +2,7 @@ FactoryGirl.define do
 
 	factory :sniff do
 		sniff_desc 	""
-		sniff_rank ""
+		sniff_score ""
 	end	
 
 	factory :state do

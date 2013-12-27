@@ -5,19 +5,19 @@
 <%= form_tag({:controller =>'lenders', :action => 'finder'}, :method => 'get', :id => "findPaydayForm", :class => "cardCalc", :target => "_parent") do %>
   <div class="formSection">
 
-    <div class="formLabel"><%= label_tag(:sniff_id) %></div>
+    <div class="formLabel"><%= label_tag(:sniff_score) %></div>
     <div class="formLabelDesc">Lender Reputation</div>
     
     <% if @criteria.nil? %>
-      <div class="formInput"><%= radio_button_tag(:sniff_id, "1") %>Great
-        <%= radio_button_tag(:sniff_id, "2") %>Fair
-        <%= radio_button_tag(:sniff_id, "3", options = {:checked => true}) %>Bad</div>
+      <div class="formInput"><%= radio_button_tag(:sniff_score, "1") %>Great
+        <%= radio_button_tag(:sniff_score, "2") %>Fair
+        <%= radio_button_tag(:sniff_score, "3", options = {:checked => true}) %>Bad</div>
     <% else %>
       <div class="formInput">
         <% # the @criteria.sniff_id is boolean which triggers checked or not checked %>
-        <%= radio_button_tag(:sniff_id, "1", @criteria.sniff_id == 1) %>Great
-        <%= radio_button_tag(:sniff_id, "2", @criteria.sniff_id == 2) %>Fair
-        <%= radio_button_tag(:sniff_id, "3", @criteria.sniff_id == 3) %>Bad
+        <%= radio_button_tag(:sniff_score, "1", @criteria.sniff_id == 1) %>Great
+        <%= radio_button_tag(:sniff_score, "2", @criteria.sniff_id == 2) %>Fair
+        <%= radio_button_tag(:sniff_score, "3", @criteria.sniff_id == 3) %>Bad
       </div>  
     <% end %>    
   </div>

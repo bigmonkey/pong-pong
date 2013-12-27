@@ -24,7 +24,7 @@ class TermLoan < ActiveRecord::Base
     end    
 
     def self.sniff_level(level)
-        where("sniff_id <= ?", level)
+        joins(:sniff).where("sniff_score <= ?", level)
     end
 
     #used in filter to choose by lender type

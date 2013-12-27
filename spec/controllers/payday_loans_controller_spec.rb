@@ -13,9 +13,9 @@ describe PaydayLoansController do
       parent_page: "payday loans",
     )
       # Create Sniff table
-      FactoryGirl.create(:sniff, sniff_rank: 1, sniff_desc: "Great") 
-      FactoryGirl.create(:sniff, sniff_rank: 2, sniff_desc: "Fair") 
-      FactoryGirl.create(:sniff, sniff_rank: 3, sniff_desc: "Bad")     
+      FactoryGirl.create(:sniff, sniff_score: 1, sniff_desc: "Great") 
+      FactoryGirl.create(:sniff, sniff_score: 2, sniff_desc: "Fair") 
+      FactoryGirl.create(:sniff, sniff_score: 3, sniff_desc: "Bad")     
   }
 
 	describe "GET #index"	do
@@ -26,7 +26,8 @@ describe PaydayLoansController do
 			assigns(:states).should eq([state])
 		end	
 		it "orders lender by rank" do
-			2.times {FactoryGirl.create(:payday_loan)}
+			FactoryGirl.create(:payday_loan, ranking: 5)
+			FactoryGirl.create(:payday_loan, ranking: 4)
 			state = FactoryGirl.create(:state)
 			get :index
 			assigns(:lenders).first.ranking.should be > assigns(:lenders).last.ranking
@@ -56,6 +57,7 @@ describe PaydayLoansController do
 		Keyword.destroy_all
 		State.destroy_all
 		PaydayLoan.destroy_all
+		Sniff.destroy_all
 	}
 
 end
