@@ -15,6 +15,7 @@ class InfosController < ApplicationController
   end
 
   def about
+    session[:http_referer] = request.env["HTTP_REFERER"]
   end
 
   def terms
@@ -23,8 +24,8 @@ class InfosController < ApplicationController
   def why
   end
 
-  def code
-    
+  def who
+    @test = URI(session[:http_referer].to_s).host
   end
 
 end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131226215859) do
+ActiveRecord::Schema.define(version: 20131230020402) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,8 +19,6 @@ ActiveRecord::Schema.define(version: 20131226215859) do
   create_table "applicants", force: true do |t|
     t.string   "token"
     t.string   "ip_address"
-    t.string   "src_code",             limit: 4
-    t.string   "page_code",            limit: 4
     t.string   "campaign"
     t.string   "ad_group"
     t.string   "kw"
@@ -39,6 +37,17 @@ ActiveRecord::Schema.define(version: 20131226215859) do
     t.string   "redirect"
     t.datetime "created_at",                     null: false
     t.datetime "updated_at",                     null: false
+    t.integer  "requested_amount"
+    t.string   "device"
+    t.string   "src"
+    t.string   "referal_url"
+    t.string   "referal_host"
+    t.string   "referal_path"
+    t.string   "referal_query"
+    t.string   "entry_page"
+    t.integer  "page_visits"
+    t.string   "time_on_site"
+    t.string   "exit_page"
   end
 
   create_table "borrowers", force: true do |t|

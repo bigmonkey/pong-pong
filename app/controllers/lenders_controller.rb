@@ -19,6 +19,7 @@ class LendersController < ApplicationController
   end
 
   def show
+    #comes from wordpress lender pages
     @lender = nil
     if !params[:id].nil?
       if !PaydayLoan.find_by_review_url(params[:id]).nil?

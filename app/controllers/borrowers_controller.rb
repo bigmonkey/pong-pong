@@ -16,8 +16,8 @@ class BorrowersController < ApplicationController
 		@applicant.ip_address = request.remote_ip
 
 		# saves tracking variable 
-		@applicant.src_code = session[:src] 
-		@applicant.page_code = @page
+		@applicant.src = session[:src] 
+		@applicant.exit_page = @page
     @applicant.campaign = session[:camp]
     @applicant.ad_group = session[:adgrp]
     @applicant.kw = session[:kw]
@@ -35,10 +35,12 @@ class BorrowersController < ApplicationController
    	@applicant.state = params[:state]
   	@applicant.bank_account_type = params[:bank_account_type]
    	@applicant.redirect = @redirect
-   
- 	 	@applicant.save 
+   	@applicant.save 
 	
+		# @applicant.token is created in model applicant.rb
+		# session[:token] is set so it can be sent to affiliates for tracking
 		session[:token]=@applicant.token
+
 	end
 
   def new

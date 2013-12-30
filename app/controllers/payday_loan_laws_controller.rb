@@ -2,7 +2,7 @@ class PaydayLoanLawsController < ApplicationController
 
   layout 'paydayNav'    
 
-  # before_filter :set_tracking
+  before_filter :set_tracking
 
 	def index
 		@states=State.all

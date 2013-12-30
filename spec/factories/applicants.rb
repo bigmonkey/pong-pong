@@ -1,6 +1,6 @@
 FactoryGirl.define do 
 	factory :applicant do
-		id""
+		#id""
 		requested_amount 300
 		state "TX"
 		bank_account_type "Checking"

@@ -24,25 +24,29 @@ class ApplicationController < ActionController::Base
 
 
   def set_tracking
+    # set ad campaign stats
   	if !params[:src].nil?
-      Source.find_by_src_code(params[:src]).nil? ? session[:src]="0000" : session[:src] = params[:src] 
+      session[:src] = params[:src] 
       session[:camp] = params[:camp]
       session[:adgrp] = params[:adg]
       session[:kw] = params[:kw]
       session[:ad] = params[:ad]
       session[:plc] = params[:plc]
-    else 
-      session[:src] = session[:src]
     end
 
+    # set site tracking stats
+    session[:referer_uri] = request.env["HTTP_REFERER"]
+    binding.pry
   end
 
+  #in application because blogbars calls this method for wordpress
   def set_secured_constants
     @pur_balance =  500.0 #revolving purchase balance
     @cash_balance = 0.0 #cash balance balance
     @duration = 8.0  #number of months someone keeps the secured car, ad decimal so not integer  
   end
   
+  #in application because blogbars calls this method for wordpress
   def set_prepaid_constants
 
     @atm_owner_fee = 2.50 #fee charged by ATM owners
