@@ -87,7 +87,7 @@ class ApplicationController < ActionController::Base
     if !session[:entry_time].nil?
       @applicant.time_on_site = Time.at(Time.now - session[:entry_time]).utc.strftime("%H:%M:%S")
     end
-    @applicant.exit_page = @exit_page
+    @applicant.exit_page = session[:exit_page]
 
     # assign campaign stats 
     @applicant.campaign = session[:camp]

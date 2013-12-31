@@ -10,7 +10,8 @@ class PartnersController < ApplicationController
   	else
       if !request.env["HTTP_REFERER"].blank?
         uri = URI(request.env["HTTP_REFERER"])
-        @exit_page = uri.path + (!uri.query.nil? ? "?#{uri.query}" : "")
+        # use session for :exit_page because loan application assigns it as page that leads to prequal page or two states ahead
+        session[:exit_page] = uri.path + (!uri.query.nil? ? "?#{uri.query}" : "")
       end
       p = Partner.find(params[:id])
       @redirect=p.name

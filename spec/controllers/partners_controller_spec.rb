@@ -25,7 +25,7 @@ describe PartnersController do
 						get :show, id: FactoryGirl.create(:partner)
 						session[:token].should_not be_nil
 					end
-					it "sets exit_page session variable" do
+					it "saves exit_page session variable" do
 						request.env["HTTP_REFERER"] = 'http://www.thepaydayhound.com/lastpage?var=hippo' 
 						get :show, id: FactoryGirl.create(:partner)		
 						Applicant.find_by_token(session[:token]).exit_page.should eq('/lastpage?var=hippo')
