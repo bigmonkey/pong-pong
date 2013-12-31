@@ -18,7 +18,7 @@ class PartnersController < ApplicationController
   		redirect_to("/")
   	else
       uri = URI(request.env["HTTP_REFERER"])
-      session[:exit_page] = uri.path + '?' + uri.query
+      session[:exit_page] = uri.path + '?' + (!uri.query.nil? ? uri.query : "")
       save_tracking
       get_url
     end
