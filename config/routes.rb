@@ -7,6 +7,7 @@ Pdh::Application.routes.draw do
   get "jstyle" => "homes#jstyle"
   get "header" => "homes#header"
   get "footer" => "homes#footer"
+  get "nav" => "homes#nav"
 
   # Old URL redirects to payday-loans
   get "lenders" => "lenders#index"

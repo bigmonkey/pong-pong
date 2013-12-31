@@ -21,4 +21,8 @@ class HomesController < ApplicationController
   	render :partial => "shared/layouts/footer"
   end
 
+  def nav
+    render :partial => "shared/layouts/nav"
+  end
+
 end
