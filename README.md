@@ -7,9 +7,11 @@ Main websever is nginx which reverse proxys to Wordpress for articles and to Her
 This is the Rails code.
 
 Structure
+
 blogbars_controller		called by WP for sidebar sliders
 lenders_controller		called by WP for individual lender reviews
 homes_controller			has methods called by WP for styles, js, footer
+
  
 Updates
 12/31/2013	pages and sources tables no longer in use. URI now used
