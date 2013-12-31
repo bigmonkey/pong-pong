@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe " Payday Loan Pages" do
+describe "Payday Loan Pages" do
 	subject { page }
 
   shared_examples_for "all payday loan pages" do
@@ -50,7 +50,7 @@ describe " Payday Loan Pages" do
     } 
 
     # Payday Loan Main Page
-    context "main page" do
+    context "Main Page" do
       before { 
         FactoryGirl.create(
           :keyword,
@@ -96,8 +96,8 @@ describe " Payday Loan Pages" do
       it { should have_content("#{@keyword.state_phrase.titleize}") }
 
       # tests application_controller set_seo_vars related kw
-      it { should have_link("#{@child.word}", href: "/#{@child.slug}" )}
-      it { should_not have_link("#{@notchild.slug}", href: "/#{@notchild.word.gsub(' ','-')}" )}
+      it { should have_link("#{@child.word}", href: "/#{@child.slug}/" )}
+      it { should_not have_link("#{@notchild.slug}", href: "/#{@notchild.word.gsub(' ','-')}/" )}
       it_should_behave_like "all index payday loan pages"
       it_should_behave_like "all payday loan pages"
     end  
@@ -151,8 +151,8 @@ describe " Payday Loan Pages" do
       it { should have_content("#{@keyword.state_phrase.titleize}") }
 
       # tests application_controller set_seo_vars related kw
-			it { should_not have_link("#{@notgrandchild.slug}", href: "/#{@notgrandchild.word.gsub(' ','-')}" )}
-      it { should_not have_link("#{@notgrandchild.word}", href: "/#{@notgrandchild.slug}" )}
+			it { should_not have_link("#{@notgrandchild.slug}", href: "/#{@notgrandchild.word.gsub(' ','-')}/" )}
+      it { should_not have_link("#{@notgrandchild.word}", href: "/#{@notgrandchild.slug}/" )}
 
       it_should_behave_like "all index payday loan pages"
       it_should_behave_like "all payday loan pages"      
@@ -196,7 +196,7 @@ describe " Payday Loan Pages" do
       #FactoryGirl.create(:states_term_loans)
       #binding.pry
     } 
-    context "unlisted state" do
+    context "Unlisted State" do
       before {
         visit "/payday-loans/fr" 
       }
@@ -204,7 +204,7 @@ describe " Payday Loan Pages" do
       it { should_not have_selector('h2', text: 'Loan Filter') }      
     end
 
-    context "listed state" do
+    context "Listed State" do
       before {
         #binding.pry
       	@keyword = Keyword.find_by_word("payday loans")

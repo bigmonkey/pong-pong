@@ -50,7 +50,7 @@ describe "Installment Loan Pages" do
     } 
 
     # Installment Loan Main Page
-    context "main page" do
+    context "Main Page" do
       before { 
         # create installment loan kw 
         FactoryGirl.create(
@@ -97,14 +97,14 @@ describe "Installment Loan Pages" do
       it { should have_content("#{@keyword.state_phrase.titleize}") }
 
       # tests application_controller set_seo_vars related kw
-      it { should have_link("#{@child.word}", href: "/#{@child.slug}" )}
-      it { should_not have_link("#{@notchild.slug}", href: "/#{@notchild.word.gsub(' ','-')}" )}
+      it { should have_link("#{@child.word}", href: "/#{@child.slug}/" )}
+      it { should_not have_link("#{@notchild.slug}", href: "/#{@notchild.word.gsub(' ','-')}/" )}
       it_should_behave_like "all index installment loan pages"
       it_should_behave_like "all installment loan pages"
     end  
 
     #Installment Loan SEO Pages
-    context "SEO child pages" do
+    context "SEO Child Pages" do
       before {
         #create child of installment loan should show up
         #slug must be in routes.rb
@@ -151,8 +151,8 @@ describe "Installment Loan Pages" do
       it { should have_content("#{@keyword.state_phrase.titleize}") }
 
       # tests application_controller set_seo_vars related kw
-      it { should have_link("#{@grandchild.word}", href: "/#{@grandchild.slug}" )}
-      it { should_not have_link("#{@notgrandchild.word}", href: "/#{@notgrandchild.word.gsub(' ','-') }" )}
+      it { should have_link("#{@grandchild.word}", href: "/#{@grandchild.slug}/" )}
+      it { should_not have_link("#{@notgrandchild.word}", href: "/#{@notgrandchild.word.gsub(' ','-') }/" )}
 
       it_should_behave_like "all index installment loan pages"
       it_should_behave_like "all installment loan pages"      
@@ -196,7 +196,7 @@ describe "Installment Loan Pages" do
       #FactoryGirl.create(:states_term_loans)
       #binding.pry
     } 
-    context "unlisted state" do
+    context "Unlisted State" do
       before {
         #binding.pry
         visit "/installment-loans/fr" 
@@ -205,7 +205,7 @@ describe "Installment Loan Pages" do
       it { should_not have_selector('h2', text: 'Loan Filter') }      
     end
 
-    context "listed state" do
+    context "Listed State" do
       before {
         #binding.pry
         @keyword = Keyword.find_by_word("installment loans")

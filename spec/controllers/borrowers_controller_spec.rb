@@ -25,7 +25,7 @@ describe BorrowersController do
 				end
 			end
 			context "Unacceptable Underwriting" do
-				it "redirect military members" do
+				it "redirects military members" do
 					post :new, FactoryGirl.attributes_for(:applicant, active_military: "true")
 					response.should redirect_to("http://usmilitary.about.com/od/millegislation/a/paydayloans.htm")
 				end	

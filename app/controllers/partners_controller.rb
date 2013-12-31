@@ -8,8 +8,10 @@ class PartnersController < ApplicationController
   	if params[:id].blank?
   		redirect_to("/")
   	else
-      uri = URI(request.env["HTTP_REFERER"])
-      @exit_page = uri.path + (!uri.query.nil? ? "?#{uri.query}" : "")
+      if !request.env["HTTP_REFERER"].blank?
+        uri = URI(request.env["HTTP_REFERER"])
+        @exit_page = uri.path + (!uri.query.nil? ? "?#{uri.query}" : "")
+      end
       p = Partner.find(params[:id])
       @redirect=p.name
       save_tracking

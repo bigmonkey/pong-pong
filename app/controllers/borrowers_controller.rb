@@ -10,21 +10,6 @@ class BorrowersController < ApplicationController
 	require 'nokogiri'
 	require 'open-uri'
 
-	def wait
-    # saves marketing variables
-    @applicant.overdraft_protection = params[:overdraft_protection] 
-    @applicant.payday_loan_history = params[:payday_loan_history] 
-    @applicant.speed_sensitivity = params[:speed_sensitivity]
-    @applicant.price_sensitivity = params[:price_sensitivity]
-    @applicant.licensed_sensitivity = params[:licensed_sensitivity]
-    @applicant.creditcard_own = params[:creditcard_own]
-    @applicant.active_military = params[:active_military] 
-    @applicant.eighteen = params[:eighteen]
-    @applicant.state = params[:state]
-    @applicant.bank_account_type = params[:bank_account_type]
-    @applicant.redirect = @redirect	
-	end
-	
   def new
   	
   	# @redirect is used in save_tracking
@@ -34,17 +19,20 @@ class BorrowersController < ApplicationController
   	elsif	
 	  	 (params[:active_military]=="true") or (params[:bank_account_type]=="NONE") or (params[:eighteen]=="false")
 	  		@redirect = "http://usmilitary.about.com/od/millegislation/a/paydayloans.htm"
+	      @exit_page = request.path
 	  		save_tracking
 	  		redirect_to(@redirect)
   	else	
   		case params[:state]
 	  	when "GA","VA","WV","AR","NY","PA","OH"
 	  		@redirect = "#{params[:state]} Loan Laws"
+				@exit_page = request.path
 	  		save_tracking
 	  		redirect_to("/payday-loans/#{params[:state]}")
 	  	else 
 	  		@redirect = "borrower/new"
-	  		save_tracking
+	      @exit_page = request.path
+	      save_tracking
 		  	@borrower = Borrower.new
 		  	@requested_amount = params[:requested_amount]	
 		  	if !State.find_by_state_abbr(params[:state]).nil?

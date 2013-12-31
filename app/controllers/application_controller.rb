@@ -84,7 +84,9 @@ class ApplicationController < ActionController::Base
     end  
     @applicant.entry_page = session[:entry_page]
     @applicant.page_views = session[:page_views]
-    @applicant.time_on_site = Time.at(Time.now - session[:entry_time]).utc.strftime("%H:%M:%S")
+    if !session[:entry_time].nil?
+      @applicant.time_on_site = Time.at(Time.now - session[:entry_time]).utc.strftime("%H:%M:%S")
+    end
     @applicant.exit_page = @exit_page
 
     # assign campaign stats 
@@ -94,6 +96,17 @@ class ApplicationController < ActionController::Base
     @applicant.creative = session[:ad]
     @applicant.placement = session[:plc]
 
+    # save prequal variables
+    @applicant.overdraft_protection = params[:overdraft_protection] 
+    @applicant.payday_loan_history = params[:payday_loan_history] 
+    @applicant.speed_sensitivity = params[:speed_sensitivity]
+    @applicant.price_sensitivity = params[:price_sensitivity]
+    @applicant.licensed_sensitivity = params[:licensed_sensitivity]
+    @applicant.creditcard_own = params[:creditcard_own]
+    @applicant.active_military = params[:active_military] 
+    @applicant.eighteen = params[:eighteen]
+    @applicant.state = params[:state]
+    @applicant.bank_account_type = params[:bank_account_type]
 
     @applicant.save 
   
