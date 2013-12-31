@@ -1,6 +1,7 @@
 class PartnersController < ApplicationController
   layout 'partner'
-  before_filter :set_tracking
+
+  # removed before filer set_tracking. Don't need tracking on partner.
 
   def get_url
     l = Partner.find(params[:id])
@@ -43,13 +44,5 @@ class PartnersController < ApplicationController
     end
   end
 
-  def adgo
-    #If there is an ID go to lender app else return to the hound
-    if params[:id].nil?
-      redirect_to(:controller => 'homes', :action => 'index')
-    else
-    redirect_values
-    end
-    redirect_to(@lender_url)
-  end
+
 end

@@ -1,5 +1,5 @@
 shared_examples_for "all controllers that set tracking" do
-	describe "Tracking Variables" do
+	describe "Set Tracking Variables" do
 		context "Visitor comes from ad partner" do
 			it "sets ad campaign stats on first visit" do
 				get :index, src: 'ad partner', camp: 'campaign'

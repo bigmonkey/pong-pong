@@ -61,6 +61,36 @@ class ApplicationController < ActionController::Base
     
   end
 
+  def save_tracking
+    uri = URI(session[:referer_uri])
+    @applicant = Applicant.new
+
+    @applicant.ip_address = request.remote_ip
+    @applicant.src = session[:src] 
+    @applicant.referer_uri = session[:referer_uri]
+    @applicant.referer_host = uri.host
+    @applicant.referer_path = uri.path
+    @applicant.referer_query = uri.query
+    @applicant.entry_page = session[:entry_page]
+    @applicant.page_views = session[:page_views]
+    @applicant.time_on_site = session[:time_on_site]
+    @applicant.exit_page = session[:exit_page]
+
+    # save campaign stats 
+    @applicant.campaign = session[:camp]
+    @applicant.ad_group = session[:adgrp]
+    @applicant.kw = session[:kw]
+    @applicant.creative = session[:ad]
+    @applicant.placement = session[:plc]
+
+
+    @applicant.save 
+  
+    # @applicant.token is created in model applicant.rb
+    # session[:token] is set so it can be sent to affiliates for tracking
+    session[:token]=@applicant.token
+  end
+
   #in application because blogbars calls this method for wordpress
   def set_secured_constants
     @pur_balance =  500.0 #revolving purchase balance

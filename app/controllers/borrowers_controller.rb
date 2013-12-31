@@ -10,39 +10,21 @@ class BorrowersController < ApplicationController
 	require 'nokogiri'
 	require 'open-uri'
 
-	def save_tracking
-		@applicant = Applicant.new
-
-		@applicant.ip_address = request.remote_ip
-
-		# saves tracking variable 
-		@applicant.src = session[:src] 
-		@applicant.exit_page = @page
-    @applicant.campaign = session[:camp]
-    @applicant.ad_group = session[:adgrp]
-    @applicant.kw = session[:kw]
-    @applicant.creative = session[:ad]
-    @applicant.placement = session[:plc]
-   	# saves marketing variables
-   	@applicant.overdraft_protection = params[:overdraft_protection] 
-   	@applicant.payday_loan_history = params[:payday_loan_history] 
-   	@applicant.speed_sensitivity = params[:speed_sensitivity]
-   	@applicant.price_sensitivity = params[:price_sensitivity]
-   	@applicant.licensed_sensitivity = params[:licensed_sensitivity]
-   	@applicant.creditcard_own = params[:creditcard_own]
-   	@applicant.active_military = params[:active_military] 
-   	@applicant.eighteen = params[:eighteen]
-   	@applicant.state = params[:state]
-  	@applicant.bank_account_type = params[:bank_account_type]
-   	@applicant.redirect = @redirect
-   	@applicant.save 
-	
-		# @applicant.token is created in model applicant.rb
-		# session[:token] is set so it can be sent to affiliates for tracking
-		session[:token]=@applicant.token
-
+	def wait
+    # saves marketing variables
+    @applicant.overdraft_protection = params[:overdraft_protection] 
+    @applicant.payday_loan_history = params[:payday_loan_history] 
+    @applicant.speed_sensitivity = params[:speed_sensitivity]
+    @applicant.price_sensitivity = params[:price_sensitivity]
+    @applicant.licensed_sensitivity = params[:licensed_sensitivity]
+    @applicant.creditcard_own = params[:creditcard_own]
+    @applicant.active_military = params[:active_military] 
+    @applicant.eighteen = params[:eighteen]
+    @applicant.state = params[:state]
+    @applicant.bank_account_type = params[:bank_account_type]
+    @applicant.redirect = @redirect	
 	end
-
+	
   def new
   	
   	# @redirect is used in save_tracking

@@ -15,8 +15,6 @@ class PaydayLoansController < ApplicationController
     # in application_controller
     set_seo_vars
 
-
-    @page = "0013" #sets page for tracking to 'payday-loans-main'
   end
 
 	def show

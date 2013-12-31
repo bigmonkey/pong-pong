@@ -55,7 +55,6 @@ class PrepaidsController < ApplicationController
             end
       end  
       @prepaids = Prepaid.live     
-  	  @page = "0008" #sets page for tracking to 'pre-paid-cards'
   end
 
   def show

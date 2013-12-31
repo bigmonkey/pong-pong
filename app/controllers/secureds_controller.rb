@@ -26,7 +26,6 @@ class SecuredsController < ApplicationController
         end
       end  
       @secureds = Secured.live.by_top_rank    
-  	  @page = "0005" #sets page for tracking to 'secured-cards'
   end
 
   def show
