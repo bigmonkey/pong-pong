@@ -55,6 +55,7 @@ class ApplicationController < ActionController::Base
     # set site tracking stats
     if session[:page_views].nil?
       session[:page_views] = 1  
+      #for direct visitors session[:referer_uri] is nil
       session[:referer_uri] = request.env["HTTP_REFERER"]
       session[:device] = set_device
       session[:entry_page] = request.fullpath
@@ -71,16 +72,19 @@ class ApplicationController < ActionController::Base
 
     # assign tracking stats
     @applicant.ip_address = request.remote_ip
+    @applicant.redirect = session[:redirect]
     @applicant.device = session[:device]
     @applicant.src = session[:src] 
     @applicant.referer_uri = session[:referer_uri]
-    uri = URI(session[:referer_uri])
-    @applicant.referer_host = uri.host
-    @applicant.referer_path = uri.path
-    @applicant.referer_query = uri.query
+    if !session[:referer_uri].nil?
+      uri = URI(session[:referer_uri])
+      @applicant.referer_host = uri.host
+      @applicant.referer_path = uri.path
+      @applicant.referer_query = uri.query
+    end  
     @applicant.entry_page = session[:entry_page]
     @applicant.page_views = session[:page_views]
-    @applicant.time_on_site = Time.now - session[:entry_time]
+    @applicant.time_on_site = Time.at(Time.now - session[:entry_time]).utc.strftime("%H:%M:%S")
     @applicant.exit_page = session[:exit_page]
 
     # assign campaign stats 
