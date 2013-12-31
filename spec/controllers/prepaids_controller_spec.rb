@@ -26,49 +26,8 @@ describe PrepaidsController do
 		end
 	end
 
-  #it_should_behave_like "all controllers that set tracking"
-	describe "Tracking Variables" do
-		context "Visitor comes from ad partner" do
-			it "sets ad campaign stats on first visit" do
-				get :index, src: 'ad partner', camp: 'campaign'
-				session[:src].should eq('ad partner')
-				session[:camp].should eq('campaign')
-			end		
-			it "does not reset campaign stats as user browses pages" do
-				get :index, src: 'ad partner', camp: 'campaign'
-				get :index
-				session[:src].should eq('ad partner')
-				session[:camp].should eq('campaign')
-			end
-		end
+	# "all controlers that set tracking" is in spec/support/shared_controller_tests
+  it_should_behave_like "all controllers that set tracking"
 
-		context "Visitor does not come from ad partner" do
-			it "does not set ad campaign stats" do
-				get :index
-				session[:src].should be_nil
-				session[:camp].should be_nil
-			end		
-			it "does not reset campaign stats as user browses pages" do
-				get :index
-				get :index
-				session[:src].should be_nil
-				session[:camp].should be_nil
-			end
-		end
-		
-		context "Vistor lands on site" do
-			it "sets HTTP_REFERER session variable on first visit" do
-				request.env["HTTP_REFERER"] = 'http://test.domain.com'
-				get :index
-				session[:referer_uri].should eq('http://test.domain.com')
-			end	
-			it "does not set HTTP_REFERER session variable as user browses" do
-				request.env["HTTP_REFERER"] = 'http://test.domain.com'
-				get :index
-				get :index
-				session[:referer_uri].should eq('http://test.domain.com')
-			end	
-		end
-	end
 
 end

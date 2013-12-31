@@ -1,5 +1,7 @@
 class ApplicationController < ActionController::Base
  
+  include ApplicationHelper #include methods for mobile and tablet regex
+
   def wp    
     redirect_to ("http://www.thepaydayhound.com/learn" + request.fullpath), :status => 301
   end 
@@ -13,6 +15,18 @@ class ApplicationController < ActionController::Base
 
   protected
 
+  # determines type of device using user agent
+  # tablets_agents, mobile_agents_one, and mobile_agents_two are RegEx in ApplicationHelper
+  def set_device
+      agent = request.env["HTTP_USER_AGENT"].downcase 
+      if agent =~ tablet_agents
+        "tablet"
+      elsif (agent =~ mobile_agents_one) || (agent[0..3] =~ mobile_agents_two)
+        "mobile"
+      else
+        "desktop"
+      end  
+  end
 
   # TRACKING VARIABLES from external (put in URL pointing to PDH)
   # src -- the source of a visitor
@@ -24,7 +38,7 @@ class ApplicationController < ActionController::Base
 
 
   def set_tracking
-    # set ad campaign stats
+    # set ad campaign stats if a source is in the url
   	if !params[:src].nil?
       session[:src] = params[:src] 
       session[:camp] = params[:camp]
@@ -35,8 +49,16 @@ class ApplicationController < ActionController::Base
     end
 
     # set site tracking stats
-    session[:referer_uri] = request.env["HTTP_REFERER"]
-    binding.pry
+    if session[:page_views].nil?
+      session[:page_views] = 1  
+      session[:referer_uri] = request.env["HTTP_REFERER"]
+      session[:device] = set_device
+      session[:entry_page] = request.fullpath
+      session[:entry_time] = Time.now
+    else
+      session[:page_views] += 1
+    end
+    
   end
 
   #in application because blogbars calls this method for wordpress

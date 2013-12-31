@@ -15,6 +15,9 @@
 
   <section id="mainContent">
     <h1>Prepaid Cards</h1> 
+    <h2>Entry Page is <%= session[:entry_page] %></h2>
+    <h2>Entry Time is <%= session[:entry_time] %></h2>
+    <h2>Device is <%= session[:device] %></h2>
    	<p>Selecting a prepaid card can be difficult. There are numerous fees including variations on activation, monthly, ATM, or transaction fees. The key differences in the best cards boil down to monthly, ATM, customer service, and 3rd party load fees. The fee structure for these fees vary as some cards reduce or waive these fees for direct deposit customers or those customers that load a certain amount to the card. Our Prepaid Card Calculator estimates the total cost to own a card based on your usage and accounts for these different fee waivers. Use the sliders to the left to compare the cost of ownership on <%= pluralize(@prepaids.size,"prepaid card") %>.</p>
     <p>Remember that unlike many checking accounts prepaids do not require a credit check but also remember that prepaids do not build credit. If you want to build credit we recommend <%= link_to("Secured Cards", secureds_path) %></p> 
     <p class = "tableIntro">We have reviewed <%= pluralize(@prepaids.size, "prepaid card") %>.</p>

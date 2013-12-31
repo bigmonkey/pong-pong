@@ -40,7 +40,7 @@ ActiveRecord::Schema.define(version: 20131230020402) do
     t.integer  "requested_amount"
     t.string   "device"
     t.string   "src"
-    t.string   "referal_url"
+    t.string   "referal_uri"
     t.string   "referal_host"
     t.string   "referal_path"
     t.string   "referal_query"

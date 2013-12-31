@@ -6,7 +6,6 @@ describe "Applicant Model" do
 	end	
 	it "generates a token" do
 		FactoryGirl.create(:applicant).token.should_not be_nil 
-		binding.pry
 	end		
 	
 after(:all){
