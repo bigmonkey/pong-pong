@@ -1,5 +1,8 @@
 class ApplicationController < ActionController::Base
- 
+  
+  #method defined below and redirects to home
+  rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
+
   include ApplicationHelper #include methods for mobile and tablet regex
 
   def wp    
@@ -18,7 +21,8 @@ class ApplicationController < ActionController::Base
   # determines type of device using user agent
   # tablets_agents, mobile_agents_one, and mobile_agents_two are RegEx in ApplicationHelper
   def set_device
-      agent = request.env["HTTP_USER_AGENT"].downcase 
+      # if HTTP_USER_AGENT is blank/nil defaults to blank, i.e. desktop 
+      agent = request.env["HTTP_USER_AGENT"].blank? ? "" : request.env["HTTP_USER_AGENT"].downcase 
       if agent =~ tablet_agents
         "tablet"
       elsif (agent =~ mobile_agents_one) || (agent[0..3] =~ mobile_agents_two)
@@ -62,21 +66,24 @@ class ApplicationController < ActionController::Base
   end
 
   def save_tracking
-    uri = URI(session[:referer_uri])
+
     @applicant = Applicant.new
 
+    # assign tracking stats
     @applicant.ip_address = request.remote_ip
+    @applicant.device = session[:device]
     @applicant.src = session[:src] 
     @applicant.referer_uri = session[:referer_uri]
+    uri = URI(session[:referer_uri])
     @applicant.referer_host = uri.host
     @applicant.referer_path = uri.path
     @applicant.referer_query = uri.query
     @applicant.entry_page = session[:entry_page]
     @applicant.page_views = session[:page_views]
-    @applicant.time_on_site = session[:time_on_site]
+    @applicant.time_on_site = Time.now - session[:entry_time]
     @applicant.exit_page = session[:exit_page]
 
-    # save campaign stats 
+    # assign campaign stats 
     @applicant.campaign = session[:camp]
     @applicant.ad_group = session[:adgrp]
     @applicant.kw = session[:kw]
@@ -154,6 +161,12 @@ class ApplicationController < ActionController::Base
       related_keywords.each do |word|
         @related_kw_links.push("<a href = \"/#{word.gsub(' ','-')}\">#{word}</a>") #creates links for the related kws
       end  
+  end
+
+  private
+
+  def record_not_found
+    redirect_to("/")
   end
 
 end
