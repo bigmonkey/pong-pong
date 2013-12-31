@@ -9,9 +9,9 @@ class PartnersController < ApplicationController
   		redirect_to("/")
   	else
       uri = URI(request.env["HTTP_REFERER"])
-      session[:exit_page] = uri.path + (!uri.query.nil? ? "?#{uri.query}" : "")
+      @exit_page = uri.path + (!uri.query.nil? ? "?#{uri.query}" : "")
       p = Partner.find(params[:id])
-      session[:redirect]=p.name
+      @redirect=p.name
       save_tracking
       if p.lender_tail.blank?
         @lender_url = p.lender_link

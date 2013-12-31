@@ -34,14 +34,14 @@
 		<%= render 'shared/state_selector' %>
 
 		<h2>Payday Loan Lenders</h2>	
-		<p>The Payday Hound reviews installment lenders and ranks them according to our <%= link_to "Sniff Test", '/infos/about' %> (reputation), costs, and licensing. To see lenders who provide installment loans in your state select your state from the table above.</p>		
+		<p>The Payday Hound reviews installment lenders and ranks them according to our <%= link_to "Sniff Test", '/infos/about/' %> (reputation), costs, and licensing. To see lenders who provide installment loans in your state select your state from the table above.</p>		
 
 	<% 		when "custom" %>
 
 		<%= @keyword.article.html_safe %>
 
 		<h2>Payday Loan Lenders</h2>	
-		<p>The Payday Hound reviews installment lenders and ranks them according to our <%= link_to "Sniff Test", '/infos/about' %> (reputation), costs, and licensing. </p>		
+		<p>The Payday Hound reviews installment lenders and ranks them according to our <%= link_to "Sniff Test", '/infos/about/' %> (reputation), costs, and licensing. </p>		
 
 	<%		when "loans" %>
 		<p>
@@ -69,7 +69,7 @@
 		<p><%= @keyword.phrase.humanize %> are generally unsecured loans and not based on credit history. Traditionally, when lenders make loans they evaluate person's credit history and also take collateral. This helps lenders predict the likelihood of being repaid and in the event of not being repaid they can seize the collateral to cover the loan. <%= @keyword.phrase.humanize %> have neither security nor credit history. This makes them fairly risky loans for lenders so they charge more to cover the loans for people that do not pay back their loans. In addition, there is adverse selection. This means individuals who do have credit history and collateral are taking other types of loans so people applying for payday loans are already, on average, high risk. So one of the reasons <%= @keyword.phrase %> are expensive is the nature of the loan. Another reason payday loans are expensive is the lack of consistent regulation, enforcement, and transparency. This is why pricing varies so much. The market is very inefficient. See <%= link_to 'Payday Loans Too Taboo To Touch', "http://www.thepaydayhound.com/payday-loans-too-taboo-to-touch/" %> for more information on improving the payday lending space. Finally, these types of loans can be very expensive because some lenders take advantage of the emergency nature of loan and charge very high rates. Regardless of why payday loans are expensive users should approach them with caution. </p>
 
 		<h2>Avoid a Vicious Debt Cycle</h2>
-		<p><%= @keyword.phrase.humanize %> are a very expensive form of borrowing. As described above, if one is unable to pay off the loan at the next payday, costs can quickly spiral out of control. This what is often referred to as a debt cycle. One starts off in a bind with a small amount of debt but within weeks the debt quickly escalates into an unimaginable amount. For this reason The Payday Hound believe payday loans should only be used for emergency situations. This means one should almost never take out a payday loan. Unless someone is just extremely unlucky payday loans should rarely be used more than 1 or 2 times a year. See <%= link_to "Don't Use A Payday Loan for Summer Vacation Cash", "http://www.thepaydayhound.com/payday-loan-vacation-cash/" %> or <%= link_to "Borrow Money Options", "/borrow-money-options" %> to determine if there are other options to taking a payday loan.</p>
+		<p><%= @keyword.phrase.humanize %> are a very expensive form of borrowing. As described above, if one is unable to pay off the loan at the next payday, costs can quickly spiral out of control. This what is often referred to as a debt cycle. One starts off in a bind with a small amount of debt but within weeks the debt quickly escalates into an unimaginable amount. For this reason The Payday Hound believe payday loans should only be used for emergency situations. This means one should almost never take out a payday loan. Unless someone is just extremely unlucky payday loans should rarely be used more than 1 or 2 times a year. See <%= link_to "Don't Use A Payday Loan for Summer Vacation Cash", "http://www.thepaydayhound.com/payday-loan-vacation-cash/" %> or <%= link_to "Borrow Money Options", "/borrow-money-options/" %> to determine if there are other options to taking a payday loan.</p>
 
 		<h2>How <%= @keyword.phrase.titleize %> Work</h2>
 		<p>If you do decide you need emergency cash and a payday loan is the only option for you, the application process can be quick, taking 5-15 minutes, and approval is often instant. To qualify one must be employed, have direct deposit, and be over 18 years old. Payday loans are not available to members of the military so you must be a civilian as well. If approved, the money is generally deposited into your checking account by the next business day. The deposited cash is a loan and is due in full your next pay period plus fees. These loans can sometimes be renewed, but additional fees are incurred. These costs add up quickly, as you end up paying fees on your fees. Renewing is generally not a good choice, so if you believe you are unable to pay your loan in full at your next pay period, consider an <%= link_to 'installment loan', term_loans_path %>. </p>
@@ -80,7 +80,7 @@
 		<p>Companies offering payday loans vary greatly from those matching services to direct lenders, and from state licensed lenders to fly-by-night lenders. There are numerous stories in the press of individuals being taken advantage of by unscrupulous payday lenders. The Payday Hound strongly prefers using established state licensed lenders. See <%= link_to 'Payday Lenders', '/payday-lenders/' %> to learn more about lenders.</p>		
 
 		<h2>Full List of <%= @keyword.phrase.titleize %></h2>
-		<p>The Payday Hound reviews payday lenders and ranks them according to our <%= link_to "Sniff Test", '/infos/about' %> (reputation), costs, and licensing. To see lenders who provide payday loans in your state select your state from the table above</p> 
+		<p>The Payday Hound reviews payday lenders and ranks them according to our <%= link_to "Sniff Test", '/infos/about/' %> (reputation), costs, and licensing. To see lenders who provide payday loans in your state select your state from the table above</p> 
 
 		
 	<% 		when "lenders" %>
@@ -115,7 +115,7 @@
 		<p><%= @keyword.phrase.humanize %> provide a very expensive form of borrowing. Their fees range from around $9 to $30 per $100 borrowed. This means if you borrow $300, and your fee is $15 per $100 borrowed, then on your next payday $345 will be automatically deducted from your account. If full payment is made then the loan is paid off and you are done. On the other hand if you are unable to pay in full some payday lenders allow, and even encourage, you to renew the loan. The renewal is generally at the same rate and you will pay fees on the unpaid fees from the previous loan. This means at your next payday (now the second payday since you took the loan) $397 will be pulled from your checking account. Clearly, these fees add up very fast and one can end up owing the lender way more than the original loan. This is what people mean when they refer to a debt cycle. One starts off needing a small amount of cash but within weeks the debt quickly escalates into an unimaginable amount. For this reason The Payday Hound believes payday loans should only be used for emergency situations. This means one should almost never take out a payday loan but if they do it should be at most taking 1 or 2 times a year. See <%= link_to "Don't Use A Payday Loan for Summer Vacation Cash", "http://www.thepaydayhound.com/payday-loan-vacation-cash/" %> to determine if there are other options to taking a payday loan.</p>		
 
 		<h2>Full List of <%= @keyword.phrase.titleize %></h2>
-		<p>The Payday Hound reviews payday lenders and ranks them according to our <%= link_to "Sniff Test", '/infos/about' %> (reputation), costs, and licensing. To see lenders who provide payday loans in your state select your state from the table above</p> 
+		<p>The Payday Hound reviews payday lenders and ranks them according to our <%= link_to "Sniff Test", '/infos/about/' %> (reputation), costs, and licensing. To see lenders who provide payday loans in your state select your state from the table above</p> 
 
 	<%		end %>
 

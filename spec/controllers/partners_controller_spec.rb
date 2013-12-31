@@ -1,8 +1,6 @@
 require 'spec_helper'
 
 describe PartnersController do
-
-
 	describe "GET #show" do
 		context "Valid Partner ID" do
 			it "renders the :show view" do
@@ -47,7 +45,7 @@ describe PartnersController do
 					it "sets exit_page session variable" do
 						get :show, id: FactoryGirl.create(:partner)
 						# session[:exit_page] is based on HTTP_REFERER set in before(:each)
-						session[:exit_page].should eq('/lastpage?var=hippo')
+						Applicant.find_by_token(session[:token]).exit_page.should eq('/lastpage?var=hippo')
 					end
 					it "saves time_on_site" do
 						get :show, id: FactoryGirl.create(:partner)
@@ -123,5 +121,9 @@ describe PartnersController do
 				response.should redirect_to("/")
 			end
 		end
+		after(:all){
+			Partner.destroy_all
+			Applicant.destroy_all
+		}
 	end
 end

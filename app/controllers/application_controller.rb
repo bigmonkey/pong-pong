@@ -72,7 +72,7 @@ class ApplicationController < ActionController::Base
 
     # assign tracking stats
     @applicant.ip_address = request.remote_ip
-    @applicant.redirect = session[:redirect]
+    @applicant.redirect = @redirect
     @applicant.device = session[:device]
     @applicant.src = session[:src] 
     @applicant.referer_uri = session[:referer_uri]
@@ -85,7 +85,7 @@ class ApplicationController < ActionController::Base
     @applicant.entry_page = session[:entry_page]
     @applicant.page_views = session[:page_views]
     @applicant.time_on_site = Time.at(Time.now - session[:entry_time]).utc.strftime("%H:%M:%S")
-    @applicant.exit_page = session[:exit_page]
+    @applicant.exit_page = @exit_page
 
     # assign campaign stats 
     @applicant.campaign = session[:camp]
@@ -163,7 +163,7 @@ class ApplicationController < ActionController::Base
       related_keywords = Keyword.where(:parent_page => @keyword.word).pluck(:word) - [].push(@keyword.word)  #pull related kw's remove current kw because don't want list of related kw containing the same kw
       @related_kw_links = []
       related_keywords.each do |word|
-        @related_kw_links.push("<a href = \"/#{word.gsub(' ','-')}\">#{word}</a>") #creates links for the related kws
+        @related_kw_links.push("<a href = \"/#{word.gsub(' ','-')}/\">#{word}</a>") #creates links for the related kws
       end  
   end
 
