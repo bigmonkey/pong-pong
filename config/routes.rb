@@ -8,6 +8,7 @@ Pdh::Application.routes.draw do
   get "header" => "homes#header"
   get "footer" => "homes#footer"
   get "nav" => "homes#nav"
+  get "tracking_pixel" => "homes#tracking_pixel"
 
   # Old URL redirects to payday-loans
   get "lenders" => "lenders#index"

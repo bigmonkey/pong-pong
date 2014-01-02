@@ -63,7 +63,6 @@ class ApplicationController < ActionController::Base
     else
       session[:page_views] += 1
     end
-    
   end
 
   def save_tracking
