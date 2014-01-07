@@ -148,6 +148,7 @@ nav {
     list-style:none;
     position:absolute;
     top:-9999px; 
+    z-index: 10;
 }
 #nav ul li{
     float:none;
@@ -228,10 +229,9 @@ nav {
 /*header*/
 
 #mainHeaderOutter {
-	height: 79px;
 	border-bottom: 2px solid $boxBackground;
 	position: absolute;
-	top: 0;
+	top: 79px;
 	left: 0;
 	width: 100%;
 	}
