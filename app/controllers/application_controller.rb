@@ -163,16 +163,21 @@ class ApplicationController < ActionController::Base
       # NOTE slug and word must be exactly the same except for spaces.
       # find_by_slug and @selector_path but to do related_keywords array could not use slug so used gsub
       # improvement -- remove this dependency and use gsub.
+      # --------- update completed: @keyword.slug is no longer used 1/7/2014 --------
 
-      @keyword = Keyword.find_by_slug!(request.fullpath.split(/\//)[1]) #captures stuff between first two slases
-      
+      #captures stuff between first two slases
+      slug = request.fullpath.split(/\//)[1]
 
-      @selector_path = "/"+@keyword.slug #need for state_selector b/c payday_loan_laws uses @selector_path
+      #used in state_selector
+      @selector_path = "/"+slug 
+
+      # find_by! raised RecordNotFound exception if not record exits. private method below escapes exception and redirects to home
+      @keyword = Keyword.find_by_word!(slug.gsub('-',' ')) 
 
       # related_kw_links is used to make sure all kw's are hooked into site tree
-      # All must be linked back to two major pages: /payday-loans, /installment-loans or /learn
+      # All must be linked back to a kw on one of the major menu pages such as: /payday-loans, /installment-loans or /learn
       # for /payday-loans and /installment-loans these pages show up automatically using related_kw_links
-      related_keywords = Keyword.where(:parent_page => @keyword.word).pluck(:word) - [].push(@keyword.word)  #pull related kw's remove current kw because don't want list of related kw containing the same kw
+      related_keywords = Keyword.where(:parent_page => @keyword.word).pluck(:word) - [].push(@keyword.word)  #remove current kw because don't want list of related kw containing the same kw
       @related_kw_links = []
       related_keywords.each do |word|
         @related_kw_links.push("<a href = \"/#{word.gsub(' ','-')}/\">#{word}</a>") #creates links for the related kws
@@ -181,6 +186,7 @@ class ApplicationController < ActionController::Base
 
   private
 
+  # gets called by find_by bang above if no record found
   def record_not_found
     redirect_to("/")
   end
