@@ -6,7 +6,6 @@ describe TermLoansController do
       :keyword,
       word:      "installment loans",
       phrase:    "installment loans",
-      slug:      "installment-loans",
       state_phrase: "compare installment loans",
       category:  "loans",
       article:   "I'm the article",

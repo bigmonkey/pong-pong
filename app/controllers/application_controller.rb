@@ -153,12 +153,11 @@ class ApplicationController < ActionController::Base
       #   custom -- feeds text from table
       #   custom_state -- feeds text from table plus adds state selector
       #   loans/lenders -- uses copy for loans/lenders
-      # @keyword.controller is used in routes in keyword controller. once here payday or term controller is this
+      # @keyword.controller is used in routes to direct kw to correct controller. Issues with making one controller and one lender tables is need to make separate rows for term and payday for pricing and then when calling lender from Wordpress it's not clear which row to use. Solution is to create new tables for pricing and keep lender information as single row. 
       # @keyword.word seo target kw
       # @keyword.state_phrase the title of the state selector table. ex compare plural
-      # @keyword.phrase seo target kw in plural phrase. Copy assume plural. Quick Loan becomes Quick Loan Options
-      # routing is done in keywords controller
-
+      # @keyword.phrase seo target kw in a phrase with a plural noun . Copy assumes plural. Quick Loan becomes Quick Loan Options
+      # @keyword.slug IS NOT USED ANYMORE see below
       # --------- future update -------- noticed 12/9/2013
       # NOTE slug and word must be exactly the same except for spaces.
       # find_by_slug and @selector_path but to do related_keywords array could not use slug so used gsub

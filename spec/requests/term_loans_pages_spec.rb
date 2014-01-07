@@ -57,7 +57,6 @@ describe "Installment Loan Pages" do
           :keyword,
           word:      "installment loans",
           phrase:    "installment loans",
-          slug:      "installment-loans",
           state_phrase: "compare installment loans",
           category:  "loans",
           article:   "I'm the article",
@@ -70,7 +69,6 @@ describe "Installment Loan Pages" do
           :keyword,
           word:      "child",
           phrase:    "child phrase",
-          slug:      "child",
           state_phrase: "compare child of installment loans",
           category:  "loans",
           article:   "I'm the article",
@@ -82,7 +80,6 @@ describe "Installment Loan Pages" do
           :keyword,
           word:      "not child",
           phrase:    "not child phrase",
-          slug:      "not-child-slug",
           state_phrase: "compare not child of installment loans",
           category:  "loans",
           article:   "I'm the article",
@@ -97,8 +94,8 @@ describe "Installment Loan Pages" do
       it { should have_content("#{@keyword.state_phrase.titleize}") }
 
       # tests application_controller set_seo_vars related kw
-      it { should have_link("#{@child.word}", href: "/#{@child.slug}/" )}
-      it { should_not have_link("#{@notchild.slug}", href: "/#{@notchild.word.gsub(' ','-')}/" )}
+      it { should have_link("#{@child.word}", href: "/#{@child.word.gsub(' ','-')}/" )}
+      it { should_not have_link("#{@notchild.word}", href: "/#{@notchild.word.gsub(' ','-')}/" )}
       it_should_behave_like "all index installment loan pages"
       it_should_behave_like "all installment loan pages"
     end  
@@ -107,16 +104,15 @@ describe "Installment Loan Pages" do
     context "SEO Child Pages" do
       before {
         #create child of installment loan should show up
-        #slug must be in routes.rb
         FactoryGirl.create(
           :keyword,
           word:      "short term installment loans", #child of installment loans
           phrase:    "short term installment loans",
-          slug:      "short-term-installment-loans",
           state_phrase: "compare short term installment loans",
           category:  "loans",
           article:   "I'm the article",
           parent_page: "installment loans",
+          controller: "term"
         ) 
         # @keyword is the keyword for the page and must be in routes.rb
         @keyword = Keyword.find_by_word("short term installment loans")
@@ -125,7 +121,6 @@ describe "Installment Loan Pages" do
           :keyword,
           word:      "grandchild",
           phrase:    "grandchild",
-          slug:      "grandchild",
           state_phrase: "compare grandchild",
           category:  "loans",
           article:   "I'm the article",
@@ -136,14 +131,16 @@ describe "Installment Loan Pages" do
           :keyword,
           word:      "not grandchild",
           phrase:    "not grandchild",
-          slug:      "not-grandchild",
           state_phrase: "compare not grandchild",
           category:  "loans",
           article:   "I'm the article",
-          parent_page: "not #{@keyword}",
+          parent_page: "not #{@keyword.word}",
         )                
         @notgrandchild = Keyword.find_by_word("not grandchild")
-        visit "/#{@keyword.slug}/" 
+        #need to re-do routes because routes are based on Keyword table
+        Rails.application.reload_routes!
+        visit "/#{@keyword.word.gsub(' ','-')}/" 
+        #binding.pry
         #puts page.body
       }          
 
@@ -151,7 +148,7 @@ describe "Installment Loan Pages" do
       it { should have_content("#{@keyword.state_phrase.titleize}") }
 
       # tests application_controller set_seo_vars related kw
-      it { should have_link("#{@grandchild.word}", href: "/#{@grandchild.slug}/" )}
+      it { should have_link("#{@grandchild.word}", href: "/#{@grandchild.word.gsub(' ','-')}/" )}
       it { should_not have_link("#{@notgrandchild.word}", href: "/#{@notgrandchild.word.gsub(' ','-') }/" )}
 
       it_should_behave_like "all index installment loan pages"
@@ -172,7 +169,6 @@ describe "Installment Loan Pages" do
         :keyword,
         word:      "installment loans",
         phrase:    "installment loans",
-        slug:      "installment-loans",
         state_phrase: "compare installment loans",
         category:  "loans",
         article:   "I'm the article",

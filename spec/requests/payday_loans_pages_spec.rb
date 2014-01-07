@@ -24,6 +24,8 @@ describe "Payday Loan Pages" do
       end  
 
       it "should have table of lenders" do
+        #binding.pry
+        #save_and_open_page
         PaydayLoan.all.each do |t|
           page.should have_content("Company Name")
           page.should have_selector('div', text: t.first_comment)
@@ -46,7 +48,6 @@ describe "Payday Loan Pages" do
       FactoryGirl.create(:sniff, sniff_score: 3, sniff_desc: "Bad") 
       # Create Terms table
       5.times { FactoryGirl.create(:payday_loan) }
-      #binding.pry
     } 
 
     # Payday Loan Main Page
@@ -56,7 +57,6 @@ describe "Payday Loan Pages" do
           :keyword,
           word:      "payday loans",
           phrase:    "payday loans",
-          slug:      "payday-loans",
           state_phrase: "compare payday loans",
           category:  "loans",
           article:   "I'm the article",
@@ -69,7 +69,6 @@ describe "Payday Loan Pages" do
           :keyword,
           word:      "child",
           phrase:    "child phrase",
-          slug:      "child",
           state_phrase: "compare child",
           category:  "loans",
           article:   "I'm the article",
@@ -81,8 +80,7 @@ describe "Payday Loan Pages" do
           :keyword,
           word:      "not child",
           phrase:    "not child",
-          slug:      "not-child",
-          state_phrase: "compare not child",
+          state_phrase: "compare not child of payday loans",
           category:  "loans",
           article:   "I'm the article",
           parent_page: "not #{@keyword.word}",
@@ -96,8 +94,8 @@ describe "Payday Loan Pages" do
       it { should have_content("#{@keyword.state_phrase.titleize}") }
 
       # tests application_controller set_seo_vars related kw
-      it { should have_link("#{@child.word}", href: "/#{@child.slug}/" )}
-      it { should_not have_link("#{@notchild.slug}", href: "/#{@notchild.word.gsub(' ','-')}/" )}
+      it { should have_link("#{@child.word}", href: "/#{@child.word.gsub(' ','-')}/" )}
+      it { should_not have_link("#{@notchild.word.gsub(' ','-')}", href: "/#{@notchild.word.gsub(' ','-')}/" )}
       it_should_behave_like "all index payday loan pages"
       it_should_behave_like "all payday loan pages"
     end  
@@ -107,16 +105,15 @@ describe "Payday Loan Pages" do
       before {
 
         #create child of payday loan should show up
-        #slug must be in routes.rb
         FactoryGirl.create(
           :keyword,
           word:      "online payday loans", #child of payday loans
           phrase:    "online payday loans",
-          slug:      "online-payday-loans",
           state_phrase: "compare online payday loans",
           category:  "loans",
           article:   "I'm the article",
           parent_page: "payday loans",
+          controller: "payday"
         )     
         # @keyword.word is a child of payday loans keyword and must be in routes.rb
         @keyword = Keyword.find_by_word("online payday loans")   
@@ -125,7 +122,6 @@ describe "Payday Loan Pages" do
           :keyword,
           word:      "grandchild",
           phrase:    "grandchild",
-          slug:      "grandchild",
           state_phrase: "compare grandchild",
           category:  "loans",
           article:   "I'm the article",
@@ -136,14 +132,16 @@ describe "Payday Loan Pages" do
           :keyword,
           word:      "not grandchild",
           phrase:    "not grandchild",
-          slug:      "not-grandchild",
           state_phrase: "compare not grandchild",
           category:  "loans",
           article:   "I'm the article",
-          parent_page: "not #{@keyword}",
+          parent_page: "not #{@keyword.word}",
         )                
         @notgrandchild = Keyword.find_by_word("not grandchild")
-        visit "/#{@keyword.slug}/" 
+        #need to re-do routes because routes are based on Keyword table
+        Rails.application.reload_routes!
+        visit "/#{@keyword.word.gsub(' ','-')}/" 
+        #binding.pry
         #puts page.body
       }          
 
@@ -151,8 +149,8 @@ describe "Payday Loan Pages" do
       it { should have_content("#{@keyword.state_phrase.titleize}") }
 
       # tests application_controller set_seo_vars related kw
-			it { should_not have_link("#{@notgrandchild.slug}", href: "/#{@notgrandchild.word.gsub(' ','-')}/" )}
-      it { should_not have_link("#{@notgrandchild.word}", href: "/#{@notgrandchild.slug}/" )}
+			it { should_not have_link("#{@notgrandchild.word}", href: "/#{@notgrandchild.word.gsub(' ','-')}/" )}
+      it { should_not have_link("#{@notgrandchild.word}", href: "/#{@notgrandchild.word.gsub(' ','-')}/" )}
 
       it_should_behave_like "all index payday loan pages"
       it_should_behave_like "all payday loan pages"      
@@ -172,7 +170,6 @@ describe "Payday Loan Pages" do
         :keyword,
         word:      "payday loans",
         phrase:    "payday loans",
-        slug:      "payday-loans",
         state_phrase: "compare payday loans",
         category:  "loans",
         article:   "I'm the article",

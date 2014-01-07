@@ -1,7 +1,7 @@
 Pdh::Application.routes.draw do
   #match "/(*all)", constraints: {original_url: /\bherokuapp\b/}, to: "application#heroku"
 
-  root :to => 'homes#index'
+  root to: 'homes#index'
 
   # Called from Wordpress site for header, footer and styles
   get "jstyle" => "homes#jstyle"
@@ -34,59 +34,24 @@ Pdh::Application.routes.draw do
   # Sample resource route (maps HTTP verbs to controller actions automatically):
   #   resources :products
   # Create SEO friendly URL keeping original path names
-  resources :applicants, :path => "get-payday-loan"
+  resources :applicants, path: "get-payday-loan"
   resources :borrowers
-  resources :secureds, :path => "secured-credit-cards", :only => [:index, :show]
-  resources :lenders, :only => [:index, :show]
-  resources :prepaids, :path => "prepaid-cards", :only => [:index, :show]
-  resources :homes, :only => :index
-  resources :payday_loans, :path => "payday-loans", :only => [:index, :show]
-  resources :term_loans,:path => "installment-loans", :only => [:index, :show]
-  resources :payday_loan_laws, :path => "payday-loan-laws", :only => [:index, :show]
-  resources :partners, :only => [ :show ]
+  resources :secureds, path: "secured-credit-cards", only: [:index, :show]
+  resources :lenders, only: [:index, :show]
+  resources :prepaids, path: "prepaid-cards", only: [:index, :show]
+  resources :homes, only: :index
+  resources :payday_loans, path: "payday-loans", only: [:index, :show]
+  resources :term_loans, path: "installment-loans", only: [:index, :show]
+  resources :payday_loan_laws, path: "payday-loan-laws", only: [:index, :show]
+  resources :partners, only: [ :show ]
+  #resources :term_loans, path: "short-term-installment-loans", only: [:index, :show]
 
-
-  # Term Loan URL's based on Nov 3, 2013 SEO analysis
-  resources :term_loans,:path => "short-term-installment-loans", :only => [:index, :show]
-  resources :term_loans,:path => "installment-loans-online", :only => [:index, :show]
-  resources :term_loans,:path => "bad-credit-installment-loans", :only => [:index, :show]
-
-  resources :term_loans,:path => "online-installment-loan-direct-lenders", :only => [:index, :show]
-  resources :term_loans,:path => "installment-loan-lenders", :only => [:index, :show]
-  resources :term_loans,:path => "bad-credit-installment-loan-direct-lenders", :only => [:index, :show]
-  resources :term_loans,:path => "direct-installment-loan-lenders", :only => [:index, :show]
-
-  # Payday Loan URL's based on Nov 3, 2013 SEO analysis
-  resources :payday_loans,:path => "direct-lender-payday-loans", :only => [:index, :show]
-  resources :payday_loans,:path => "online-payday-loans", :only => [:index, :show]
-  resources :payday_loans,:path => "payday-loans-online", :only => [:index, :show]
-  resources :payday_loans,:path => "pay-day-loans-online", :only => [:index, :show]
-  resources :payday_loans,:path => "payday-advances", :only => [:index, :show]
-  resources :payday_loans,:path => "online-cash-advances", :only => [:index, :show]
-
-  resources :payday_loans,:path => "payday-loan-direct-lenders", :only => [:index, :show]
-  resources :payday_loans,:path => "direct-payday-lenders-online", :only => [:index, :show]
-  resources :payday_loans,:path => "payday-lenders", :only => [:index, :show]
-  resources :payday_loans,:path => "online-payday-lenders", :only => [:index, :show]
-  resources :payday_loans,:path => "direct-lenders-for-payday-loans", :only => [:index, :show]
-  resources :payday_loans,:path => "direct-online-payday-lenders", :only => [:index, :show]
-  resources :payday_loans,:path => "direct-payday-loan-lenders", :only => [:index, :show]
-
-  #URLS from previous blog
-  resources :payday_loans,:path => "borrow-money-options", :only => [:index, :show]
-  resources :payday_loans,:path => "ez-payday", :only => [:index, :show]  
-  resources :term_loans,:path => "fast-cash-loan", :only => [:index, :show]  
-  resources :term_loans,:path => "fast-loan", :only => [:index, :show] 
-  resources :payday_loans,:path => "instant-payday-loans", :only => [:index, :show]
-  resources :payday_loans,:path => "no-credit-check-payday-loans", :only => [:index, :show]  
-  resources :payday_loans,:path => "payday-loan-in-an-hour", :only => [:index, :show]
-  resources :payday_loans,:path => "quick-payday-loans", :only => [:index, :show]  
-  resources :term_loans,:path => "quik-cash-loans", :only => [:index, :show]  
-  resources :term_loans,:path => "quick-fast-loans", :only => [:index, :show] 
-  resources :payday_loans,:path => "no-faxing-payday", :only => [:index, :show]
- 
-
-
+  # Payday and Term Loan URL's based on Nov 3, 2013 SEO analysis
+  # And also URLS from previous blog
+  # Excludes routes for payday_loans and term_loans controller as they are above
+  Keyword.all.where.not(word: ["installment loans","payday loans"]).each do |k|
+    resources (k.controller + '_loans').parameterize.to_sym, path: k.word.gsub(' ','-'), only: [:index, :show]
+  end  
 
 
   # Redirect old URLS to new URL's. Use redirect_to hardcard b/c of nginx/heroku/wordpress set up
@@ -145,7 +110,7 @@ Pdh::Application.routes.draw do
   # Non-RESTful Routes
   # infos is site information
   # blogbars are sidebars for Wordpress and show action for prepaids and secureds
-  get ':controller/:action', :controller => /infos|blogbars/ 
+  get ':controller/:action', controller: /infos|blogbars/ 
   
 
   # This is a legacy wild controller route that's not recommended for RESTful applications.

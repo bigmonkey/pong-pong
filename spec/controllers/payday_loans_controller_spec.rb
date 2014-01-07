@@ -6,7 +6,6 @@ describe PaydayLoansController do
       :keyword,
       word:      "payday loans",
       phrase:    "payday loans",
-      slug:      "payday-loans",
       state_phrase: "compare payday loans",
       category:  "loans",
       article:   "I'm the article",
