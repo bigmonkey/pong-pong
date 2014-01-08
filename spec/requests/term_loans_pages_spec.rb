@@ -87,6 +87,7 @@ describe "Installment Loan Pages" do
         )            
         @notchild = Keyword.find_by_word("not child")    
         visit term_loans_path 
+        #binding.pry
         #puts page.body
       }  
 
@@ -155,6 +156,59 @@ describe "Installment Loan Pages" do
       it_should_behave_like "all installment loan pages"      
     end
 
+    context "Military Loans" do
+      before { 
+        FactoryGirl.create(
+          :keyword,
+          word:      "installment loans",
+          phrase:    "installment loans",
+          state_phrase: "compare installment loans",
+          category:  "loans",
+          article:   "I'm the article",
+          parent_page: "installment loans",
+        )
+        FactoryGirl.create(
+          :keyword,
+          word:      "military loans",
+          phrase:    "military loans",
+          state_phrase: "compare military loans",
+          category:  "military loans",
+          article:   "I'm the article",
+          parent_page: "installment loans",
+        )        
+        FactoryGirl.create(
+          :term_loan,
+          name:         "military lender",
+          lender_type:   "military", 
+          first_comment: "military comment 1",
+          active: true,
+        )
+      # need to make route for military loans kw
+      Rails.application.reload_routes!
+      @keyword = Keyword.find_by_word("military loans")
+      visit '/military-loans/'
+      }
+
+      it "should not show military lenders with installment loan kw's" do
+        #binding.pry
+        visit term_loans_path
+        #save_and_open_page
+        page.should have_content ("installment loans")
+        page.should_not have_content("military comment 1")
+      end
+
+      it "should show term and military lenders with military loan kw's" do
+        #binding.pry
+        #save_and_open_page
+        page.should have_content ("installment loans")
+        page.should have_content("military comment 1")
+      end
+
+      it_should_behave_like "all index installment loan pages"
+      it_should_behave_like "all installment loan pages"      
+    end
+      
+
     after(:all){
       Sniff.destroy_all
       State.destroy_all
@@ -221,6 +275,43 @@ describe "Installment Loan Pages" do
       end 
       it_should_behave_like "all installment loan pages"
     end
+
+    context "Military Loans" do
+      before { 
+        FactoryGirl.create(
+          :keyword,
+          word:      "military loans",
+          phrase:    "military loans",
+          state_phrase: "compare military loans",
+          category:  "military loans",
+          article:   "I'm the article",
+          parent_page: "installment loans",
+        )        
+        FactoryGirl.create(
+          :term_loan,
+          name:         "military lender",
+          lender_type:   "military", 
+          first_comment: "military comment 1",
+          active: true,
+        )
+      # need to make route for military loans kw
+      Rails.application.reload_routes!
+      @keyword = Keyword.find_by_word("military loans")
+      visit '/military-loans/tx'
+      }
+
+      # keyword in description
+      it { should have_css("meta[name='description'][content='Compare Texas military loans. Search for the lowest fees. Apply direct. Get the best rates in TX at The Payday Hound.']", visible: false) }      
+      # Loan Filter in Sidebar
+      it { should have_selector('h2', text: 'Loan Filter') }
+      it { should have_selector('h1', text: 'Texas') }      
+      it "should not have the state selector linking to 50 states" do  
+        State.all.each do |s|
+          page.should_not have_link(s.state, href:"/#{@keyword.word.gsub(' ','-')}/#{s.state_abbr.downcase}/") 
+        end  
+      end 
+      it_should_behave_like "all installment loan pages"
+    end    
 
     after(:all){
       State.destroy_all

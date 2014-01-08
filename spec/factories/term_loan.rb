@@ -9,6 +9,7 @@ FactoryGirl.define do
 		sequence(:first_comment) { |n| "first comment #{n}"}
 		sequence(:governing_law) { |n| "law #{n}"}
 		sequence(:review_url) { |n| "term-loan-url#{n}"}
+		sequence(:lender_type) { |n| "term"}
 		sequence(:cost) { |n| 100* n }
 	end	
 end	

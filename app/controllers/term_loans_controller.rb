@@ -6,14 +6,19 @@ class TermLoansController < ApplicationController
   
 
   def index
+    # in application_controller
+    set_seo_vars
+    #binding.pry
   	@states=State.all
-	  @lenders = TermLoan.by_top_rank.by_low_cost.active_lender
+    if @keyword.word.match('military')
+      then @lenders = TermLoan.by_top_rank.by_low_cost.active_lender
+      else @lenders = TermLoan.lender_type('term').by_top_rank.by_low_cost.active_lender
+    end
 		@criteria = TermLoan.new    #@criteria gets used on view
 		@criteria.sniff_id = Sniff.find_by_sniff_score(3).id
    	@criteria.ranking = 0	
 
-    # in application_controller
-    set_seo_vars
+
     
   end
 

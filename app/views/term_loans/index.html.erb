@@ -164,6 +164,45 @@
 		<h2>Full List of <%= @keyword.phrase.titleize %></h2>
 		<p>The Payday Hound reviews payday lenders and ranks them according to our <%= link_to "Sniff Test", '/infos/about' %> (reputation), costs, and licensing. To see lenders who provide payday loans in your state select your state from the table above</p> 
 
+	<% when "military loans" %>
+		<p><%= @keyword.phrase.humanize %> are designed for members of the US Armed Forces. Lenders providing <%= @keyword.phrase %> are familiar with the financial demands of preparing for deployment or PCS moves around the world. In most cases they have adapted the application process to account for military pay grades and LES streamlining the borrowing process.</p>
+		<p>Lenders making <%= @keyword.phrase %> range from regulated, established banks to unregulated, off-shore entities. This means prices and lending practices can quickly go from great to predatory. Althought the Military Lending Act prohibits typical payday loans to members of the military not all <%= @keyword.phrase %> are covered by the Act  so make sure you know what you are getting into as you consider a loan. For most of these loans they are best used for short-term, emergency funding only where a clear path to paying the loan off exists.</p>	
+
+	 	<%= render 'shared/state_selector' %>   	
+
+	 	<h2>What Are <%= @keyword.phrase.titleize %></h2>
+
+		<p>
+	 	<%= @keyword.phrase.humanize %> are a type of installment loan. These loans are available to individuals with poor credit, generally unsecured, and tied to your pay date. This means they are very easy to qualify for but the trade-off is the cost of these installment loans can be very high and are best used to meet unavoidable emergency expense like utility bills or medical bills.
+	 	</p>
+		<p>Traditionally, installment loans are loans paid back over multiple periods with a set payment amount. The payment amount for these loans is calculated based on the interest rate, payment periods, and loan amount. The borrower then makes a set payment at every period. Each payment consists of interest and principal. Once the borrower has completed all payments the entire loan is paid off. Fixed mortgages, auto loans, and student loans are examples of installment loans.
+
+		<%= render 'shared/related_kw_links' %>
+
+
+		<h2>Secured Or Unsecured</h2> 
+		<p>There are two types of installment loans: secured and unsecured. Secured loans have collateral so, if the borrower fails to re-pay the loan, the lender can seize the collateral. Secured loans are generally cheaper than unsecured loans. Mortgages and auto loans are examples of secured loans</p>
+		<p>Unsecured loans are loans that have no collateral. <%= @keyword.phrase.humanize %> are generally this category of loans -- unsecured loans, so no collateral is required.	With unsecured loans if the borrower fails to re-pay the lender often has no recourse to recover their funds. When a lender makes an unsecured loan the lending decision is highly dependent on evaluating the ability of the borrow to repay the loan. To make these loans lenders general rely on credit history and income to estimate the propensity of the borrow to repay. Personal loans made by banks are examples of unsecured installment loans.</p>
+
+		<h2>Paycheck Installment Loans</h2>
+		<p> 
+		<%= @keyword.phrase.humanize %> are a type of paycheck installment loans. This means your payments for these installment loans are linked to your pay date. These loans do not consider your credit history and instead are based solely on the pay check. To increase the likelihood of being repaid most lenders offering <%= @keyword.phrase %> require access to the account where you receive your paycheck so they can deduct your loans payments as soon as you are paid.</p>
+		<p>Companies offering paycheck <%= @keyword.phrase %> have made these loans very attractive. These loans are quick, simple, do not require good credit, and have lower payments. Yet, users must approach these <%= @keyword.phrase %> with caution as their fees do make them an expensive option so make sure you have considered other options such as bank loans, credit cards, or friends and family before taking one of these loans. <%= @keyword.phrase %> are designed for short-term, emergency funding and are best used for this purpose.</p>	
+
+
+		<h2>How <%= @keyword.phrase.titleize %> Work</h2>
+		<p>If <%= @keyword.phrase %> are right for you, the application process can take only 5 to 25 minutes. In general the lender will require that you are 18+ years old, are employed, and have direct deposit.  Money can be deposited into you account within one business day. This money is a loan and must be repaid in full. Payments are generally automatically deducted from your checking account on payday.</p> 
+		</p>When taking out installment loans, your lender will give you a payment plan. For example, $1,000 could have a repayment plan with a ~$125 payment every pay period (14 days) over the next 24 pay periods. In the end ~$1,000 costs ~$2,400. This is cheaper than what you would have to pay if you took out a payday loan for the same time-frame, but clearly not cheap so be careful to make sure you really need this loan. Also consider other <%= link_to "borrow money options", "/borrow-money-options" %> such as delaying the expense or getting help from a friend.</p>
+
+		
+		<h2>Licensed Versus Unlicensed Lenders</h2>
+		<p><%= @keyword.phrase.humanize %> are regulated by both federal and state laws. State licensed lenders are regulated and monitored by the state so are more closely regulated than lenders not licensed by your state. Unlicensed lenders operate in states under the assumption they can export laws from their state or tribe (Indian Tribes are generally treated as federal entities) into other states. The validity of this assumption is unclear. The Payday Hound believes licensed lenders are a safer choice for borrowers and would avoid unlicensed lenders. For more information see <%= link_to "Payday Loan Laws", payday_loan_laws_path %> or <%= link_to "Installment Loan Lenders", "/installment-loan-lenders/" %></p>
+		<h2>Installment Loans Versus Payday Loans</h2>
+		<p>The difference between installment loans and payday loans is that payments are spread out over time. This reduces the amount of individual payments and your APR for an installment loan but the total amount of fees paid increases a well. See <a href = "/payday-loan-or-installment-loan/")>Payday Loans or Installment Loans</a> for more information. Many consumers prefer installment loans because paying the entire loan at your next pay period, as payday loans require, is often too difficult or impossible and renewing payday loans becomes extremely expensive.<p>
+
+		<h2>Full List of <%= @keyword.phrase.titleize %></h2>
+		<p>The Payday Hound reviews payday lenders and ranks them according to our <%= link_to "Sniff Test", '/infos/about' %> (reputation), costs, and licensing. To see lenders who provide payday loans in your state select your state from the table above</p> 
+
 	<% end %>	
 
 
