@@ -80,7 +80,7 @@
 	 	<% 		else #{other keywords default paragraph %>
 	 	<%= @keyword.phrase.humanize %> are generally this category of loans -- unsecured loans, so no collateral is required.
 
-	 	<% 		end %>
+	 	<% end %>
 	 
 		With unsecured loans if the borrower fails to re-pay the lender often has no recourse to recover their funds. When a lender makes an unsecured loan the lending decision is highly dependent on evaluating the ability of the borrow to repay the loan. To make these loans lenders general rely on credit history and income to estimate the propensity of the borrow to repay. Personal loans made by banks are examples of unsecured installment loans.</p>
 
@@ -165,44 +165,108 @@
 		<p>The Payday Hound reviews payday lenders and ranks them according to our <%= link_to "Sniff Test", '/infos/about' %> (reputation), costs, and licensing. To see lenders who provide payday loans in your state select your state from the table above</p> 
 
 	<% when "military loans" %>
-		<p><%= @keyword.phrase.humanize %> are designed for members of the US Armed Forces. Lenders providing <%= @keyword.phrase %> are familiar with the financial demands of preparing for deployment or PCS moves around the world. In most cases they have adapted the application process to account for military pay grades and LES streamlining the borrowing process.</p>
-		<p>Lenders making <%= @keyword.phrase %> range from regulated, established banks to unregulated, off-shore entities. This means prices and lending practices can quickly go from great to predatory. Althought the Military Lending Act prohibits typical payday loans to members of the military not all <%= @keyword.phrase %> are covered by the Act  so make sure you know what you are getting into as you consider a loan. For most of these loans they are best used for short-term, emergency funding only where a clear path to paying the loan off exists.</p>	
+		<p><%= @keyword.phrase.humanize %> are loans targeted at members of the US Armed Forces. Lenders specializing in <%= @keyword.phrase %> are more familiar with the financial demands of preparing for deployment, Permanent Change of Station moves around the world, or other situation unique to military families. In many cases these lenders have adapted their application process to the military. Changes such as using military pay grades for pre-approval or using a Leave and Earnings Statement to demonstrate income can streamline the application process.</p>
+		<p>Lenders making <%= @keyword.phrase %> range from regulated, established banks to unregulated, off-shore entities. This means prices and lending practices vary widely from great to predatory. The Military Lending Act prohibits typical payday loans to members of the military but not all <%= @keyword.phrase %> are covered by the Act so as with any financial product do your own due diligence before taking a loan. Short-term, emergency loans are best taken only when completely necessary and where a clear path to paying the loan off exists.</p>	
 
 	 	<%= render 'shared/state_selector' %>   	
 
 	 	<h2>What Are <%= @keyword.phrase.titleize %></h2>
 
 		<p>
-	 	<%= @keyword.phrase.humanize %> are a type of installment loan. These loans are available to individuals with poor credit, generally unsecured, and tied to your pay date. This means they are very easy to qualify for but the trade-off is the cost of these installment loans can be very high and are best used to meet unavoidable emergency expense like utility bills or medical bills.
+	 	<%= @keyword.phrase.humanize %> generally refer to a short-term loan targeted at members of the military. Typically these loans are available to individuals with poor credit, are generally unsecured, and tied to your pay date. They are very easy to qualify for and, as they focus on military members, being overseas is usually not a problem. The trade-off is the cost of these installment loans can be very high and are best used to meet unavoidable emergency expenses like utility bills or medical bills.
 	 	</p>
-		<p>Traditionally, installment loans are loans paid back over multiple periods with a set payment amount. The payment amount for these loans is calculated based on the interest rate, payment periods, and loan amount. The borrower then makes a set payment at every period. Each payment consists of interest and principal. Once the borrower has completed all payments the entire loan is paid off. Fixed mortgages, auto loans, and student loans are examples of installment loans.
+		<p><%= @keyword.phrase.humanize %> are a type of more general loan called installment loans. Fixed-rate mortgages, auto loans, and student loans are other examples of installment loans. These loans are paid back over multiple periods with a set payment amount. The payment amount includes interest and principal meaning by the last payment the entire loan is paid off. This differs from revolving loans like credit cards where a set payment is not calculated and payments only cover interest and a portion of principal. The payment amount for installment loans is calculated based on the interest rate, payment periods, and loan amount. 
 
 		<%= render 'shared/related_kw_links' %>
 
+		<h2>How Are <%= @keyword.phrase.titleize %> Different</h2>
+		<p>The difference between <%= @keyword.phrase %> and other installment loans is that they are generally low dollar amounts and for shorter terms. They also typically have high interest rates and fees. These loans can be very expensive and should be used with caution and only when truly necessary. See <%= link_to 'Borrow Money Options', '/borrow-money-options' %> for other ideas if you need additional money.</p>
+		<p><%= @keyword.phrase.humanize %> also stand out from other short term borrowing options such as payday loans by targeting active duty military members. The lenders making these loans understand that you are paid by the US Government so are more willing to make loans based on your future income than they would for civilians. In addition, many lenders have developed processes to work with the military payment infrastructure. For example, some lenders pre-approve borrowers based on rank. This is not so difficult to do as based your rank lenders can quickly estimate your base pay. Other lenders will make underwriting decisions based on an upload of your Leave and Earning Statement. This makes it much easier than sorting out tax returns and other items other traditional lenders may require. Another feature we've seen is that lenders require being paid via a discretionary allotment. In all cases lenders making <%= @keyword.phrase %> try to make the application process as easy as possible for you but also make the repayment process as reliable as possible for them. </p>
+		<p>Please be careful when working with any lender. Although they may be familiar with a military member's needs and work through official processes like allotment this does not necessarily make them trustworthy. For example, lenders using the allotment process are not screened or monitored by the military. Predatory lenders to the military can and do exist.</p>
 
-		<h2>Secured Or Unsecured</h2> 
-		<p>There are two types of installment loans: secured and unsecured. Secured loans have collateral so, if the borrower fails to re-pay the loan, the lender can seize the collateral. Secured loans are generally cheaper than unsecured loans. Mortgages and auto loans are examples of secured loans</p>
-		<p>Unsecured loans are loans that have no collateral. <%= @keyword.phrase.humanize %> are generally this category of loans -- unsecured loans, so no collateral is required.	With unsecured loans if the borrower fails to re-pay the lender often has no recourse to recover their funds. When a lender makes an unsecured loan the lending decision is highly dependent on evaluating the ability of the borrow to repay the loan. To make these loans lenders general rely on credit history and income to estimate the propensity of the borrow to repay. Personal loans made by banks are examples of unsecured installment loans.</p>
+		<h2>Military Lending Act (MLA)</h2>
+		<p>In the Department of Defense (DOD) August 2006 report <% link_to 'Report On Predatory Lending Practices Directed at Members of the Armed Forces', 'http://www.defense.gov/pubs/pdfs/report_to_congress_final.pdf' %>, the DOD found that, "predatory lending undermines military readiness, harms the morale of troops and their families, and adds to the cost of fielding an all volunteer fighting force." In response to the report an amendment was added to the <%= link_to 'John Warner Defense Authorization Act of 2007','https://www.govtrack.us/congress/bills/109/hr5122/text' %>. The bill was enacted in October 2006 and the amendment became known as the Military Lending Act.  In 2012, Congress gave the Consumer Finance Protection Board (CFPB) the authority to enforce it.</p>
+		<p>In 2013 the CFPB released <%= link_to 'Guidelines for Protecting Servicemembers in the Payday Lending Market','http://www.consumerfinance.gov/newsroom/cfpb-lays-out-guidelines-for-protecting-servicemembers-in-the-payday-lending-market/' %>. In it the CFSB states it will scrutinizing short-term, small-dollar lenders to make sure that they follow MLA requirements. Specifically, lenders must follow the law for all closed-end loans of $2,000 or less and with terms of 91 days or less. These requirements include: </p>
+		<ul>
+			<li>
+				<h3>Capped interest rates at 36% APR</h3>
+				<p>Traditional payday loans have interest rates far in excess of 36% APR. Loans to service members must be capped. <%= link_to 'Payday loans','/payday-loans/' %> are one payment loans based on your payday. Today most payday lenders no longer make loans to service members. </p>
+			</li>
+			<li> 
+				<h3>No Rolling Over of Loans</h3>
+				<p>Typical <%= link_to 'payday loans','/payday-loans/' %> offer a renewal if borrowers cannot pay. These renewals bring on additional fees. The Act bans lenders from rolling over loans for servicemembers, unless the new transaction results in more favorable terms for the servicemember.</p>
+			</li>
+			<li>
+				<h3>No Signing Away of Servicemember Rights</h3>
+				<p>The MLA prohibits lenders from making servicemembers waive their rights under the Servicemembers Civil Relief Act or other state or federal laws that provide critical consumer protections. The MLA also prohibits lenders from requiring servicemembers to waive their right to seek resolution of any legal claims in court. In the past in order to get a loan many lenders would require service members to waive these rights.</p>
+			</li>
+			<li>
+				<h3>Repayment via Allotment is Not Required</h3>
+				<p>The MLA bans lenders from requiring military members to pay by the allotment system. Many lenders still strongly encourage payment by allotment but a borrower is not required to repay by allotment.
+				</p>
+			</li>
+		</ul>
+		<p>The MLA was very effective in stopping traditional payday lenders. Most, if not all, <%= link_to 'payday lenders', '/payday-lenders/' %> stopped making loans to service member. This is why a separate box exists on most payday loan application asking if you are in the military. It is unclear if it was effective in protecting service members from predatory lenders. Many lenders focusing on military members created products that fall outside of the MLA.</p>
 
-		<h2>Paycheck Installment Loans</h2>
-		<p> 
-		<%= @keyword.phrase.humanize %> are a type of paycheck installment loans. This means your payments for these installment loans are linked to your pay date. These loans do not consider your credit history and instead are based solely on the pay check. To increase the likelihood of being repaid most lenders offering <%= @keyword.phrase %> require access to the account where you receive your paycheck so they can deduct your loans payments as soon as you are paid.</p>
-		<p>Companies offering paycheck <%= @keyword.phrase %> have made these loans very attractive. These loans are quick, simple, do not require good credit, and have lower payments. Yet, users must approach these <%= @keyword.phrase %> with caution as their fees do make them an expensive option so make sure you have considered other options such as bank loans, credit cards, or friends and family before taking one of these loans. <%= @keyword.phrase %> are designed for short-term, emergency funding and are best used for this purpose.</p>	
-
-
-		<h2>How <%= @keyword.phrase.titleize %> Work</h2>
-		<p>If <%= @keyword.phrase %> are right for you, the application process can take only 5 to 25 minutes. In general the lender will require that you are 18+ years old, are employed, and have direct deposit.  Money can be deposited into you account within one business day. This money is a loan and must be repaid in full. Payments are generally automatically deducted from your checking account on payday.</p> 
-		</p>When taking out installment loans, your lender will give you a payment plan. For example, $1,000 could have a repayment plan with a ~$125 payment every pay period (14 days) over the next 24 pay periods. In the end ~$1,000 costs ~$2,400. This is cheaper than what you would have to pay if you took out a payday loan for the same time-frame, but clearly not cheap so be careful to make sure you really need this loan. Also consider other <%= link_to "borrow money options", "/borrow-money-options" %> such as delaying the expense or getting help from a friend.</p>
-
-		
-		<h2>Licensed Versus Unlicensed Lenders</h2>
-		<p><%= @keyword.phrase.humanize %> are regulated by both federal and state laws. State licensed lenders are regulated and monitored by the state so are more closely regulated than lenders not licensed by your state. Unlicensed lenders operate in states under the assumption they can export laws from their state or tribe (Indian Tribes are generally treated as federal entities) into other states. The validity of this assumption is unclear. The Payday Hound believes licensed lenders are a safer choice for borrowers and would avoid unlicensed lenders. For more information see <%= link_to "Payday Loan Laws", payday_loan_laws_path %> or <%= link_to "Installment Loan Lenders", "/installment-loan-lenders/" %></p>
-		<h2>Installment Loans Versus Payday Loans</h2>
-		<p>The difference between installment loans and payday loans is that payments are spread out over time. This reduces the amount of individual payments and your APR for an installment loan but the total amount of fees paid increases a well. See <a href = "/payday-loan-or-installment-loan/")>Payday Loans or Installment Loans</a> for more information. Many consumers prefer installment loans because paying the entire loan at your next pay period, as payday loans require, is often too difficult or impossible and renewing payday loans becomes extremely expensive.<p>
+		<h2><%= @keyword.phrase.titleize %> Are NOT Covered by the MLA</h2> 
+		<p><%= @keyword.phrase.humanize %> are not covered by the MLA and as such do not provide the protections listed above. This makes <%= @keyword.phrase %> more susceptible to predatory lending practices. Regulations covering the lenders will vary from FDIC regulated banks to unregulated offshore entities. In addition, enforcement varies even more. All this means that borrowers must take precautions when taking out loans. Just because a lender seems to understand your needs and seems very official it does not always mean they are being trustworthy.</p>
+		<p><%= @keyword.phrase.humanize %> are ideally regulated by both federal and state laws. State licensed lenders are regulated and monitored by the state so are more closely regulated than lenders not licensed by your state. Unlicensed lenders operate in states under the assumption they can export laws from their state or tribe (Indian Tribes are generally treated as federal entities) into other states. The Payday Hound believes licensed lenders are a safer choice for borrowers and would avoid unlicensed lenders. For more information see <%= link_to "Payday Loan Laws", payday_loan_laws_path %> or <%= link_to "Installment Loan Lenders", "/installment-loan-lenders/" %></p>
 
 		<h2>Full List of <%= @keyword.phrase.titleize %></h2>
-		<p>The Payday Hound reviews payday lenders and ranks them according to our <%= link_to "Sniff Test", '/infos/about' %> (reputation), costs, and licensing. To see lenders who provide payday loans in your state select your state from the table above</p> 
+		<p>The Payday Hound reviews short-term lenders and ranks them according to our <%= link_to "Sniff Test", '/infos/about' %> (reputation), costs, and licensing. The list below includes both regulated banks as well as off-shore entities. Being included on our list is not endorsement or certification. It is a ranking and is designed to help borrowers rate and judge the quality of lenders. This means it includes lenders we believe to be honest as well as those we would deem to be predatory. To see lenders who provide <%= @keyword.phrase %> in your state select your state from the table above.</p> 
+		<p>The lenders listed below include both civilian installment loan lenders and those specializing in military loans. Those who specialize in military installment loans are noted in the description.</p>
 
+	<% when "military lenders" %>
+		<p><%= @keyword.phrase.humanize %> make loans targeted at members of the US Armed Forces. Generally <%= @keyword.phrase.humanize %> are more familiar than traditional lenders with the financial demands of preparing for deployment, Permanent Change of Station moves around the world, or other situation unique to military families. In many cases these <%= @keyword.phrase.humanize %> have adapted their application process to the military. Changes such as using military pay grades for pre-approval or using a Leave and Earnings Statement to demonstrate income can streamline the application process.</p>
+		<p><%= @keyword.phrase.humanize %> range from regulated, established banks to unregulated, off-shore entities. This means prices and lending practices vary widely from great to predatory. The Military Lending Act prohibits typical payday loans to members of the military but not all loans to members of the military are covered by the Act so as with any financial product do your own due diligence before taking a loan. Short-term, emergency loans are best taken only when completely necessary and where a clear path to paying the loan off exists.</p>	
+
+	 	<%= render 'shared/state_selector' %>   	
+
+	 	<h2>Who Are <%= @keyword.phrase.titleize %></h2>
+
+		<p><%= @keyword.phrase.humanize %> generally refers to lenders who make short-term loans targeted at members of the military. Typically these loans are available to individuals with poor credit, are generally unsecured, and tied to payday. They are very easy to qualify for and, as they focus on military members, being overseas is usually not a problem. The trade-off is the cost of these installment loans can be very high and are best used to meet unavoidable emergency expenses like utility bills or medical bills.
+	 	</p>
+		<p>Military short-term loans are a type of more general loan called installment loans. Fixed-rate mortgages, auto loans, and student loans are other examples of installment loans. These loans are paid back over multiple periods with a set payment amount. The payment amount includes interest and principal meaning by the last payment the entire loan is paid off. This differs from revolving loans like credit cards where a set payment is not calculated and payments only cover interest and a portion of principal. The payment amount for installment loans is calculated based on the interest rate, payment periods, and loan amount. 
+
+		<%= render 'shared/related_kw_links' %>
+
+		<h2>How Are <%= @keyword.phrase.titleize %> Different</h2>
+		<p>The difference between <%= @keyword.phrase %> and other lenders offering installment loans is that the loans they offer are generally low dollar amounts and for shorter terms. These loans typically have high interest rates and fees. The loans can be very expensive and should be used with caution and only when truly necessary. See <%= link_to 'Borrow Money Options', '/borrow-money-options' %> for other ideas if you need additional money especially if you have some time to plan.</p>
+		<p><%= @keyword.phrase.humanize %> also stand out from other short term lenders such as general payday lenders by targeting active duty military members. These lenders understand that you are paid by the US Government so are more willing to make loans based on your future income than they would for civilians. In addition, many <%= @keyword.phrase %> have developed processes to work with the military payment infrastructure. For example, some lenders pre-approve borrowers based on rank. This is not so difficult to do as based on your rank lenders can quickly estimate your base pay. Other <%= @keyword.phrase %> will make underwriting decisions based on an upload of your Leave and Earning Statement. This makes it much easier than sorting out tax returns and other items other traditional lenders may require. Another feature we've seen is that <%= @keyword.phrase.humanize %> require being paid via a discretionary allotment. In all cases lenders making short-term installment loans try to make the application process as easy as possible for you but also make the repayment process as reliable as possible for themselves. </p>
+		<p>Please be careful when working with any lender. Although they may be familiar with a military member's needs and work through official processes like allotment this does not necessarily make them trustworthy. For example, <%= @keyword.phrase %> using the allotment process are not screened or monitored by the military. Predatory lenders to the military can and do exist.</p>
+
+		<h2>Military Lending Act (MLA)</h2>
+		<p>In the Department of Defense (DOD) August 2006 report <% link_to 'Report On Predatory Lending Practices Directed at Members of the Armed Forces', 'http://www.defense.gov/pubs/pdfs/report_to_congress_final.pdf' %>, the DOD found that, "predatory lending undermines military readiness, harms the morale of troops and their families, and adds to the cost of fielding an all volunteer fighting force." In response to the report an amendment was added to the <%= link_to 'John Warner Defense Authorization Act of 2007','https://www.govtrack.us/congress/bills/109/hr5122/text' %>. The bill was enacted in October 2006 and the amendment became known as the Military Lending Act.  In 2012, Congress gave the Consumer Finance Protection Board (CFPB) the authority to enforce it.</p>
+		<p>In 2013 the CFPB released <%= link_to 'Guidelines for Protecting Servicemembers in the Payday Lending Market','http://www.consumerfinance.gov/newsroom/cfpb-lays-out-guidelines-for-protecting-servicemembers-in-the-payday-lending-market/' %>. In it the CFSB states it will scrutinizing short-term, small-dollar lenders to make sure that they follow MLA requirements. Specifically, lenders must follow the law for all closed-end loans of $2,000 or less and with terms of 91 days or less. These requirements include: </p>
+		<ul>
+			<li>
+				<h3>Capped interest rates at 36% APR</h3>
+				<p>Traditional payday loans have interest rates far in excess of 36% APR. Loans to service members must be capped. <%= link_to 'Payday loans','/payday-loans/' %> are one payment loans based on your payday. Today most payday lenders no longer make loans to service members. </p>
+			</li>
+			<li> 
+				<h3>No Rolling Over of Loans</h3>
+				<p>Typical <%= link_to 'payday loans','/payday-loans/' %> offer a renewal if borrowers cannot pay. These renewals bring on additional fees. The Act bans lenders from rolling over loans for servicemembers, unless the new transaction results in more favorable terms for the servicemember.</p>
+			</li>
+			<li>
+				<h3>No Signing Away of Servicemember Rights</h3>
+				<p>The MLA prohibits lenders from making servicemembers waive their rights under the Servicemembers Civil Relief Act or other state or federal laws that provide critical consumer protections. The MLA also prohibits lenders from requiring servicemembers to waive their right to seek resolution of any legal claims in court. In the past in order to get a loan many lenders would require service members to waive these rights.</p>
+			</li>
+			<li>
+				<h3>Repayment via Allotment is Not Required</h3>
+				<p>The MLA bans lenders from requiring military members to pay by the allotment system. Many lenders still strongly encourage payment by allotment but a borrower is not required to repay by allotment.
+				</p>
+			</li>
+		</ul>
+		<p>The MLA was very effective in stopping traditional payday lenders. Most, if not all, <%= link_to 'payday lenders', '/payday-lenders/' %> stopped making loans to service member. This is why a separate box exists on most payday loan application asking if you are in the military. It is unclear if it was effective in protecting service members from predatory lenders. Many lenders focusing on military members created products that fall outside of the MLA.</p>
+
+		<h2>Loan By <%= @keyword.phrase.titleize %> Are NOT Covered by the MLA</h2> 
+		<p>Loans by <%= @keyword.phrase.humanize %> are not covered by the MLA and as such do not provide the protections listed above. This makes loans by <%= @keyword.phrase.humanize %> more susceptible to predatory lending practices. Regulations covering <%= @keyword.phrase.humanize %> will vary from FDIC regulated banks to unregulated offshore entities. In addition, enforcement varies even more. All this means that borrowers must take precautions when taking out loans. Just because a lender seems to understand your needs and seems very official it does not always mean they are being trustworthy.</p>
+		<p><%= @keyword.phrase.humanize %> are ideally regulated by both federal and state laws. State licensed lenders are regulated and monitored by the state so are more closely regulated than lenders not licensed by your state. Unlicensed lenders operate in states under the assumption they can export laws from their state or tribe (Indian Tribes are generally treated as federal entities) into other states. The Payday Hound believes licensed lenders are a safer choice for borrowers and would avoid unlicensed lenders. For more information see <%= link_to "Payday Loan Laws", payday_loan_laws_path %> or <%= link_to "Installment Loan Lenders", "/installment-loan-lenders/" %></p>
+
+		<h2>Full List of <%= @keyword.phrase.titleize %></h2>
+		<p>The Payday Hound reviews <%= @keyword.phrase %> and ranks them according to our <%= link_to "Sniff Test", '/infos/about' %> (reputation), costs, and licensing. The list below includes both regulated banks as well as off-shore entities. Being included on our list is not endorsement or certification. It is a ranking and is designed to help borrowers rate and judge the quality of <%= @keyword.phrase %>. This means it includes lenders we believe to be honest as well as those we would deem to be predatory. To see <%= @keyword.phrase %> who provide loans in your state select your state from the table above.</p> 
+
+		<p>The lenders listed below include both civilian installment loan lenders and those specializing in military loans. Those who specialize in military installment loans are noted in the description.</p>
 	<% end %>	
 
 

@@ -6,15 +6,14 @@
   <!-- calls matching service apply section -->
 
   <div id="clearboth"></div>
-  <p class = "tableIntro">We have reviewed <%= pluralize(@lenders.size, !(defined? @state.state).nil? ? "#{@state.state} installment loan lender" : "installment loan lender") %> 
-    <% if (@criteria.sniff.sniff_desc.downcase != 'bad') | (@criteria.ranking >0 ) %>
+  <p class = "tableIntro">We have reviewed <%= pluralize(@lenders.size, !(defined? @state.state).nil? ? "#{@state.state} installment loan lender" : "installment loan lender") %><% if (@criteria.sniff.sniff_desc.downcase != 'bad') | (@criteria.ranking >0 ) %>
      with a
     <% end %>  
     <% if @criteria.sniff.sniff_desc.downcase != 'bad' %>
     Sniff score of <%= @criteria.sniff.sniff_desc.downcase %> or better and a 
     <% end %>
     <% if (@criteria.sniff.sniff_desc.downcase != 'bad') | (@criteria.ranking >0 ) %>
-    Rating of <%= pluralize(number_to_human(@criteria.ranking), 'star') %> or better<% end %>.</p>
+    Rating of <%= pluralize(number_to_human(@criteria.ranking), 'star') %> or better<% end %>. A listing in this table is not an endorsement. This table includes all lenders we have reviewed.</p>  
   <table class="listing" summary="full lender list">
     <tr class="tableHeader">
      <th><%= !(defined? @state.state_abbr).nil? ? "#{@state.state_abbr} Lender" : "Company Name" %></th>

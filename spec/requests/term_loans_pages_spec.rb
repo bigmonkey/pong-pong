@@ -204,6 +204,9 @@ describe "Installment Loan Pages" do
         page.should have_content("military comment 1")
       end
 
+      it { should have_selector('h1', text: "#{@keyword.phrase.titleize}") }
+      it { should have_content("#{@keyword.state_phrase.titleize}") }
+      
       it_should_behave_like "all index installment loan pages"
       it_should_behave_like "all installment loan pages"      
     end
