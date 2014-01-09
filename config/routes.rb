@@ -48,9 +48,11 @@ Pdh::Application.routes.draw do
   # Payday and Term Loan URL's based on Nov 3, 2013 SEO analysis
   # And also URLS from previous blog
   # Excludes routes for payday_loans and term_loans controller as they are above
-  Keyword.all.where.not(word: ["installment loans","payday loans"]).each do |k|
-    resources (k.controller + '_loans').parameterize.to_sym, path: k.word.gsub(' ','-'), only: [:index, :show]
-  end  
+  unless ARGV.join.include? 'assets:precompile'
+    Keyword.all.where.not(word: ["installment loans","payday loans"]).each do |k|
+      resources (k.controller + '_loans').parameterize.to_sym, path: k.word.gsub(' ','-'), only: [:index, :show]
+    end
+  end    
 
 
   # Redirect old URLS to new URL's. Use redirect_to hardcard b/c of nginx/heroku/wordpress set up

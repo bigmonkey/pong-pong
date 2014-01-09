@@ -26,12 +26,12 @@ end
 
 
 # use unicorn for production and ubuntu
- gem 'unicorn', '4.7.0'
+gem 'unicorn', '4.7.0'
 
 # use thin for windows
 #gem 'thin', '1.5.1'
- gem 'execjs', '2.0.2'
- gem 'therubyracer', :platform => 'ruby'
+gem 'execjs', '2.0.2'
+gem 'therubyracer', :platform => 'ruby'
  #gem 'therubyracer', '~> 0.10.2' #update to 0.11 crashes install
 
 # Gems used only for assets and not required
