@@ -6,8 +6,7 @@
   <!-- calls matching service apply section -->
 
   <div id="clearboth"></div>
-  <p class = "tableIntro">We have reviewed <%= pluralize(@lenders.size, !(defined? @state.state).nil? ? "#{@state.state} payday loan lender" : "payday loan lender") %>
-    <% if (@criteria.sniff.sniff_desc.downcase != 'bad') | (@criteria.ranking >0 ) %>
+  <p class = "tableIntro">We have reviewed <%= pluralize(@lenders.size, !(defined? @state.state).nil? ? "#{@state.state} payday loan lender" : "payday loan lender") %><% if (@criteria.sniff.sniff_desc.downcase != 'bad') | (@criteria.ranking >0 ) %>
      with a
     <% end %>
     <% if @criteria.sniff.sniff_desc.downcase != 'bad' %>
