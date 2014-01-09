@@ -50,7 +50,7 @@ Pdh::Application.routes.draw do
   # Excludes routes for payday_loans and term_loans controller as they are above
   # remove ARGV unless block if assets compiled locally. Otherwise heroku tries to access database on precompile
   # use RAILS_ENV=production bundle exec rake assets:precompile to precompile
-  unless !ARGV.join.include? 'assets:precompile'
+  unless ARGV.join.include?'assets:precompile'
     Keyword.all.where.not(word: ["installment loans","payday loans"]).each do |k|
       resources (k.controller + '_loans').parameterize.to_sym, path: k.word.gsub(' ','-'), only: [:index, :show]
     end
