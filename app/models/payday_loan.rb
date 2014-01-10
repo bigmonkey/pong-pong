@@ -2,7 +2,11 @@ class PaydayLoan < ActiveRecord::Base
   # attr_accessible :title, :body
     belongs_to :partner
     belongs_to :sniff
-    has_and_belongs_to_many :states
+    
+    has_many :payday_loans_states
+    has_many :states, through: :payday_loans_states
+
+    #has_and_belongs_to_many :states
 
     validates :partner_id, presence: true
     validates :partner_id, uniqueness: true    

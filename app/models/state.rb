@@ -4,8 +4,16 @@ class State < ActiveRecord::Base
 
   before_validation :upcase_state_abbr
 
-  has_and_belongs_to_many :payday_loans
-  has_and_belongs_to_many :term_loans
+  has_many :states_term_loans
+  has_many :term_loans, through: :states_term_loans
+
+  has_many :payday_loans_states
+  has_many :payday_loans, through: :payday_loans_states
+
+
+  #has_and_belongs_to_many :payday_loans
+  #has_and_belongs_to_many :term_loans
+  
   has_one :payday_loan_law, {:foreign_key => "id"}
   has_one :payday_loan_law_detail, {:foreign_key => "id"}
   

@@ -2,7 +2,10 @@ class TermLoan < ActiveRecord::Base
   # attr_accessible :title, :body
     belongs_to :partner
     belongs_to :sniff
-    has_and_belongs_to_many :states
+    
+    has_many :states_term_loans
+    has_many :states, through: :states_term_loans
+    #has_and_belongs_to_many :states
 
     validates :partner_id, presence: true
     validates :partner_id, uniqueness: true
