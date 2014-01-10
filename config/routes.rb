@@ -63,11 +63,11 @@ Pdh::Application.routes.draw do
   get "/secureds/" => redirect("http://www.thepaydayhound.com/secured-credit-cards/")
   get "/prepaids/" => redirect("http://www.thepaydayhound.com/prepaid-cards/")
   get "/why-use-the-payday-hound/" => redirect("http://www.thepaydayhound.com")
-  get "/applicants" => redirect("/get-payday-loan/")
-  get "/payday-loans-direct-payday-lenders" => redirect("/direct-payday-lenders-online/")
-  get "/bad-credit-credit-card-secured-card" => redirect("/learn/best-secured-credit-card")
-  get "/find-apply-best-payday-loan-state" => redirect("/learn/payday-loan-finder")
-  get "/choosing-a-payday-loan" => redirect("/learn/how-to-choose-a-payday-loan")
+  get "/applicants" => redirect("http://www.thepaydayhound.com/get-payday-loan/")
+  get "/payday-loans-direct-payday-lenders" => redirect("http://www.thepaydayhound.com/direct-payday-lenders-online/")
+  get "/bad-credit-credit-card-secured-card" => redirect("http://www.thepaydayhound.com/learn/best-secured-credit-card")
+  get "/find-apply-best-payday-loan-state" => redirect("http://www.thepaydayhound.com/learn/payday-loan-finder")
+  get "/choosing-a-payday-loan" => redirect("http://www.thepaydayhound.com/learn/how-to-choose-a-payday-loan")
   # Another way to create SEO friendly URL's 
   #resources "payday-loans", :as => :payday_loans, :controller => :payday_loans
   

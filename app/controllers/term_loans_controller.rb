@@ -8,7 +8,7 @@ class TermLoansController < ApplicationController
   def index
     # in application_controller
     set_seo_vars
-    #binding.pry
+
   	@states=State.all
     if @keyword.word.match('military')
       then @lenders = TermLoan.by_top_rank.by_low_cost.active_lender
