@@ -50,6 +50,22 @@ describe PaydayLoansController do
 			get :show, id: state.state_abbr
 			response.should render_template :show
 		end
+
+		it "shows a table with the correct states" do
+			2.times { FactoryGirl.create(:state) }
+			2.times { FactoryGirl.create(:payday_loan) }
+			FactoryGirl.create(:payday_loans_state, payday_loan_id: PaydayLoan.first.id, state_id: State.first.id)
+			get :show, id: State.first.state_abbr
+			assigns(:lenders).first.should eq(PaydayLoan.first)
+		end
+
+		it "shows a table excluding other states" do
+			2.times { FactoryGirl.create(:state) }
+			2.times { FactoryGirl.create(:payday_loan) }
+			FactoryGirl.create(:payday_loans_state, payday_loan_id: PaydayLoan.first.id, state_id: State.first.id)
+			get :show, id: State.first.state_abbr
+			assigns(:lenders).count.should eq(1)
+		end		
 	end
 
 	after(:all){
@@ -57,6 +73,7 @@ describe PaydayLoansController do
 		State.destroy_all
 		PaydayLoan.destroy_all
 		Sniff.destroy_all
+		PaydayLoansState.destroy_all
 	}
 
 end

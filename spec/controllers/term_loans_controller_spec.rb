@@ -58,6 +58,24 @@ describe TermLoansController do
 			get :show, id: state.state_abbr
 			response.should render_template :show
 		end
+
+		it "shows a table with the correct states" do
+			2.times { FactoryGirl.create(:state) }
+			2.times { FactoryGirl.create(:term_loan) }
+			FactoryGirl.create(:states_term_loan, term_loan_id: TermLoan.first.id, state_id: State.first.id)
+			get :show, id: State.first.state_abbr
+			assigns(:lenders).first.should eq(TermLoan.first)
+		end
+
+		it "shows a table excluding other states" do
+			2.times { FactoryGirl.create(:state) }
+			2.times { FactoryGirl.create(:term_loan) }
+			FactoryGirl.create(:states_term_loan, term_loan_id: TermLoan.first.id, state_id: State.first.id)
+			get :show, id: State.first.state_abbr
+			assigns(:lenders).count.should eq(1)
+		end
+
+
 	end
 
 	after(:all){
@@ -65,6 +83,7 @@ describe TermLoansController do
 		State.destroy_all
 		TermLoan.destroy_all
 		Sniff.destroy_all
+		StatesTermLoan.destroy_all
 	}	
 
 end
