@@ -177,9 +177,9 @@ describe "Payday Loan Pages" do
       ) 
 
       # Create State table
-      FactoryGirl.create(:state, state_abbr: "TX", state: "Texas" )
-      FactoryGirl.create(:state, state_abbr: "VA", state: "Virginia" )
-      FactoryGirl.create(:state, state_abbr: "CA", state: "California" )
+      FactoryGirl.create(:state, id: 1, state_abbr: "TX", state: "Texas" )
+      FactoryGirl.create(:state, id: 2, state_abbr: "VA", state: "Virginia" )
+      FactoryGirl.create(:state, id: 3, state_abbr: "CA", state: "California" )
       # Create Sniff table
       FactoryGirl.create(:sniff, sniff_score: 1, sniff_desc: "Great") 
       FactoryGirl.create(:sniff, sniff_score: 2, sniff_desc: "Fair") 

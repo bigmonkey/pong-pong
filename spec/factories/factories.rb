@@ -6,6 +6,7 @@ FactoryGirl.define do
 	end	
 
 	factory :state do
+		sequence(:id) { |n| n} 
 		sequence(:state_abbr) { |n| n<10 ? "a#{n}".upcase : "#{n}".upcase  }
 		sequence(:state) { |n| "State #{n}" }
 	end	
@@ -39,8 +40,9 @@ FactoryGirl.define do
 	end
 
 	factory :partner do
-		lender_link "http://lender_link.com"
-		lender_tail ""
+		sequence(:lender_link) { |n| "http://lender_link_#{n}.com" }
+		sequence(:lender_tail) { |n| "?tail=#{n}"}
+		sequence(:name) { |n| "parner #{n}"}
 	end
 
 	factory :payday_loans_state do

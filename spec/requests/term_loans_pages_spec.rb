@@ -39,14 +39,14 @@ describe "Installment Loan Pages" do
     
     before(:all) { 
       # Create State table
-      10.times { FactoryGirl.create(:state) }
+      5.times { FactoryGirl.create(:state) }
       # Create Sniff table
       FactoryGirl.create(:sniff, sniff_score: 1, sniff_desc: "Great") 
       FactoryGirl.create(:sniff, sniff_score: 2, sniff_desc: "Fair") 
       FactoryGirl.create(:sniff, sniff_score: 3, sniff_desc: "Bad") 
       # Create Terms table
       #binding.pry
-      5.times { FactoryGirl.create(:term_loan) }
+      3.times { FactoryGirl.create(:term_loan) }
     } 
 
     # Installment Loan Main Page
@@ -232,21 +232,27 @@ describe "Installment Loan Pages" do
         parent_page: "installment loans",
       ) 
       # Create State table
-      FactoryGirl.create(:state, state_abbr: "TX", state: "Texas" )
-      FactoryGirl.create(:state, state_abbr: "VA", state: "Virginia" )
-      FactoryGirl.create(:state, state_abbr: "CA", state: "California" )
+      FactoryGirl.create(:state, id: 1, state_abbr: "TX", state: "Texas" )
+      FactoryGirl.create(:state, id: 2, state_abbr: "VA", state: "Virginia" )
       # Create Sniff table
       FactoryGirl.create(:sniff, sniff_score: 1, sniff_desc: "Great") 
       FactoryGirl.create(:sniff, sniff_score: 2, sniff_desc: "Fair") 
       FactoryGirl.create(:sniff, sniff_score: 3, sniff_desc: "Bad") 
       #binding.pry
+      #Create Partner table. Every partner has a term loan
+      2.times { FactoryGirl.create(:partner) }
       # Create Terms table
-      #FactoryGirl.create(:term_loan, id: 1, partner_id: 1, active: true, sniff_id: [1,2,3].sample, ranking:[1,2,3,4,5].sample, image_file: "image", name: "term1", first_comment: "term1 comment", governing_law: "law 1", review_url: "term-loan-1")
+      Partner.all.each do |p|
+        FactoryGirl.create(:term_loan, partner_id: p.id)
+      end
       # Create payday_loan_laws table
       FactoryGirl.create(:payday_loan_law, id: 1, state_abbr: "TX", regulator: "TX regulator")
       FactoryGirl.create(:payday_loan_law, id: 2, state_abbr: "VA", regulator: "VA regulator")
-      # Create states_term_loans table
-      #FactoryGirl.create(:states_term_loans)
+      # Create states_term_loans table. Term Loans only in Texas and not Virginia
+      @texaslender=TermLoan.first
+      @valender=TermLoan.last
+      FactoryGirl.create(:states_term_loan, term_loan_id: @texaslender.id, state_id: State.find_by_state_abbr("TX").id)
+      FactoryGirl.create(:states_term_loan, term_loan_id: @valender.id, state_id: State.find_by_state_abbr("VA").id)
       #binding.pry
     } 
     context "Unlisted State" do
@@ -254,6 +260,7 @@ describe "Installment Loan Pages" do
         #binding.pry
         visit "/installment-loans/fr" 
       }
+      #redirects to main installment page
       it {should have_selector('h1', text: 'Installment Loans') }
       it { should_not have_selector('h2', text: 'Loan Filter') }      
     end
@@ -276,6 +283,17 @@ describe "Installment Loan Pages" do
           page.should_not have_link(s.state, href:"/#{@keyword.word.gsub(' ','-')}/#{s.state_abbr.downcase}/") 
         end  
       end 
+
+      context "TX lender" do 
+        it { should have_content("TX Lender") }
+        it { should have_selector('div', text: @texaslender.first_comment) }        
+        it { should have_link("see review", href: "/learn/#{@texaslender.review_url}/" ) }         
+        it { should have_link("Apply Direct", href: "/partners/#{@texaslender.partner_id}/") }
+      end
+
+      it "should not show the VA lender" do 
+        page.should_not have_link("Apply Direct", href: "/partners/#{@valender.partner_id}/")
+      end
       it_should_behave_like "all installment loan pages"
     end
 
@@ -322,6 +340,7 @@ describe "Installment Loan Pages" do
       TermLoan.destroy_all
       Keyword.destroy_all
       PaydayLoanLaw.destroy_all
+      Partner.destroy_all
     }  
   end
     
