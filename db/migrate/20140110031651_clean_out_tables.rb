@@ -1,5 +1,14 @@
 class CleanOutTables < ActiveRecord::Migration
 
+
+	def loans
+		%w(payday_loans term_loans)
+	end	
+
+	def loans_columns
+		%w(time_at_residence rent_or_own rent_mort_amt time_w_employer reference)
+	end
+
  def up
  	drop_table :sources
  	drop_table :pages
@@ -8,9 +17,21 @@ class CleanOutTables < ActiveRecord::Migration
  	drop_table :term_states
  	drop_table :lenders_states
 
+ 	loans.each do |t|
+ 		loans_columns.each do |c|
+  		remove_column(t, c)
+  	end
+ 	end
 
  end
+
  def down
+
+ 	loans.reverse_each do |t|
+ 		loans_columns.reverse_each do |c|
+  		add_column(t, c, :boolean)
+  	end
+ 	end  	
 
  	create_table :lenders_states, :id => false do |t|
   		t.integer "lender_id"

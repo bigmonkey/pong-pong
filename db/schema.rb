@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131230020402) do
+ActiveRecord::Schema.define(version: 20140110031651) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -111,70 +111,6 @@ ActiveRecord::Schema.define(version: 20131230020402) do
     t.string "updated_at",   null: false
   end
 
-  create_table "lenders", force: true do |t|
-    t.integer  "sniff_id"
-    t.integer  "partner_id"
-    t.string   "name",              limit: 45
-    t.string   "lender_type",       limit: 45
-    t.string   "image_file"
-    t.decimal  "ranking",                      precision: 3, scale: 1
-    t.string   "first_comment"
-    t.string   "second_comment"
-    t.string   "third_comment"
-    t.string   "since",             limit: 4
-    t.string   "governing_law",     limit: 45
-    t.boolean  "BBB_accredit"
-    t.string   "BBB_score",         limit: 4
-    t.integer  "BBB_complaints"
-    t.integer  "BBB_unresponded"
-    t.string   "max_loan",          limit: 45
-    t.boolean  "spanish"
-    t.boolean  "state_lic"
-    t.boolean  "privacy_policy"
-    t.boolean  "https"
-    t.boolean  "phone_contact"
-    t.boolean  "live_chat"
-    t.boolean  "time_at_residence"
-    t.boolean  "rent_or_own"
-    t.boolean  "rent_mort_amt"
-    t.boolean  "time_w_employer"
-    t.boolean  "reference"
-    t.decimal  "loan_amt",                     precision: 6, scale: 2
-    t.decimal  "payments",                     precision: 4, scale: 1
-    t.decimal  "pmt_freq_in_days",             precision: 5, scale: 1
-    t.decimal  "pmt_amt",                      precision: 7, scale: 2
-    t.decimal  "cost",                         precision: 7, scale: 2
-    t.decimal  "apr",                          precision: 3, scale: 2
-    t.string   "review_url"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "lenders", ["sniff_id"], name: "index_lenders_on_sniff_id", using: :btree
-
-  create_table "lenders_states", id: false, force: true do |t|
-    t.integer "lender_id"
-    t.integer "state_id"
-  end
-
-  add_index "lenders_states", ["lender_id", "state_id"], name: "index_lenders_states_on_lender_id_and_state_id", using: :btree
-
-  create_table "lenders_term_states", id: false, force: true do |t|
-    t.integer "lender_id"
-    t.integer "term_state_id"
-  end
-
-  add_index "lenders_term_states", ["lender_id", "term_state_id"], name: "index_lenders_term_states_on_lender_id_and_term_state_id", using: :btree
-
-  create_table "pages", force: true do |t|
-    t.string   "page_name",  limit: 50
-    t.string   "page_code",  limit: 4
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "pages", ["page_code"], name: "index_pages_on_page_code", unique: true, using: :btree
-
   create_table "partners", force: true do |t|
     t.string   "lender_link"
     t.string   "lender_tail", limit: 25
@@ -235,36 +171,36 @@ ActiveRecord::Schema.define(version: 20131230020402) do
   create_table "payday_loans", force: true do |t|
     t.integer  "sniff_id"
     t.integer  "partner_id"
-    t.string   "name",                                      default: ""
+    t.string   "name",                                     default: ""
     t.boolean  "active"
     t.string   "lender_type"
     t.string   "image_file"
-    t.decimal  "ranking",           precision: 3, scale: 1
+    t.decimal  "ranking",          precision: 3, scale: 1
     t.string   "first_comment"
     t.string   "second_comment"
     t.string   "third_comment"
     t.string   "review_url"
     t.string   "since"
-    t.string   "governing_law",                             default: ""
+    t.string   "governing_law",                            default: ""
     t.boolean  "BBB_accredit"
     t.string   "BBB_score"
     t.integer  "BBB_complaints"
     t.integer  "BBB_unresponded"
-    t.string   "max_loan",                                  default: ""
+    t.string   "max_loan",                                 default: ""
     t.boolean  "spanish"
     t.boolean  "state_lic"
     t.boolean  "privacy_policy"
     t.boolean  "https"
     t.boolean  "phone_contact"
     t.boolean  "live_chat"
-    t.decimal  "loan_amt",          precision: 6, scale: 2
-    t.decimal  "payments",          precision: 4, scale: 1
-    t.decimal  "pmt_freq_in_days",  precision: 5, scale: 1
-    t.decimal  "pmt_amt",           precision: 7, scale: 2
-    t.decimal  "cost",              precision: 7, scale: 2
-    t.decimal  "apr",               precision: 3, scale: 2
-    t.datetime "created_at",                                             null: false
-    t.datetime "updated_at",                                             null: false
+    t.decimal  "loan_amt",         precision: 6, scale: 2
+    t.decimal  "payments",         precision: 4, scale: 1
+    t.decimal  "pmt_freq_in_days", precision: 5, scale: 1
+    t.decimal  "pmt_amt",          precision: 7, scale: 2
+    t.decimal  "cost",             precision: 7, scale: 2
+    t.decimal  "apr",              precision: 3, scale: 2
+    t.datetime "created_at",                                            null: false
+    t.datetime "updated_at",                                            null: false
     t.text     "full_desc"
     t.string   "image_file_big"
     t.string   "bbb_link"
@@ -272,11 +208,6 @@ ActiveRecord::Schema.define(version: 20131230020402) do
     t.string   "link1"
     t.string   "link2_desc"
     t.string   "link2"
-    t.boolean  "reference"
-    t.boolean  "time_w_employer"
-    t.boolean  "rent_mort_amt"
-    t.boolean  "rent_or_own"
-    t.boolean  "time_at_residence"
   end
 
   create_table "payday_loans_states", id: false, force: true do |t|
@@ -374,15 +305,6 @@ ActiveRecord::Schema.define(version: 20131230020402) do
     t.integer  "sniff_score"
   end
 
-  create_table "sources", force: true do |t|
-    t.string   "src_code",   limit: 4
-    t.string   "src_desc",   limit: 50
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "sources", ["src_code"], name: "index_sources_on_src_code", unique: true, using: :btree
-
   create_table "states", force: true do |t|
     t.string   "state_abbr", limit: 2
     t.string   "state",      limit: 15
@@ -400,36 +322,36 @@ ActiveRecord::Schema.define(version: 20131230020402) do
   create_table "term_loans", force: true do |t|
     t.integer  "sniff_id"
     t.integer  "partner_id"
-    t.string   "name",                                      default: ""
+    t.string   "name",                                     default: ""
     t.boolean  "active"
     t.string   "lender_type"
     t.string   "image_file"
-    t.decimal  "ranking",           precision: 3, scale: 1
+    t.decimal  "ranking",          precision: 3, scale: 1
     t.string   "first_comment"
     t.string   "second_comment"
     t.string   "third_comment"
     t.string   "review_url"
     t.string   "since"
-    t.string   "governing_law",                             default: ""
+    t.string   "governing_law",                            default: ""
     t.boolean  "BBB_accredit"
     t.string   "BBB_score"
     t.integer  "BBB_complaints"
     t.integer  "BBB_unresponded"
-    t.string   "max_loan",                                  default: ""
+    t.string   "max_loan",                                 default: ""
     t.boolean  "spanish"
     t.boolean  "state_lic"
     t.boolean  "privacy_policy"
     t.boolean  "https"
     t.boolean  "phone_contact"
     t.boolean  "live_chat"
-    t.decimal  "loan_amt",          precision: 6, scale: 2
-    t.decimal  "payments",          precision: 4, scale: 1
-    t.decimal  "pmt_freq_in_days",  precision: 5, scale: 1
-    t.decimal  "pmt_amt",           precision: 7, scale: 2
-    t.decimal  "cost",              precision: 7, scale: 2
-    t.decimal  "apr",               precision: 3, scale: 2
-    t.datetime "created_at",                                             null: false
-    t.datetime "updated_at",                                             null: false
+    t.decimal  "loan_amt",         precision: 6, scale: 2
+    t.decimal  "payments",         precision: 4, scale: 1
+    t.decimal  "pmt_freq_in_days", precision: 5, scale: 1
+    t.decimal  "pmt_amt",          precision: 7, scale: 2
+    t.decimal  "cost",             precision: 7, scale: 2
+    t.decimal  "apr",              precision: 3, scale: 2
+    t.datetime "created_at",                                            null: false
+    t.datetime "updated_at",                                            null: false
     t.text     "full_desc"
     t.string   "image_file_big"
     t.string   "bbb_link"
@@ -437,18 +359,6 @@ ActiveRecord::Schema.define(version: 20131230020402) do
     t.string   "link1"
     t.string   "link2_desc"
     t.string   "link2"
-    t.boolean  "reference"
-    t.boolean  "time_w_employer"
-    t.boolean  "rent_mort_amt"
-    t.boolean  "rent_or_own"
-    t.boolean  "time_at_residence"
-  end
-
-  create_table "term_states", force: true do |t|
-    t.string   "state_abbr", limit: 2
-    t.string   "state",      limit: 15
-    t.datetime "created_at"
-    t.datetime "updated_at"
   end
 
   create_table "users", force: true do |t|
