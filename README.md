@@ -1,6 +1,6 @@
-# The Payday Hound
+# Loan Review site
 
-[The Payday Hound](http://www.thepaydayhound.com) is a site the reviews [payday loans](http://www.thepaydayhound.com/payday-loans/) and [installment loans](http://www.thepaydayhound.com/installment-loans/). It's aims to bring transparency to this market. Transparency will help borrows protect themselves through education and get better pricing through efficient markets. The site provided detailed reviews on short-term lenders. It provided direct links to direct lenders and an application to a matching service.
+This site the reviews [payday loans](http://www.thepaydayhound.com/payday-loans/) and [installment loans](http://www.thepaydayhound.com/installment-loans/). It's aims to bring transparency to this market. Transparency will help borrows protect themselves through education and get better pricing through efficient markets. The site provided detailed reviews on short-term lenders. It provided direct links to direct lenders and an application to a matching service.
 
 This site is my project to learn how to code.
 
