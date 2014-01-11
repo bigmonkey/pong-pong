@@ -22,7 +22,6 @@ describe "Payday Loan Pages" do
           page.should have_link(s.state, href:"/#{@keyword.word.gsub(' ','-')}/#{s.state_abbr.downcase}/") 
         end  
       end  
-
       it "should have table of lenders" do
         #binding.pry
         #save_and_open_page
@@ -33,9 +32,21 @@ describe "Payday Loan Pages" do
           page.should have_link("Apply Direct", href: "#{partner_path(t.partner_id)}/" )
         end  
       end
-
-
   end
+
+  shared_examples_for "all state payday loan pages" do
+      # keyword in description
+      it { should have_css("meta[name='description'][content='Compare Texas #{@keyword.phrase}. Search for the lowest fees. Apply direct. Get the best rates in TX at The Payday Hound.']", visible: false) }      
+      # Loan Filter in Sidebar
+      it { should have_selector('h2', text: 'Loan Filter') }
+      it { should have_selector('h1', text: 'Texas') }      
+      it "should not have the state selector linking to 50 states" do  
+        State.all.each do |s|
+          page.should_not have_link(s.state, href:"/#{@keyword.word.gsub(' ','-')}/#{s.state_abbr.downcase}/") 
+        end  
+      end 
+  end
+
 
   describe "Index Pages" do
     
@@ -179,29 +190,40 @@ describe "Payday Loan Pages" do
       # Create State table
       FactoryGirl.create(:state, id: 1, state_abbr: "TX", state: "Texas" )
       FactoryGirl.create(:state, id: 2, state_abbr: "VA", state: "Virginia" )
-      FactoryGirl.create(:state, id: 3, state_abbr: "CA", state: "California" )
       # Create Sniff table
       FactoryGirl.create(:sniff, sniff_score: 1, sniff_desc: "Great") 
       FactoryGirl.create(:sniff, sniff_score: 2, sniff_desc: "Fair") 
       FactoryGirl.create(:sniff, sniff_score: 3, sniff_desc: "Bad") 
-      # Create Terms table
-      #FactoryGirl.create(:payday_loan, id: 1, partner_id: 1, active: true, sniff_id: [1,2,3].sample, ranking:[1,2,3,4,5].sample, image_file: "image", name: "term1", first_comment: "term1 comment", governing_law: "law 1", review_url: "term-loan-1")
+
+      #Create Partner table. Every partner has a term loan
+      2.times { FactoryGirl.create(:partner) }
+      # Create Payday Loan table
+      Partner.all.each do |p|
+        FactoryGirl.create(:payday_loan, partner_id: p.id)
+      end
       # Create payday_loan_laws table
       FactoryGirl.create(:payday_loan_law, id: 1, state_abbr: "TX", regulator: "TX regulator")
       FactoryGirl.create(:payday_loan_law, id: 2, state_abbr: "VA", regulator: "VA regulator")
-      # Create states_term_loans table
-      #FactoryGirl.create(:states_term_loans)
+      # Create payday_loans_state table. Payday Loans only in Texas and not Virginia
+      @texaslender=PaydayLoan.first
+      @valender=PaydayLoan.last
+      FactoryGirl.create(:payday_loans_state, payday_loan_id: @texaslender.id, state_id: State.find_by_state_abbr("TX").id)
+      FactoryGirl.create(:payday_loans_state, payday_loan_id: @valender.id, state_id: State.find_by_state_abbr("VA").id)
       #binding.pry
     } 
     context "Unlisted State" do
       before {
+        @keyword = Keyword.find_by_word("payday loans")
         visit "/payday-loans/fr" 
       }
+      #redirects to main payday loan page
       it {should have_selector('h1', text: ' Loans') }
-      it { should_not have_selector('h2', text: 'Loan Filter') }      
+      it { should_not have_selector('h2', text: 'Loan Filter') } 
+
+      it_should_behave_like "all index payday loan pages"     
     end
 
-    context "Listed State" do
+    context "Listed State as Texas" do
       before {
         #binding.pry
       	@keyword = Keyword.find_by_word("payday loans")
@@ -209,16 +231,15 @@ describe "Payday Loan Pages" do
         #puts page.body
       }
 
-      # keyword in description
-      it { should have_css("meta[name='description'][content='Compare Texas payday loans. Search for the lowest fees. Apply direct. Get the best rates in TX at The Payday Hound.']", visible: false) }      
-      # Loan Filter in Sidebar
-      it { should have_selector('h2', text: 'Loan Filter') }
-      it { should have_selector('h1', text: 'Texas') }      
-      it "should not have the state selector linking to 50 states" do  
-        State.all.each do |s|
-          page.should_not have_link(s.state, href:"/#{@keyword.word.gsub(' ','-')}/#{s.state_abbr.downcase}/") 
-        end  
-      end 
+      it { should have_content("TX Lender") }
+      it { should have_selector('div', text: @texaslender.first_comment) }        
+      it { should have_link("see review", href: "/learn/#{@texaslender.review_url}/" ) }         
+      it { should have_link("Apply Direct", href: "/partners/#{@texaslender.partner_id}/") }
+      it "should not show the VA lender" do 
+        page.should_not have_link("Apply Direct", href: "/partners/#{@valender.partner_id}/")
+      end      
+
+      it_should_behave_like "all state payday loan pages"
       it_should_behave_like "all payday loan pages"
     end
 

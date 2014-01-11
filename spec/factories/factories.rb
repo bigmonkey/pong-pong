@@ -41,7 +41,7 @@ FactoryGirl.define do
 
 	factory :partner do
 		sequence(:lender_link) { |n| "http://lender_link_#{n}.com" }
-		sequence(:lender_tail) { |n| "?tail=#{n}"}
+		sequence(:lender_tail) { |n| ""}
 		sequence(:name) { |n| "parner #{n}"}
 	end
 

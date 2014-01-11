@@ -253,7 +253,7 @@ describe "Installment Loan Pages" do
       #binding.pry
       #Create Partner table. Every partner has a term loan
       2.times { FactoryGirl.create(:partner) }
-      # Create Terms table
+      # Create Term Loan table
       Partner.all.each do |p|
         FactoryGirl.create(:term_loan, partner_id: p.id)
       end
