@@ -1,10 +1,10 @@
 # Payday Loans
 
-This site the reviews [payday loans](http://www.thepaydayhound.com/payday-loans/) and [installment loans](http://www.thepaydayhound.com/installment-loans/). It's aims to bring transparency to the payday loan and installment loan market which has traditionally been highly unregulated resulting in predatory lending practices. Transparency helps borrows protect themselves through education and reduces pricing through efficient markets. The site provides detailed reviews on payday and installment lenders, ranking tables on installment loans and payday loans, sorting tools to find short-term lenders, links to direct lenders, and an application to a loan matching service.
-
 This site is my project to learn how to code and to do SEO.
 
-The site is designed to run on one domain with a blog as a sub-directory. It is uses Rails and Wordpress. The main websever is nginx. Wordpress is used for the blog and to Rails is used for rankings and tools. nginx and Wordpress are hosted on EC2. Rails is hosted on Heroku. Wordpress uses a LAMP stack. Rails uses unicorn and postgresql.
+This site reviews [payday loans](http://www.thepaydayhound.com/payday-loans/) and [installment loans](http://www.thepaydayhound.com/installment-loans/). It's aims to bring transparency to the payday loan and installment loan market which has traditionally been unregulated leaving it susceptible to predatory lending practices. Transparency helps borrows protect themselves through education and reduces pricing through efficient markets. The site provides detailed reviews on lenders, ranking tables, sorting tools, links to direct lenders, and an application to a loan matching service.
+
+The site is runs on one domain with a blog as a sub-directory. It is uses Rails and Wordpress. The main websever is nginx. Wordpress is used for the blog and to Rails is used for rankings and tools. nginx and Wordpress are hosted on EC2. Rails is hosted on Heroku. Wordpress uses a LAMP stack. Rails uses unicorn and postgresql.
 
 Github stores the Rails code.
 
