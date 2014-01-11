@@ -50,11 +50,61 @@ Pdh::Application.routes.draw do
   # Excludes routes for payday_loans and term_loans controller as they are above
   # remove ARGV unless block if assets compiled locally. Otherwise heroku tries to access database on precompile
   # use RAILS_ENV=production bundle exec rake assets:precompile to precompile
-  unless (ARGV.join.include?'assets:precompile') || (ARGV.join.include?'assets:clean')
-    Keyword.all.where.not(word: ["installment loans","payday loans"]).each do |k|
-      resources (k.controller + '_loans').parameterize.to_sym, path: k.word.gsub(' ','-'), only: [:index, :show]
-    end
-  end    
+#  unless (ARGV.join.include?'assets:precompile') || (ARGV.join.include?'assets:clean')
+#    Keyword.all.where.not(word: ["installment loans","payday loans"]).each do |k|
+#      resources (k.controller + '_loans').parameterize.to_sym, path: k.word.gsub(' ','-'), only: [:index, :show]
+#    end
+#  end    
+  resources :payday, path: "ez-payday", only: [:index, :show]
+  resources :payday, path: "instant-payday-loans", only: [:index, :show]
+  resources :payday, path: "no-credit-check-payday-loans", only: [:index, :show]
+  resources :payday, path: "payday-loan-in-an-hour", only: [:index, :show]
+  resources :payday, path: "quick-payday-loans", only: [:index, :show]
+  resources :payday, path: "no-faxing-payday", only: [:index, :show]
+  resources :payday, path: "payday-loan-direct-lenders", only: [:index, :show]
+  resources :payday, path: "direct-payday-lenders-online", only: [:index, :show]
+  resources :payday, path: "payday-lenders", only: [:index, :show]
+  resources :payday, path: "online-payday-lenders", only: [:index, :show]
+  resources :payday, path: "direct-lenders-for-payday-loans", only: [:index, :show]
+  resources :payday, path: "direct-online-payday-lenders", only: [:index, :show]
+  resources :payday, path: "payday-loans", only: [:index, :show]
+  resources :payday, path: "direct-lender-payday-loans", only: [:index, :show]
+  resources :payday, path: "online-payday-loans", only: [:index, :show]
+  resources :payday, path: "pay-day-loans-online", only: [:index, :show]
+  resources :payday, path: "payday-advances", only: [:index, :show]
+  resources :payday, path: "online-cash-advances", only: [:index, :show]
+  resources :payday, path: "direct-payday-loan-lenders", only: [:index, :show]
+  resources :term, path: "military-loans", only: [:index, :show]
+  resources :term, path: "military-installment-loans", only: [:index, :show]
+  resources :term, path: "no-credit-check-military-loans", only: [:index, :show]
+  resources :term, path: "bad-credit-military-loans", only: [:index, :show]
+  resources :term, path: "active-duty-military-loans", only: [:index, :show]
+  resources :term, path: "military-personal-loans", only: [:index, :show]
+  resources :term, path: "armed-forces-loans", only: [:index, :show]
+  resources :term, path: "quick-military-loans", only: [:index, :show]
+  resources :term, path: "military-lenders", only: [:index, :show]
+  resources :term, path: "military-installment-lenders", only: [:index, :show]
+  resources :term, path: "no-credit-check-military-lenders", only: [:index, :show]
+  resources :term, path: "bad-credit-military-lenders", only: [:index, :show]
+  resources :term, path: "active-duty-military-lenders", only: [:index, :show]
+  resources :term, path: "military-personal-loan-lenders", only: [:index, :show]
+  resources :term, path: "armed-forces-lenders", only: [:index, :show]
+  resources :term, path: "quick-military-loan-lenders", only: [:index, :show]
+  resources :term, path: "online-military-loans", only: [:index, :show]
+  resources :term, path: "online-military-lenders", only: [:index, :show]
+  resources :term, path: "installment-loans-online", only: [:index, :show]
+  resources :term, path: "bad-credit-installment-loans", only: [:index, :show]
+  resources :term, path: "online-installment-loan-direct-lenders", only: [:index, :show]
+  resources :term, path: "installment-loan-lenders", only: [:index, :show]
+  resources :term, path: "bad-credit-installment-loan-direct-lenders", only: [:index, :show]
+  resources :term, path: "direct-installment-loan-lenders", only: [:index, :show]
+  resources :term, path: "fast-cash-loan", only: [:index, :show]
+  resources :term, path: "fast-loan", only: [:index, :show]
+  resources :term, path: "quik-cash-loans", only: [:index, :show]
+  resources :term, path: "quick-fast-loans", only: [:index, :show]
+  resources :term, path: "installment-loans", only: [:index, :show]
+  resources :term, path: "short-term-installment-loans", only: [:index, :show]
+  resources :term, path: "borrow-money-options", only: [:index, :show]
 
 
   # Redirect old URLS to new URL's. Use redirect_to hardcard b/c of nginx/heroku/wordpress set up
