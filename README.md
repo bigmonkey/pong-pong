@@ -1,4 +1,4 @@
-## Payday Loan Reviews
+# Payday Loans
 
 This site the reviews [payday loans](http://www.thepaydayhound.com/payday-loans/) and [installment loans](http://www.thepaydayhound.com/installment-loans/). It's aims to bring transparency to the payday loan and installment loan market which has traditionally been highly unregulated resulting in predatory lending practices. Transparency helps borrows protect themselves through education and reduces pricing through efficient markets. The site provides detailed reviews on payday and installment lenders, ranking tables on installment loans and payday loans, sorting tools to find short-term lenders, links to direct lenders, and an application to a loan matching service.
 
