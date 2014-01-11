@@ -12,6 +12,8 @@ describe "Installment Loan Pages" do
     it { should have_link('Apply', href:"/get-payday-loan/")}
     # check for footer
     it { should have_link('About Us', href:"/infos/about/")}
+
+
   end
 
   shared_examples_for "all index installment loan pages" do
@@ -22,7 +24,6 @@ describe "Installment Loan Pages" do
           page.should have_link(s.state, href:"/#{@keyword.word.gsub(' ','-')}/#{s.state_abbr.downcase}/") 
         end  
       end  
-
       it "should have table of lenders" do
         TermLoan.all.each do |t|
           page.should have_content("Company Name")
@@ -31,8 +32,19 @@ describe "Installment Loan Pages" do
           page.should have_link("Apply Direct", href: "#{partner_path(t.partner_id)}/" )
         end  
       end
+  end
 
-
+  shared_examples_for "all state installment loan pages" do
+      # keyword in description
+      it { should have_css("meta[name='description'][content='Compare Texas #{@keyword.phrase}. Search for the lowest fees. Apply direct. Get the best rates in TX at The Payday Hound.']", visible: false) }      
+      # Loan Filter in Sidebar
+      it { should have_selector('h2', text: 'Loan Filter') }
+      it { should have_selector('h1', text: 'Texas') }      
+      it "should not have the state selector linking to 50 states" do  
+        State.all.each do |s|
+          page.should_not have_link(s.state, href:"/#{@keyword.word.gsub(' ','-')}/#{s.state_abbr.downcase}/") 
+        end  
+      end 
   end
 
   describe "Index Pages" do
@@ -258,14 +270,17 @@ describe "Installment Loan Pages" do
     context "Unlisted State" do
       before {
         #binding.pry
+        @keyword = Keyword.find_by_word("installment loans")
         visit "/installment-loans/fr" 
       }
       #redirects to main installment page
       it {should have_selector('h1', text: 'Installment Loans') }
-      it { should_not have_selector('h2', text: 'Loan Filter') }      
+      it { should_not have_selector('h2', text: 'Loan Filter') }  
+
+      it_should_behave_like "all index installment loan pages"    
     end
 
-    context "Listed State" do
+    context "Listed State as TX" do
       before {
         #binding.pry
         @keyword = Keyword.find_by_word("installment loans")
@@ -273,27 +288,15 @@ describe "Installment Loan Pages" do
         #puts page.body
       }
 
-      # keyword in description
-      it { should have_css("meta[name='description'][content='Compare Texas installment loans. Search for the lowest fees. Apply direct. Get the best rates in TX at The Payday Hound.']", visible: false) }      
-      # Loan Filter in Sidebar
-      it { should have_selector('h2', text: 'Loan Filter') }
-      it { should have_selector('h1', text: 'Texas') }      
-      it "should not have the state selector linking to 50 states" do  
-        State.all.each do |s|
-          page.should_not have_link(s.state, href:"/#{@keyword.word.gsub(' ','-')}/#{s.state_abbr.downcase}/") 
-        end  
-      end 
-
-      context "TX lender" do 
-        it { should have_content("TX Lender") }
-        it { should have_selector('div', text: @texaslender.first_comment) }        
-        it { should have_link("see review", href: "/learn/#{@texaslender.review_url}/" ) }         
-        it { should have_link("Apply Direct", href: "/partners/#{@texaslender.partner_id}/") }
-      end
-
+      it { should have_content("TX Lender") }
+      it { should have_selector('div', text: @texaslender.first_comment) }        
+      it { should have_link("see review", href: "/learn/#{@texaslender.review_url}/" ) }         
+      it { should have_link("Apply Direct", href: "/partners/#{@texaslender.partner_id}/") }
       it "should not show the VA lender" do 
         page.should_not have_link("Apply Direct", href: "/partners/#{@valender.partner_id}/")
-      end
+      end      
+
+      it_should_behave_like "all state installment loan pages"
       it_should_behave_like "all installment loan pages"
     end
 
@@ -321,16 +324,7 @@ describe "Installment Loan Pages" do
       visit '/military-loans/tx'
       }
 
-      # keyword in description
-      it { should have_css("meta[name='description'][content='Compare Texas military loans. Search for the lowest fees. Apply direct. Get the best rates in TX at The Payday Hound.']", visible: false) }      
-      # Loan Filter in Sidebar
-      it { should have_selector('h2', text: 'Loan Filter') }
-      it { should have_selector('h1', text: 'Texas') }      
-      it "should not have the state selector linking to 50 states" do  
-        State.all.each do |s|
-          page.should_not have_link(s.state, href:"/#{@keyword.word.gsub(' ','-')}/#{s.state_abbr.downcase}/") 
-        end  
-      end 
+      it_should_behave_like "all state installment loan pages"
       it_should_behave_like "all installment loan pages"
     end    
 
