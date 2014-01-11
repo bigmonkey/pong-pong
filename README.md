@@ -1,4 +1,4 @@
-# Payday Loans
+# Payday Loan Review Site
 
 This site is my project to learn how to code and to do SEO.
 
