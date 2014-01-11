@@ -1,10 +1,10 @@
 # Loan Review site
 
-This site the reviews [payday loans](http://www.thepaydayhound.com/payday-loans/) and [installment loans](http://www.thepaydayhound.com/installment-loans/). It's aims to bring transparency to this market. Transparency will help borrows protect themselves through education and get better pricing through efficient markets. The site provided detailed reviews on short-term lenders. It provided direct links to direct lenders and an application to a matching service.
+This site the reviews [payday loans](http://www.thepaydayhound.com/payday-loans/) and [installment loans](http://www.thepaydayhound.com/installment-loans/). It's aims to bring transparency to this market which has traditionally been highly unregulated resulting in predatory lending practices. Transparency will help borrows protect themselves through education and get better pricing through efficient markets. The site provides detailed reviews on short-term lenders, sorting tools to find lenders, links to direct lenders, and an application to a matching service.
 
-This site is my project to learn how to code.
+This site is my project to learn how to code and to do SEO.
 
-The site is designed to run on one domain with a blog in a sub-directory. It is used Rails and Wordpress. The main websever is nginx which reverse proxys to Wordpress for the blog and to Rails for rankings and tools. nginx and Wordpress are hosted on EC2. Rails is hosted on Heroku. Wordpress uses a LAMP stack on EC2. Rails uses unicorn and postgresql.
+The site is designed to run on one domain with a blog as a sub-directory. It is uses Rails and Wordpress. The main websever is nginx. Wordpress is used for the blog and to Rails is used for rankings and tools. nginx and Wordpress are hosted on EC2. Rails is hosted on Heroku. Wordpress uses a LAMP stack. Rails uses unicorn and postgresql.
 
 Github stores the Rails code.
 
@@ -27,4 +27,4 @@ Visitors are tracked based on sessions and are saved once they click to a lender
 
 ## Database
 Applicants tracking table gets downloaded when I need to upload new database. Haven't figured out how to append information into one table and or setup for production versus analysis DB.
-*1/11/2014 downloaded applicants table. Heroku has clean start.
+* 1/11/2014 downloaded applicants table. Heroku has clean start.
