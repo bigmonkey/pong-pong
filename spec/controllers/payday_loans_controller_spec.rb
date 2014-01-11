@@ -73,7 +73,6 @@ describe PaydayLoansController do
 		State.destroy_all
 		PaydayLoan.destroy_all
 		Sniff.destroy_all
-		PaydayLoansState.destroy_all
 	}
 
 end

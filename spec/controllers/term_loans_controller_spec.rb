@@ -83,7 +83,6 @@ describe TermLoansController do
 		State.destroy_all
 		TermLoan.destroy_all
 		Sniff.destroy_all
-		StatesTermLoan.destroy_all
 	}	
 
 end
