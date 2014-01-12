@@ -5,7 +5,8 @@ class ApplicationController < ActionController::Base
 
   include ApplicationHelper #include methods for mobile and tablet regex
 
-  def wp    
+  def routes
+    binding.pry    
     redirect_to ("http://www.thepaydayhound.com/learn" + request.fullpath), :status => 301
   end 
 

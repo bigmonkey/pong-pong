@@ -55,56 +55,56 @@ Pdh::Application.routes.draw do
 #      resources (k.controller + '_loans').parameterize.to_sym, path: k.word.gsub(' ','-'), only: [:index, :show]
 #    end
 #  end    
-  resources :payday_loans, path: "ez-payday", only: [:index, :show]
-  resources :payday_loans, path: "instant-payday-loans", only: [:index, :show]
-  resources :payday_loans, path: "no-credit-check-payday-loans", only: [:index, :show]
-  resources :payday_loans, path: "payday-loan-in-an-hour", only: [:index, :show]
-  resources :payday_loans, path: "quick-payday-loans", only: [:index, :show]
-  resources :payday_loans, path: "no-faxing-payday", only: [:index, :show]
-  resources :payday_loans, path: "payday-loan-direct-lenders", only: [:index, :show]
-  resources :payday_loans, path: "direct-payday-lenders-online", only: [:index, :show]
-  resources :payday_loans, path: "payday-lenders", only: [:index, :show]
-  resources :payday_loans, path: "online-payday-lenders", only: [:index, :show]
-  resources :payday_loans, path: "direct-lenders-for-payday-loans", only: [:index, :show]
-  resources :payday_loans, path: "direct-online-payday-lenders", only: [:index, :show]
-  resources :payday_loans, path: "payday-loans", only: [:index, :show]
-  resources :payday_loans, path: "direct-lender-payday-loans", only: [:index, :show]
-  resources :payday_loans, path: "online-payday-loans", only: [:index, :show]
-  resources :payday_loans, path: "pay-day-loans-online", only: [:index, :show]
-  resources :payday_loans, path: "payday-advances", only: [:index, :show]
-  resources :payday_loans, path: "online-cash-advances", only: [:index, :show]
-  resources :payday_loans, path: "direct-payday-loan-lenders", only: [:index, :show]
-  resources :term_loans, path: "military-loans", only: [:index, :show]
-  resources :term_loans, path: "military-installment-loans", only: [:index, :show]
-  resources :term_loans, path: "no-credit-check-military-loans", only: [:index, :show]
-  resources :term_loans, path: "bad-credit-military-loans", only: [:index, :show]
-  resources :term_loans, path: "active-duty-military-loans", only: [:index, :show]
-  resources :term_loans, path: "military-personal-loans", only: [:index, :show]
-  resources :term_loans, path: "armed-forces-loans", only: [:index, :show]
-  resources :term_loans, path: "quick-military-loans", only: [:index, :show]
-  resources :term_loans, path: "military-lenders", only: [:index, :show]
-  resources :term_loans, path: "military-installment-lenders", only: [:index, :show]
-  resources :term_loans, path: "no-credit-check-military-lenders", only: [:index, :show]
-  resources :term_loans, path: "bad-credit-military-lenders", only: [:index, :show]
-  resources :term_loans, path: "active-duty-military-lenders", only: [:index, :show]
-  resources :term_loans, path: "military-personal-loan-lenders", only: [:index, :show]
-  resources :term_loans, path: "armed-forces-lenders", only: [:index, :show]
-  resources :term_loans, path: "quick-military-loan-lenders", only: [:index, :show]
-  resources :term_loans, path: "online-military-loans", only: [:index, :show]
-  resources :term_loans, path: "online-military-lenders", only: [:index, :show]
-  resources :term_loans, path: "installment-loans-online", only: [:index, :show]
-  resources :term_loans, path: "bad-credit-installment-loans", only: [:index, :show]
-  resources :term_loans, path: "online-installment-loan-direct-lenders", only: [:index, :show]
-  resources :term_loans, path: "installment-loan-lenders", only: [:index, :show]
-  resources :term_loans, path: "bad-credit-installment-loan-direct-lenders", only: [:index, :show]
-  resources :term_loans, path: "direct-installment-loan-lenders", only: [:index, :show]
-  resources :term_loans, path: "fast-cash-loan", only: [:index, :show]
-  resources :term_loans, path: "fast-loan", only: [:index, :show]
-  resources :term_loans, path: "quik-cash-loans", only: [:index, :show]
-  resources :term_loans, path: "quick-fast-loans", only: [:index, :show]
-  resources :term_loans, path: "installment-loans", only: [:index, :show]
-  resources :term_loans, path: "short-term-installment-loans", only: [:index, :show]
-  resources :term_loans, path: "borrow-money-options", only: [:index, :show]
+#  resources :payday_loans, path: "ez-payday", only: [:index, :show]
+#  resources :payday_loans, path: "instant-payday-loans", only: [:index, :show]
+#  resources :payday_loans, path: "no-credit-check-payday-loans", only: [:index, :show]
+#  resources :payday_loans, path: "payday-loan-in-an-hour", only: [:index, :show]
+#  resources :payday_loans, path: "quick-payday-loans", only: [:index, :show]
+#  resources :payday_loans, path: "no-faxing-payday", only: [:index, :show]
+#  resources :payday_loans, path: "payday-loan-direct-lenders", only: [:index, :show]
+#  resources :payday_loans, path: "direct-payday-lenders-online", only: [:index, :show]
+#  resources :payday_loans, path: "payday-lenders", only: [:index, :show]
+#  resources :payday_loans, path: "online-payday-lenders", only: [:index, :show]
+#  resources :payday_loans, path: "direct-lenders-for-payday-loans", only: [:index, :show]
+#  resources :payday_loans, path: "direct-online-payday-lenders", only: [:index, :show]
+#  resources :payday_loans, path: "payday-loans", only: [:index, :show]
+#  resources :payday_loans, path: "direct-lender-payday-loans", only: [:index, :show]
+#  resources :payday_loans, path: "online-payday-loans", only: [:index, :show]
+#  resources :payday_loans, path: "pay-day-loans-online", only: [:index, :show]
+#  resources :payday_loans, path: "payday-advances", only: [:index, :show]
+#  resources :payday_loans, path: "online-cash-advances", only: [:index, :show]
+#  resources :payday_loans, path: "direct-payday-loan-lenders", only: [:index, :show]
+#  resources :term_loans, path: "military-loans", only: [:index, :show]
+#  resources :term_loans, path: "military-installment-loans", only: [:index, :show]
+#  resources :term_loans, path: "no-credit-check-military-loans", only: [:index, :show]
+#  resources :term_loans, path: "bad-credit-military-loans", only: [:index, :show]
+#  resources :term_loans, path: "active-duty-military-loans", only: [:index, :show]
+#  resources :term_loans, path: "military-personal-loans", only: [:index, :show]
+#  resources :term_loans, path: "armed-forces-loans", only: [:index, :show]
+#  resources :term_loans, path: "quick-military-loans", only: [:index, :show]
+#  resources :term_loans, path: "military-lenders", only: [:index, :show]
+#  resources :term_loans, path: "military-installment-lenders", only: [:index, :show]
+#  resources :term_loans, path: "no-credit-check-military-lenders", only: [:index, :show]
+#  resources :term_loans, path: "bad-credit-military-lenders", only: [:index, :show]
+#  resources :term_loans, path: "active-duty-military-lenders", only: [:index, :show]
+#  resources :term_loans, path: "military-personal-loan-lenders", only: [:index, :show]
+#  resources :term_loans, path: "armed-forces-lenders", only: [:index, :show]
+#  resources :term_loans, path: "quick-military-loan-lenders", only: [:index, :show]
+#  resources :term_loans, path: "online-military-loans", only: [:index, :show]
+#  resources :term_loans, path: "online-military-lenders", only: [:index, :show]
+#  resources :term_loans, path: "installment-loans-online", only: [:index, :show]
+#  resources :term_loans, path: "bad-credit-installment-loans", only: [:index, :show]
+#  resources :term_loans, path: "online-installment-loan-direct-lenders", only: [:index, :show]
+#  resources :term_loans, path: "installment-loan-lenders", only: [:index, :show]
+#  resources :term_loans, path: "bad-credit-installment-loan-direct-lenders", only: [:index, :show]
+#  resources :term_loans, path: "direct-installment-loan-lenders", only: [:index, :show]
+#  resources :term_loans, path: "fast-cash-loan", only: [:index, :show]
+#  resources :term_loans, path: "fast-loan", only: [:index, :show]
+#  resources :term_loans, path: "quik-cash-loans", only: [:index, :show]
+#  resources :term_loans, path: "quick-fast-loans", only: [:index, :show]
+#  resources :term_loans, path: "installment-loans", only: [:index, :show]
+#  resources :term_loans, path: "short-term-installment-loans", only: [:index, :show]
+#  resources :term_loans, path: "borrow-money-options", only: [:index, :show]
 
 
   # Redirect old URLS to new URL's. Use redirect_to hardcard b/c of nginx/heroku/wordpress set up
@@ -169,7 +169,24 @@ Pdh::Application.routes.draw do
   # This is a legacy wild controller route that's not recommended for RESTful applications.
   # Note: This route will make all actions in every controller accessible via GET requests.
   # match ':controller(/:action(/:id))(.:format)'
-  
 
-  match "*rest" => "application#wp", via: :all
+  class KeywordConstraint
+    def matches?(request)
+      Keyword.exists?(word: request.fullpath.split(/\//)[1].gsub('-',' '))
+    end
+  end
+
+  class Jungle
+    def call(env)
+      if kw = Keyword.find_by_word(env["REQUEST_PATH"].split(/\//)[1].gsub('-',' '))
+        controller_class = (kw.controller + "_loans_controller").camelize.constantize
+        controller_class.action("index".to_sym).call(env)
+      else
+        redirect_to ("http://www.thepaydayhound.com/learn" + env["REQUEST_PATH"]), :status => 301
+      end
+    end
+  end
+
+  match "*stuff", to: Jungle.new, constraints: KeywordConstraint.new, via: [:get]
+  match "*stuff" => "application#wp", via: :all
 end
