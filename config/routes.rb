@@ -187,6 +187,7 @@ Pdh::Application.routes.draw do
     end
   end
 
+# I can remove KeywordConstraint because it runs first.
   match "*stuff", to: Jungle.new, constraints: KeywordConstraint.new, via: [:get]
   match "*stuff" => "application#wp", via: :all
 end
