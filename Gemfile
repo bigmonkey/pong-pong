@@ -34,8 +34,8 @@ gem 'execjs', '2.0.2'
 gem 'therubyracer', :platform => 'ruby'
  #gem 'therubyracer', '~> 0.10.2' #update to 0.11 crashes install
 
-# Gems used only for assets and not required
-# in production environments by default.
+gem 'devise','3.2.2'
+gem 'activeadmin', github: 'gregbell/active_admin'
 
 gem 'sass-rails',   '4.0.1'
 gem 'coffee-rails', '4.0.1'

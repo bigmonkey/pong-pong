@@ -24,4 +24,8 @@ Pdh::Application.configure do
 
   # Expands the lines which load the assets
   config.assets.debug = true
+
+  # added for devise cw 1/13/2014
+  config.action_mailer.default_url_options = { :host => 'localhost:8080' }
+
 end
