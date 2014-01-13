@@ -28,3 +28,4 @@ Visitors are tracked based on sessions and are saved once they click to a lender
 ## Database
 Applicants tracking table gets downloaded when I need to upload new database. Haven't figured out how to append information into one table and or setup for production versus analysis DB.
 * 1/11/2014 downloaded applicants table. Heroku has clean start.
+* 1/13/2014 cleaned up all schema. DB matches rails schema
