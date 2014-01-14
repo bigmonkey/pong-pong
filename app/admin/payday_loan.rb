@@ -57,8 +57,6 @@ ActiveAdmin.register PaydayLoan do
       f.input :pmt_amt
       f.input :cost
       f.input :apr
-      f.input :created_at
-      f.input :updated_at
       f.input :full_desc
       f.input :image_file_big
       f.input :bbb_link
