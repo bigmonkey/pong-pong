@@ -13,5 +13,7 @@ ActiveAdmin.register Keyword do
   #  permitted << :other if resource.something?
   #  permitted
   # end
+
+  permit_params :word, :phrase, :state_phrase, :category, :article, :parent_page, :controller
   
 end

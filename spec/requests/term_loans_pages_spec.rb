@@ -196,7 +196,7 @@ describe "Installment Loan Pages" do
           active: true,
         )
       # need to make route for military loans kw
-      Rails.application.reload_routes!
+      # Rails.application.reload_routes! needed when KW table was used to generate routes
       @keyword = Keyword.find_by_word("military loans")
       visit '/military-loans/'
       }

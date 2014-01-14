@@ -2,6 +2,9 @@ require File.expand_path('../boot', __FILE__)
 
 require 'rails/all'
 
+# Added to require routes classes created by cw 1/13/2014
+require_relative '../lib/routes.rb'
+
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
 Bundler.require(:default, Rails.env)
@@ -14,7 +17,6 @@ module Pdh
     # -- all .rb files in that directory are automatically loaded.
 
     # Custom directories with classes and modules you want to be autoloadable.
-    # uncommented and added /lib by cw 1/13/2014 to get lib/routing.rb loaded
     config.autoload_paths += %W(#{config.root}/lib)
 
     # Only load the plugins named here, in the order given (default is alphabetical).
@@ -33,6 +35,9 @@ module Pdh
     # config.i18n.default_locale = :de
     # added by Con Way based on http://stackoverflow.com/questions/20361428/rails-i18n-validation-deprecation-warning
     config.i18n.enforce_available_locales = true
+
+    # reset the above this way after adding devise.
+    I18n.enforce_available_locales = true
 
 
     # Configure the default encoding used in templates for Ruby 1.9.
