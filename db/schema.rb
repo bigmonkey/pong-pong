@@ -114,16 +114,15 @@ ActiveRecord::Schema.define(version: 20140113081251) do
   end
 
   create_table "keywords", force: true do |t|
-    t.string "word"
-    t.string "phrase"
-    t.string "state_phrase"
-    t.string "slug"
-    t.string "category"
-    t.text   "article"
-    t.string "parent_page"
-    t.string "controller"
-    t.string "created_at",   null: false
-    t.string "updated_at",   null: false
+    t.string   "word"
+    t.string   "phrase"
+    t.string   "state_phrase"
+    t.string   "category"
+    t.text     "article"
+    t.string   "parent_page"
+    t.string   "controller"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "partners", force: true do |t|
