@@ -7,7 +7,7 @@ class TermLoan < ActiveRecord::Base
     has_many :states, through: :states_term_loans
     #has_and_belongs_to_many :states
 
-    #validates :partner_id, presence: true
+    validates :partner_id, presence: true
     validates :partner_id, uniqueness: true
 
     def self.by_top_rank
