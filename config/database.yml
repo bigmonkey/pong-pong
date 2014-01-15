@@ -21,7 +21,7 @@ development:
   adapter: postgresql
   encoding: unicode
   reconnect: false
-  database: pdh_development
+  database: <%= ENV['DB_NAME'] %>
   pool: 5
   username: <%= ENV['DB_USERNAME'] %>
   password: <%= ENV['DB_PASSWORD'] %>
