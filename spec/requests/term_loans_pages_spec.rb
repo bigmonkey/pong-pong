@@ -311,6 +311,7 @@ describe "Installment Loan Pages" do
           article:   "I'm the article",
           parent_page: "installment loans",
         )        
+        TermLoan.destroy_all
         FactoryGirl.create(
           :term_loan,
           name:         "military lender",

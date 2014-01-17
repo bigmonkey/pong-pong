@@ -52,6 +52,7 @@ ActiveRecord::Schema.define(version: 20140113081251) do
     t.string   "redirect"
     t.datetime "created_at",                     null: false
     t.datetime "updated_at",                     null: false
+    t.string   "visitor_token"
     t.integer  "requested_amount"
     t.string   "device"
     t.string   "src"

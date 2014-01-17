@@ -39,6 +39,13 @@ class ApplicationController < ActionController::Base
 
   def set_tracking
     # set ad campaign stats if a source is in the url
+    if cookies[:visitor_token].nil?
+      begin
+        visitor_token = SecureRandom.urlsafe_base64
+      end while Applicant.exists?(:visitor_token => visitor_token)
+      cookies[:visitor_token] = { value: visitor_token, expires: 30.days.from_now }
+    end
+
   	if !params[:src].nil?
       session[:src] = params[:src] 
       session[:camp] = params[:camp]
@@ -83,6 +90,7 @@ class ApplicationController < ActionController::Base
       @applicant.time_on_site = Time.at(Time.now - session[:entry_time]).utc.strftime("%H:%M:%S")
     end
     @applicant.exit_page = session[:exit_page]
+    @applicant.visitor_token = cookies[:visitor_token]
 
     # assign campaign stats 
     @applicant.campaign = session[:camp]
@@ -102,7 +110,7 @@ class ApplicationController < ActionController::Base
     @applicant.eighteen = params[:eighteen]
     @applicant.state = params[:state]
     @applicant.bank_account_type = params[:bank_account_type]
-
+    @applicant.requested_amount = session[:requested_amount]
     @applicant.save 
   
     # @applicant.token is created in model applicant.rb

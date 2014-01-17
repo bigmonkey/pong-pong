@@ -3,7 +3,7 @@ require 'spec_helper'
 describe "Borrower Pages" do
 	subject { page }
 
-	shared_examples_for "all pages" do
+	shared_examples_for "all Borrower pages" do
     # keyword in title
     it { should have_title("The Payday Hound") }
     # Lender Status
@@ -23,7 +23,7 @@ describe "Borrower Pages" do
   	}
  
 
-	  it_should_behave_like "all pages"
+	  it_should_behave_like "all Borrower pages"
 	end  
 end
 

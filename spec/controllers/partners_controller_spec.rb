@@ -35,6 +35,12 @@ describe PartnersController do
 						get :show, id: FactoryGirl.create(:partner)
 						Applicant.find_by_token(session[:token]).time_on_site[3..4].should eq('10')
 					end
+					it "saves cookie visitor_token" do
+						visitor_token = SecureRandom.urlsafe_base64
+						cookies[:visitor_token] = visitor_token
+						get :show, id: FactoryGirl.create(:partner)
+						Applicant.find_by_visitor_token(cookies[:visitor_token]).visitor_token.should eq(visitor_token.to_s)
+					end
 				end
 
 				context "Visitor is Refered" do

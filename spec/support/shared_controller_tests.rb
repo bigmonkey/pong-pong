@@ -29,6 +29,10 @@ shared_examples_for "all controllers that set tracking" do
 		end
 		
 		context "Vistor lands on site" do
+			it "sets cookie visitor_token" do
+				get :index
+				cookies[:visitor_token].should_not be_nil
+			end
 			it "sets HTTP_REFERER session variable" do
 				request.env["HTTP_REFERER"] = 'http://test.domain.com'
 				get :index

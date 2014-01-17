@@ -14,6 +14,7 @@ class BorrowersController < ApplicationController
   	
   	# @redirect is used in save_tracking
   	#binding.pry
+  	session[:requested_amount] = params[:requested_amount]
   	if ( params[:active_military].blank? || params[:bank_account_type].blank? || params[:state].blank? || params[:requested_amount].blank? ) 
   		redirect_to applicants_path  	
   	elsif	

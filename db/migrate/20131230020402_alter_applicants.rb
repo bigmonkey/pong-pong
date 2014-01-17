@@ -2,6 +2,7 @@ class AlterApplicants < ActiveRecord::Migration
   def up
   	change_table :applicants do |t|
   		t.remove :src_code, :page_code
+      t.string :visitor_token
   		t.integer :requested_amount
   		t.string :device
   		t.string :src
@@ -18,7 +19,7 @@ class AlterApplicants < ActiveRecord::Migration
 
   def down
   	change_table :applicants do |t|
-  		t.remove :exit_page, :time_on_site, :page_views, :entry_page, :referer_query, :referer_path, :referer_host, :referer_uri, :src, :device, :requested_amount
+  		t.remove :exit_page, :time_on_site, :page_views, :entry_page, :referer_query, :referer_path, :referer_host, :referer_uri, :src, :device, :requested_amount, :visitor_token
 	  	t.string "page_code", :limit => 4
       t.string "src_code", :limit => 4
   	end
