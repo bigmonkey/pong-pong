@@ -150,7 +150,7 @@ describe "Payday Loan Pages" do
         )                
         @notgrandchild = Keyword.find_by_word("not grandchild")
         #need to re-do routes because routes are based on Keyword table
-        Rails.application.reload_routes!
+        #Rails.application.reload_routes!
         visit "/#{@keyword.word.gsub(' ','-')}/" 
         #binding.pry
         #puts page.body
@@ -167,6 +167,61 @@ describe "Payday Loan Pages" do
       it_should_behave_like "all payday loan pages"      
     end
 
+    context "SEO pages with varied case URL input" do
+      before {
+
+        #create child of payday loan should show up
+        FactoryGirl.create(
+          :keyword,
+          word:      "online payday loans", #child of payday loans
+          phrase:    "online payday loans",
+          state_phrase: "compare online payday loans",
+          category:  "loans",
+          article:   "I'm the article",
+          parent_page: "payday loans",
+          controller: "payday"
+        )     
+        # @keyword.word is a child of payday loans keyword and must be in routes.rb
+        @keyword = Keyword.find_by_word("online payday loans")   
+        #create grand child of payday loans it should show up and child of the @keyword above
+        FactoryGirl.create(
+          :keyword,
+          word:      "grandchild",
+          phrase:    "grandchild",
+          state_phrase: "compare grandchild",
+          category:  "loans",
+          article:   "I'm the article",
+          parent_page: "#{@keyword.word}",
+        )      
+        @grandchild = Keyword.find_by_word("grandchild")          
+        FactoryGirl.create(
+          :keyword,
+          word:      "not grandchild",
+          phrase:    "not grandchild",
+          state_phrase: "compare not grandchild",
+          category:  "loans",
+          article:   "I'm the article",
+          parent_page: "not #{@keyword.word}",
+        )                
+        @notgrandchild = Keyword.find_by_word("not grandchild")
+        #need to re-do routes because routes are based on Keyword table
+        #Rails.application.reload_routes!
+        visit "/#{"Online PayDay Loans".gsub(' ','-')}/" 
+        #binding.pry
+        #puts page.body
+      }          
+
+      it { should have_selector('h1', text: "#{@keyword.phrase.titleize}") }
+      it { should have_content("#{@keyword.state_phrase.titleize}") }
+
+      # tests application_controller set_seo_vars related kw
+      it { should_not have_link("#{@notgrandchild.word}", href: "/#{@notgrandchild.word.gsub(' ','-')}/" )}
+      it { should_not have_link("#{@notgrandchild.word}", href: "/#{@notgrandchild.word.gsub(' ','-')}/" )}
+
+      it_should_behave_like "all index payday loan pages"
+      it_should_behave_like "all payday loan pages"      
+    end
+
     after(:all){
       Sniff.destroy_all
       State.destroy_all
@@ -174,6 +229,7 @@ describe "Payday Loan Pages" do
       Keyword.destroy_all
     }
   end
+
 
   describe "State Pages" do
     before(:all) { 

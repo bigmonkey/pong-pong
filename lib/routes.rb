@@ -14,7 +14,7 @@ class KeywordChecker
 
   def correct_kw_controller?(path_bits, controller)
     # see if the KW exits and it matches the controller
-    (kw = Keyword.find_by_word(path_bits[1].gsub('-',' '))) ? controller == kw.controller  : false
+    (kw = Keyword.find_by_word(path_bits[1].gsub('-',' ').downcase)) ? controller == kw.controller  : false
   end
 
   def seo_go?(request, controller, action)

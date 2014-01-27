@@ -169,12 +169,12 @@ class ApplicationController < ActionController::Base
       # --------- update completed: @keyword.slug is no longer used 1/7/2014 --------
 
       #captures stuff between first two slases
-      slug = request.fullpath.split(/\//)[1]
+      slug = request.fullpath.split(/\//)[1].downcase
 
       #used in state_selector
       @selector_path = "/"+slug 
 
-      # find_by! raised RecordNotFound exception if not record exits. private method below escapes exception and redirects to home
+      # find_by! raised RecordNotFound exception if no record exits. private method below escapes exception and redirects to home
       @keyword = Keyword.find_by_word!(slug.gsub('-',' ')) 
 
       # related_kw_links is used to make sure all kw's are hooked into site tree
