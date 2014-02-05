@@ -52,7 +52,7 @@ Pdh::Application.routes.draw do
   match "/prepaid-card/:name/" => redirect("http://www.thepaydayhound.com/prepaid-cards/%{name}/"), via: :show
   get "/secureds/" => redirect("http://www.thepaydayhound.com/secured-credit-cards/")
   get "/prepaids/" => redirect("http://www.thepaydayhound.com/prepaid-cards/")
-  get "/why-use-the-payday-hound/" => redirect("http://www.thepaydayhound.com")
+  get "/why-use-the-payday-hound/" => "infos#about"
   get "/applicants" => redirect("http://www.thepaydayhound.com/get-payday-loan/")
   get "/payday-loans-direct-payday-lenders" => redirect("http://www.thepaydayhound.com/direct-payday-lenders-online/")
   get "/bad-credit-credit-card-secured-card" => redirect("http://www.thepaydayhound.com/learn/best-secured-credit-card")
