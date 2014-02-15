@@ -16,6 +16,7 @@ class ApplicationController < ActionController::Base
 
   # determines type of device using user agent
   # tablets_agents, mobile_agents_one, and mobile_agents_two are RegEx in ApplicationHelper
+  # must include ApplicationHelper see line above
   def set_device
       # if HTTP_USER_AGENT is blank/nil defaults to blank, i.e. desktop 
       agent = request.env["HTTP_USER_AGENT"].blank? ? "" : request.env["HTTP_USER_AGENT"].downcase 
