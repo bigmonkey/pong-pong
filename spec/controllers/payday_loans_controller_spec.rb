@@ -66,6 +66,37 @@ describe PaydayLoansController do
 			get :show, id: State.first.state_abbr
 			assigns(:lenders).count.should eq(1)
 		end		
+
+		it "redirects to /payday-loans/ if state params is invalid" do
+			state = FactoryGirl.create(:state) 
+			get :show, id: "xx"
+			response.should redirect_to '/payday-loans/'
+		end
+
+		it "assigns sniff_score to 3 if sniff_score params is blank" do
+			state = FactoryGirl.create(:state) 
+			get :show, id: state.state_abbr, sniff_score: ""
+			assigns(:criteria).sniff_id.should eq(Sniff.find_by_sniff_score(3).id)
+		end
+
+		it "assigns sniff_score to 2 if sniff_score params is 2" do
+			state = FactoryGirl.create(:state) 
+			get :show, id: state.state_abbr, sniff_score: 2
+			assigns(:criteria).sniff_id.should eq(Sniff.find_by_sniff_score(2).id)
+		end
+
+		it "assigns ranking to 1 if ranking is blank" do
+			state = FactoryGirl.create(:state) 
+			get :show, id: state.state_abbr, ranking: ""
+			assigns(:criteria).ranking.should eq(1)
+		end
+
+		it "assigns ranking to 2 if ranking params is 2" do
+			state = FactoryGirl.create(:state) 
+			get :show, id: state.state_abbr, ranking: 2
+			assigns(:criteria).ranking.should eq(2)
+		end
+
 	end
 
 end
