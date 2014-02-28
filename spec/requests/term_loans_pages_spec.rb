@@ -7,11 +7,11 @@ describe "Installment Loan Pages" do
     # keyword in title
     it { should have_title("#{@keyword.word.titleize}") }
     # sidebar
-    it { should have_link('Why Use Us', href:"/infos/about/") }
+    it { should have_link('Why Use Us', href:"/why-use-the-payday-hound/") }
     # paday Nav Bar
     it { should have_link('Apply', href:"/get-payday-loan/")}
     # check for footer
-    it { should have_link('About Us', href:"/infos/about/")}
+    it { should have_link('About Us', href:"/why-use-the-payday-hound/")}
 
 
   end
@@ -26,7 +26,7 @@ describe "Installment Loan Pages" do
       end  
       it "should have table of lenders" do
         TermLoan.all.each do |t|
-          page.should have_content("Company Name")
+          page.should have_content("Company Name")          
           page.should have_selector('div', text: t.first_comment)
           page.should have_link("see review", href: "/learn/#{t.review_url}/" )      
           page.should have_link("Apply Direct", href: "#{partner_path(t.partner_id)}/" )
@@ -222,13 +222,11 @@ describe "Installment Loan Pages" do
       it_should_behave_like "all index installment loan pages"
       it_should_behave_like "all installment loan pages"      
     end
-      
 
     after(:all){
       Sniff.destroy_all
       State.destroy_all
       TermLoan.destroy_all
-      Keyword.destroy_all
     }
   end
 
@@ -330,13 +328,15 @@ describe "Installment Loan Pages" do
     end    
 
     after(:all){
-      State.destroy_all
       Sniff.destroy_all
+      State.destroy_all
       TermLoan.destroy_all
       Keyword.destroy_all
-      PaydayLoanLaw.destroy_all
       Partner.destroy_all
-    }  
+      PaydayLoanLaw.destroy_all
+      StatesTermLoan.destroy_all
+    }
+
   end
     
 end

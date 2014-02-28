@@ -7,11 +7,11 @@ describe "Payday Loan Law Pages" do
     # keyword in title
     it { should have_title("Payday Loan Laws") }
     # sidebar
-    it { should have_link('Why Use Us', href:"/infos/about/") }
+    it { should have_link('Why Use Us', href:"/why-use-the-payday-hound/") }
     # paday Nav Bar
     it { should have_link('Apply', href:"/get-payday-loan/")}		
     # check for footer
-    it { should have_link('About Us', href:"/infos/about/")}
+    it { should have_link('About Us', href:"/why-use-the-payday-hound/")}
 	end
 
 	describe "Index Page" do  

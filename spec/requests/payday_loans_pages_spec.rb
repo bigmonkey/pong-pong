@@ -7,11 +7,11 @@ describe "Payday Loan Pages" do
     # keyword in title
     it { should have_title("#{@keyword.word.titleize}") }
     # sidebar
-    it { should have_link('Why Use Us', href:"/infos/about/") }
+    it { should have_link('Why Use Us', href:"/why-use-the-payday-hound/") }
     # paday Nav Bar
     it { should have_link('Apply', href:"/get-payday-loan/")}
     # check for footer
-    it { should have_link('About Us', href:"/infos/about/")}
+    it { should have_link('About Us', href:"/why-use-the-payday-hound/")}
   end
 
   shared_examples_for "all index payday loan pages" do
@@ -50,7 +50,7 @@ describe "Payday Loan Pages" do
 
   describe "Index Pages" do
     
-    before(:all) { 
+    before (:all){ 
       # Create State table
       10.times { FactoryGirl.create(:state) }
       # Create Sniff table
@@ -223,16 +223,15 @@ describe "Payday Loan Pages" do
     end
 
     after(:all){
-      Sniff.destroy_all
-      State.destroy_all
       PaydayLoan.destroy_all
-      Keyword.destroy_all
+      State.destroy_all
     }
+
   end
 
 
   describe "State Pages" do
-    before(:all) { 
+    before (:all){ 
       FactoryGirl.create(
         :keyword,
         word:      "payday loans",
@@ -299,6 +298,7 @@ describe "Payday Loan Pages" do
       it_should_behave_like "all payday loan pages"
     end
 
+
     after(:all){
       State.destroy_all
       Sniff.destroy_all
@@ -306,6 +306,7 @@ describe "Payday Loan Pages" do
       Keyword.destroy_all
       PaydayLoanLaw.destroy_all
     }  
+
   end
     
 end

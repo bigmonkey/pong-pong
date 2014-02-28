@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe TermLoansController do
-  before(:all) { 
+  before { 
     FactoryGirl.create(
       :keyword,
       word:      "installment loans",
@@ -77,12 +77,5 @@ describe TermLoansController do
 
 
 	end
-
-	after(:all){
-		Keyword.destroy_all
-		State.destroy_all
-		TermLoan.destroy_all
-		Sniff.destroy_all
-	}	
 
 end

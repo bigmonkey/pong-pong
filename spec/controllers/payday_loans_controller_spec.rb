@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe PaydayLoansController do
-  before (:all){ 
+  before { 
     FactoryGirl.create(
       :keyword,
       word:      "payday loans",
@@ -67,12 +67,5 @@ describe PaydayLoansController do
 			assigns(:lenders).count.should eq(1)
 		end		
 	end
-
-	after(:all){
-		Keyword.destroy_all
-		State.destroy_all
-		PaydayLoan.destroy_all
-		Sniff.destroy_all
-	}
 
 end

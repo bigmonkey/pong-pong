@@ -9,24 +9,25 @@ source 'https://rubygems.org'
  gem 'pg', '0.17.0'
 
 group :test do
-	gem 'selenium-webdriver', "~>2.38.0"
+	gem 'selenium-webdriver', "2.40.0"
 	gem 'capybara', '2.1.0'
   gem 'launchy', '2.4.2'
   gem 'faker', '1.1.2'
-  gem 'guard-rspec', '2.5.0'
+  gem "database_cleaner", "1.2.0"
+  #gem 'guard-rspec', '2.5.0'
 end
 
 group :development, :test do
-  gem 'factory_girl_rails', '4.2.0' 
-	gem 'rspec-rails', '2.13.1'
-  gem 'spork-rails', '4.0.0' 	
-  gem "pry", "0.9.12.2"  
+  gem 'factory_girl_rails', '4.4.0' 
+	gem 'rspec-rails', '2.14.1'
+  #gem 'spork-rails', '4.0.0' 	
+  gem "pry", "0.9.12.6"  
   gem "pry-nav", "0.2.3"  
 end
 
 
 # use unicorn for production and ubuntu
-gem 'unicorn', '4.7.0'
+gem 'unicorn', '4.8.2'
 
 # use thin for windows
 #gem 'thin', '1.5.1'
@@ -34,7 +35,7 @@ gem 'execjs', '2.0.2'
 gem 'therubyracer', :platform => 'ruby'
  #gem 'therubyracer', '~> 0.10.2' #update to 0.11 crashes install
 
-gem 'devise','3.2.2'
+gem 'devise','3.2.3'
 gem 'activeadmin', github: 'gregbell/active_admin'
 
 gem 'sass-rails',   '4.0.1'

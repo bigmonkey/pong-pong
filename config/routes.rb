@@ -52,7 +52,6 @@ Pdh::Application.routes.draw do
   match "/prepaid-card/:name/" => redirect("http://www.thepaydayhound.com/prepaid-cards/%{name}/"), via: :show
   get "/secureds/" => redirect("http://www.thepaydayhound.com/secured-credit-cards/")
   get "/prepaids/" => redirect("http://www.thepaydayhound.com/prepaid-cards/")
-  get "/why-use-the-payday-hound/" => "infos#about"
   get "/applicants" => redirect("http://www.thepaydayhound.com/get-payday-loan/")
   get "/payday-loans-direct-payday-lenders" => redirect("http://www.thepaydayhound.com/direct-payday-lenders-online/")
   get "/bad-credit-credit-card-secured-card" => redirect("http://www.thepaydayhound.com/learn/best-secured-credit-card")
@@ -105,6 +104,7 @@ Pdh::Application.routes.draw do
   # blogbars are sidebars for Wordpress and show action for prepaids and secureds
   get ':controller/:action', controller: /infos|blogbars/ 
   
+  get "/why-use-the-payday-hound/" => "infos#about"  
 
   # This is a legacy wild controller route that's not recommended for RESTful applications.
   # Note: This route will make all actions in every controller accessible via GET requests.

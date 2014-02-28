@@ -10,7 +10,7 @@ describe "Apply Payday Loan Pages" do
     # paday Nav Bar
     it { should have_link('Apply', href:"/get-payday-loan/")}
     # check for footer
-    it { should have_link('About Us', href:"/infos/about/")}
+    it { should have_link('About Us', href:"/why-use-the-payday-hound/")}
   end
 
 	describe "Index" do
