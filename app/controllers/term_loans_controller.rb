@@ -31,8 +31,8 @@ class TermLoansController < ApplicationController
 			redirect_to("/installment-loans/")
 		else	
 			@criteria = TermLoan.new    #@criteria gets used on view
-			@criteria.sniff_id = !params[:sniff_score].nil? ? Sniff.find_by_sniff_score(params[:sniff_score]).id : Sniff.find_by_sniff_score(3).id
-   		@criteria.ranking = !params[:ranking].nil?	? params[:ranking] : 1
+			@criteria.sniff_id = !params[:sniff_score].blank? ? Sniff.find_by_sniff_score(params[:sniff_score]).id : Sniff.find_by_sniff_score(3).id
+   		@criteria.ranking = !params[:ranking].blank?	? params[:ranking] : 1
     	@state = State.find_by_state_abbr(params[:id].upcase)
     	@paydaylawstate = @state.payday_loan_law
       if @keyword.word.match('military')
