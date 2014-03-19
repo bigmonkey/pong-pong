@@ -290,7 +290,7 @@ td .instantDecision {
 .lenderBottomBoxes{
 	margin: 10px auto;
 }
-.lenderBottomBox{
+.lenderMiddleBox{
 	height: 27.5em;
 	width: 48%;
 	background: $boxBackground;
@@ -335,7 +335,7 @@ td .instantDecision {
 	@include rounded(5px);
 }
 
-.lenderBottomSmallBox{
+.lenderMiddleSmallBox{
 	width: 48%;
 	margin: 1em 0;
 	height: 8.5em;
