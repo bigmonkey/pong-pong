@@ -266,32 +266,20 @@ td .instantDecision {
 	width: 100%;
 	margin: 15px auto;
 }
-.lenderMidBox{
-	width: 32%;
-	min-height: 12em;
-	background: $boxBackground;
-	@include rounded (5px);
-	text-align: center;
-	a, a:link, a:visited {
-		font-size: .9em;
-	}	
-}
+
 
 .lenderBoxHighlight{
 	font-size: 1.3em;
 	color: $bigColor;
-	margin: 1.8em auto .1em;
+	margin: 1em auto 0em;
 }
 
 .lenderBoxSubtitle{
 	font-size: .8em;
+	line-height: 1em;
+	margin: 0.5em 1em;
 }
 
-.lenderBoxCostSubtitle {
-	margin-top: 1em;
-	color: $dogFur;
-	font-size: .9em
-}
 
 .lenderBoxStates{
 	font-size: .8em;
@@ -303,7 +291,7 @@ td .instantDecision {
 	margin: 10px auto;
 }
 .lenderBottomBox{
-	min-height: 340px;
+	height: 27.5em;
 	width: 48%;
 	background: $boxBackground;
 	@include rounded (5px);
@@ -338,4 +326,23 @@ td .instantDecision {
 	div{
 		margin-bottom: 5px;
 	}
+}
+
+.lenderDescriptionBox {
+	width: 100%;
+	padding-bottom: .5em;
+	background: $boxBackground;
+	@include rounded(5px);
+}
+
+.lenderBottomSmallBox{
+	width: 48%;
+	margin: 1em 0;
+	height: 8.5em;
+	background: $boxBackground;
+	@include rounded (5px);
+	text-align: center;
+	a, a:link, a:visited {
+		font-size: 1em;
+	}	
 }
