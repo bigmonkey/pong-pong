@@ -226,8 +226,8 @@ ActiveRecord::Schema.define(version: 20140324005237) do
   end
 
   create_table "payday_loans_states", force: true do |t|
-    t.integer  "state_id"
     t.integer  "payday_loan_id"
+    t.integer  "state_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -328,8 +328,8 @@ ActiveRecord::Schema.define(version: 20140324005237) do
   end
 
   create_table "states_term_loans", force: true do |t|
-    t.integer  "state_id"
     t.integer  "term_loan_id"
+    t.integer  "state_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

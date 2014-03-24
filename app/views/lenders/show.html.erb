@@ -82,7 +82,7 @@ We have not reviewed this lender.
 	<div class = "lenderBottomSmallBox">
 		<div class = "lenderBoxTitle"><%= @lender.name %> States</div>
 		<div class = "lenderBoxStates">
-			<% @lender.states.each do |l|%>
+			<% @lender.states.by_state_abbr.each do |l|%>
 			<%= link_to(l.state_abbr, (@lender.lender_type == "term") ? term_loan_path(l.state_abbr.downcase) : payday_loan_path(l.state_abbr.downcase)) %>
 			<% end %>
 		</div>

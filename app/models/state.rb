@@ -17,9 +17,13 @@ class State < ActiveRecord::Base
   has_one :payday_loan_law, {:foreign_key => "id"}
   has_one :payday_loan_law_detail, {:foreign_key => "id"}
   
-    def self.select_state_(id)
+  def self.select_state_(id)
 		where("state_id = ?", id)
-    end
+  end
+
+  def self.by_state_abbr
+    order(state_abbr: :asc)
+  end
 
   private
 

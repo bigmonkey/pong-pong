@@ -13,14 +13,14 @@ class AddPrimaryKeys < ActiveRecord::Migration
   	end
 
   	create_table :states_term_loans do |t|
+      t.belongs_to :term_loan
   		t.belongs_to :state
-  		t.belongs_to :term_loan
   		t.timestamps
   	end
 
   	create_table :payday_loans_states do |t|
+      t.belongs_to :payday_loan
   		t.belongs_to :state
-  		t.belongs_to :payday_loan
   		t.timestamps
   	end
 
