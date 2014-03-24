@@ -106,16 +106,14 @@ permit_params :sniff_id,
       f.input :link2_desc, :label =>"Link 2 Desc"
       f.input :link2, :label => "Link 1 (http://)"
     end
-
     f.inputs do
       f.has_many :states_term_loans do |app_f|
         if app_f.object.id
-          app_f.input :_destroy, as: :boolean, label: "delete it bitch"
+          app_f.input :_destroy, as: :boolean, label: "delete"
         end
         app_f.input :state, include_blank: :false, :member_label => :state
       end 
-    end
-        
+    end        
     f.actions
   end
 
