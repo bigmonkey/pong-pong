@@ -13,6 +13,11 @@
 	</aside>
 
 	<section id = "mainContent">
+		<% if @offered_states.include? @state.state_abbr %>
+		<div class = "show_728x90">
+			<%= link_to(image_tag("banners/net-credit-728x90.gif", :alt => 'net-credit' ), partner_path(194), :rel =>'nofollow', :target => 'blank')  %>
+		</div>
+		<% end %>
 		<h1><%= "#{@state.state}" %></br><%= @keyword.phrase.titleize %></h1>
 		<% if @lenders.size > 0 %>
 

@@ -188,6 +188,17 @@ class ApplicationController < ActionController::Base
       end  
   end
 
+
+  # creates an array of states offered by the lender
+  def offered_states (lender)
+    @offered_states = []
+    if (!lender.nil?) && (!lender.states.blank?)
+      lender.states.each do |l|
+        @offered_states.push(l.state_abbr)
+      end
+    end  
+  end
+
   private
 
   # gets called by find_by bang above if no record found

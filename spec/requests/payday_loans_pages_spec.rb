@@ -264,6 +264,7 @@ describe "Payday Loan Pages" do
       @valender=PaydayLoan.last
       FactoryGirl.create(:payday_loans_state, payday_loan_id: @texaslender.id, state_id: State.find_by_state_abbr("TX").id)
       FactoryGirl.create(:payday_loans_state, payday_loan_id: @valender.id, state_id: State.find_by_state_abbr("VA").id)
+
       #binding.pry
     } 
     context "Unlisted State" do

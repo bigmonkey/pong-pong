@@ -26,6 +26,9 @@ class TermLoansController < ApplicationController
     # in application_controller
     set_seo_vars 
 
+    # creates array @offered_states of states where 'lender' makes loans. Used to display ads 
+    offered_states(TermLoan.find_by_name('Net Credit'))
+
 		# is it random or coming from index or paydayfinder
 		if State.find_by_state_abbr(params[:id].upcase).nil?
 			redirect_to("/installment-loans/")
