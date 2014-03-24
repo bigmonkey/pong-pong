@@ -35,9 +35,10 @@ permit_params :sniff_id,
               :link1_desc,
               :link1,
               :link2_desc,
-              :link2
+              :link2,
+              states_term_loans_attributes: [:id, :state_id, :term_loan_id, :_destroy]
 
-  remove_filter :states_term_loans
+  #remove_filter :states_term_loans
  
   index do
     column :id
@@ -62,6 +63,8 @@ permit_params :sniff_id,
   filter :name
   filter :sniff_id 
   filter :ranking
+
+
 
   form do |f|
     f.inputs "Lender Details" do
@@ -103,7 +106,69 @@ permit_params :sniff_id,
       f.input :link2_desc, :label =>"Link 2 Desc"
       f.input :link2, :label => "Link 1 (http://)"
     end
+
+    f.inputs do
+      f.has_many :states_term_loans do |app_f|
+        if app_f.object.id
+          app_f.input :_destroy, as: :boolean, label: "delete it bitch"
+        end
+        app_f.input :state, include_blank: :false, :member_label => :state
+      end 
+    end
+        
     f.actions
   end
 
+  show do
+    attributes_table do
+      row :sniff do |s| s.sniff.sniff_desc end
+      row :partner
+      row :name
+      row :active
+      row :lender_type, :input_html => { :value => "term" }
+      row :image_file
+      row :ranking
+      row :first_comment
+      row :second_comment
+      row :third_comment
+      row :review_url,:label => "Slug for WP"
+      row :since
+      row :governing_law
+      row :BBB_accredit, :label => "BBB Accredited"
+      row :BBB_score, :label => "BBB Score"
+      row :BBB_complaints, :label => "BBB Complaints"
+      row :BBB_unresponded, :label => "BBB Complaint Unresponded"
+      row :max_loan, :label => "Max Loan"
+      row :spanish
+      row :state_lic
+      row :privacy_policy
+      row :https
+      row :phone_contact
+      row :live_chat
+      row :loan_amt
+      row :payments
+      row :pmt_freq_in_days
+      row :pmt_amt
+      row :cost
+      row :apr
+      row :full_desc, :label => "Description (HTML)"
+      row :image_file_big
+      row :bbb_link, :label => "BBB Link (http://)"
+      row :link1_desc, :label =>"Link 1 Desc"
+      row :link1, :label => "Link 1 (http://)"
+      row :link2_desc, :label =>"Link 2 Desc"
+      row :link2, :label => "Link 1 (http://)"
+    end
+    panel "Available States" do
+      table_for term_loan.states_term_loans do
+        column "State" do |s|
+          s.state.state
+        end
+        column "State Abbreviation" do |s|
+          s.state.state_abbr
+        end
+      end
+    end       
+    active_admin_comments
+  end  
 end

@@ -10,6 +10,8 @@ class TermLoan < ActiveRecord::Base
     validates :partner_id, presence: true
     validates :partner_id, uniqueness: true
 
+    accepts_nested_attributes_for :states_term_loans, allow_destroy: true
+
     def self.by_top_rank
         order(ranking: :desc)
     end

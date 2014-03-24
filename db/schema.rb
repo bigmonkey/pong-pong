@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140113081251) do
+ActiveRecord::Schema.define(version: 20140324005237) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -225,12 +225,12 @@ ActiveRecord::Schema.define(version: 20140113081251) do
     t.string   "link2"
   end
 
-  create_table "payday_loans_states", id: false, force: true do |t|
-    t.integer "payday_loan_id"
-    t.integer "state_id"
+  create_table "payday_loans_states", force: true do |t|
+    t.integer  "state_id"
+    t.integer  "payday_loan_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
-
-  add_index "payday_loans_states", ["payday_loan_id", "state_id"], name: "index_payday_loans_states_on_payday_loan_id_and_state_id", using: :btree
 
   create_table "prepaids", force: true do |t|
     t.integer  "partner_id"
@@ -327,12 +327,12 @@ ActiveRecord::Schema.define(version: 20140113081251) do
     t.datetime "updated_at",            null: false
   end
 
-  create_table "states_term_loans", id: false, force: true do |t|
-    t.integer "term_loan_id"
-    t.integer "state_id"
+  create_table "states_term_loans", force: true do |t|
+    t.integer  "state_id"
+    t.integer  "term_loan_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
-
-  add_index "states_term_loans", ["term_loan_id", "state_id"], name: "index_states_term_loans_on_term_loan_id_and_state_id", using: :btree
 
   create_table "term_loans", force: true do |t|
     t.integer  "sniff_id"
