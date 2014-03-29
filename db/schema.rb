@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140324005237) do
+ActiveRecord::Schema.define(version: 20140329014850) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -64,6 +64,20 @@ ActiveRecord::Schema.define(version: 20140324005237) do
     t.integer  "page_views"
     t.string   "time_on_site"
     t.string   "exit_page"
+  end
+
+  create_table "banners", force: true do |t|
+    t.integer  "partner_id"
+    t.string   "name"
+    t.decimal  "rotation_rank"
+    t.integer  "bannerable_id"
+    t.string   "bannerable_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "size_160x600_file_name"
+    t.string   "size_160x600_content_type"
+    t.integer  "size_160x600_file_size"
+    t.datetime "size_160x600_updated_at"
   end
 
   create_table "borrowers", force: true do |t|

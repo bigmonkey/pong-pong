@@ -7,6 +7,8 @@ class TermLoan < ActiveRecord::Base
     has_many :states, through: :states_term_loans
     accepts_nested_attributes_for :states_term_loans, allow_destroy: true
 
+    has_many :banners, as: :bannerable
+
     #has_and_belongs_to_many :states
 
     validates :partner_id, presence: true
