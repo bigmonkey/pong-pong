@@ -6,6 +6,7 @@ class BannersController < ApplicationController
 	end	
 
 	def show
+		@banner = Banner.find(params[:id])
 	end	
 
 	def new
@@ -16,6 +17,12 @@ class BannersController < ApplicationController
 		#binding.pry
 	  @banner = Banner.create( banner_params )
 	end	
+
+	def destroy
+		banner = Banner.find(params[:id])
+		banner.size_160x600 = nil
+		banner.save
+	end
 
 	private	
 

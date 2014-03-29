@@ -1,5 +1,10 @@
 <h1>All Banners</h1>
 
-<% @banners.each do |b| %>
-	<p><%= image_tag b.size_160x600.url %></p>
-<% end %>
+<% if !@banners.blank? %>
+	<% @banners.each do |b| %>
+		<p><%= image_tag b.size_160x600.url %></p>
+		<p><%= link_to 'show', banner_path(b.id) %></p>
+	<% end %>
+<% else %>
+<p>There are no banners</p>	
+<% end %>	
