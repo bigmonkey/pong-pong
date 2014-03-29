@@ -1,0 +1,5 @@
+<h1>All Banners</h1>
+
+<% @banners.each do |b| %>
+	<p><%= image_tag b.size_160x600.url %></p>
+<% end %>
