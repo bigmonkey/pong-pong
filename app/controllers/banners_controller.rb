@@ -1,4 +1,5 @@
 class BannersController < ApplicationController
+  before_filter :authenticate_user!		
 	layout 'nopublic'	
 
 	def index
@@ -19,9 +20,7 @@ class BannersController < ApplicationController
 	end	
 
 	def destroy
-		banner = Banner.find(params[:id])
-		banner.size_160x600 = nil
-		banner.save
+		Banner.find(params[:id]).destroy
 	end
 
 	private	

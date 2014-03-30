@@ -1,7 +1,8 @@
 class Banner < ActiveRecord::Base
+  belongs_to :partner
 	belongs_to :bannerable, polymorphic: true
 
-  has_attached_file :size_160x600,
+  has_attached_file :size_160x600, styles: { thumb: '16x60'},
                     :storage => :s3,
                     :s3_credentials => Proc.new{|a| a.instance.s3_credentials }
               
