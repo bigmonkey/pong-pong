@@ -1,4 +1,5 @@
 class Banner < ActiveRecord::Base
+  attr_accessor :lender_type, :lender_link, :lender_tail 
   belongs_to :partner
 	belongs_to :bannerable, polymorphic: true
 

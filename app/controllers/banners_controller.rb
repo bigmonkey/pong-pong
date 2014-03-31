@@ -15,7 +15,7 @@ class BannersController < ApplicationController
 	end	
 
 	def create
-		#binding.pry
+		binding.pry
 	  @banner = Banner.create( banner_params )
 	end	
 
