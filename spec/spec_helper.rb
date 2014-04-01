@@ -53,4 +53,8 @@ RSpec.configure do |config|
 
   # Added by CW to include Capybara in request specs
   config.include Capybara::DSL   
+
+  # Added by CW to test ActiveAdmin controllers
+  config.include Devise::TestHelpers, :type => :controller
+  
 end

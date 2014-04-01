@@ -36,7 +36,8 @@ ActiveAdmin.register Banner do
     if params[:id].blank?   
       # lender_type is placed here so it's passed in the params hash.
       # it's needed to create the banner with a polymorphic association to a lender
-      f.inputs "Choose #{params[:lender_type].titleize if :lender_type.blank?} Lender Name"do
+
+      f.inputs "Choose #{params[:lender_type].titleize if !params[:lender_type].blank?} Lender Name"do
         f.input :lender_type, as: :hidden,  input_html: { value: params[:lender_type]}  
 
       # select lenders from tables depending on lender type  
@@ -83,6 +84,14 @@ ActiveAdmin.register Banner do
 
   controller do
     def create_new_banner
+
+    end
+
+    def create
+      # If click on new banner by mistake (can't take it off the action without killing new_admin_banner_path)
+      if params[:banner][:lender_type].blank?
+        redirect_to admin_banners_path, alert: "Banner NOT created. Please click Term, Payday, or Advertiser Banner"
+      else 
         # Find the correct lender based on lender_type
         case params[:banner][:lender_type]
         when "payday"
@@ -90,6 +99,7 @@ ActiveAdmin.register Banner do
         #when "advertiser"
         #  lender = Advertiser.find(params[:banner][:name])
         else "term"
+
           lender = TermLoan.find(params[:banner][:name])
         end      
 
@@ -101,6 +111,7 @@ ActiveAdmin.register Banner do
         partner.lender_link = params[:banner][:lender_link]
         partner.lender_tail = params[:banner][:lender_tail]
         # if partner is not valid it kicks back to index page with error message
+
         if partner.save    
           #create a new Banner instance
           @banner = lender.banners.new
@@ -117,14 +128,6 @@ ActiveAdmin.register Banner do
         else
           redirect_to admin_banners_path, alert: partner.errors.full_messages.each { |e| puts e }
         end
-    end
-
-    def create
-      # If click on new banner by mistake (can't take it off the action without killing new_admin_banner_path)
-      if params[:banner][:lender_type].blank?
-        redirect_to admin_banners_path, alert: "Banner NOT created. Please click Term, Payday, or Advertiser Banner"
-      else 
-          create_new_banner    
       end  
     end
 
