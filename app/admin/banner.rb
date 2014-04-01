@@ -87,7 +87,9 @@ ActiveAdmin.register Banner do
       # If click on new banner by mistake (can't take it off the action without killing new_admin_banner_path)
       if params[:banner][:lender_type].blank?
         redirect_to admin_banners_path, alert: "Banner NOT created. Please click Term, Payday, or Advertiser Banner"
-      else 
+      elsif params[:banner][:name].blank?
+        redirect_to admin_banners_path, alert: "Banner NOT created. Please choose a lender."
+      elsif
         # Find the correct lender based on lender_type
         case params[:banner][:lender_type]
         when "payday"
@@ -149,6 +151,12 @@ ActiveAdmin.register Banner do
       end      
     end
 
+    def destroy
+      banner = Banner.find(params[:id])
+      banner.partner.destroy
+      banner.destroy
+      redirect_to admin_banners_path, notice: "Banner Deleted"           
+    end
 
   end
 
