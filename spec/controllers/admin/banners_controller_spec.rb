@@ -20,42 +20,97 @@ describe Admin::BannersController do
 	
 	describe "POST #create" do
 		# Note: params[:banner][:name] is actually <lender>.id
-		it "redirects to the :show view" do
-			lender = FactoryGirl.create(:term_loan, partner: FactoryGirl.create(:partner), sniff_id: 2)
-			banner = { name: lender.id, lender_link: 'http://test.com', lender_type: 'term'}
-			post :create, banner: banner			
-			#response.should redirect_to('/admin/banners/' + Banner.find_by_name(lender.name + ' 160x600').id.to_s+'/')
-			response.should redirect_to('/admin/banners/' + assigns(:banner).id.to_s+'/')
+		# Assumes three models TermLoan, PaydayLoan, AdvertiserLoan
+		shared_examples "a banner POST #create" do |lender_type,|
+			it "redirects to the #{lender_type.titleize + " Loan"} :show view" do
+				lender = FactoryGirl.create((lender_type+'_loan').to_sym, sniff_id: 2)
+				banner = { name: lender.id, lender_link: 'http://test.com', lender_type: lender_type}
+				post :create, banner: banner			
+				#response.should redirect_to('/admin/banners/' + Banner.find_by_name(lender.name + ' 160x600').id.to_s+'/')
+				response.should redirect_to('/admin/banners/' + assigns(:banner).id.to_s+'/')
+			end
+			it "saves a new #{lender_type.titleize + " Loan"} banner and partner" do
+				lender = FactoryGirl.create((lender_type+'_loan').to_sym, sniff_id: 2)
+				banner = { name: lender.id, lender_link: 'http://test.com', lender_type: lender_type}
+				expect { post :create, banner: banner }.to change(Banner, :count).by(1)
+				expect { post :create, banner: banner }.to change(Partner, :count).by(1)
+			end	
+
+			it "creates a banner that belongs_to a #{lender_type.titleize + " Loan"}" do
+				lender = FactoryGirl.create((lender_type+'_loan').to_sym, sniff_id: 2)
+				banner = { name: lender.id, lender_link: 'http://test.com', lender_type: lender_type}
+				post :create, banner: banner
+				assigns(:banner).bannerable.id.should eq(lender.id)
+			end	
+
+			it "creates a banner who is has_many'd by a #{lender_type.titleize + " Loan"}" do
+				lender = FactoryGirl.create((lender_type+'_loan').to_sym, sniff_id: 2)
+				banner = { name: lender.id, lender_link: 'http://test.com', lender_type: lender_type}
+				post :create, banner: banner
+				(lender_type.titleize+'_loan').camelize.constantize.find(lender.id).banners.find(assigns(:banner)).id.should eq(assigns(:banner).id)
+			end			
+
+			it "creates a #{lender_type.titleize + " Loan"} banner associated to a partner" do
+				lender = FactoryGirl.create((lender_type+'_loan').to_sym, sniff_id: 2)
+				lender_link = 'http://test.com'
+				banner = { name: lender.id, lender_link: lender_link, lender_type: lender_type}
+				post :create, banner: banner
+				assigns(:banner).partner_id.should eq(Partner.find_by_lender_link('http://test.com').id)
+			end
 		end
 
-		it "saves a new banner and partner" do
-			lender = FactoryGirl.create(:term_loan, partner: FactoryGirl.create(:partner), sniff_id: 2)
-			banner = { name: lender.id, lender_link: 'http://test.com', lender_type: 'term'}
-			expect { post :create, banner: banner }.to change(Banner, :count).by(1)
-			expect { post :create, banner: banner }.to change(Partner, :count).by(1)
-		end
+		it_should_behave_like "a banner POST #create", 'term'
+		it_should_behave_like "a banner POST #create", 'payday'
+		it_should_behave_like "a banner POST #create", 'advertiser'
 
-		it "creates a banner associated to a term loan" do
-			lender = FactoryGirl.create(:term_loan, partner: FactoryGirl.create(:partner), sniff_id: 2)
-			banner = { name: lender.id, lender_link: 'http://test.com', lender_type: 'term'}
-			post :create, banner: banner
-			assigns(:banner).bannerable.id.should eq(lender.id)
-		end
-
-		it "creates a banner associated by a term loan" do
-			lender = FactoryGirl.create(:term_loan, partner: FactoryGirl.create(:partner), sniff_id: 2)
-			banner = { name: lender.id, lender_link: 'http://test.com', lender_type: 'term'}
-			post :create, banner: banner
-			TermLoan.find(lender.id).banners.find(assigns(:banner)).id.should eq(assigns(:banner).id)
-		end		
-
-		it "creates a banner associated to a partner" do
-			lender = FactoryGirl.create(:term_loan, partner: FactoryGirl.create(:partner), sniff_id: 2)
-			lender_link = 'http://test.com'
-			banner = { name: lender.id, lender_link: lender_link, lender_type: 'term'}
-			post :create, banner: banner
-			assigns(:banner).partner_id.should eq(Partner.find_by_lender_link('http://test.com').id)
-		end
 	end
+
+	describe "PATCH #update" do
+		# Note: params[:banner][:name] is actually <lender>.id
+		# Assumes three models TermLoan, PaydayLoan, AdvertiserLoan
+		shared_examples "a banner PATCH #update" do |lender_type,|
+			it "redirects to the #{lender_type.titleize + " Loan"} :show view" do
+				banner = FactoryGirl.create((lender_type+'_loan_banner').to_sym)
+				partner = banner.partner
+				updates = { name: banner.name, rotation_rank: banner.rotation_rank, lender_link: partner.lender_link}
+				patch :update, banner: updates, id: banner.id			
+				response.should redirect_to('/admin/banners/' + banner.id.to_s+'/')
+			end
+			it "updates #{lender_type.titleize + " Loan"} banner details" do
+				banner = FactoryGirl.create((lender_type+'_loan_banner').to_sym)
+				banner.name = "new name"
+				banner.rotation_rank = 4
+				updates = { name: banner.name, lender_link: 'http://new.com',rotation_rank: banner.rotation_rank}
+				patch :update, banner: updates, id: banner.id			
+				banner.reload
+				banner.name.should eq("new name")
+				banner.rotation_rank.should eq(4)
+			end
+
+			it "updates #{lender_type.titleize + " Loan"} banner's partner details" do
+				banner = FactoryGirl.create((lender_type+'_loan_banner').to_sym)
+				partner = banner.partner
+				partner.lender_link = "http://new.com"
+				partner.lender_tail = "?tail="
+				updates = { lender_link: partner.lender_link, lender_tail: partner.lender_tail}
+				patch :update, banner: updates, id: banner.id			
+				banner.reload
+				banner.partner.lender_link.should eq('http://new.com')
+				banner.partner.lender_tail.should eq('?tail=')
+			end
+
+			it "redirects #{lender_type.titleize + " Loan"} banner's w/o lender links to #show" do
+				banner = FactoryGirl.create((lender_type+'_loan_banner').to_sym)
+				updates = { name: "new name"}
+				patch :update, banner: updates, id: banner.id			
+				response.should redirect_to('/admin/banners/' + banner.id.to_s+'/')
+			end
+		end
+
+		it_should_behave_like "a banner PATCH #update", 'term'
+		it_should_behave_like "a banner PATCH #update", 'payday'
+		it_should_behave_like "a banner PATCH #update", 'advertiser'
+
+	end	
 end
 

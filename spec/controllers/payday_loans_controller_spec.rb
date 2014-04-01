@@ -99,4 +99,6 @@ describe PaydayLoansController do
 
 	end
 
+	# "all controlers that set tracking" is in spec/support/shared_controller_tests
+  it_should_behave_like "all controllers that set tracking"
 end

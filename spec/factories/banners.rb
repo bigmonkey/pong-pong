@@ -2,15 +2,16 @@
 
 FactoryGirl.define do
 
+
   factory :term_loan_banner, class: 'Banner' do
-		sequence(:name) { |n| "banner #{n}"} 
-		sequence(:partner_id) { |n| n } 
+		name "banner name"
+		partner factory: :partner    
 		bannerable factory: :term_loan, sniff_id: 1
   end
 
   factory :payday_loan_banner, class: 'Banner' do
-		sequence(:name) { |n| "banner #{n}"}
-		sequence(:partner_id) { |n| n } 		  
+		name "banner name"
+		partner factory: :partner 		  
 		bannerable factory: :payday_loan, sniff_id: 1
   end
 

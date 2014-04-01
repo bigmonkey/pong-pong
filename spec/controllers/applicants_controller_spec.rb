@@ -13,5 +13,4 @@ describe ApplicantsController do
 		end	
 	end
 	
-
 end

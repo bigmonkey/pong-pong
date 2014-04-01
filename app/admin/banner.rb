@@ -60,8 +60,7 @@ ActiveAdmin.register Banner do
       end
     else
       f.inputs "Update Lender Name and Links" do
-        # Edit and New share format. If it's edit we set lender_value to edit
-        f.input :lender_type, as: :hidden,  input_html: { value: "edit"}  
+        # Edit and New share format. 
         f.input :name
         f.input :rotation_rank
         f.input :lender_link, label: 'Lender Link (http://)', input_html: {value: "#{Banner.find(params[:id]).partner.lender_link}" }
@@ -83,9 +82,6 @@ ActiveAdmin.register Banner do
 
 
   controller do
-    def create_new_banner
-
-    end
 
     def create
       # If click on new banner by mistake (can't take it off the action without killing new_admin_banner_path)

@@ -9,16 +9,9 @@ describe "Admin Banner Pages" do
 
   describe "Index Page" do
     before(:all) { 
-        num_banners = 4
-        (num_banners/2).times do
-          partner = FactoryGirl.create(:partner)
-          FactoryGirl.create(:term_loan_banner, partner: partner)
-        end
-        (num_banners/2).times do
-          partner = FactoryGirl.create(:partner)
-          FactoryGirl.create(:payday_loan_banner, partner: partner)
-        end
-        Banner.all.count.should eq(num_banners)
+        FactoryGirl.create(:term_loan_banner)
+        FactoryGirl.create(:payday_loan_banner)
+        Banner.all.count.should eq(2)
     }
 
     before (:each) do
@@ -52,7 +45,7 @@ describe "Admin Banner Pages" do
     end
 
     after(:all) {
-      Partner.destroy_all
+      Partner.destroy_all #Banner factory creates Partners
       Banner.destroy_all
     }
   end
@@ -75,8 +68,7 @@ describe "Admin Banner Pages" do
     describe "Describe Add a Banner" do
       context "All required data filled out", js: true do
         before (:each){  
-          @partner = FactoryGirl.create(:partner)
-          @term_lender = FactoryGirl.create(:term_loan, partner: @partner, sniff_id:3 )
+          @term_lender = FactoryGirl.create(:term_loan, sniff_id:3 )
           visit new_admin_banner_path(lender_type: 'term')
           select @term_lender.name, from: "banner_name"
           fill_in 'banner_lender_link', with: 'http://test.com'
