@@ -1,5 +1,0 @@
-<%= form_for @banner, :url => banners_path, :html => { :multipart => true } do |form| %>
-  <%= form.file_field :size_160x600 %>
-  <%= collection_select(:banner, :partner_id, Partner.all, :id, :name) %>
-  <%= form.submit %>
-<% end %>
