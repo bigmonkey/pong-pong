@@ -55,7 +55,7 @@
       <%= radio_button_tag(:lender_type, "payday", @lender.lender_type=="payday") %> Payday
       <%= radio_button_tag(:lender_type, "term",@lender.lender_type=="term") %> Installment</div>
   </div>
-  <%= submit_tag "FIND LOAN", :class => "findLoanButton" %>
+  <%= submit_tag "FIND LOAN", :class => "findLoanButton", onClick:"_gaq.push(['_trackEvent', 'Button', 'Click', 'FindLoan',, false]);" %>
 <% end %>
 
 </div>
