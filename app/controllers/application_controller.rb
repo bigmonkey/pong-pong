@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   
   #method defined below and redirects to home
-  rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
+  #rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
 
   include ApplicationHelper #include methods for mobile and tablet regex
 
@@ -170,7 +170,9 @@ class ApplicationController < ActionController::Base
       # --------- update completed: @keyword.slug is no longer used 1/7/2014 --------
 
       #captures stuff between first two slases
-      slug = request.fullpath.split(/\//)[1].downcase
+      #slug = request.fullpath.split(/\//)[1].downcase
+      # changed fullpath to path because params with /? remove / so params were getting included
+      slug = request.path.split(/\//)[1].downcase
 
       #used in state_selector
       @selector_path = "/"+slug 

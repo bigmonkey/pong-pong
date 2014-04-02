@@ -5,7 +5,7 @@ class PartnersController < ApplicationController
 
   def show
   	#If there is an ID go to lender website else return to the hound
-  	if params[:id].blank?
+  	if params[:id].blank? || Partner.find_by_id(params[:id]).nil?
   		redirect_to("/")
   	else
       if !request.env["HTTP_REFERER"].blank?
@@ -13,6 +13,7 @@ class PartnersController < ApplicationController
         # use session for :exit_page because loan application assigns it as page that leads to prequal page or two states ahead
         session[:exit_page] = uri.path + (!uri.query.nil? ? "?#{uri.query}" : "")
       end
+      binding.pry
       p = Partner.find(params[:id])
       @redirect=p.name
       save_tracking

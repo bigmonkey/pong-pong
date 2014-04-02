@@ -2,7 +2,7 @@ Pdh::Application.routes.draw do
   devise_for :users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
   #match "/(*all)", constraints: {original_url: /\bherokuapp\b/}, to: "application#heroku"
-
+ 
   root to: 'homes#index'
 
   # Called from Wordpress site for header, footer and styles

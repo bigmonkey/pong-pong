@@ -1,0 +1,15 @@
+<div id = "loanFinder">
+	<h2>Top Picks</h2>
+	<%= @path %>
+
+	<%= form_tag({action: 'index', id: 'loanFinderForm'}, method:'get') do %>
+		<% @states.each do |s| %>
+			<%= radio_button_tag(:state, s.state_abbr, onclick: "document.getElementById('loanFinderForm').action= #{@path};") %> 
+			<%= s.state  %>
+			<% end %>
+  	<%= submit_tag 'Installment Loan' %>
+  	<%= submit_tag 'Payday Loan' %>
+	<% end %>
+
+</div>
+

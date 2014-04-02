@@ -18,7 +18,10 @@ class KeywordChecker
   end
 
   def seo_go?(request, controller, action)
-    path_bits = request.fullpath.split(/\//)
+    # april 2 2014 change fullpath to path. fullpath keeps params in kw match.
+    #path_bits = request.fullpath.split(/\//)
+    path_bits = request.path.split(/\//)
+
     if path_bits[3].nil?        # if it has three / then it's not right
       if action == "index"
         if !path_bits[2].nil?   # if it's index it should have no second slash

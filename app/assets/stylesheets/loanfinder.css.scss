@@ -1,0 +1,12 @@
+#loanFinder {
+	margin: 1em;
+	background: $peach;
+	@include rounded(.5em);
+
+	h2{
+		font-size: 1em;
+		line-height: 2em;
+	}
+}
+
+

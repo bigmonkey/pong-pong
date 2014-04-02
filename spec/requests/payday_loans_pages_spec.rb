@@ -22,6 +22,7 @@ describe "Payday Loan Pages" do
           page.should have_link(s.state, href:"/#{@keyword.word.gsub(' ','-')}/#{s.state_abbr.downcase}/") 
         end  
       end  
+
       it "should have table of lenders" do
         #binding.pry
         #save_and_open_page
@@ -109,6 +110,11 @@ describe "Payday Loan Pages" do
       it { should_not have_link("#{@notchild.word.gsub(' ','-')}", href: "/#{@notchild.word.gsub(' ','-')}/" )}
       it_should_behave_like "all index payday loan pages"
       it_should_behave_like "all payday loan pages"
+
+      it "should show loan finder" do
+        page.should have_selector('h2', text: 'Top Picks')
+      end
+
     end  
 
     #Payday Loan SEO Pages

@@ -23,7 +23,7 @@
 
 
 <section id="mainContent">
-
+  <%= render(:partial => "shared/loanfinder")%>
 	<h1><%= @keyword.phrase.titleize %></h1>
 
 	<% case @keyword.category %>

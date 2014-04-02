@@ -6,6 +6,8 @@ class PaydayLoansController < ApplicationController
   
 
   def index
+    @path = request.path
+
   	@states=State.all
 	  @lenders = PaydayLoan.by_top_rank.active_lender
 		@criteria = PaydayLoan.new    #@criteria gets used on view
@@ -18,7 +20,6 @@ class PaydayLoansController < ApplicationController
   end
 
 	def show
-
     # creates array @offered_states of states where 'lender' makes loans. Used to display ads 
     offered_states(TermLoan.find_by_name('Net Credit'))
         
