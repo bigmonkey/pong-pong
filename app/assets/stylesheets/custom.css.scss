@@ -273,8 +273,8 @@ nav {
 
 #sidebarFinder {
     background-color: #fff;
-    width: 185px;
-    float: left;
+    width: 165px;
+    float: right;
     margin: 0px 15px 0px 0px;
     padding: 1em 0em;
     
@@ -323,8 +323,8 @@ nav {
 /*MainContent with aside on left*/
 	
 #mainContent {
-	width: 770px;
-	float: right;
+	width: 790px;
+	float: left;
 	margin: 0px;
 	font-size: 0.8em;
 	line-height: 1.4em;
@@ -501,6 +501,11 @@ footer {
 
 .show_728x90 {
 	margin: 1em 0;
+	text-align: center;
+}
+
+.show_160x600 {
+	margin: .5em 0;
 	text-align: center;
 }
 // debugging styles

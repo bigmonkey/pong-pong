@@ -13,16 +13,7 @@
 <meta name="description" content= "<%= "Compare #{@keyword.phrase}. Search for the lowest fees. Apply direct. Get the best rates at The Payday Hound." %>"/>
 <% end %>
 
-
-<aside id ="sidebarFinder">
-
-		<% # render(:partial => "shared/sidebars/paydayfinder")%>
-    <%= render(:partial => "shared/sidebars/sidebar")%>
-
-</aside>
-
-
-<section id="mainContent">
+<section id="mainContent" >
   <%= render(:partial => "shared/loanfinder")%>
 	<h1><%= @keyword.phrase.titleize %></h1>
 
@@ -127,3 +118,8 @@
   <%=  render(:partial => "shared/media_counters")%>
 
 </section>
+
+<aside id ="sidebarFinder">
+		<% # render(:partial => "shared/sidebars/paydayfinder")%>
+    <%= render(:partial => "shared/sidebars/sidebar")%>
+</aside>
