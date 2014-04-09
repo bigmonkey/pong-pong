@@ -1,11 +1,65 @@
+	.loanFinderTitle{
+		font-size: 2em;
+		line-height: 2em;
+		text-align: center;
+		color: $dogEars;
+	}
+	
 #loanFinder {
 	margin: 1em;
-	background: $peach;
-	@include rounded(.5em);
+	padding: 0em 2em;
+	background: $boxBackground;
+	//display: inline-block;
+	//@include rounded(.5em);
 
-	h2{
+
+
+	.loanFinderStatesCol {
+		width: 20%;
+		float: left;
+	}
+	.loanFinderState {
 		font-size: 1em;
-		line-height: 2em;
+		line-height: 1.5em;
+		height: 1.5em;
+		label {
+			cursor: pointer;
+			cursor: hand;
+		}
+		input {
+			vertical-align: middle;
+			position: relative;
+			bottom: .15em;
+	 		//@include scaleradio(.9);
+
+		}
+	}
+
+
+	.loanFinderButtonBox {
+		text-align: center;
+		input {
+			font-size: 1.5em;
+			margin: 1em 0;
+			background: $dogFur;
+			border: none;
+			color: $pageBackground;
+			height: 2.5em;
+			line-height: 2.5em;
+			width: 20em;
+		}
+		input:hover {
+			background: $bigColor;
+			border: none;
+			color: $highColor;
+		}
+	}
+	.loanFinderPuppyBlurb {
+		color: $bigColor;
+
+	}
+	.loanFinderSelectBox {
+
 	}
 }
 

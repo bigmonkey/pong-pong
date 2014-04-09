@@ -1,6 +1,6 @@
 /*variables */
 $mainColor: #666;
-$bigColor: #0E8B4D; /*headers, menu */
+$bigColor: #0E8B4D; /*GREEN headers, menu */
 $highColor: #E58D1F; /* ORANGE hover, secondary headers */
 $softColor: #888; // used like bold
 $pageBackground: #fff; /* page background color */
@@ -17,6 +17,12 @@ $peach: #F7ECD2; /* peach background color */
   -webkit-border-radius: $radius;
 }
 
+@mixin scaleradio($scale){
+	transform: ($scale);
+	-moz-transform: scale($scale);
+	-webkit-transform: scale($scale);
+}
+			
 
 /*limited reset*/
 html, body, div, section, article, aside, header, hgroup, footer,nav , h1, h2, h3, h4, h5, h6, p, blockquote, address, time, span, em, strong, img, ol, ul, li, q, figure, canvas, video, th, td, tr, form {

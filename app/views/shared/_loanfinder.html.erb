@@ -1,15 +1,41 @@
-<div id = "loanFinder">
-	<h2>Top Picks</h2>
-	<%= @path %>
 
-	<%= form_tag({action: 'index', id: 'loanFinderForm'}, method:'get') do %>
-		<% @states.each do |s| %>
-			<%= radio_button_tag(:state, s.state_abbr, onclick: "document.getElementById('loanFinderForm').action= #{@path};") %> 
-			<%= s.state  %>
-			<% end %>
-  	<%= submit_tag 'Installment Loan' %>
-  	<%= submit_tag 'Payday Loan' %>
+	<% if !@keyword.nil? # payday and term loans will have this populated %>
+	<div class = "loanFinderTitle">Easily <%= @keyword.state_phrase.titleize %></div>
+	<% #Select your state to see lenders offering loans in your state.</p> %>
+	<% else #state laws page will be nil %>
+	<div>Finding a Loan Made Simple</div>
 	<% end %>
+	
+<div id = "loanFinder">
 
+
+
+
+	<div class = "loanFinderPuppyBlurb">
+		<ol>
+			<li>Select Your State</li>
+			<li>Click Find The Best Deal</li>
+			<li>Get Cash</li>
+		</ol>
+	</div>
+	<div class = "loanFinderSelectBox">
+		<%= form_tag({action: 'index', id: 'loanFinderForm'}, method:'get') do %>
+				<% @states.each_slice(10) do |slice| %>
+				<div class = "loanFinderStatesCol">
+					<% slice.each do |s| %>
+						<div class = "loanFinderState">
+							<label for = <%="state_#{s.state_abbr}" %> >
+							<%= radio_button_tag(:state, s.state_abbr, onclick: "document.getElementById('loanFinderForm').action= #{@path};") %> 
+							<%= s.state  %>
+							</label>
+						</div>						
+					<% end %>
+				</div>
+				<% end %>
+			<div class = "loanFinderButtonBox"><%= submit_tag "Get the Best Rates" %></div>
+		<% end %>
+	</div>
 </div>
+<div class = "clearboth">	<%= @path %></div>
+
 
