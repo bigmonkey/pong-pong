@@ -6,6 +6,7 @@ class PaydayLoansController < ApplicationController
   
 
   def index
+    
   	@states=State.all
 	  @lenders = PaydayLoan.by_top_rank.active_lender
 		@criteria = PaydayLoan.new    #@criteria gets used on view
