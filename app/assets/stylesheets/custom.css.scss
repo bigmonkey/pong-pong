@@ -7,6 +7,7 @@ $pageBackground: #fff; /* page background color */
 $contentBackground: #fff; /* content background */
 $boxBackground: #eee; /* highlight boxes */
 $boxBackgroundDarker: #bbb; /* highlight boxes darker */
+$boxBackgroundVeryDark: #888; /* highlight boxes veeeerry dark */
 $dogFur: #e0a03e; /*color of our dogs fur */
 $dogEars: #d85936; /* color of our dogs ears */
 $peach: #F7ECD2; /* peach background color */
@@ -263,7 +264,31 @@ nav {
 	display: none;
 }
 
-/*sidebar Finders*/
+/*sidebar */
+
+.sidebarPDH {
+	background: $boxBackground;
+	color: $softColor;
+	text-align: center;
+	padding: 1em .5em;
+	margin-bottom: 2em;
+	h3 { 
+		font-size: 1.2em;
+		color: $bigColor;
+	}
+	h4 {
+		font-size: .8em;
+		color: $bigColor;
+		padding-bottom: 1em;
+		margin-bottom: 1em;
+		border-bottom: 1px solid $pageBackground;
+	}
+	p { 
+		font-size: .8em;
+		text-align: center;
+		margin: 1.5em 0em;
+	}
+}
 
 .criteria h2 {
 	background: #FFF;
@@ -279,9 +304,9 @@ nav {
 
 #sidebarFinder {
     background-color: #fff;
-    width: 165px;
+    width: 185px;
     float: right;
-    margin: 0px 15px 0px 0px;
+    margin: 0em;
     padding: 1em 0em;
     
 }
@@ -329,7 +354,7 @@ nav {
 /*MainContent with aside on left*/
 	
 #mainContent {
-	width: 790px;
+	width: 770px;
 	float: left;
 	margin: 0px;
 	font-size: 0.8em;
@@ -513,6 +538,7 @@ footer {
 .show_160x600 {
 	margin: .5em 0;
 	text-align: center;
+	display: none;
 }
 // debugging styles
 .debug_dump {

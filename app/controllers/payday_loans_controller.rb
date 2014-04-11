@@ -6,7 +6,10 @@ class PaydayLoansController < ApplicationController
   
 
   def index
-    @path = request.path
+    # params[:state] must come in as Upcase otherwise styles get mixed up because
+    # form will set id to state_id for Idaho and that conflicts with 
+    # select form on _shared/paydayfinder
+    redirect_to action: 'show', id: params[:state].downcase if !params[:state].blank?
 
   	@states=State.all
 	  @lenders = PaydayLoan.by_top_rank.active_lender
@@ -20,11 +23,12 @@ class PaydayLoansController < ApplicationController
   end
 
 	def show
+ 
     # creates array @offered_states of states where 'lender' makes loans. Used to display ads 
     offered_states(TermLoan.find_by_name('Net Credit'))
-        
+
 		# is it random or coming from index or paydayfinder
-		if State.find_by_state_abbr(params[:id].upcase).nil?
+		if (State.find_by_state_abbr(params[:id].upcase).nil?)
 			redirect_to("/payday-loans/")
 		else	
 			@criteria = PaydayLoan.new    #@criteria gets used on view

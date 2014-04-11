@@ -1,23 +1,56 @@
-	.loanFinderTitle{
+#loanFinder {
+	background: $boxBackground;
+	color: $bigColor;
+	padding-bottom: 1em;
+	margin: 0em 3em;
+
+	
+	.loanFinderTitle{	
+		margin: .2em 0em;	
 		font-size: 2em;
 		line-height: 2em;
 		text-align: center;
-		color: $dogEars;
+		color: $pageBackground;
+		background: $bigColor;
 	}
-	
-#loanFinder {
-	margin: 1em;
-	padding: 0em 2em;
-	background: $boxBackground;
-	//display: inline-block;
-	//@include rounded(.5em);
 
+
+	.loanFinderPuppyBlurb {
+		font-size: 1.5em;
+		line-height: 1.5em;
+		text-align: center;
+		margin-top: .5em;
+
+		ul li{
+			list-style-type: none;
+			padding: 0;
+			margin: 0;
+			font-size: .8em;
+			line-height: 1.5em;
+
+		}	
+	}
+
+	.loanFinderBox{
+		margin: 0em 1em;
+		//display: inline-block;
+		//@include rounded(.5em);
+	}
+
+	.loanFinderSelectBox {
+
+	}
 
 
 	.loanFinderStatesCol {
 		width: 20%;
 		float: left;
+		margin: 1em 0em;
+		padding: 1em 0em;
+		color: $mainColor;
+		//background: $boxBackground;
 	}
+	
 	.loanFinderState {
 		font-size: 1em;
 		line-height: 1.5em;
@@ -35,13 +68,12 @@
 		}
 	}
 
-
 	.loanFinderButtonBox {
 		text-align: center;
 		input {
 			font-size: 1.5em;
-			margin: 1em 0;
-			background: $dogFur;
+			margin: 0;
+			background: $bigColor;
 			border: none;
 			color: $pageBackground;
 			height: 2.5em;
@@ -49,17 +81,12 @@
 			width: 20em;
 		}
 		input:hover {
-			background: $bigColor;
+			background: $peach;
 			border: none;
-			color: $highColor;
+			color: $bigColor;
+			cursor: pointer;
+			cursor: hand;
 		}
-	}
-	.loanFinderPuppyBlurb {
-		color: $bigColor;
-
-	}
-	.loanFinderSelectBox {
-
 	}
 }
 
