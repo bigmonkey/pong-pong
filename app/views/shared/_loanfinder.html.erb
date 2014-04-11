@@ -3,7 +3,7 @@
 
 <div id = "loanFinder">
 	<% if !@keyword.nil? # payday and term loans will have this populated %>
-	<div class = "loanFinderTitle"><%= @keyword.word.titleize %></div>
+	<div class = "loanFinderTitle">Top <%= @keyword.word.titleize %></div>
 	<% #Select your state to see lenders offering loans in your state.</p> %>
 	<% else #state laws page will be nil %>
 	<div>Finding a Loan Made Simple</div>
@@ -17,7 +17,6 @@
 		</ul>
 	</div>
 	<div class = "loanFinderBox">
-
 		<div class = "loanFinderSelectBox">	
 			<%= form_tag({action: 'index'}, method: 'get') do %>	
 

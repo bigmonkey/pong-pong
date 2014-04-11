@@ -1,10 +1,9 @@
 #loanFinder {
-	background: $boxBackground;
+	background: $peach;
 	color: $bigColor;
-	padding-bottom: 1em;
-	margin: 0em 3em;
+	padding: 0em 0em 1em;
+	margin: 1.5em 3em 1.5em;
 
-	
 	.loanFinderTitle{	
 		margin: .2em 0em;	
 		font-size: 2em;
@@ -32,15 +31,11 @@
 	}
 
 	.loanFinderBox{
-		margin: 0em 1em;
+		margin: 0em;
+		padding: 0em 1em;
 		//display: inline-block;
 		//@include rounded(.5em);
 	}
-
-	.loanFinderSelectBox {
-
-	}
-
 
 	.loanFinderStatesCol {
 		width: 20%;
