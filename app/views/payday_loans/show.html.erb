@@ -4,6 +4,14 @@
 <meta name="description" content= "<%= "Compare #{@state.state} #{@keyword.phrase}. Search for the lowest fees. Apply direct. Get the best rates in #{@state.state_abbr} at The Payday Hound." %>" />
 <% end %>
 
+
+	<aside id ="sidebarFinder">	
+
+			<%= render(:partial => "shared/sidebars/paydayfinder")%>
+	    <%= render(:partial => "shared/sidebars/sidebar")%>	
+
+	</aside>
+
 	<section id = "mainContent">
 		<% if @offered_states.include? @state.state_abbr %>
 		<div class = "show_728x90">
@@ -37,12 +45,3 @@
     <%=  render(:partial => "shared/media_counters")%>
 		
 	</section>
-
-	<aside id ="sidebarFinder">	
-
-			<% # render(:partial => "shared/sidebars/paydayfinder")%>
-	    <%= render(:partial => "shared/sidebars/sidebar")%>	
-
-	</aside>
-
-

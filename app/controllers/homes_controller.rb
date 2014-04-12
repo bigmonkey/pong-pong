@@ -1,5 +1,5 @@
 class HomesController < ApplicationController
-  layout 'homeNav'    
+  layout 'paydayNav'    
 
   # before filter is commented out for tracking_pixel use with wordpress
   # tracking for root is done by calling set_tracking in the index action
