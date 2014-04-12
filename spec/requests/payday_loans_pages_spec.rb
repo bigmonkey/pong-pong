@@ -291,8 +291,7 @@ describe "Payday Loan Pages" do
       	@keyword = Keyword.find_by_word("payday loans")
         visit "/payday-loans/tx"
         #puts page.body
-      }
-
+      }      
       it { should have_content("TX Lender") }
       it { should have_selector('div', text: @texaslender.first_comment) }        
       it { should have_link("see review", href: "/learn/#{@texaslender.review_url}/" ) }         
@@ -305,6 +304,31 @@ describe "Payday Loan Pages" do
       it_should_behave_like "all payday loan pages"
     end
 
+    context "Paid Lenders Exist in TX" do      
+      before {
+        @keyword = Keyword.find_by_word("payday loans")
+        paid_state_lenders = 2
+        paid_state_lenders.times do 
+          state_lender = FactoryGirl.create(:payday_loan, paid: true, partner_id: FactoryGirl.create(:partner).id)
+          FactoryGirl.create(:payday_loans_state, payday_loan_id: state_lender.id, state_id: State.find_by_state_abbr("TX").id)
+        end       
+        visit "/payday-loans/tx" 
+      }
+      it { should have_content("Top Picks") }
+    end
+
+    context "Paid Lenders Do Not Exist in TX" do      
+      before {
+        @keyword = Keyword.find_by_word("payday loans")
+        paid_state_lenders = 2
+        paid_state_lenders.times do 
+          state_lender = FactoryGirl.create(:payday_loan, paid: true, partner_id: FactoryGirl.create(:partner).id)
+          FactoryGirl.create(:payday_loans_state, payday_loan_id: state_lender.id, state_id: State.find_by_state_abbr("VA").id)
+        end       
+        visit "/payday-loans/tx" 
+      }
+      it { should_not have_content("Top Picks") }
+    end
 
     after(:all){
       State.destroy_all

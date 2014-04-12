@@ -19,11 +19,13 @@
 		</div>
 		<% end %>
 
-		<% @paid_lenders.each do |p| %>
-			<% @lender = p %>
-			<%= render(partial: "lenders/lender_introbox") %>
+		<% if !@paid_lenders.blank? %>
+		<div>The Payday Hound Top Picks</div>
+			<% @paid_lenders.each do |p| %>
+				<% @lender = p %>
+				<%= render(partial: "lenders/lender_introbox") %>
+			<% end %>
 		<% end %>
-		
 		<h1><%= "#{@state.state}" %></br><%= @keyword.phrase.titleize %></h1>
 		<div>
 			<% case @paydaylawstate.legal_status_summary %>
