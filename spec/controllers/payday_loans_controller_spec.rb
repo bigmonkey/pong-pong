@@ -36,6 +36,12 @@ describe PaydayLoansController do
 			get :index
 			response.should render_template :index
 		end	
+
+		it "redirects to show/:id if params[:state] has a value" do
+			state = FactoryGirl.create(:state)
+			get :index, state: state.state_abbr
+			response.should redirect_to payday_loan_url(state.state_abbr.downcase)
+		end
 	end
 	
 	describe "GET #show" do
@@ -97,6 +103,18 @@ describe PaydayLoansController do
 			assigns(:criteria).ranking.should eq(2)
 		end
 
+		it "selects paid lenders for that state" do
+			FactoryGirl.create(:payday_loan) 
+			FactoryGirl.create(:payday_loan, paid:true) 
+			state = FactoryGirl.create(:state)
+			paid_state_lenders = 2
+			paid_state_lenders.times do 
+				state_lender = FactoryGirl.create(:payday_loan, paid: true)
+				FactoryGirl.create(:payday_loans_state, payday_loan_id: state_lender.id, state_id: state.id)
+			end
+			get :show, id: state.state_abbr.downcase
+			assigns(:paid_lenders).count.should eq(paid_state_lenders)
+		end
 	end
 
 	# "all controlers that set tracking" is in spec/support/shared_controller_tests

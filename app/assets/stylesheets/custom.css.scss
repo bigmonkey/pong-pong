@@ -120,7 +120,7 @@ form button {
 	background: $boxBackground;
 }
 nav {
-	background-color: $boxBackgroundSlightDark;
+	background-color: $boxBackground;
 	width: 50%;
 	//margin-top:65px;
 	height: 30px;
@@ -442,7 +442,7 @@ nav {
 }
 
 #selectorStateBox {
-	@include rounded(5px);
+	//@include rounded(5px);
 	margin: 0;
 	background: $boxBackgroundDarker;
 	overflow: hidden;
@@ -463,7 +463,7 @@ nav {
 	font-size: .9em;
 	height: 17px;
 	line-height: 17px;
-	@include rounded(10px);
+	//@include rounded(10px);
 	border: solid 0px #fff;
 	a, a:link, a:visited {
 		color: #fff;

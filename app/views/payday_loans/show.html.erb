@@ -7,7 +7,7 @@
 
 	<aside id ="sidebarFinder">	
 
-			<%= render(:partial => "shared/sidebars/paydayfinder")%>
+			<%# render(:partial => "shared/sidebars/paydayfinder")%>
 	    <%= render(:partial => "shared/sidebars/sidebar")%>	
 
 	</aside>
@@ -17,6 +17,11 @@
 		<div class = "show_728x90">
 			<%= link_to(image_tag("banners/net-credit-728x90.gif", :alt => 'net-credit' ), partner_path(194), :rel =>'nofollow', :target => 'blank')  %>
 		</div>
+		<% end %>
+
+		<% @paid_lenders.each do |p| %>
+			<% @lender = p %>
+			<%= render(partial: "lenders/lender_introbox") %>
 		<% end %>
 		
 		<h1><%= "#{@state.state}" %></br><%= @keyword.phrase.titleize %></h1>

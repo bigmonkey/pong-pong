@@ -31,6 +31,12 @@ class PaydayLoansController < ApplicationController
 		if (State.find_by_state_abbr(params[:id].upcase).nil?)
 			redirect_to("/payday-loans/")
 		else	
+      # paid_lenders is in application_controller
+      # creates array of lender id's who offer loans in this state
+      # format is paid_lenders(<'payday' 'term' 'advertiser'>, params[:id].upcase)
+
+      paid_lenders('payday', params[:id].upcase)
+
 			@criteria = PaydayLoan.new    #@criteria gets used on view
 			@criteria.sniff_id = !params[:sniff_score].blank? ? Sniff.find_by_sniff_score(params[:sniff_score]).id : Sniff.find_by_sniff_score(3).id
    		@criteria.ranking = !params[:ranking].blank? ? params[:ranking]	: 1	

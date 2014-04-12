@@ -52,6 +52,7 @@
 		font-size: 1em;
 		line-height: 1.4em;
 		height: 1.4em;
+	
 		label {
 			cursor: pointer;
 			cursor: hand;
@@ -61,8 +62,12 @@
 			position: relative;
 			bottom: .15em;
 	 		//@include scaleradio(.9);
-
 		}
+	}	
+	.loanFinderState:hover {
+		box-shadow: 0 0 5px rgba(102, 102, 102, 0.6);
+		-webkit-box-shadow: 0 0 5px rgba(102, 102, 102, 0.6);
+		-moz-box-shadow: 0 0 5px rgba(102, 102, 102, 0.6);						
 	}
 
 	.loanFinderButtonBox {
@@ -79,11 +84,14 @@
 			@include rounded(3px);
 		}
 		input:hover {
-			background: $boxBackground;
+			//background: $boxBackground;
 			border: none;
-			color: $bigColor;
+			//color: $bigColor;
 			cursor: pointer;
 			cursor: hand;
+			box-shadow: 0 0 5px rgba(102, 102, 102, 0.6);
+			-webkit-box-shadow: 0 0 5px rgba(102, 102, 102, 0.6);
+			-moz-box-shadow: 0 0 5px rgba(102, 102, 102, 0.6);			
 		}
 	}
 }

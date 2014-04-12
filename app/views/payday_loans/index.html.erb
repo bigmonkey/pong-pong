@@ -14,9 +14,10 @@
 <% end %>
 
 <section id="mainContent" >
+	<h1><%= @keyword.phrase.titleize %></h1>
+
   <%= render(:partial => "shared/loanfinder")%>
 
-	<h1><%= @keyword.phrase.titleize %></h1>
 
 	<% case @keyword.category %>
 	<% 		when "custom_state" %>

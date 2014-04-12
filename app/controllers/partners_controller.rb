@@ -13,7 +13,6 @@ class PartnersController < ApplicationController
         # use session for :exit_page because loan application assigns it as page that leads to prequal page or two states ahead
         session[:exit_page] = uri.path + (!uri.query.nil? ? "?#{uri.query}" : "")
       end
-      binding.pry
       p = Partner.find(params[:id])
       @redirect=p.name
       save_tracking

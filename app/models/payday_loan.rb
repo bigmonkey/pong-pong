@@ -30,6 +30,10 @@ class PaydayLoan < ActiveRecord::Base
         where(active: :true)
     end    
 
+    def self.paid
+        where(paid: :true)
+    end    
+
     def self.sniff_level(level)
 		joins(:sniff).where("sniff_score <= ?", level)
     end
