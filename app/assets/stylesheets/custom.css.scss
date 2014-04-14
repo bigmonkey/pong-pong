@@ -266,6 +266,11 @@ nav {
 	}
 }
 
+.spacerUnderNav {
+	clear: both;
+	height: 2em;
+}
+
 
 // navivation bars
 
@@ -290,7 +295,7 @@ nav {
 	color: $softColor;
 	text-align: center;
 	padding: 1em .5em;
-	margin: 1em 0em;
+	margin: 0;
 	h3 { 
 		font-size: 1.2em;
 		color: $bigColor;
@@ -309,24 +314,12 @@ nav {
 	}
 }
 
-.criteria h2 {
-	background: #FFF;
-	color: #555;
-	font-size: 1em;
-//	font-weight: bold;
-	text-transform: none;
-	padding: 4px 0px;
-	border-top: 1px solid #666;
-	text-align: center;
-	margin-top: 0;
-}
-
 #sidebarFinder {
     background-color: #fff;
     width: 185px;
     float: right;
     margin: 0em;
-    padding: 1em 0em;
+    padding: 0em;
     
 }
 
@@ -368,7 +361,17 @@ nav {
 	text-decoration: none;
 }
 
-
+.criteria h2 {
+	background: #FFF;
+	color: #555;
+	font-size: 1em;
+//	font-weight: bold;
+	text-transform: none;
+	padding: 4px 0px;
+	border-top: 1px solid #666;
+	text-align: center;
+	margin-top: 0;
+}
 
 /*MainContent with aside on left*/
 	
@@ -378,13 +381,12 @@ nav {
 	margin: 0px;
 	font-size: 0.8em;
 	line-height: 1.4em;
-	padding: 1em 0em;
+	padding-bottom: 1em;
 }
 
 #mainContent h1 {
 	font-size: 1.8em;
 	padding-bottom: .5em;
-	line-height: 1.2em;
 }
 
 #mainContent h3 {

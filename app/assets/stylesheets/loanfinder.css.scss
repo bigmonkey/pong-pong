@@ -65,6 +65,8 @@
 		}
 	}	
 	.loanFinderState:hover {
+		background: $bigColor;
+		color: $pageBackground;
 		box-shadow: 0 0 5px rgba(102, 102, 102, 0.6);
 		-webkit-box-shadow: 0 0 5px rgba(102, 102, 102, 0.6);
 		-moz-box-shadow: 0 0 5px rgba(102, 102, 102, 0.6);						

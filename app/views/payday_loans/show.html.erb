@@ -21,11 +21,15 @@
 
 		<% if !@paid_lenders.blank? %>
 		<div>The Payday Hound Top Picks</div>
+		<div>This many lenders: <%= @paid_lenders.count %></div>
+		<div id = "lenderContent" >
 			<% @paid_lenders.each do |p| %>
 				<% @lender = p %>
 				<%= render(partial: "lenders/lender_introbox") %>
 			<% end %>
+		</div>	
 		<% end %>
+
 		<h1><%= "#{@state.state}" %></br><%= @keyword.phrase.titleize %></h1>
 		<div>
 			<% case @paydaylawstate.legal_status_summary %>
