@@ -6,6 +6,9 @@ class PaydayLoansController < ApplicationController
   
 
   def index
+    # in application_controller
+    set_seo_vars
+    
     # params[:state] must come in as Upcase otherwise styles get mixed up because
     # form will set id to state_id for Idaho and that conflicts with 
     # select form on _shared/paydayfinder
@@ -17,8 +20,7 @@ class PaydayLoansController < ApplicationController
 		@criteria.sniff_id = Sniff.find_by_sniff_score(3).id
    	@criteria.ranking = 0
     # for customizing articles for SEO
-    # in application_controller
-    set_seo_vars
+
 
   end
 
