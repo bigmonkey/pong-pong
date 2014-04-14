@@ -314,7 +314,9 @@ describe "Payday Loan Pages" do
         end       
         visit "/payday-loans/tx" 
       }
-      it { should have_content("Top Picks") }
+      it { should have_content("#1 TX Payday Loans") }
+      it { should have_content("#2 TX Payday Loans") }
+
     end
 
     context "Paid Lenders Do Not Exist in TX" do      
@@ -327,7 +329,7 @@ describe "Payday Loan Pages" do
         end       
         visit "/payday-loans/tx" 
       }
-      it { should_not have_content("Top Picks") }
+      it { should_not have_content("#1 TX Payday Loans") }
     end
 
     after(:all){

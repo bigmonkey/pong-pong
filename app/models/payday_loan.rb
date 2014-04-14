@@ -31,7 +31,7 @@ class PaydayLoan < ActiveRecord::Base
     end    
 
     def self.paid
-        where(active: :true)
+        where(paid: :true)
     end    
 
     def self.sniff_level(level)

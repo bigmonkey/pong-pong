@@ -1,5 +1,8 @@
+		<% if !state.blank? %>
+		<div class = "lenderIntroBoxesStateTitle"><%= "##{i+1} #{state.state_abbr} #{keyword.word.titleize}"%></div>
+		<% end %>
+
 		<div id = "lenderIntroBoxes">
-			
 			<div class = "lenderIntroBoxLeft">		
 				<h1><%= @lender.name %></h1>
 				<div class = "lenderStars"><%= image_tag("rankings/Payday-Loan-Rank-Star-#{@lender.ranking.round}.png") %></div>

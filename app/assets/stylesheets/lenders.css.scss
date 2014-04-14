@@ -195,7 +195,12 @@ td .instantDecision {
 	margin: 0px auto;
 }
 
-
+.lenderIntroBoxesStateTitle {
+	background: $bigColor;
+	color: $pageBackground;
+	font-size: 1em;
+	padding: .1em .3em;
+}
 #lenderIntroBoxes{
 	//width: 99%;
 	background: $peach;

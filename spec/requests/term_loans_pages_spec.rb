@@ -298,6 +298,34 @@ describe "Installment Loan Pages" do
       it_should_behave_like "all installment loan pages"
     end
 
+    context "Paid Lenders Exist in TX" do      
+      before {
+        @keyword = Keyword.find_by_word("installment loans")
+        paid_state_lenders = 2
+        paid_state_lenders.times do 
+          state_lender = FactoryGirl.create(:term_loan, paid: true, partner_id: FactoryGirl.create(:partner).id)
+          FactoryGirl.create(:states_term_loan, term_loan_id: state_lender.id, state_id: State.find_by_state_abbr("TX").id)
+        end       
+        visit "/installment-loans/tx" 
+      }
+      it { should have_content("#1 TX Installment Loans") }
+      it { should have_content("#2 TX Installment Loans") }
+
+    end
+
+    context "Paid Lenders Do Not Exist in TX" do      
+      before {
+        @keyword = Keyword.find_by_word("installment loans")
+        paid_state_lenders = 2
+        paid_state_lenders.times do 
+          state_lender = FactoryGirl.create(:term_loan, paid: true, partner_id: FactoryGirl.create(:partner).id)
+          FactoryGirl.create(:states_term_loan, term_loan_id: state_lender.id, state_id: State.find_by_state_abbr("VA").id)
+        end       
+        visit "/installment-loans/tx" 
+      }
+      it { should_not have_content("#1 TX Installment Loans") }
+    end
+
     context "Military Loans" do
       before { 
         FactoryGirl.create(
