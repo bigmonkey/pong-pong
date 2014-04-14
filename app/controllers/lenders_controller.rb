@@ -7,7 +7,7 @@ class LendersController < ApplicationController
   before_filter :set_tracking
   
   def index
-    redirect_to("http://www.thepaydayhound.com/payday-loans/")
+    redirect_to(payday_loans_path)
   end
 
   def finder
@@ -22,12 +22,18 @@ class LendersController < ApplicationController
   def show
     #comes from wordpress lender pages
     @lender = nil
-    if !params[:id].nil?
-      if !PaydayLoan.find_by_review_url(params[:id]).nil?
+    if ["payday","term"].include?(params[:type])
+      if params[:type]=="payday"
         @lender=PaydayLoan.find_by_review_url(params[:id])
-      else !TermLoan.find_by_review_url(params[:id]).nil?
+      else  
         @lender=TermLoan.find_by_review_url(params[:id])
       end
-    end      
+    else
+      if !TermLoan.find_by_review_url(params[:id]).nil?
+        @lender=TermLoan.find_by_review_url(params[:id])
+      else !PaydayLoan.find_by_review_url(params[:id]).nil?
+        @lender=PaydayLoan.find_by_review_url(params[:id])
+      end  
+    end
   end
 end

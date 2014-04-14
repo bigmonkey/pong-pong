@@ -1,19 +1,19 @@
-<div class = "lenderIntroBoxes">
-	<h1><%= @lender.name %></h1>
-	<div class = "lenderIntroBox lenderLeft">
+		<div id = "lenderIntroBoxes">
+			
+			<div class = "lenderIntroBoxLeft">		
+				<h1><%= @lender.name %></h1>
+				<div class = "lenderStars"><%= image_tag("rankings/Payday-Loan-Rank-Star-#{@lender.ranking.round}.png") %></div>
+				<div class = "lenderRating">The Payday Hound Rating</div>
+				<ul>
+					<li><%= @lender.first_comment %></li>
+					<li><%= @lender.second_comment %></li>
+					<li><%= @lender.third_comment %></li>
+				</ul>			
 
-		<div class = "lenderStars"><%= image_tag("rankings/Payday-Loan-Rank-Star-#{@lender.ranking.round}.png") %></div>
-		<div class = "lenderRating">The Payday Hound Rating</div>
-		<ul>
-			<li><%= @lender.first_comment %></li>
-			<li><%= @lender.second_comment %></li>
-			<li><%= @lender.third_comment %></li>
-		</ul>	
+			</div>
+			<div class = "lenderIntroBoxRight">		
 
-	</div>
-	<div class = "lenderIntroBox lenderRight">
-
-		<div><%= link_to(image_tag("lendersbig/#{@lender.image_file_big}", :alt => @lender.name ), partner_path(@lender.partner_id), :rel => 'nofollow', :page => @page, :target => 'blank')  %></div>
-		<div class = "lenderApply"><%= link_to('Apply Direct', partner_path(@lender.partner_id), :rel => 'nofollow', :page => @page, :target => 'blank') %></div>
-	</div>
-</div>
+				<div class = "lenderImage"><%= link_to(image_tag("lendersbig/#{@lender.image_file_big}", :alt => @lender.name ), partner_path(@lender.partner_id), :rel => 'nofollow', :target => 'blank')  %></div>
+				<div class = "lenderApply"><%= link_to('Apply Direct', partner_path(@lender.partner_id), :rel => 'nofollow', :target => 'blank') %></div>
+			</div>
+		</div>
