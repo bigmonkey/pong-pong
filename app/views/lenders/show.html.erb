@@ -1,7 +1,7 @@
 <% # title and description for seo %>
 <% content_for :seotags do %>
 <title><%= "#{@lender.name.titleize} Review | The Payday Hound" %></title>
-<meta name="description" content= "<%= "Review of #{@lender.name}'s rates, fees, licenses. Search for the lowest fees. Apply direct. Get the best rates at The Payday Hound." %>" />
+<meta name="description" content= "<%= "#{@lender.name} review. Compare rates, fees, licenses. Search for the lowest fees. Apply direct. Save money at The Payday Hound." %>" />
 <% end %>
 
 <aside id ="sidebarFinder">	
@@ -18,7 +18,7 @@
 		<div id = "lenderIntroBoxes">
 			
 			<div class = "lenderIntroBoxLeft">		
-				<h1><%= @lender.name %></h1>
+				<h1><%= @lender.name.titleize %></h1>
 				<div class = "lenderStars"><%= image_tag("rankings/Payday-Loan-Rank-Star-#{@lender.ranking.round}.png") %></div>
 				<div class = "lenderRating">The Payday Hound Rating</div>
 				<ul>
@@ -90,8 +90,8 @@
 			<div class = "lenderBottomSmallBox">
 				<div class = "lenderBoxTitle">Estimated Costs</div>
 				<div class = "lenderBoxHighlight"><%= !@lender.cost.nil? ? number_to_currency(@lender.cost) : "?" %> / <%= !@lender.apr.nil? ? number_to_percentage(@lender.apr*100, :precision => 0) : "?" %> apr</div>
-				<div class = "lenderBoxSubtitle"><%= number_to_currency(@lender.loan_amt, :precision => 0) %>, <%= (@lender.payments * @lender.pmt_freq_in_days).ceil %> day loan</div>
-				<div class = "lenderBoxSubtitle">Fees and terms may vary. This is an estimate only.<br /> See <%= link_to("#{@lender.name}", partner_path(@lender.partner_id), :rel => 'nofollow', :page => @page, :target => 'blank') %> for actual rates.</div>
+				<div class = "lenderBoxSubtitle"><%= !@lender.loan_amt.nil? ? number_to_currency(@lender.loan_amt, :precision => 0) : "?" %>, <%= ( !@lender.payments.nil? || !@lender.pmt_freq_in_days.nil?) ? (@lender.payments * @lender.pmt_freq_in_days).ceil : "?" %> day loan</div>
+				<div class = "lenderBoxSubtitle">Fees and terms may vary. This is an estimate only.<br /> See <%= link_to("#{@lender.name}", partner_path(@lender.partner_id), :rel => 'nofollow', :target => 'blank') %> for actual rates.</div>
 			</div>
 			<div class = "lenderBottomSmallBox">
 				<div class = "lenderBoxTitle"><%= @lender.name %> States</div>

@@ -320,7 +320,14 @@ nav {
     float: right;
     margin: 0em;
     padding: 0em;
-    
+    h3 {
+    	a, a:link, a:visited {
+    		color: $bigColor;
+    	}
+    	a:hover, a:active {
+    		color: $highColor;
+    	}
+    }
 }
 
 #sidebarWhyPDH h2{
@@ -353,11 +360,11 @@ nav {
 }
 
 #sidebarFinder a, #sidebarFinder a:link, #sidebarFinder a:visited {
-	color: #666;
+	color: $boxBackgroundVeryDark;
 }
 
 #sidebarFinder a:hover, #sidebarFinder a:active {
-	color: #E58D1F;
+	color: $highColor;
 	text-decoration: none;
 }
 
