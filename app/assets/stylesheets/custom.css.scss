@@ -1,12 +1,14 @@
 /*variables */
 $mainColor: #666;
-$bigColor: #0E8B4D; /*headers, menu */
+$bigColor: #669966; /*GREEN headers, menu 0E8B4D*/
 $highColor: #E58D1F; /* ORANGE hover, secondary headers */
 $softColor: #888; // used like bold
 $pageBackground: #fff; /* page background color */
 $contentBackground: #fff; /* content background */
 $boxBackground: #eee; /* highlight boxes */
+$boxBackgroundSlightDark: #ddd;
 $boxBackgroundDarker: #bbb; /* highlight boxes darker */
+$boxBackgroundVeryDark: #888; /* highlight boxes veeeerry dark */
 $dogFur: #e0a03e; /*color of our dogs fur */
 $dogEars: #d85936; /* color of our dogs ears */
 $peach: #F7ECD2; /* peach background color */
@@ -17,6 +19,12 @@ $peach: #F7ECD2; /* peach background color */
   -webkit-border-radius: $radius;
 }
 
+@mixin scaleradio($scale){
+	transform: ($scale);
+	-moz-transform: scale($scale);
+	-webkit-transform: scale($scale);
+}
+			
 
 /*limited reset*/
 html, body, div, section, article, aside, header, hgroup, footer,nav , h1, h2, h3, h4, h5, h6, p, blockquote, address, time, span, em, strong, img, ol, ul, li, q, figure, canvas, video, th, td, tr, form {
@@ -62,7 +70,7 @@ tr {
 }
 
 h1, h2 {
-	color: #0E8B4D;
+	color: $bigColor;
 }
 
 h2 {
@@ -105,13 +113,19 @@ form button {
 	background: transparent;
 }
 
+.navSpacer{
+	height: 65px;
+	width: 50%;
+	float:right;
+	background: $boxBackground;
+}
 nav {
 	background-color: $boxBackground;
-	width: 820px;
-	margin-top:60px;
+	width: 50%;
+	//margin-top:65px;
 	height: 30px;
 	float: right;
-	@include rounded(15px)
+	//@include rounded(15px)
 }
 
 #hamburger {
@@ -121,7 +135,7 @@ nav {
     list-style:none;
     margin-bottom:10px;
     float:right;
-    width:100%;
+    //width:100%;
     padding-right: 14px;
 }
 #nav li {
@@ -144,7 +158,7 @@ nav {
 
 
 #nav ul{
-    background:$boxBackground; 
+    background:$boxBackgroundSlightDark; 
     list-style:none;
     position:absolute;
     top:-9999px; 
@@ -156,23 +170,23 @@ nav {
 
 #nav li ul {
 	font-size: .7em;
-	border-radius: 0px 0px 15px 15px;
+	//border-radius: 0px 0px 15px 15px;
 }
 
 #nav li:hover ul{
-		background: $boxBackground;
+		background: $boxBackgroundSlightDark;
     position: relative;
     top:0; 
 }
 
 #nav li:hover a:hover{
     background:$bigColor;
-    @include rounded (15px)
+    //@include rounded (15px)
 }
 
 #nav ul li a:hover{
     background:$bigColor;
-    @include rounded (15px);
+    //@include rounded (15px);
 }
 
 #nav li.navApply {
@@ -194,9 +208,9 @@ nav {
 		font-size: 1.1em;
 		background: $highColor;  
 		display: block;
-		border-radius: 0px 0px 5px 5px;
-	  -moz-border-radius: 0px 0px 5px 5px;
-	  -webkit-border-radius: 0px 0px 5px 5px;		
+		//border-radius: 0px 0px 5px 5px;
+	  //-moz-border-radius: 0px 0px 5px 5px;
+	  //-webkit-border-radius: 0px 0px 5px 5px;		
   }
 }
 
@@ -217,9 +231,11 @@ nav {
 	width: 1000px;
 	min-height: 750px;
   margin: 0 auto;
-  padding: 0 1em;
+  padding: 0;
   background-color: $contentBackground;
   overflow: hidden;
+  position: relative;
+  top:-95px;
 }
 
 .center {
@@ -229,15 +245,30 @@ nav {
 /*header*/
 
 #mainHeaderOutter {
-	border-bottom: 2px solid $boxBackground;
+/* 	border-bottom: 2px solid $boxBackground;
 	position: absolute;
 	top: 79px;
 	left: 0;
-	width: 100%;
+	width: 100%; */
+//	position:absolute;
+	height: 95px;
+	width:100%;
+	background: $boxBackground;
 	}
 
 #logo { 
 	float: left;
+	background: $boxBackground;
+	width:50%;
+	height: 95px;
+	img {
+		margin-top: 6px;
+	}
+}
+
+.spacerUnderNav {
+	clear: both;
+	height: 2em;
 }
 
 
@@ -257,27 +288,46 @@ nav {
 	display: none;
 }
 
-/*sidebar Finders*/
+/*sidebar */
 
-.criteria h2 {
-	background: #FFF;
-	color: #555;
-	font-size: 1em;
-//	font-weight: bold;
-	text-transform: none;
-	padding: 4px 0px;
-	border-top: 1px solid #666;
+.sidebarPDH {
+	background: $boxBackground;
+	color: $softColor;
 	text-align: center;
-	margin-top: 0;
+	padding: 1em .5em;
+	margin: 0;
+	h3 { 
+		font-size: 1.2em;
+		color: $bigColor;
+	}
+	h4 {
+		font-size: .8em;
+		color: $bigColor;
+		padding-bottom: 1em;
+		margin-bottom: 1em;
+		border-bottom: 1px solid $pageBackground;
+	}
+	p { 
+		font-size: .8em;
+		text-align: center;
+		margin: 1.5em 0em;
+	}
 }
 
 #sidebarFinder {
     background-color: #fff;
     width: 185px;
-    float: left;
-    margin: 0px 15px 0px 0px;
-    padding: 1em 0em;
-    
+    float: right;
+    margin: 0em;
+    padding: 0em;
+    h3 {
+    	a, a:link, a:visited {
+    		color: $bigColor;
+    	}
+    	a:hover, a:active {
+    		color: $highColor;
+    	}
+    }
 }
 
 #sidebarWhyPDH h2{
@@ -310,25 +360,35 @@ nav {
 }
 
 #sidebarFinder a, #sidebarFinder a:link, #sidebarFinder a:visited {
-	color: #666;
+	color: $boxBackgroundVeryDark;
 }
 
 #sidebarFinder a:hover, #sidebarFinder a:active {
-	color: #E58D1F;
+	color: $highColor;
 	text-decoration: none;
 }
 
-
+.criteria h2 {
+	background: #FFF;
+	color: #555;
+	font-size: 1em;
+//	font-weight: bold;
+	text-transform: none;
+	padding: 4px 0px;
+	border-top: 1px solid #666;
+	text-align: center;
+	margin-top: 0;
+}
 
 /*MainContent with aside on left*/
 	
 #mainContent {
 	width: 770px;
-	float: right;
+	float: left;
 	margin: 0px;
 	font-size: 0.8em;
 	line-height: 1.4em;
-	padding: 1em 0em;
+	padding-bottom: 1em;
 }
 
 #mainContent h1 {
@@ -392,7 +452,7 @@ nav {
 }
 
 #selectorStateBox {
-	@include rounded(5px);
+	//@include rounded(5px);
 	margin: 0;
 	background: $boxBackgroundDarker;
 	overflow: hidden;
@@ -413,7 +473,7 @@ nav {
 	font-size: .9em;
 	height: 17px;
 	line-height: 17px;
-	@include rounded(10px);
+	//@include rounded(10px);
 	border: solid 0px #fff;
 	a, a:link, a:visited {
 		color: #fff;
@@ -502,6 +562,12 @@ footer {
 .show_728x90 {
 	margin: 1em 0;
 	text-align: center;
+}
+
+.show_160x600 {
+	margin: .5em 0;
+	text-align: center;
+	display: none;
 }
 // debugging styles
 .debug_dump {

@@ -13,10 +13,12 @@
 
 	<div id = "wrapper">
 
+		
 		<div id="logo"><%= link_to(image_tag("thepaydayhound-logo.png", :alt => "logo" ), "/")%></div>
-
+		<div class = "navSpacer"></div>
 		<nav>
 				<div><a href="javascript:TogNav()" id="hamburger">&#9776;</a></div>
+
 				<ul id="nav">
 			    <li class = "navApply">
 			        <%= link_to("Apply", applicants_path ) %>
@@ -50,19 +52,19 @@
 			    </li>			
 				</ul>
 		</nav>
-	
-	<section id = "applicationDropContainer">
-		<% #	Uncomment to include dropdown application %>
+		<div class = "spacerUnderNav"></div>
+		<section id = "applicationDropContainer">
+			<% #	Uncomment to include dropdown application %>
 
   		<% # render 'shared/application/applicationFinder' %>
-	</section>
+		</section>
 
 
-<!-- everything between header and footer -->
+		<!-- everything between header and footer -->
 
-	<%= yield %>
+		<%= yield %>
 
-<!-- wrap everything between header and footer -->		
+		<!-- wrap everything between header and footer -->		
 	</div> <!-- end wrapper div -->
 
 

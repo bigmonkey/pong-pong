@@ -1,0 +1,29 @@
+		<% if !state.blank? %>
+		<div class = "lenderIntroBoxesStateTitle"><%= "##{i+1} Payday Hound Pick -- #{state.state_abbr} #{keyword.word.titleize}"%></div>
+		<% end %>
+
+		<div id = "lenderIntroBoxes">
+			<div class = "lenderIntroBoxLeft">	
+				<% # if lender is on state page header needs to be h2 %>
+				<% # if lender is on lender page it's h1 %>
+				<% if !state.blank? %>	
+					<h2><%= @lender.name %></h2>
+				<% else %>
+					<h1><%= @lender.name %></h1>
+				<% end %>	
+
+				<div class = "lenderStars"><%= image_tag("rankings/Payday-Loan-Rank-Star-#{@lender.ranking.round}.png") %></div>
+				<div class = "lenderRating">The Payday Hound Rating</div>
+				<ul>
+					<li><%= @lender.first_comment %></li>
+					<li><%= @lender.second_comment %></li>
+					<li><%= @lender.third_comment %></li>
+				</ul>			
+
+			</div>
+			<div class = "lenderIntroBoxRight">		
+
+				<div class = "lenderImage"><%= link_to(image_tag("lendersbig/#{@lender.image_file_big}", :alt => @lender.name ), partner_path(@lender.partner_id), :rel => 'nofollow', :target => 'blank')  %></div>
+				<div class = "lenderApply"><%= link_to('Apply Direct', partner_path(@lender.partner_id), :rel => 'nofollow', :target => 'blank') %></div>
+			</div>
+		</div>

@@ -7,7 +7,8 @@ class PaydayLoan < ActiveRecord::Base
     has_many :states, through: :payday_loans_states
     accepts_nested_attributes_for :payday_loans_states, allow_destroy: true
    
-
+    has_many :banners, as: :bannerable
+    
     #has_and_belongs_to_many :states
 
     validates :partner_id, presence: true
@@ -27,6 +28,10 @@ class PaydayLoan < ActiveRecord::Base
 
     def self.active_lender
         where(active: :true)
+    end    
+
+    def self.paid
+        where(paid: :true)
     end    
 
     def self.sniff_level(level)

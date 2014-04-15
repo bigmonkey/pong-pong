@@ -1,0 +1,44 @@
+
+
+
+<div id = "loanFinder">
+	<% if !@keyword.nil? # payday and term loans will have this populated %>
+	<div class = "loanFinderTitle"><%= @keyword.word.titleize %> Finder</div>
+	<% #Select your state to see lenders offering loans in your state.</p> %>
+	<% else #state laws page will be nil %>
+	<div>Finding a Loan Made Simple</div>
+	<% end %>
+
+	<div class = "loanFinderPuppyBlurb">
+		<ul>
+			<li>Screened for Higher Acceptance Rates</li>
+			<li>Ranked for Reduced Fees</li>
+			<li>Select Your State and Get Cash</li>
+		</ul>
+	</div>
+	<div class = "loanFinderBox">
+		<div class = "loanFinderSelectBox">	
+			<%= form_tag({action: 'index'}, method: 'get') do %>	
+
+					<% @states.each_slice(10) do |slice| %>
+					<div class = "loanFinderStatesCol">
+						<% slice.each do |s| %>
+							<div class = "loanFinderState">
+								<label >
+								<%= radio_button_tag(:state, s.state_abbr) %> 
+								<%= s.state %>
+								</label>
+							</div>						
+						<% end %>
+					</div>
+					<% end %>	
+
+						<div class = "loanFinderButtonBox"><%= submit_tag "Get the Best Rates", id: "loanFinderButton" %></div>
+
+			<% end %>
+		</div>
+	</div>
+</div>
+<div class = "clearboth">	<%= @path %></div>
+
+

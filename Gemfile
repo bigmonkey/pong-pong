@@ -14,16 +14,19 @@ group :test do
   gem 'launchy', '2.4.2'
   gem 'faker', '1.1.2'
   gem "database_cleaner", "1.2.0"
+  gem 'factory_girl_rails', '4.4.0' 
+  gem 'shoulda'
   #gem 'guard-rspec', '2.5.0'
 end
 
 group :development, :test do
-  gem 'factory_girl_rails', '4.4.0' 
+
 	gem 'rspec-rails', '2.14.1'
   #gem 'spork-rails', '4.0.0' 	
   gem "pry", "0.9.12.6"  
   gem "pry-nav", "0.2.3"  
 end
+
 
 
 # use unicorn for production and ubuntu
@@ -39,6 +42,7 @@ gem 'devise','3.2.3'
 gem 'activeadmin', github: 'gregbell/active_admin'
 
 gem 'sass-rails',   '4.0.1'
+gem 'sprockets', '2.11.0'
 gem 'coffee-rails', '4.0.1'
 
 gem 'uglifier', '2.1.1'
@@ -49,6 +53,12 @@ gem 'nokogiri', '1.6.0'
 gem 'figaro', '0.7.0'  # used to conceal pw's and things. use rake figaro:heroku to push pw to heroku
 
 gem 'rails_12factor', '0.0.2', group: :production
+
+# used to upload images
+gem 'paperclip', '4.1.1'
+
+# Used by paperclip to store onto AWS S3
+gem "aws-sdk", "1.38.0"
 
 # to get heroku db:push to work need taps
 # gem 'sqlite3'

@@ -7,7 +7,7 @@ describe "Secured Card Pages" do
   	# payday app menu is not showing
     it { should_not have_content('application [+]') }
     # sidebar
-    it { should have_link('Why Use Us', href:"/why-use-the-payday-hound/") }
+    it { should have_link('Find Pre-Approved Lenders Instantly', href:"/why-use-the-payday-hound/") }
     # Nav Bar
     it { should have_link('Learn', href:'#')}
     # check for footer

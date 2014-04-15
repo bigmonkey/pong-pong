@@ -105,6 +105,22 @@ describe TermLoansController do
 			assigns(:criteria).ranking.should eq(2)
 		end
 
+		it "selects paid lenders for that state" do
+			FactoryGirl.create(:term_loan) 
+			FactoryGirl.create(:term_loan, paid:true) 
+			state = FactoryGirl.create(:state)
+			paid_state_lenders = 2
+			paid_state_lenders.times do 
+				state_lender = FactoryGirl.create(:term_loan, paid: true)
+				FactoryGirl.create(:states_term_loan, term_loan_id: state_lender.id, state_id: state.id)
+			end
+			get :show, id: state.state_abbr.downcase
+			assigns(:paid_lenders).count.should eq(paid_state_lenders)
+		end
+
 	end
+
+	# "all controlers that set tracking" is in spec/support/shared_controller_tests
+  it_should_behave_like "all controllers that set tracking"
 
 end

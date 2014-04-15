@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140324005237) do
+ActiveRecord::Schema.define(version: 20140401195515) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,6 +30,49 @@ ActiveRecord::Schema.define(version: 20140324005237) do
   add_index "active_admin_comments", ["author_type", "author_id"], name: "index_active_admin_comments_on_author_type_and_author_id", using: :btree
   add_index "active_admin_comments", ["namespace"], name: "index_active_admin_comments_on_namespace", using: :btree
   add_index "active_admin_comments", ["resource_type", "resource_id"], name: "index_active_admin_comments_on_resource_type_and_resource_id", using: :btree
+
+  create_table "advertiser_loans", force: true do |t|
+    t.integer  "sniff_id"
+    t.integer  "partner_id"
+    t.string   "name",                                     default: ""
+    t.boolean  "active"
+    t.string   "lender_type"
+    t.string   "image_file"
+    t.decimal  "ranking",          precision: 3, scale: 1
+    t.string   "first_comment"
+    t.string   "second_comment"
+    t.string   "third_comment"
+    t.string   "review_url"
+    t.string   "since"
+    t.string   "governing_law",                            default: ""
+    t.boolean  "BBB_accredit"
+    t.string   "BBB_score"
+    t.integer  "BBB_complaints"
+    t.integer  "BBB_unresponded"
+    t.string   "max_loan",                                 default: ""
+    t.boolean  "spanish"
+    t.boolean  "state_lic"
+    t.boolean  "privacy_policy"
+    t.boolean  "https"
+    t.boolean  "phone_contact"
+    t.boolean  "live_chat"
+    t.decimal  "loan_amt",         precision: 6, scale: 2
+    t.decimal  "payments",         precision: 4, scale: 1
+    t.decimal  "pmt_freq_in_days", precision: 5, scale: 1
+    t.decimal  "pmt_amt",          precision: 7, scale: 2
+    t.decimal  "cost",             precision: 7, scale: 2
+    t.decimal  "apr",              precision: 3, scale: 2
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.text     "full_desc"
+    t.string   "image_file_big"
+    t.string   "bbb_link"
+    t.string   "link1_desc"
+    t.string   "link1"
+    t.string   "link2_desc"
+    t.string   "link2"
+    t.boolean  "paid"
+  end
 
   create_table "applicants", force: true do |t|
     t.string   "token"
@@ -64,6 +107,20 @@ ActiveRecord::Schema.define(version: 20140324005237) do
     t.integer  "page_views"
     t.string   "time_on_site"
     t.string   "exit_page"
+  end
+
+  create_table "banners", force: true do |t|
+    t.integer  "partner_id"
+    t.string   "name"
+    t.decimal  "rotation_rank"
+    t.integer  "bannerable_id"
+    t.string   "bannerable_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "size_160x600_file_name"
+    t.string   "size_160x600_content_type"
+    t.integer  "size_160x600_file_size"
+    t.datetime "size_160x600_updated_at"
   end
 
   create_table "borrowers", force: true do |t|
@@ -223,6 +280,7 @@ ActiveRecord::Schema.define(version: 20140324005237) do
     t.string   "link1"
     t.string   "link2_desc"
     t.string   "link2"
+    t.boolean  "paid"
   end
 
   create_table "payday_loans_states", force: true do |t|
@@ -374,6 +432,7 @@ ActiveRecord::Schema.define(version: 20140324005237) do
     t.string   "link1"
     t.string   "link2_desc"
     t.string   "link2"
+    t.boolean  "paid"
   end
 
   create_table "users", force: true do |t|

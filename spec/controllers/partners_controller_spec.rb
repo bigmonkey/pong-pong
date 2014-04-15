@@ -99,4 +99,5 @@ describe PartnersController do
 			Applicant.destroy_all
 		}
 	end
+	
 end

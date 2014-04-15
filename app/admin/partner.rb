@@ -18,6 +18,7 @@ ActiveAdmin.register Partner do
                 :name
 
   index do 
+    column :id
     column :name
     column :lender_link
     column :lender_tail

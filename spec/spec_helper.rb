@@ -9,6 +9,7 @@ require 'capybara/rspec'
 # CW commented out.
 require 'database_cleaner'
 
+require 'shoulda'
 # Requires supporting ruby files with custom matchers and macros, etc,
 # in spec/support/ and its subdirectories.
 Dir[Rails.root.join("spec/support/**/*.rb")].each { |f| require f }
@@ -52,4 +53,8 @@ RSpec.configure do |config|
 
   # Added by CW to include Capybara in request specs
   config.include Capybara::DSL   
+
+  # Added by CW to test ActiveAdmin controllers
+  config.include Devise::TestHelpers, :type => :controller
+  
 end

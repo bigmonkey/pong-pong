@@ -1,98 +1,94 @@
-<% if @lender.nil? %>
-We have not reviewed this lender.
-<% else %>
+<% # title and description for seo %>
+<% content_for :seotags do %>
+<title><%= "#{@lender.name} Review | The Payday Hound" %></title>
+<meta name="description" content= "<%= "#{@lender.name} review. Compare rates, fees, licenses. Search for the lowest fees. Apply direct. Save money at The Payday Hound." %>" />
+<% end %>
 
-<div class = "lenderIntroBoxes">
-	<h1><%= @lender.name %></h1>
-	<div class = "lenderIntroBox lenderLeft">
-		
-		<div class = "lenderStars"><%= image_tag("rankings/Payday-Loan-Rank-Star-#{@lender.ranking.round}.png") %></div>
-		<div class = "lenderRating">The Payday Hound Rating</div>
-		<ul>
-			<li><%= @lender.first_comment %></li>
-			<li><%= @lender.second_comment %></li>
-			<li><%= @lender.third_comment %></li>
-		</ul>	
+<aside id ="sidebarFinder">	
 
-	</div>
-	<div class = "lenderIntroBox lenderRight">
+	<%# render(:partial => "shared/sidebars/paydayfinder")%>
+  <%= render(:partial => "shared/sidebars/sidebar")%>	
 
-		<div><%= link_to(image_tag("lendersbig/#{@lender.image_file_big}", :alt => @lender.name ), partner_path(@lender.partner_id), :rel => 'nofollow', :page => @page, :target => 'blank')  %></div>
-		<div class = "lenderApply"><%= link_to('Apply Direct', partner_path(@lender.partner_id), :rel => 'nofollow', :page => @page, :target => 'blank') %></div>
-	</div>
-</div>
+</aside>
+<section id = "mainContent">
+	<% if @lender.nil? %>
+	We have not reviewed this lender.
+	<% else %>
+		<%= render(partial: "lenders/lender_introbox", locals: {state: ""} ) %>
+	
 
-<div class ="clearboth"></div>
+		<div class ="clearboth"></div>	
+			
 
-
-<div class = "lenderMiddleBoxes">
-	<div class = "lenderDescriptionBox">
-		<div class = "lenderBoxTitle"><%= @lender.name %> Description and Review</div>
-		<div class = "lenderBoxReview">
-			<div><%= raw(@lender.full_desc) %> </div>
-			<div>
-				<% if !@lender.bbb_link.nil? %>
-				<div><%= link_to('Better Business Bureau Page', @lender.bbb_link, :rel => 'nofollow', :target => 'blank') %></div>
-				<% end %>
-				<% if !@lender.link1.nil? %>
-				<div><%= link_to(@lender.link1_desc, @lender.link1, :rel => 'nofollow', :target => 'blank') %></div>
-				<% end %>
-				<% if !@lender.link2.nil? %>
-				<div><%= link_to(@lender.link2_desc, @lender.link2, :rel => 'nofollow', :target => 'blank') %></div>
-				<% end %>								
+		<div class = "lenderMiddleBoxes">
+			<div class = "lenderDescriptionBox">
+				<div class = "lenderBoxTitle"><%= @lender.name %> Description and Review</div>
+				<div class = "lenderBoxReview">
+					<div><%= raw(@lender.full_desc) %> </div>
+					<div>
+						<% if !@lender.bbb_link.nil? %>
+						<div><%= link_to('Better Business Bureau Page', @lender.bbb_link, :rel => 'nofollow', :target => 'blank') %></div>
+						<% end %>
+						<% if !@lender.link1.nil? %>
+						<div><%= link_to(@lender.link1_desc, @lender.link1, :rel => 'nofollow', :target => 'blank') %></div>
+						<% end %>
+						<% if !@lender.link2.nil? %>
+						<div><%= link_to(@lender.link2_desc, @lender.link2, :rel => 'nofollow', :target => 'blank') %></div>
+						<% end %>								
+					</div>
+				</div>	
 			</div>
-		</div>	
-	</div>
-</div>
+		</div>		
 
-<div class ="clearboth"></div>
+		<div class ="clearboth"></div>		
 
-<div class = "lenderBottomBoxes">
-	<div class = "lenderBottomBox lenderRight">
-		<div class = "lenderBoxTitle"><%= @lender.name %> Features</div>
-		<table>
-			<tr>
-				<td colspan = "2" class = "lenderTableTitle">LOAN FEATURES</td>
-			<tr>
-			<tr>
-				<td><%= @lender.max_loan %></td>
-				<td>Maximum First Loan</td>
-			</tr>	
-			<% # flips order to make scraping difficult %>
-			<% if rand < 0.5 %>
-				<%= render 'usabilityfirst' %>						
-			<% else %>
-				<%= render 'usabilitysecond' %>						
-			<% end %>	
-		</table>
-	</div>
+		<div class = "lenderBottomBoxes">
+			<div class = "lenderBottomBox lenderRight">
+				<div class = "lenderBoxTitle"><%= @lender.name %> Features</div>
+				<table>
+					<tr>
+						<td colspan = "2" class = "lenderTableTitle">LOAN FEATURES</td>
+					<tr>
+					<tr>
+						<td><%= @lender.max_loan %></td>
+						<td>Maximum First Loan</td>
+					</tr>	
+					<% # flips order to make scraping difficult %>
+					<% if rand < 0.5 %>
+						<%= render 'usabilityfirst' %>						
+					<% else %>
+						<%= render 'usabilitysecond' %>						
+					<% end %>	
+				</table>
+			</div>	
+			
 
+			<div class = "lenderBottomSmallBox">
+				<div class ="lenderBoxTitle">Sniff</div>
+				<div class = "lenderBoxHighlight"><%= @lender.sniff.sniff_desc %></div>
+				<div class = "lenderBoxSubtitle">GREAT, FAIR, or BAD</div>
+			</div>
+			<div class = "lenderBottomSmallBox">
+				<div class = "lenderBoxTitle">Estimated Costs</div>
+				<div class = "lenderBoxHighlight"><%= !@lender.cost.nil? ? number_to_currency(@lender.cost) : "?" %> / <%= !@lender.apr.nil? ? number_to_percentage(@lender.apr*100, :precision => 0) : "?" %> apr</div>
+				<div class = "lenderBoxSubtitle"><%= !@lender.loan_amt.nil? ? number_to_currency(@lender.loan_amt, :precision => 0) : "?" %>, <%= ( !@lender.payments.nil? || !@lender.pmt_freq_in_days.nil?) ? (@lender.payments * @lender.pmt_freq_in_days).ceil : "?" %> day loan</div>
+				<div class = "lenderBoxSubtitle">Fees and terms may vary. This is an estimate only.<br /> See <%= link_to("#{@lender.name}", partner_path(@lender.partner_id), :rel => 'nofollow', :target => 'blank') %> for actual rates.</div>
+			</div>
+			<div class = "lenderBottomSmallBox">
+				<div class = "lenderBoxTitle"><%= @lender.name %> States</div>
+				<div class = "lenderBoxStates">
+					<% @lender.states.by_state_abbr.each do |l|%>
+					<%= link_to(l.state_abbr, (@lender.lender_type == "term") ? term_loan_path(l.state_abbr.downcase) : payday_loan_path(l.state_abbr.downcase)) %>
+					<% end %>
+				</div>
+				<div class = "lenderBoxSubtitle">Find lenders in your <%= link_to('state', (@lender.lender_type == "term") ? term_loans_path : payday_loans_path) %></div>
+			</div>		
 
-	<div class = "lenderBottomSmallBox">
-		<div class ="lenderBoxTitle">Sniff</div>
-		<div class = "lenderBoxHighlight"><%= @lender.sniff.sniff_desc %></div>
-		<div class = "lenderBoxSubtitle">GREAT, FAIR, or BAD</div>
-	</div>
-	<div class = "lenderBottomSmallBox">
-		<div class = "lenderBoxTitle">Estimated Costs</div>
-		<div class = "lenderBoxHighlight"><%= !@lender.cost.nil? ? number_to_currency(@lender.cost) : "?" %> / <%= !@lender.apr.nil? ? number_to_percentage(@lender.apr*100, :precision => 0) : "?" %> apr</div>
-		<div class = "lenderBoxSubtitle"><%= number_to_currency(@lender.loan_amt, :precision => 0) %>, <%= (@lender.payments * @lender.pmt_freq_in_days).ceil %> day loan</div>
-		<div class = "lenderBoxSubtitle">Fees and terms may vary. This is an estimate only.<br /> See <%= link_to("#{@lender.name}", partner_path(@lender.partner_id), :rel => 'nofollow', :page => @page, :target => 'blank') %> for actual rates.</div>
-	</div>
-	<div class = "lenderBottomSmallBox">
-		<div class = "lenderBoxTitle"><%= @lender.name %> States</div>
-		<div class = "lenderBoxStates">
-			<% @lender.states.by_state_abbr.each do |l|%>
-			<%= link_to(l.state_abbr, (@lender.lender_type == "term") ? term_loan_path(l.state_abbr.downcase) : payday_loan_path(l.state_abbr.downcase)) %>
-			<% end %>
-		</div>
-		<div class = "lenderBoxSubtitle">Find lenders in your <%= link_to('state', (@lender.lender_type == "term") ? term_loans_path : payday_loans_path) %></div>
-	</div>
+		</div>		
 
-</div>
+		<div class = "clearboth"></div>		
 
-<div class = "clearboth"></div>
+		<%=  render(:partial => "shared/media_counters")%>	
 
-<%=  render(:partial => "shared/media_counters")%>
-
-<%end %>	
+	<%end %>	
+</section>	

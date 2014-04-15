@@ -4,7 +4,7 @@
 <div id = "selectorStateWrapper">
 	<% if !@keyword.nil? # payday and term loans will have this populated %>
 	<h2><%= @keyword.state_phrase.titleize %></h2>
-	<p>Select your state to see lenders offering loans in your state.</p>
+	<% #Select your state to see lenders offering loans in your state.</p> %>
 	<% else #state laws page will be nil %>
 	<h2>Lending Laws by State</h2>
 	<p>Select your state to see lending law and regulator information.</p>
