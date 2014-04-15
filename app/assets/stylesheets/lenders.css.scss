@@ -204,7 +204,7 @@ td .instantDecision {
 #lenderIntroBoxes{
 	//width: 99%;
 	background: $peach;
-	margin: 0em auto 3em;
+	margin: 0em auto 1em;
 	padding-top: 1em;
 	//border: 1px solid $boxBackground;
 	//@include rounded(5px);
@@ -369,4 +369,17 @@ td .instantDecision {
 	a, a:link, a:visited {
 		font-size: 1em;
 	}	
+}
+
+.lenderPaidDisclaimer {
+	color: $dogEars;
+	font-size: .9em;
+	text-align: center;
+	a, a:visited, a:link {
+		text-decoration: underline;
+		color: $dogEars
+	}
+	a:hover, a:active {
+		text-decoration: none;
+	}
 }

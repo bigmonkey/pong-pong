@@ -500,7 +500,7 @@ p.tableIntro {
 footer {
 	clear: both;
 	//background: $boxBackground;
-	margin-top: 5em;
+	margin-top: 3em;
 	padding: 4px 0px;
 }
 
@@ -550,8 +550,7 @@ footer {
 	height: 20px;
 }
 
-#disclaimer {
-	width: 980px;
+.disclaimer {
 	color: $boxBackgroundDarker;
   font-style: italic;
   margin: 10px auto;

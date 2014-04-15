@@ -1,7 +1,12 @@
 <% # title and description for seo %>
 <% content_for :seotags do %>
-<title><%= "#{@lender.name} Review | The Payday Hound" %></title>
-<meta name="description" content= "<%= "#{@lender.name} review. Compare rates, fees, licenses. Search for the lowest fees. Apply direct. Save money at The Payday Hound." %>" />
+	<% if @lender.nil? %>
+		<title><%= "Loan Review | The Payday Hound" %></title>
+		<meta name="description" content= "Loan reviews. Compare rates, fees, licenses. Search for the lowest fees. Apply direct. Save money at The Payday Hound." />
+	<% else %>
+		<title><%= "#{@lender.name} Review | The Payday Hound" %></title>
+		<meta name="description" content= "<%= "#{@lender.name} review. Compare rates, fees, licenses. Search for the lowest fees. Apply direct. Save money at The Payday Hound." %>" />
+	<% end %>
 <% end %>
 
 <aside id ="sidebarFinder">	
@@ -12,7 +17,7 @@
 </aside>
 <section id = "mainContent">
 	<% if @lender.nil? %>
-	We have not reviewed this lender.
+		We have not reviewed this lender or this lender does make <%= params[:type] %> loans. <%= link_to "Return to Home Page", homes_path %>
 	<% else %>
 		<%= render(partial: "lenders/lender_introbox", locals: {state: ""} ) %>
 	
@@ -21,28 +26,6 @@
 			
 
 		<div class = "lenderMiddleBoxes">
-			<div class = "lenderDescriptionBox">
-				<div class = "lenderBoxTitle"><%= @lender.name %> Description and Review</div>
-				<div class = "lenderBoxReview">
-					<div><%= raw(@lender.full_desc) %> </div>
-					<div>
-						<% if !@lender.bbb_link.nil? %>
-						<div><%= link_to('Better Business Bureau Page', @lender.bbb_link, :rel => 'nofollow', :target => 'blank') %></div>
-						<% end %>
-						<% if !@lender.link1.nil? %>
-						<div><%= link_to(@lender.link1_desc, @lender.link1, :rel => 'nofollow', :target => 'blank') %></div>
-						<% end %>
-						<% if !@lender.link2.nil? %>
-						<div><%= link_to(@lender.link2_desc, @lender.link2, :rel => 'nofollow', :target => 'blank') %></div>
-						<% end %>								
-					</div>
-				</div>	
-			</div>
-		</div>		
-
-		<div class ="clearboth"></div>		
-
-		<div class = "lenderBottomBoxes">
 			<div class = "lenderBottomBox lenderRight">
 				<div class = "lenderBoxTitle"><%= @lender.name %> Features</div>
 				<table>
@@ -72,7 +55,7 @@
 				<div class = "lenderBoxTitle">Estimated Costs</div>
 				<div class = "lenderBoxHighlight"><%= !@lender.cost.nil? ? number_to_currency(@lender.cost) : "?" %> / <%= !@lender.apr.nil? ? number_to_percentage(@lender.apr*100, :precision => 0) : "?" %> apr</div>
 				<div class = "lenderBoxSubtitle"><%= !@lender.loan_amt.nil? ? number_to_currency(@lender.loan_amt, :precision => 0) : "?" %>, <%= ( !@lender.payments.nil? || !@lender.pmt_freq_in_days.nil?) ? (@lender.payments * @lender.pmt_freq_in_days).ceil : "?" %> day loan</div>
-				<div class = "lenderBoxSubtitle">Fees and terms may vary. This is an estimate only.<br /> See <%= link_to("#{@lender.name}", partner_path(@lender.partner_id), :rel => 'nofollow', :target => 'blank') %> for actual rates.</div>
+				<div class = "lenderBoxSubtitle">FEES AND TERMS VARY BY STATE.<br /> See <%= link_to("#{@lender.name}", partner_path(@lender.partner_id), :rel => 'nofollow', :target => 'blank') %> for actual rates.</div>
 			</div>
 			<div class = "lenderBottomSmallBox">
 				<div class = "lenderBoxTitle"><%= @lender.name %> States</div>
@@ -82,12 +65,37 @@
 					<% end %>
 				</div>
 				<div class = "lenderBoxSubtitle">Find lenders in your <%= link_to('state', (@lender.lender_type == "term") ? term_loans_path : payday_loans_path) %></div>
-			</div>		
+			</div>	
+
+		</div>		
+
+		<div class ="clearboth"></div>		
+
+		<div class = "lenderBottomBoxes">
+			<div class = "lenderDescriptionBox">
+				<div class = "lenderBoxTitle"><%= @lender.name %> Description and Review</div>
+				<div class = "lenderBoxReview">
+					<div><%= raw(@lender.full_desc) %> </div>
+					<div>
+						<% if !@lender.bbb_link.nil? %>
+						<div><%= link_to('Better Business Bureau Page', @lender.bbb_link, :rel => 'nofollow', :target => 'blank') %></div>
+						<% end %>
+						<% if !@lender.link1.nil? %>
+						<div><%= link_to(@lender.link1_desc, @lender.link1, :rel => 'nofollow', :target => 'blank') %></div>
+						<% end %>
+						<% if !@lender.link2.nil? %>
+						<div><%= link_to(@lender.link2_desc, @lender.link2, :rel => 'nofollow', :target => 'blank') %></div>
+						<% end %>								
+					</div>
+				</div>	
+			</div>	
 
 		</div>		
 
 		<div class = "clearboth"></div>		
-
+		<% if @lender.paid %>
+		<div class = "lenderPaidDisclaimer">NOTE: We <%= link_to "may be compensated", '/infos/about/' %> by <%= @lender.name %> if you apply for loan from our site. The Payday Hound is 100% free to you. </div>
+		<% end %>
 		<%=  render(:partial => "shared/media_counters")%>	
 
 	<%end %>	

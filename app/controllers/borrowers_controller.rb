@@ -19,7 +19,7 @@ class BorrowersController < ApplicationController
   		redirect_to applicants_path  	
   	elsif	
 	  	 (params[:active_military]=="true") or (params[:bank_account_type]=="NONE") or (params[:eighteen]=="false")
-	  		@redirect = "http://usmilitary.about.com/od/millegislation/a/paydayloans.htm"
+	  		@redirect = "/military-loans/"
 	  		save_tracking
 	  		redirect_to(@redirect)
   	else	
@@ -90,7 +90,7 @@ class BorrowersController < ApplicationController
     when "create"
       "partner"
     else 
-      "homeNav"
+      "paydayNav"
     end
   end
 
