@@ -20,7 +20,8 @@
 		</div> -->
 		<% #end %>
 
-		<h1><%= "#{@state.state}" %></br><%= @keyword.phrase.titleize %></h1>		
+		<h1><%= "#{@state.state}" %></br><%= @keyword.phrase.titleize %></h1>	
+		<p><%= @path %></p>	
 		<% if !@paid_lenders.blank? %>
 			<% @paid_lenders.first(2).each_with_index do |p, i| %>
 				<% @lender = p %>

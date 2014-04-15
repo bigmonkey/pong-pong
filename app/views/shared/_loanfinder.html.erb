@@ -18,7 +18,7 @@
 	</div>
 	<div class = "loanFinderBox">
 		<div class = "loanFinderSelectBox">	
-			<%= form_tag({action: 'index'}, method: 'get') do %>	
+			<%= form_tag("http://www.thepaydayhound.com#{@path}/", method: 'get') do %>	
 
 					<% @states.each_slice(10) do |slice| %>
 					<div class = "loanFinderStatesCol">
