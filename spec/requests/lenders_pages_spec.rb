@@ -12,14 +12,14 @@ describe "Lender Pages" do
   } 
 
   shared_examples_for "all lender show pages" do
-    it { should have_title("#{@lender.name.titleize}") }
+    it { should have_title("#{@lender.name}") }
     # sidebar
     it { should have_link('Find Pre-Approved Lenders Instantly', href:"/why-use-the-payday-hound/") }
     # check for footer
     it { should have_link('About Us', href:"/why-use-the-payday-hound/")}
     # lender in description
     it { should have_css("meta[name='description'][content='#{@lender.name} review. Compare rates, fees, licenses. Search for the lowest fees. Apply direct. Save money at The Payday Hound.']", visible: false) }      
-    it { should have_selector('h1', text: "#{@lender.name.titleize}") }      
+    it { should have_selector('h1', text: "#{@lender.name}") }      
   end
 
   describe "Show Lender Pages" do

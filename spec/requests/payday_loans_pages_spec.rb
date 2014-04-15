@@ -7,7 +7,7 @@ describe "Payday Loan Pages" do
     # keyword in title
     it { should have_title("#{@keyword.word.titleize}") }
     # sidebar
-    it { should have_link('Why Use Us', href:"/why-use-the-payday-hound/") }
+    it { should have_link('Find Pre-Approved Lenders Instantly', href:"/why-use-the-payday-hound/") }
     # paday Nav Bar
     it { should have_link('Apply', href:"/get-payday-loan/")}
     # check for footer
@@ -29,7 +29,7 @@ describe "Payday Loan Pages" do
         PaydayLoan.all.each do |t|
           page.should have_content("Company Name")
           page.should have_selector('div', text: t.first_comment)
-          page.should have_link("see review", href: "/learn/#{t.review_url}/" )      
+          page.should have_link("see review", href: "/lenders/#{t.review_url}/?type=payday" )      
           page.should have_link("Apply Direct", href: "#{partner_path(t.partner_id)}/" )
         end  
       end
@@ -38,8 +38,6 @@ describe "Payday Loan Pages" do
   shared_examples_for "all state payday loan pages" do
       # keyword in description
       it { should have_css("meta[name='description'][content='Compare Texas #{@keyword.phrase}. Search for the lowest fees. Apply direct. Get the best rates in TX at The Payday Hound.']", visible: false) }      
-      # Loan Filter in Sidebar
-      it { should have_selector('h2', text: 'Loan Filter') }
       it { should have_selector('h1', text: 'Texas') }      
       it "should not have the state selector linking to 50 states" do  
         State.all.each do |s|
@@ -111,9 +109,7 @@ describe "Payday Loan Pages" do
       it_should_behave_like "all index payday loan pages"
       it_should_behave_like "all payday loan pages"
 
-      it "should show loan finder" do
-        page.should have_selector('h2', text: 'Top Picks')
-      end
+      it { should have_selector('div', text: "#{@keyword.word.titleize} Finder") }
 
     end  
 
@@ -294,7 +290,7 @@ describe "Payday Loan Pages" do
       }      
       it { should have_content("TX Lender") }
       it { should have_selector('div', text: @texaslender.first_comment) }        
-      it { should have_link("see review", href: "/learn/#{@texaslender.review_url}/" ) }         
+      it { should have_link("see review", href: "/lenders/#{@texaslender.review_url}/?type=payday" ) }        
       it { should have_link("Apply Direct", href: "/partners/#{@texaslender.partner_id}/") }
       it "should not show the VA lender" do 
         page.should_not have_link("Apply Direct", href: "/partners/#{@valender.partner_id}/")
@@ -314,8 +310,8 @@ describe "Payday Loan Pages" do
         end       
         visit "/payday-loans/tx" 
       }
-      it { should have_content("#1 TX Payday Loans") }
-      it { should have_content("#2 TX Payday Loans") }
+      it { should have_content("#1 Payday Hound Pick -- TX Payday Loans") }
+      it { should have_content("#2 Payday Hound Pick -- TX Payday Loans") }
 
     end
 

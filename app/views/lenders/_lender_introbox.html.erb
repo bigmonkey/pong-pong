@@ -1,10 +1,17 @@
 		<% if !state.blank? %>
-		<div class = "lenderIntroBoxesStateTitle"><%= "##{i+1} #{state.state_abbr} #{keyword.word.titleize}"%></div>
+		<div class = "lenderIntroBoxesStateTitle"><%= "##{i+1} Payday Hound Pick -- #{state.state_abbr} #{keyword.word.titleize}"%></div>
 		<% end %>
 
 		<div id = "lenderIntroBoxes">
-			<div class = "lenderIntroBoxLeft">		
-				<h1><%= @lender.name %></h1>
+			<div class = "lenderIntroBoxLeft">	
+				<% # if lender is on state page header needs to be h2 %>
+				<% # if lender is on lender page it's h1 %>
+				<% if !state.blank? %>	
+					<h2><%= @lender.name %></h2>
+				<% else %>
+					<h1><%= @lender.name %></h1>
+				<% end %>	
+
 				<div class = "lenderStars"><%= image_tag("rankings/Payday-Loan-Rank-Star-#{@lender.ranking.round}.png") %></div>
 				<div class = "lenderRating">The Payday Hound Rating</div>
 				<ul>

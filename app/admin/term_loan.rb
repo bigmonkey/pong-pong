@@ -36,27 +36,18 @@ permit_params :sniff_id,
               :link1,
               :link2_desc,
               :link2,
+              :paid,
               states_term_loans_attributes: [:id, :state_id, :term_loan_id, :_destroy]
 
   #remove_filter :states_term_loans
- 
+  config.sort_order = "ranking_desc"
   index do
     column :id
     column :name do |l| image_tag("lendersm/#{l.image_file}") end
     column :sniff_id do |s| s.sniff.sniff_desc end
     column :active, :as => :check_box
+    column :paid, as: :check_box
     column :ranking
-    column :first_comment
-    column :second_comment
-    column :third_comment
-    column :since
-    column :governing_law
-    column :loan_amt
-    column :payments
-    column :pmt_freq_in_days
-    column :pmt_amt
-    column :cost
-    column :apr
     default_actions
   end
 
@@ -67,11 +58,13 @@ permit_params :sniff_id,
 
 
   form do |f|
+    f.actions
     f.inputs "Lender Details" do
       f.input :sniff, :member_label => :sniff_desc
       f.input :partner
       f.input :name
       f.input :active
+      f.input :paid
       f.input :lender_type, :input_html => { :value => "term" }
       f.input :image_file
       f.input :ranking
@@ -106,6 +99,7 @@ permit_params :sniff_id,
       f.input :link2_desc, :label =>"Link 2 Desc"
       f.input :link2, :label => "Link 1 (http://)"
     end
+    f.actions
     f.inputs do
       f.has_many :states_term_loans do |app_f|
         if app_f.object.id
@@ -123,6 +117,7 @@ permit_params :sniff_id,
       row :partner
       row :name
       row :active
+      row :paid
       row :lender_type, :input_html => { :value => "term" }
       row :image_file
       row :ranking

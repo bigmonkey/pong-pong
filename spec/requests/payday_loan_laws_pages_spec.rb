@@ -7,7 +7,7 @@ describe "Payday Loan Law Pages" do
     # keyword in title
     it { should have_title("Payday Loan Laws") }
     # sidebar
-    it { should have_link('Why Use Us', href:"/why-use-the-payday-hound/") }
+    it { should have_link('Find Pre-Approved Lenders Instantly', href:"/why-use-the-payday-hound/") }
     # paday Nav Bar
     it { should have_link('Apply', href:"/get-payday-loan/")}		
     # check for footer

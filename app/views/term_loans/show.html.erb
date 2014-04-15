@@ -6,16 +6,20 @@
 
 
 <aside id ="sidebarFinder">	
-		<%= render(:partial => "shared/sidebars/paydayfinder")%>
+		<%# render(:partial => "shared/sidebars/paydayfinder")%>
     <%= render(:partial => "shared/sidebars/sidebar")%>	
 </aside>
 <section id = "mainContent">
-	<% if @offered_states.include? @state.state_abbr %>
-	<div class = "show_728x90">
-		<%= link_to(image_tag("banners/net-credit-728x90.gif", :alt => 'net-credit' ), partner_path(194), :rel =>'nofollow', :target => 'blank')  %>
-	</div>
-	<% end %>
-	<h1><%= "#{@state.state}" %></br><%= @keyword.phrase.titleize %></h1>
+
+		<h1><%= "#{@state.state}" %></br><%= @keyword.phrase.titleize %></h1>		
+		<% if !@paid_lenders.blank? %>
+			<% @paid_lenders.first(2).each_with_index do |p, i| %>
+				<% @lender = p %>
+				<%= render(partial: "lenders/lender_introbox", locals: {state: @state, keyword:@keyword, i: i} ) %>
+			<% end %>
+
+		<% end %>
+
 	<% if @lenders.size > 0 %>
 		<% case @keyword.category %>
 			<% when 'military loans', 'military lenders' %>

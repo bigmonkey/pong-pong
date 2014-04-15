@@ -1,6 +1,6 @@
 <% # title and description for seo %>
 <% content_for :seotags do %>
-<title><%= "#{@lender.name.titleize} Review | The Payday Hound" %></title>
+<title><%= "#{@lender.name} Review | The Payday Hound" %></title>
 <meta name="description" content= "<%= "#{@lender.name} review. Compare rates, fees, licenses. Search for the lowest fees. Apply direct. Save money at The Payday Hound." %>" />
 <% end %>
 
@@ -14,27 +14,8 @@
 	<% if @lender.nil? %>
 	We have not reviewed this lender.
 	<% else %>
-		
-		<div id = "lenderIntroBoxes">
-			
-			<div class = "lenderIntroBoxLeft">		
-				<h1><%= @lender.name.titleize %></h1>
-				<div class = "lenderStars"><%= image_tag("rankings/Payday-Loan-Rank-Star-#{@lender.ranking.round}.png") %></div>
-				<div class = "lenderRating">The Payday Hound Rating</div>
-				<ul>
-					<li><%= @lender.first_comment %></li>
-					<li><%= @lender.second_comment %></li>
-					<li><%= @lender.third_comment %></li>
-				</ul>			
-
-			</div>
-			<div class = "lenderIntroBoxRight">		
-
-				<div class = "lenderImage"><%= link_to(image_tag("lendersbig/#{@lender.image_file_big}", :alt => @lender.name ), partner_path(@lender.partner_id), :rel => 'nofollow', :target => 'blank')  %></div>
-				<div class = "lenderApply"><%= link_to('Apply Direct', partner_path(@lender.partner_id), :rel => 'nofollow', :target => 'blank') %></div>
-			</div>
-		</div>
-
+		<%= render(partial: "lenders/lender_introbox", locals: {state: ""} ) %>
+	
 
 		<div class ="clearboth"></div>	
 			

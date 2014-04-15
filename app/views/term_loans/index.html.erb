@@ -13,18 +13,11 @@
 <% end %>
 
 
-
-<aside id ="sidebarFinder">
-
-		<% # render(:partial => "shared/sidebars/paydayfinder")%>
-    <%= render(:partial => "shared/sidebars/sidebar")%>
-
-</aside>
-
-
 <section id="mainContent">
  
 	<h1><%= @keyword.phrase.titleize %></h1>
+
+  <%= render(:partial => "shared/loanfinder")%>
 
 	<% case @keyword.category %>
 	<% 		when "custom" %>
@@ -47,7 +40,6 @@
 
 		<p><%= @keyword.phrase.humanize %> are quick, simple, do not require good credit, and have lower payments than payday loans. <%= @keyword.phrase.humanize %> are an expensive option so make sure you have considered other options such as bank loans, credit cards, or friends and family before taking one of these loans. They are best used for short-term, emergency funding only.</p>	
 
-	 	<%= render 'shared/state_selector' %>   	
 
 	 	<h2>What Are <%= @keyword.phrase.titleize %></h2>
 
@@ -110,13 +102,15 @@
 		<h2>Installment Loans Versus Payday Loans</h2>
 		<p>The difference between installment loans and payday loans is that payments are spread out over time. This reduces the amount of individual payments and your APR for an installment loan but the total amount of fees paid increases a well. See <a href = "/payday-loan-or-installment-loan/")>Payday Loans or Installment Loans</a> for more information. Many consumers prefer installment loans because paying the entire loan at your next pay period, as payday loans require, is often too difficult or impossible and renewing payday loans becomes extremely expensive.<p>
 
+		<h2>Find Loan Lenders by State</h2>
+		<p><%= @keyword.phrase.humanize %> are state regulated so not all lenders make loans in all states. To find the best rates that are available in your state select your state below.</p>
+		<%= render 'shared/state_selector' %>
+
 		<h2>Full List of <%= @keyword.phrase.titleize %></h2>
 		<p>The Payday Hound reviews payday lenders and ranks them according to our <%= link_to "Sniff Test", '/infos/about' %> (reputation), costs, and licensing.  Being included on our list is not endorsement or certification. The list is a ranking and is designed to help borrowers rate and judge the quality of lenders. This means it may include lenders we believe to be honest as well as those we would deem to be predatory. To see lenders who provide <%= @keyword.phrase %> in your state select your state from the table above.</p> 
 
 	<% when "lenders" %>
 		<p><%= @keyword.phrase.humanize %> make loans which are quick, simple, do not require good credit, and have lower payments than payday loans. These loans are an expensive option so make sure you have considered loans from other options such as banks, credit card companies, or friends and family before borrowing from <%= @keyword.phrase %>. Loans from these lenders are best used for short-term, emergency funding only.</p>	
-
-	 	<%= render 'shared/state_selector' %>   	
 
 	 	<h2>Who Are <%= @keyword.phrase.titleize %></h2>
 		<p>
@@ -161,6 +155,10 @@
 		<p><%= @keyword.phrase.humanize %> have made these loans very attractive. They are quick, simple, do not require good credit, and have lower payments than traditional payday loans. Yet, users must approach these installment loans with caution as the fees make them an expensive option when compared to bank loans, credit cards, or friends and family. Borrowers can often find better rates from other lenders if those option exists. Installment loans are designed for short-term, emergency funding and are best used for this purpose.</p>
 		<p>To learn more about installment loans visit <%= link_to "Installment Loans", term_loans_path %>. </p>	
 
+		<h2>Find Loan Lenders by State</h2>
+		<p><%= @keyword.phrase.humanize %> are state regulated so not all lenders make loans in all states. To find the best rates that are available in your state select your state below.</p>
+		<%= render 'shared/state_selector' %>
+
 		<h2>Full List of <%= @keyword.phrase.titleize %></h2>
 		<p>The Payday Hound reviews payday lenders and ranks them according to our <%= link_to "Sniff Test", '/infos/about' %> (reputation), costs, and licensing. Being included on our list is not endorsement or certification. The list is a ranking and is designed to help borrowers rate and judge the quality of lenders. This means it may include lenders we believe to be honest as well as those we would deem to be predatory. To see <%= @keyword.phrase %> who provide loans in your state select your state from the table above.</p> 
 
@@ -168,7 +166,6 @@
 		<p><%= @keyword.phrase.humanize %> are loans targeted at members of the US Armed Forces. Lenders specializing in <%= @keyword.phrase %> are more familiar with the financial demands of preparing for deployment, Permanent Change of Station moves around the world, or other situation unique to military families. In many cases these lenders have adapted their application process to the military. Changes such as using military pay grades for pre-approval or using a Leave and Earnings Statement to demonstrate income can streamline the application process.</p>
 		<p>Lenders making <%= @keyword.phrase %> range from regulated, established banks to unregulated, off-shore entities. This means prices and lending practices vary widely from great to predatory. The Military Lending Act prohibits typical payday loans to members of the military but not all <%= @keyword.phrase %> are covered by the Act so as with any financial product do your own due diligence before taking a loan. Short-term, emergency loans are best taken only when completely necessary and where a clear path to paying the loan off exists.</p>	
 
-	 	<%= render 'shared/state_selector' %>   	
 
 	 	<h2>What Are <%= @keyword.phrase.titleize %></h2>
 
@@ -211,6 +208,10 @@
 		<h2><%= @keyword.phrase.titleize %> Are NOT Covered by the MLA</h2> 
 		<p><%= @keyword.phrase.humanize %> are not covered by the MLA and as such do not provide the protections listed above. This makes <%= @keyword.phrase %> more susceptible to predatory lending practices. Regulations covering the lenders will vary from FDIC regulated banks to unregulated offshore entities. In addition, enforcement varies even more. All this means that borrowers must take precautions when taking out loans. Just because a lender seems to understand your needs and seems very official it does not always mean they are being trustworthy.</p>
 		<p><%= @keyword.phrase.humanize %> are ideally regulated by both federal and state laws. State licensed lenders are regulated and monitored by the state so are more closely regulated than lenders not licensed by your state. Unlicensed lenders operate in states under the assumption they can export laws from their state or tribe (Indian Tribes are generally treated as federal entities) into other states. The Payday Hound believes licensed lenders are a safer choice for borrowers and would avoid unlicensed lenders. For more information see <%= link_to "Payday Loan Laws", payday_loan_laws_path %> or <%= link_to "Installment Loan Lenders", "/installment-loan-lenders/" %></p>
+
+		<h2>Find Loan Lenders by State</h2>
+		<p><%= @keyword.phrase.humanize %> are state regulated so not all lenders make loans in all states. To find the best rates that are available in your state select your state below.</p>
+		<%= render 'shared/state_selector' %>
 
 		<h2>Full List of <%= @keyword.phrase.titleize %></h2>
 		<p>The Payday Hound reviews short-term lenders and ranks them according to our <%= link_to "Sniff Test", '/infos/about' %> (reputation), costs, and licensing. The list below includes both regulated banks as well as off-shore entities. Being included on our list is not endorsement or certification. The list is a ranking and is designed to help borrowers rate and judge the quality of lenders. This means it may include lenders we believe to be honest as well as those we would deem to be predatory. To see lenders who provide <%= @keyword.phrase %> in your state select your state from the table above.</p> 
@@ -274,3 +275,10 @@
 
   <%=  render(:partial => "shared/media_counters")%>
 </section>
+
+<aside id ="sidebarFinder">
+
+		<% # render(:partial => "shared/sidebars/paydayfinder")%>
+    <%= render(:partial => "shared/sidebars/sidebar")%>
+
+</aside>

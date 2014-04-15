@@ -20,7 +20,7 @@ class LendersController < ApplicationController
   end
 
   def show
-    #comes from wordpress lender pages
+    #comes lender pages params[:type] will be filled out
     @lender = nil
     if ["payday","term"].include?(params[:type])
       if params[:type]=="payday"
