@@ -6,7 +6,6 @@ class PaydayLoansController < ApplicationController
   
 
   def index
-
     # in application_controller
     set_seo_vars
     @path = request.path
@@ -20,9 +19,6 @@ class PaydayLoansController < ApplicationController
 		@criteria = PaydayLoan.new    #@criteria gets used on view
 		@criteria.sniff_id = Sniff.find_by_sniff_score(3).id
    	@criteria.ranking = 0
-    # for customizing articles for SEO
-
-
   end
 
 	def show
@@ -32,7 +28,7 @@ class PaydayLoansController < ApplicationController
 
 		# is it random or coming from index or paydayfinder
 		if (State.find_by_state_abbr(params[:id].upcase).nil?)
-			redirect_to("/payday-loans/")
+			redirect_to("http://www.thepaydayhound.com/payday-loans/")
 		else	
       # paid_lenders is in application_controller
       # creates array of lender id's who offer loans in this state

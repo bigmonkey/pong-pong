@@ -23,8 +23,6 @@ class TermLoansController < ApplicationController
 		@criteria.sniff_id = Sniff.find_by_sniff_score(3).id
    	@criteria.ranking = 0	
 
-
-    
   end
 
 	def show
@@ -36,7 +34,7 @@ class TermLoansController < ApplicationController
 
 		# is it random or coming from index or paydayfinder
 		if State.find_by_state_abbr(params[:id].upcase).nil?
-			redirect_to("/installment-loans/")
+			redirect_to("http://www.thepaydayhound.com/installment-loans/")
 		else	
       # paid_lenders is in application_controller
       # creates array of lender id's who offer loans in this state
