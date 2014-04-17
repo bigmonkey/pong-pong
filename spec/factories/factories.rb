@@ -54,5 +54,10 @@ FactoryGirl.define do
 		term_loan_id ""
 		state_id ""
 	end
+
+	factory :advertiser_loans_state do
+		advertiser_loan_id ""
+		state_id ""
+	end	
 end
 

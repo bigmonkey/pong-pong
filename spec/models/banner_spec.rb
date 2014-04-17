@@ -26,9 +26,9 @@ describe "Banner Model" do
 			PaydayLoan.find(payday_banner.bannerable.id).should_not be_nil
 		end
 
-		it "should work banners for advertiser" do
-			payday_banner = FactoryGirl.create(:advertiser_loan_banner, name: 'advertiser banner')
-			Advertiser.find(payday_banner.bannerable.id).should_not be_nil
+		it "should work for advertiser" do
+			advertiser_banner = FactoryGirl.create(:advertiser_loan_banner, name: 'advertiser banner')
+			AdvertiserLoan.find(advertiser_banner.bannerable.id).should_not be_nil
 		end
 	end
 		
@@ -63,6 +63,7 @@ after(:all){
 	Partner.destroy_all
 	PaydayLoan.destroy_all
 	TermLoan.destroy_all
+	AdvertiserLoan.destroy_all
 	Banner.destroy_all
 }
 end

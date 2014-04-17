@@ -15,4 +15,10 @@ FactoryGirl.define do
 		bannerable factory: :payday_loan, sniff_id: 1
   end
 
+  factory :advertiser_loan_banner, class: 'Banner' do
+		name "banner name"
+		partner factory: :partner 		  
+		bannerable factory: :advertiser_loan, sniff_id: 1
+  end
+
 end

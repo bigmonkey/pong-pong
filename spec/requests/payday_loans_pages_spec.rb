@@ -325,6 +325,7 @@ describe "Payday Loan Pages" do
         end       
         visit "/payday-loans/tx" 
       }
+      it { should have_content('Ads')}
       it { should_not have_content("#1 TX Payday Loans") }
     end
 

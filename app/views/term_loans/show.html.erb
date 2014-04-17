@@ -10,7 +10,20 @@
     <%= render(:partial => "shared/sidebars/sidebar")%>	
 </aside>
 <section id = "mainContent">
-
+		<% if @paid_lenders.blank? %>
+			<div class = "show_728x90">
+				<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+				<!-- LeaderBoard -->
+				<ins class="adsbygoogle"
+				     style="display:inline-block;width:728px;height:90px"
+				     data-ad-client="ca-pub-2559833851997252"
+				     data-ad-slot="4100870167"></ins>
+				<script>
+				(adsbygoogle = window.adsbygoogle || []).push({});
+				</script>
+			</div>
+		<% end %>
+		
 		<h1><%= "#{@state.state}" %></br><%= @keyword.phrase.titleize %></h1>		
 		<% if !@paid_lenders.blank? %>
 			<% @paid_lenders.first(2).each_with_index do |p, i| %>
