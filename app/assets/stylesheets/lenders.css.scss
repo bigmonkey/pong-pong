@@ -217,6 +217,23 @@ td .instantDecision {
 	}
 }
 
+#lenderIntroBoxes.unpaid {
+	background: $boxBackground;
+	.lenderApply{
+		&:hover, &:active{
+			background: $boxBackground;
+		}
+		a, a:link, a:visited{
+			color: $boxBackgroundVeryDark;
+			background: $pageBackground;
+			display: block;
+		}
+		a:hover, a:active{
+			color: $bigColor;
+		}	
+	}	
+}
+
 .lenderIntroBoxLeft{
 	float: left;
 	margin: 1em 2em;

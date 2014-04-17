@@ -35,5 +35,8 @@ class LendersController < ApplicationController
         @lender=PaydayLoan.find_by_review_url(params[:id])
       end  
     end
+    # for unpaid lenders need @states for loanfinder
+    @states=State.all
+
   end
 end

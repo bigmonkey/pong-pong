@@ -2,7 +2,7 @@
 		<div class = "lenderIntroBoxesStateTitle"><%= "##{i+1} Payday Hound Pick -- #{state.state_abbr} #{keyword.word.titleize}"%></div>
 		<% end %>
 
-		<div id = "lenderIntroBoxes">
+		<div id = "lenderIntroBoxes" class = <%= "unpaid" if !@lender.paid %>>
 			<div class = "lenderIntroBoxLeft">	
 				<% # if lender is on state page header needs to be h2 %>
 				<% # if lender is on lender page it's h1 %>

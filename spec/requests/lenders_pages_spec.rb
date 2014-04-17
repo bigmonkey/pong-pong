@@ -25,15 +25,94 @@ describe "Lender Pages" do
   describe "Show Lender Pages" do
   	context "Term Lender" do
   		before {
-  			@lender = FactoryGirl.create(:term_loan,
-
-  				)
-  			visit lender_path(@lender.review_url)
+  			@lender = FactoryGirl.create(:term_loan)
+        FactoryGirl.create(:payday_loan, review_url:@lender.review_url)
+  			visit lender_path(@lender.review_url, type:'term')
   		}
 
+      it "should show term lenders details" do
+        page.should have_selector('h1', text: @lender.name)
+        page.should have_link('Apply Direct', href: "#{partner_path(@lender.partner_id)}/")
+      end
+    
       it_should_behave_like "all lender show pages"  		
   	end
-  	
+
+    context "Payday Lender" do
+      before {
+        @lender = FactoryGirl.create(:payday_loan)
+        FactoryGirl.create(:term_loan, review_url:@lender.review_url)
+        visit lender_path(@lender.review_url, type:'payday')
+      }
+
+      it "should show term lenders details" do
+        page.should have_selector('h1', text: @lender.name)
+        page.should have_link('Apply Direct', href: "#{partner_path(@lender.partner_id)}/")
+      end
+    
+      it_should_behave_like "all lender show pages"     
+    end  	
+ 
+    context "Payday and Term Lender with no params[:type]" do
+      before {
+        @lender = FactoryGirl.create(:term_loan)
+        FactoryGirl.create(:payday_loan, review_url:@lender.review_url)
+        visit lender_path(@lender.review_url)
+        #puts page.body
+      }
+
+      it "should show term lender details" do
+        page.should have_selector('h1', text: @lender.name)
+        page.should have_link('Apply Direct', href: "#{partner_path(@lender.partner_id)}/")
+      end
+    
+      it_should_behave_like "all lender show pages"     
+    end  
+
+    context "Payday with no params[:type]" do
+      before {
+        @lender = FactoryGirl.create(:payday_loan)
+        visit lender_path(@lender.review_url)
+        #puts page.body
+      }
+
+      it "should show lender details" do
+        page.should have_selector('h1', text: @lender.name)
+        page.should have_link('Apply Direct', href: "#{partner_path(@lender.partner_id)}/")
+      end
+    
+      it_should_behave_like "all lender show pages"     
+    end 
+
+    context "Unpaid lender" do
+      before {
+        @lender = FactoryGirl.create(:payday_loan, paid: false)
+        visit lender_path(@lender.review_url)
+        #puts page.body
+      }
+
+      it "should show lender finder" do
+        page.should have_selector('div', text: 'Finding a Loan Made Simple')
+      end
+    
+      it_should_behave_like "all lender show pages"     
+    end 
+
+
+    context "Paid lender" do
+      before {
+        @lender = FactoryGirl.create(:payday_loan, paid: true)
+        visit lender_path(@lender.review_url)
+        #puts page.body
+      }
+
+      it "should not show lender finder" do
+        page.should_not have_selector('div', text: 'Finding a Loan Made Simple')
+      end
+    
+      it_should_behave_like "all lender show pages"     
+    end 
+
   end
 
 
