@@ -7,6 +7,7 @@ class LendersController < ApplicationController
   before_filter :set_tracking
   
   def index
+
     redirect_to(payday_loans_path)
   end
 
@@ -20,6 +21,7 @@ class LendersController < ApplicationController
   end
 
   def show
+
     #comes lender pages params[:type] will be filled out
     @lender = nil
     if ["payday","term"].include?(params[:type])
@@ -35,8 +37,14 @@ class LendersController < ApplicationController
         @lender=PaydayLoan.find_by_review_url(params[:id])
       end  
     end
-    # for unpaid lenders need @states for loanfinder
-    @states=State.all
-
+    # for unpaid lenders need @states and @path for loanfinder
+    if !@lender.nil? && !@lender.paid
+      @states=State.all
+      if @lender.lender_type == "term"
+        @path = "/installment-loans"
+      else
+        @path = "/payday-loans"
+      end  
+    end
   end
 end

@@ -20,7 +20,7 @@
 		We have not reviewed this lender or this lender does make <%= params[:type] %> loans. <%= link_to "Return to Home Page", homes_path %>
 	<% else %>
 		<% if !@lender.paid %>
-	  <%= render(:partial => "shared/loanfinder")%>
+	  <%= render(partial: "shared/loanfinder")%>
 	  <% end %>
 		<%= render(partial: "lenders/lender_introbox", locals: {state: ""} ) %>
 	
