@@ -82,16 +82,18 @@
 			line-height: 2em;
 			width: 12em;
 			@include rounded(3px);
+			-webkit-appearance: none;
 		}
 		input:hover {
-			//background: $boxBackground;
+			background: $boxBackgroundVeryDark;
 			border: none;
-			//color: $bigColor;
+			color: $pageBackground;
 			cursor: pointer;
 			cursor: hand;
-			box-shadow: 0 0 5px rgba(102, 102, 102, 0.6);
-			-webkit-box-shadow: 0 0 5px rgba(102, 102, 102, 0.6);
-			-moz-box-shadow: 0 0 5px rgba(102, 102, 102, 0.6);			
+			-webkit-appearance: none;
+			//box-shadow: 0 0 5px rgba(102, 102, 102, 0.6);
+			//-webkit-box-shadow: 0 0 5px rgba(102, 102, 102, 0.6);
+			//-moz-box-shadow: 0 0 5px rgba(102, 102, 102, 0.6);			
 		}
 	}
 }

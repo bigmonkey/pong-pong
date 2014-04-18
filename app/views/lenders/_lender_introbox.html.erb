@@ -7,14 +7,14 @@
 				<% # if lender is on state page header needs to be h2 %>
 				<% # if lender is on lender page it's h1 %>
 				<% if !state.blank? %>	
-					<h2><%= @lender.name %></h2>
+					<h2 itemprop="itemreviewed"><%= @lender.name %></h2>
 				<% else %>
-					<h1><%= @lender.name %></h1>
+					<h1 itemprop="itemreviewed"><%= @lender.name %></h1>
 				<% end %>	
 
-				<div class = "lenderStars"><%= image_tag("rankings/Payday-Loan-Rank-Star-#{@lender.ranking.round}.png") %></div>
-				<div class = "lenderRating">The Payday Hound Rating</div>
-				<ul>
+				<div class = "lenderStars"><%= image_tag("rankings/Payday-Loan-Rank-Star-#{@lender.ranking.round}.png", alt: "#{@lender.ranking.round} Rating", itemprop: "rating") %></div>
+				<div class = "lenderRating"><span itemprop="reviewer">The Payday Hound</span> Rating</div>
+				<ul itemprop="summary">
 					<li><%= @lender.first_comment %></li>
 					<li><%= @lender.second_comment %></li>
 					<li><%= @lender.third_comment %></li>

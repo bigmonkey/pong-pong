@@ -15,7 +15,7 @@
   <%= render(:partial => "shared/sidebars/sidebar")%>	
 
 </aside>
-<section id = "mainContent">
+<section itemscope itemtype="http://data-vocabulary.org/Review" id = "mainContent" >
 	<% if @lender.nil? %>
 		We have not reviewed this lender or this lender does make <%= params[:type] %> loans. <%= link_to "Return to Home Page", homes_path %>
 	<% else %>
@@ -78,7 +78,7 @@
 			<div class = "lenderDescriptionBox">
 				<div class = "lenderBoxTitle"><%= @lender.name %> Description and Review</div>
 				<div class = "lenderBoxReview">
-					<div><%= raw(@lender.full_desc) %> </div>
+					<div itemprop="description"><%= raw(@lender.full_desc) %> </div>
 					<div>
 						<% if !@lender.bbb_link.nil? %>
 						<div><%= link_to('Better Business Bureau Page', @lender.bbb_link, :rel => 'nofollow', :target => 'blank') %></div>
@@ -90,6 +90,7 @@
 						<div><%= link_to(@lender.link2_desc, @lender.link2, :rel => 'nofollow', :target => 'blank') %></div>
 						<% end %>								
 					</div>
+					<time itemprop="dtreviewed" datetime= <%= @lender.updated_at.strftime("%F") %>>Last reviewed on <%= @lender.updated_at.strftime("%F") %></time>
 				</div>	
 			</div>	
 

@@ -374,6 +374,10 @@ td .instantDecision {
 	padding-bottom: .5em;
 	background: $boxBackground;
 	//@include rounded(5px);
+	time {
+		margin-top: 1em;
+		font-size: .8em;
+	}
 }
 
 .lenderBottomSmallBox{
