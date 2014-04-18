@@ -13,7 +13,7 @@
 //	font-weight: bold;
 	text-transform: none;
 	padding: 4px 0px;
-	border-top: 1px solid #666;
+	//border-top: 1px solid #666;
 	text-align: center;
 }
 
@@ -24,7 +24,7 @@
     vertical-align: bottom;
     margin-bottom: 15px;
     color: #555;
-    @include rounded (5px);    
+    //@include rounded (5px);    
 }
 
 .cardCalcTitles{
@@ -128,7 +128,7 @@
 /* sets spacing for inside of table. Desc takes 100%, others are defined by width of inside text */
 .cardCost{
     font-size: 1.75em;
-    color:green;
+    color: $bigColor;
     width: 100px;
 }
 
@@ -160,7 +160,7 @@
 
 .preCardCost{
     font-size: 1.5em;
-    color:green;
+    color: $bigColor;
     width: 90px;
 }
 
@@ -276,7 +276,7 @@
 	padding: 0px;
 	border: 0px;
 	text-align: center;
-	color: green;
+	color: $bigColor;
 	font-size: 1em;
 	//font-weight: bold;
 	background: #fff;
@@ -286,7 +286,7 @@
 	padding: 0px;
 	border: 0px;
 	text-align: center;
-	color: green;
+	color: $bigColor;
 	font-size: 1em;
 	//font-weight: bold;
 	background: #fff;
