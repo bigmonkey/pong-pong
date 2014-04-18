@@ -317,6 +317,7 @@ describe "Installment Loan Pages" do
           page.should have_selector("h2", text: "#{l.name.titleize}")      
         end
       end  
+      it { should_not have_css('div.show_728x90')}      
     end
 
     context "Paid Lenders Do Not Exist in TX" do      
@@ -330,6 +331,7 @@ describe "Installment Loan Pages" do
         visit "/installment-loans/tx" 
       }
       it { should_not have_content("#1 TX Installment Loans") }
+      it { should have_css('div.show_728x90')}
     end
 
     context "Military Loans" do

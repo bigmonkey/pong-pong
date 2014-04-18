@@ -27,15 +27,15 @@ describe BorrowersController do
 			context "Unacceptable Underwriting" do
 				it "redirects military members" do
 					post :new, FactoryGirl.attributes_for(:applicant, active_military: "true")
-					response.should redirect_to("http://usmilitary.about.com/od/millegislation/a/paydayloans.htm")
+					response.should redirect_to("/military-loans/")
 				end	
 				it "redirect NONE bank_account_type" do
 					post :new, FactoryGirl.attributes_for(:applicant, bank_account_type: "NONE")
-					response.should redirect_to("http://usmilitary.about.com/od/millegislation/a/paydayloans.htm")
+					response.should redirect_to("/military-loans/")
 				end	
 				it "redirect under eighteen" do
 					post :new, FactoryGirl.attributes_for(:applicant, eighteen: "false")
-					response.should redirect_to("http://usmilitary.about.com/od/millegislation/a/paydayloans.htm")
+					response.should redirect_to("/military-loans/")
 				end
 				it "redirects GA VA WV AR NY residents" do
 					["GA","VA","WV","AR","NY"].each do |s|

@@ -8,11 +8,11 @@ class TermLoansController < ApplicationController
   def index
     # in application_controller
     set_seo_vars
-    @path = request.path
+    @path = request.path.split(/\//)[1]
     # params[:state] must come in as Upcase otherwise styles get mixed up because
     # form will set id to state_id for Idaho and that conflicts with 
     # select form on _shared/paydayfinder
-    redirect_to "http://www.thepaydayhound.com#{@path}/#{params[:state].downcase}" if !params[:state].blank?
+    redirect_to "#{BASE_DOMAIN}/#{@path}/#{params[:state].downcase}/" if !params[:state].blank?
 
   	@states=State.all
     if @keyword.word.match('military')
@@ -34,7 +34,7 @@ class TermLoansController < ApplicationController
 
 		# is it random or coming from index or paydayfinder
 		if State.find_by_state_abbr(params[:id].upcase).nil?
-			redirect_to("http://www.thepaydayhound.com/installment-loans/")
+			redirect_to("#{BASE_DOMAIN}/installment-loans/")
 		else	
       # paid_lenders is in application_controller
       # creates array of lender id's who offer loans in this state

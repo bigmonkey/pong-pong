@@ -76,4 +76,9 @@ Pdh::Application.configure do
   # Log the query plan for queries taking more than this (works
   # with SQLite, MySQL, and PostgreSQL)
   # config.active_record.auto_explain_threshold_in_seconds = 0.5
+
+  # added by cw 4/17/2014 needed because nginx reverse proxy sets based on http_host
+  # this gets changed to herokuapp in production but for developement/testing needs to be local
+  BASE_DOMAIN = "http://www.thepaydayhound.com"
+
 end

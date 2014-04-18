@@ -28,4 +28,8 @@ Pdh::Application.configure do
   # added for devise cw 1/13/2014
   config.action_mailer.default_url_options = { :host => 'localhost:8080' }
 
+  # added by cw 4/17/2014 needed because nginx reverse proxy sets based on http_host
+  # this gets changed to herokuapp in production but for developement/testing needs to be local
+  BASE_DOMAIN = ""
+
 end

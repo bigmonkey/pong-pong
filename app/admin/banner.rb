@@ -44,8 +44,8 @@ ActiveAdmin.register Banner do
         case params[:lender_type]
           when "payday"
             f.input :name, as: :select, collection: PaydayLoan.all
-          #when 'advertiser'
-          #  f.input :name, as: :select, collection: Advertiser.all  
+          when 'advertiser'
+            f.input :name, as: :select, collection: AdvertiserLoan.all  
           else "term"
             f.input :name, as: :select, collection: TermLoan.all
           end
@@ -94,8 +94,8 @@ ActiveAdmin.register Banner do
         case params[:banner][:lender_type]
         when "payday"
           lender = PaydayLoan.find(params[:banner][:name])        
-        #when "advertiser"
-        #  lender = Advertiser.find(params[:banner][:name])
+        when "advertiser"
+          lender = AdvertiserLoan.find(params[:banner][:name])
         else "term"
 
           lender = TermLoan.find(params[:banner][:name])

@@ -7,16 +7,15 @@ class LendersController < ApplicationController
   before_filter :set_tracking
   
   def index
-
-    redirect_to(payday_loans_path)
+    redirect_to("#{BASE_DOMAIN}/")
   end
 
   def finder
     @state=State.find(params[:state][:id]).state_abbr.downcase
     if params[:lender_type] == "term" #send to term loans controller
-     redirect_to("http://www.thepaydayhound.com/installment-loans/#{@state}?sniff_score=#{params[:sniff_score]}&ranking=#{params[:ranking]}")
+     redirect_to("#{BASE_DOMAIN}/installment-loans/#{@state}?sniff_score=#{params[:sniff_score]}&ranking=#{params[:ranking]}")
     else          # send to payday loans controller
-     redirect_to("http://www.thepaydayhound.com/payday-loans/#{@state}?sniff_score=#{params[:sniff_score]}&ranking=#{params[:ranking]}")
+     redirect_to("#{BASE_DOMAIN}/payday-loans/#{@state}?sniff_score=#{params[:sniff_score]}&ranking=#{params[:ranking]}")
     end  
   end
 
@@ -41,9 +40,9 @@ class LendersController < ApplicationController
     if !@lender.nil? && !@lender.paid
       @states=State.all
       if @lender.lender_type == "term"
-        @path = "/installment-loans"
+        @path = "installment-loans"
       else
-        @path = "/payday-loans"
+        @path = "payday-loans"
       end  
     end
   end

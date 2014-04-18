@@ -8,9 +8,9 @@ describe LendersController do
   }
 
 	describe "GET #index"	do
-		it "redirects to /payday-loans/" do
+		it "redirects to home" do
 			get :index
-			response.should redirect_to payday_loans_url
+			response.should redirect_to root_path
 		end
 	end
 	
@@ -74,14 +74,14 @@ describe LendersController do
 				it "sets path to installment loans" do
 					term_lender = FactoryGirl.create(:term_loan, paid: false)
 					get :show, id: term_lender.review_url
-					assigns(:path).should eq('/installment-loans')
+					assigns(:path).should eq('installment-loans')
 				end
 			end
 			context "payday lender" do
 				it "sets path to payday loans" do
 					payday_lender = FactoryGirl.create(:payday_loan, paid: false)
 					get :show, id: payday_lender.review_url
-					assigns(:path).should eq('/payday-loans')
+					assigns(:path).should eq('payday-loans')
 				end
 			end
 		end

@@ -33,4 +33,9 @@ Pdh::Application.configure do
 
   # Print deprecation notices to the stderr
   config.active_support.deprecation = :stderr
+
+  # added by cw 4/17/2014 needed because nginx reverse proxy sets based on http_host
+  # this gets changed to herokuapp in production but for developement/testing needs to be local
+  BASE_DOMAIN = ""
+
 end

@@ -21,13 +21,13 @@ class BorrowersController < ApplicationController
 	  	 (params[:active_military]=="true") or (params[:bank_account_type]=="NONE") or (params[:eighteen]=="false")
 	  		@redirect = "/military-loans/"
 	  		save_tracking
-	  		redirect_to(@redirect)
+	  		redirect_to("#{BASE_DOMAIN}#{@redirect}")
   	else	
   		case params[:state]
 	  	when "GA","VA","WV","AR","NY","PA","OH"
 	  		@redirect = "#{params[:state]} Loan Laws"
 	  		save_tracking
-	  		redirect_to("/payday-loans/#{params[:state]}")
+	  		redirect_to("#{BASE_DOMAIN}/payday-loans/#{params[:state]}")
 	  	else 
 	  		@redirect = "borrower/new"
 	      save_tracking
