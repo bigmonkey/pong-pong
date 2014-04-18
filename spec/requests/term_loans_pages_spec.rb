@@ -7,7 +7,7 @@ describe "Installment Loan Pages" do
     # keyword in title
     it { should have_title("#{@keyword.word.titleize}") }
     # sidebar
-    it { should have_link('Find Pre-Approved Lenders Instantly', href:"/why-use-the-payday-hound/") }
+    it { should have_link('Pre-Approved Lenders', href:"/why-use-the-payday-hound/") }
     # paday Nav Bar
     it { should have_link('Apply', href:"/get-payday-loan/")}
     # check for footer
@@ -307,7 +307,8 @@ describe "Installment Loan Pages" do
           state_lender = FactoryGirl.create(:term_loan, paid: true, partner_id: FactoryGirl.create(:partner).id)
           FactoryGirl.create(:states_term_loan, term_loan_id: state_lender.id, state_id: State.find_by_state_abbr("TX").id)
         end       
- 
+        advertiser_banner = FactoryGirl.create(:advertiser_loan_banner, rotation_rank: 5)
+        FactoryGirl.create(:advertiser_loans_state, advertiser_loan_id: advertiser_banner.bannerable.id, state_id: State.find_by_state_abbr("TX").id)         
         visit "/installment-loans/tx" 
       }
       it { should have_content("#1 Payday Hound Pick -- TX Installment Loans") }
@@ -318,9 +319,10 @@ describe "Installment Loan Pages" do
         end
       end  
       it { should_not have_css('div.show_728x90')}      
+      it { should have_css('div.show_160x600')}
     end
 
-    context "Paid Lenders Do Not Exist in TX" do      
+    describe "Paid Term Lenders" do      
       before {
         @keyword = Keyword.find_by_word("installment loans")
         paid_state_lenders = 2
@@ -328,10 +330,36 @@ describe "Installment Loan Pages" do
           state_lender = FactoryGirl.create(:term_loan, paid: true, partner_id: FactoryGirl.create(:partner).id)
           FactoryGirl.create(:states_term_loan, term_loan_id: state_lender.id, state_id: State.find_by_state_abbr("VA").id)
         end       
-        visit "/installment-loans/tx" 
       }
-      it { should_not have_content("#1 TX Installment Loans") }
-      it { should have_css('div.show_728x90')}
+
+      context "Do not exist in TX" do
+        before { visit "/installment-loans/tx" }
+        it { should_not have_content("#1 TX Installment Loans") }
+        it { should have_css('div.show_728x90')}  
+      end
+      
+      context "Do not exit in TX. Payday, and Advertisers do not exist in TX" do
+        before { visit "/installment-loans/tx" }
+        it { should_not have_css('div.show_160x600')}
+      end      
+
+      context "Do not exisit in TX but an advertisers exists in TX " do
+        before {
+          advertiser_banner = FactoryGirl.create(:advertiser_loan_banner, rotation_rank: 5)
+          FactoryGirl.create(:advertiser_loans_state, advertiser_loan_id: advertiser_banner.bannerable.id, state_id: State.find_by_state_abbr("TX").id)
+          visit "/installment-loans/tx"
+        }
+        it { should have_css('div.show_160x600')}
+      end
+
+      context "Do not exisit in TX but an Payday Lender exists in TX " do
+        before {
+          term_banner = FactoryGirl.create(:payday_loan_banner, rotation_rank: 5)
+          FactoryGirl.create(:payday_loans_state, payday_loan_id: term_banner.bannerable.id, state_id: State.find_by_state_abbr("TX").id)
+          visit "/installment-loans/tx"
+        }
+        it { should have_css('div.show_160x600')}
+      end      
     end
 
     context "Military Loans" do

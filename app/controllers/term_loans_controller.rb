@@ -39,8 +39,11 @@ class TermLoansController < ApplicationController
       # paid_lenders is in application_controller
       # creates array of lender id's who offer loans in this state
       # format is paid_lenders(<'payday' 'term' 'advertiser'>, params[:id].upcase)
-
       paid_lenders('term', params[:id].upcase)
+
+      # paid_banners is in application controller
+      # creates array of banners for lenders offering loans in this state
+      paid_banner(params[:id])
 
 			@criteria = TermLoan.new    #@criteria gets used on view
 			@criteria.sniff_id = !params[:sniff_score].blank? ? Sniff.find_by_sniff_score(params[:sniff_score]).id : Sniff.find_by_sniff_score(3).id

@@ -294,10 +294,11 @@ nav {
 	background: $boxBackground;
 	color: $softColor;
 	text-align: center;
-	padding: 1em .5em;
-	margin: 0;
+	padding: 1em .5em .5em;
+	margin: 0 auto 1.2em;
+	width: 144px;
 	h3 { 
-		font-size: 1.2em;
+		font-size: 1em;
 		color: $bigColor;
 	}
 	h4 {
@@ -310,7 +311,7 @@ nav {
 	p { 
 		font-size: .8em;
 		text-align: center;
-		margin: 1.5em 0em;
+		margin: 1.3em 0em;
 	}
 }
 

@@ -1,19 +1,17 @@
+
 <div class = "sidebarPDH">
 	<h3><%= link_to 'the payday hound', homes_path %></h3>
 	<h4>find cash simply</h4>
-	<p><%= link_to 'Largest Database of Ranking and Reviews', '/why-use-the-payday-hound/' %></p>
-	<p><%= link_to 'Find Pre-Approved Lenders Instantly', '/why-use-the-payday-hound/' %></p>
-	<p><%= link_to 'Higher Acceptance Rates', '/why-use-the-payday-hound/' %></p>
-	<p><%= link_to 'Save Money and Compare', '/why-use-the-payday-hound/' %></p>
-	<p><%= link_to 'Apply Direct', '/why-use-the-payday-hound/' %></p>
+	<p><%= link_to 'Pre-Approved Lenders', '/why-use-the-payday-hound/' %></p>
+	<p><%= link_to 'Higher Approval Rates', '/why-use-the-payday-hound/' %></p>
+	<p><%= link_to 'Save Money', '/why-use-the-payday-hound/' %></p>
 </div>
 
+
+
 <% if !@paid_banner.nil? %>
-<div class = "show_160x600">
-	<% link_to(image_tag(@paid_banner.size_160x600, alt: @paid_banner.name ), partner_path(@paid_banner.partner_id), :rel =>'nofollow', :target => 'blank')  %>
-</div>	
-
+	<div class = "show_160x600">
+		<%= link_to(image_tag(@paid_banner.size_160x600.url, alt: @paid_banner.name ), partner_path(@paid_banner.partner_id), :rel =>'nofollow', :target => 'blank')  %>
+	</div>	
 <% end %>
-
-
 

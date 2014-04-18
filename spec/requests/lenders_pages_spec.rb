@@ -14,7 +14,7 @@ describe "Lender Pages" do
   shared_examples_for "all lender show pages" do
     it { should have_title("#{@lender.name}") }
     # sidebar
-    it { should have_link('Find Pre-Approved Lenders Instantly', href:"/why-use-the-payday-hound/") }
+    it { should have_link('Pre-Approved Lenders', href:"/why-use-the-payday-hound/") }
     # check for footer
     it { should have_link('About Us', href:"/why-use-the-payday-hound/")}
     # lender in description
