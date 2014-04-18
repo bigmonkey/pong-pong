@@ -1,11 +1,11 @@
 /*variables */
 $mainColor: #666;
-$bigColor: #669966; /*GREEN headers, menu 0E8B4D*/
+$bigColor: #4A661B; /*GREEN headers, was #669966 menu 0E8B4D*/
 $highColor: #E58D1F; /* ORANGE hover, secondary headers */
 $softColor: #888; // used like bold
-$pageBackground: #fff; /* page background color */
-$contentBackground: #fff; /* content background */
-$boxBackground: #eee; /* highlight boxes */
+$pageBackground: #f7f7f7; /* page background color */
+$contentBackground: #f7f7f7; /* content background */
+$boxBackground: #e8e8e8; /* highlight boxes */
 $boxBackgroundSlightDark: #ddd;
 $boxBackgroundDarker: #bbb; /* highlight boxes darker */
 $boxBackgroundVeryDark: #888; /* highlight boxes veeeerry dark */
@@ -114,7 +114,7 @@ form button {
 }
 
 .navSpacer{
-	height: 65px;
+	height: 50px;
 	width: 50%;
 	float:right;
 	background: $boxBackground;
@@ -235,7 +235,7 @@ nav {
   background-color: $contentBackground;
   overflow: hidden;
   position: relative;
-  top:-95px;
+  top:-80px;
 }
 
 .center {
@@ -251,7 +251,7 @@ nav {
 	left: 0;
 	width: 100%; */
 //	position:absolute;
-	height: 95px;
+	height: 80px;
 	width:100%;
 	background: $boxBackground;
 	}
@@ -260,9 +260,9 @@ nav {
 	float: left;
 	background: $boxBackground;
 	width:50%;
-	height: 95px;
+	height: 80px;
 	img {
-		margin-top: 6px;
+		//margin-top: 15px;
 	}
 }
 
@@ -316,7 +316,7 @@ nav {
 }
 
 #sidebarFinder {
-    background-color: #fff;
+    background-color: $contentBackground;
     width: 185px;
     float: right;
     margin: 0em;
