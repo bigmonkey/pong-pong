@@ -313,10 +313,10 @@ describe "Payday Loan Pages" do
       it { should have_content("#1 Payday Hound Pick -- TX Payday Loans") }
       it { should have_content("#2 Payday Hound Pick -- TX Payday Loans") }
       it { should_not have_css('div.show_728x90')}
-
+      it { should have_css('div.show_160x600')}
     end
 
-    context "Paid Lenders Do Not Exist in TX" do      
+    describe "Paid Payday Lenders" do      
       before {
         @keyword = Keyword.find_by_word("payday loans")
         paid_state_lenders = 2
@@ -324,10 +324,42 @@ describe "Payday Loan Pages" do
           state_lender = FactoryGirl.create(:payday_loan, paid: true, partner_id: FactoryGirl.create(:partner).id)
           FactoryGirl.create(:payday_loans_state, payday_loan_id: state_lender.id, state_id: State.find_by_state_abbr("VA").id)
         end       
-        visit "/payday-loans/tx" 
       }
-      it { should have_css('div.show_728x90')}
-      it { should_not have_content("#1 TX Payday Loans") }
+
+      context "Do not exist in TX" do
+        before {
+          visit "/payday-loans/tx"
+        }
+      
+        it { should have_css('div.show_728x90')}
+        it { should_not have_content("#1 TX Payday Loans") }
+      end
+
+      context "Do not exit in TX. Term, and Advertisers do not exist in TX" do
+        before {
+          visit "/payday-loans/tx"
+        }
+        it { should_not have_css('div.show_160x600')}
+      end
+
+      context "Do not exisit in TX but an advertisers exists in TX " do
+        before {
+          advertiser_banner = FactoryGirl.create(:advertiser_loan_banner, rotation_rank: 5)
+          FactoryGirl.create(:advertiser_loans_state, advertiser_loan_id: advertiser_banner.bannerable.id, state_id: State.find_by_state_abbr("TX").id)
+          visit "/payday-loans/tx"
+        }
+        it { should have_css('div.show_160x600')}
+      end
+
+      context "Do not exisit in TX but an Term Lender exists in TX " do
+        before {
+          term_banner = FactoryGirl.create(:term_loan_banner, rotation_rank: 5)
+          FactoryGirl.create(:states_term_loan, term_loan_id: term_banner.bannerable.id, state_id: State.find_by_state_abbr("TX").id)
+          visit "/payday-loans/tx"
+        }
+        it { should have_css('div.show_160x600')}
+      end
+
     end
 
     after(:all){

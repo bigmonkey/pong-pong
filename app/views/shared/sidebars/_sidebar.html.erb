@@ -7,9 +7,13 @@
 	<p><%= link_to 'Save Money and Compare', '/why-use-the-payday-hound/' %></p>
 	<p><%= link_to 'Apply Direct', '/why-use-the-payday-hound/' %></p>
 </div>
+
+<% if !@paid_banner.nil? %>
 <div class = "show_160x600">
-	<% link_to(image_tag("banners/rise-160x600.gif", :alt => 'net-credit' ), partner_path(194), :rel =>'nofollow', :target => 'blank')  %>
+	<% link_to(image_tag(@paid_banner.size_160x600, alt: @paid_banner.name ), partner_path(@paid_banner.partner_id), :rel =>'nofollow', :target => 'blank')  %>
 </div>	
+
+<% end %>
 
 
 

@@ -42,6 +42,7 @@ gem 'devise','3.2.3'
 gem 'activeadmin', github: 'gregbell/active_admin'
 
 gem 'sass-rails',   '4.0.1'
+gem 'sass','3.2.13'
 gem 'sprockets', '2.11.0'
 gem 'coffee-rails', '4.0.1'
 

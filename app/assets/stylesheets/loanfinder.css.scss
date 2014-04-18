@@ -1,14 +1,14 @@
 #loanFinder {
 	background: $peach;
 	color: $bigColor;
-	padding: 0em 0em 2em;
-	margin: 1.5em 3em 2.5em;
+	padding: 0em 0em 1.5em;
+	margin: 0em 3em 2.5em;
 	@include rounded(3px);
 
 	.loanFinderTitle{	
-		margin: .2em 0em;	
+		margin: 0em;	
 		font-size: 2em;
-		line-height: 2em;
+		line-height: 1.7em;
 		text-align: center;
 		color: $pageBackground;
 		background: $bigColor;
@@ -16,8 +16,6 @@
 
 
 	.loanFinderPuppyBlurb {
-		font-size: 1.5em;
-		line-height: 1.5em;
 		text-align: center;
 		margin-top: .5em;
 		color: $dogEars;
@@ -26,7 +24,7 @@
 			list-style-type: none;
 			padding: 0;
 			margin: 0;
-			font-size: .8em;
+			font-size: 1.2em;
 			line-height: 1.5em;
 
 		}	
@@ -43,7 +41,7 @@
 		width: 20%;
 		float: left;
 		margin: .5em 0em;
-		padding: 1em 0em;
+		padding: .5em 0em;
 		color: $bigColor;
 		//background: $boxBackground;
 	}
@@ -80,8 +78,8 @@
 			background: $bigColor;
 			border: none;
 			color: $pageBackground;
-			height: 2.5em;
-			line-height: 2.5em;
+			height: 2em;
+			line-height: 2em;
 			width: 12em;
 			@include rounded(3px);
 		}

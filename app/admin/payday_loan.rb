@@ -117,7 +117,7 @@ ActiveAdmin.register PaydayLoan do
       row :name
       row :active
       row :paid
-      row :lender_type, :input_html => { :value => "term" }
+      row :lender_type, :input_html => { :value => "payday" }
       row :image_file
       row :ranking
       row :first_comment

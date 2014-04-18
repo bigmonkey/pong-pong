@@ -115,6 +115,43 @@ describe PaydayLoansController do
 			get :show, id: state.state_abbr.downcase
 			assigns(:paid_lenders).count.should eq(paid_state_lenders)
 		end
+
+		it "selects paid lenders 160x600 banners for a state" do
+			state = FactoryGirl.create(:state)
+			term_banner = FactoryGirl.create(:term_loan_banner, rotation_rank: 5)
+			FactoryGirl.create(:states_term_loan, term_loan_id: term_banner.bannerable.id, state_id: state.id)
+			payday_banner = FactoryGirl.create(:payday_loan_banner, rotation_rank: 5)
+			FactoryGirl.create(:payday_loans_state, payday_loan_id: payday_banner.bannerable.id, state_id: state.id)
+			advertiser_banner = FactoryGirl.create(:advertiser_loan_banner, rotation_rank: 5)
+			FactoryGirl.create(:advertiser_loans_state, advertiser_loan_id: advertiser_banner.bannerable.id, state_id: state.id)
+			get :show, id: state.state_abbr.downcase
+			assigns(:paid_banner).should_not be_nil
+		end
+
+		it "removes banners with 0 rotation_rank from banner queue" do
+			state = FactoryGirl.create(:state)
+			term_banner = FactoryGirl.create(:term_loan_banner, rotation_rank: 5)
+			FactoryGirl.create(:states_term_loan, term_loan_id: term_banner.bannerable.id, state_id: state.id)
+			payday_banner = FactoryGirl.create(:payday_loan_banner, rotation_rank: 0)
+			FactoryGirl.create(:payday_loans_state, payday_loan_id: payday_banner.bannerable.id, state_id: state.id)
+			advertiser_banner = FactoryGirl.create(:advertiser_loan_banner, rotation_rank: 0)
+			FactoryGirl.create(:advertiser_loans_state, advertiser_loan_id: advertiser_banner.bannerable.id, state_id: state.id)
+			get :show, id: state.state_abbr.downcase
+			assigns(:paid_banner).should eq(term_banner)
+		end		
+
+		it "does not select a banner if no lenders operate in a state" do
+			state = FactoryGirl.create(:state)
+			other_state = FactoryGirl.create(:state)
+			term_banner = FactoryGirl.create(:term_loan_banner, rotation_rank: 5)
+			FactoryGirl.create(:states_term_loan, term_loan_id: term_banner.bannerable.id, state_id: state.id)
+			payday_banner = FactoryGirl.create(:payday_loan_banner, rotation_rank: 5)
+			FactoryGirl.create(:payday_loans_state, payday_loan_id: payday_banner.bannerable.id, state_id: state.id)
+			advertiser_banner = FactoryGirl.create(:advertiser_loan_banner, rotation_rank: 5)
+			FactoryGirl.create(:advertiser_loans_state, advertiser_loan_id: advertiser_banner.bannerable.id, state_id: state.id)
+			get :show, id: other_state.state_abbr.downcase
+			assigns(:paid_banner).should eq(nil)
+		end		
 	end
 
 	# "all controlers that set tracking" is in spec/support/shared_controller_tests

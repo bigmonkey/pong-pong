@@ -53,7 +53,7 @@ ActiveAdmin.register Banner do
       f.inputs "Banner Details" do
         f.input :rotation_rank, label: 'Number 1-10'
         f.input :lender_link, label: 'Lender Link (http://)'
-        f.input :lender_tail, label: 'Lender Tail (CJ\'s is \"?sid=\"")'
+        f.input :lender_tail, label: "Lender Tail (CJ\'s is \"?sid=\")"
       end
       f.inputs "Banner Image" do
         f.input :size_160x600, as: :file, required: false

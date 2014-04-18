@@ -207,6 +207,43 @@ class ApplicationController < ActionController::Base
     @paid_lenders = State.find_by_state_abbr(state_abbr).send(type+"_loans").paid.by_top_rank
   end
 
+  # select a banner based on rotation_rank weighting
+  # the more weigthing the higher the odds of selections
+  # banners with 0 rotation ranks are skipped
+  def paid_banner(state_abbr)
+    banners = []
+    banner_weights = 0
+    Banner.all.each do |b|
+      offered_states(b.bannerable)
+      if @offered_states.include?(state_abbr.upcase)
+        banners.push(b) 
+        banner_weights = banner_weights + b.rotation_rank
+      end
+    end
+
+    if banners.empty?
+      @paid_banner = nil
+    else
+      banner_choice = rand(0..banner_weights)
+      i = 0
+      banner_count = 0
+      begin
+        if banners[i].rotation_rank.blank? || banners[i].rotation_rank==0
+          i+=1
+        else
+          banner_count = banner_count + banners[i].rotation_rank
+          if banner_count >= banner_choice
+            done = true
+          else
+            i+=1
+          end
+        end  
+      end until done  
+
+      @paid_banner = banners[i]
+    end
+    
+  end
 
   private
 

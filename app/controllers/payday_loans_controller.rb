@@ -35,6 +35,7 @@ class PaydayLoansController < ApplicationController
       # format is paid_lenders(<'payday' 'term' 'advertiser'>, params[:id].upcase)
 
       paid_lenders('payday', params[:id].upcase)
+      paid_banner(params[:id])
 
 			@criteria = PaydayLoan.new    #@criteria gets used on view
 			@criteria.sniff_id = !params[:sniff_score].blank? ? Sniff.find_by_sniff_score(params[:sniff_score]).id : Sniff.find_by_sniff_score(3).id

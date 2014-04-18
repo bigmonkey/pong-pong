@@ -11,7 +11,8 @@ describe "Admin Banner Pages" do
     before(:all) { 
         FactoryGirl.create(:term_loan_banner)
         FactoryGirl.create(:payday_loan_banner)
-        Banner.all.count.should eq(2)
+        FactoryGirl.create(:advertiser_loan_banner)
+        Banner.all.count.should eq(3)
     }
 
     before (:each) do

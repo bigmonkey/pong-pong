@@ -10,6 +10,8 @@ class State < ActiveRecord::Base
   has_many :payday_loans_states
   has_many :payday_loans, through: :payday_loans_states
 
+  has_many :advertiser_loans_states
+  has_many :advertiser_loans, through: :advertiser_loans_states
 
   #has_and_belongs_to_many :payday_loans
   #has_and_belongs_to_many :term_loans
