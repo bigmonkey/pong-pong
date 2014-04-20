@@ -314,7 +314,7 @@ describe "Payday Loan Pages" do
       }
       it { should have_content("#1 Payday Hound Pick -- TX Payday Loans") }
       it { should have_content("#2 Payday Hound Pick -- TX Payday Loans") }
-      it { should_not have_css('div.show_728x90')}
+      #it { should_not have_css('div.show_728x90')}
       it { should have_css('div.show_160x600')}
     end
 

@@ -15,7 +15,7 @@ class PaydayLoanLawsController < ApplicationController
 
 	def show
 		if State.find_by_state_abbr(params[:id].upcase).nil?
-			then redirect_to("#{BASE_DOMAIN}/payday-loans-laws/")
+			then redirect_to("#{BASE_DOMAIN}/payday-loan-laws/")
 			else
 				@state = State.find_by_state_abbr(params[:id].upcase)
 				@paydaylawstate=@state.payday_loan_law

@@ -318,7 +318,7 @@ describe "Installment Loan Pages" do
           page.should have_selector("h2", text: "#{l.name.titleize}")      
         end
       end  
-      it { should_not have_css('div.show_728x90')}      
+      #it { should_not have_css('div.show_728x90')}      
       it { should have_css('div.show_160x600')}
     end
 
