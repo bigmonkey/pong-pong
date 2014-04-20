@@ -13,9 +13,10 @@
 	</aside>
 
 	<section id = "mainContent">
+
+		  <%= render(:partial => "shared/loanfinder")%>
 		<h1>Payday Loan State Laws</h1>
 				<p>Payday lending laws are ideally designed to protect you from unfair lending practices as well as to create a level playing field for lenders. The reason these laws matter to you is that if you are in a regulated state, you can leverage the state's monitoring and enforcement to help you avoid unscrupulous lenders. And if you live in a state where payday lending is prohibited, it is good to understand your options.</p>
-			<%= render 'shared/state_selector' %>
 			<div class= "clearBoth"></div>
 			<div class = "lawSummaryContent">
 
@@ -39,6 +40,9 @@
 				<p>Regulations around payday lender laws are rapidly changing. Not everyone agrees that tribes or other entities can export rates into other states. More recently, the Consumer Financial Protection Bureau has begun to study the payday lending industry. It is our opinion that a comprehensive and consistent regulatory environment will benefit consumers. The end result will be a more level playing field for lenders, improved consumer protection, and, we believe, lower costs.</p>
 			</div>	
 
+			<%= render 'shared/state_selector' %>
+
+			<%= render(partial:'shared/ads/google_728x90') %>
 
     <%=  render(:partial => "shared/media_counters")%>
 

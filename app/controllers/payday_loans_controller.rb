@@ -32,11 +32,12 @@ class PaydayLoansController < ApplicationController
 		else	
       # paid_lenders is in application_controller
       # creates array of lender id's who offer loans in this state
+      # it is used to display the top lenders intro boxes on each page
       # format is paid_lenders(<'payday' 'term' 'advertiser'>, params[:id].upcase)
       paid_lenders('payday', params[:id].upcase)
 
       # paid_banners is in application controller
-      # creates array of banners for lenders offering loans in this state
+      # selects a banner from lenders offering loans in this state
       paid_banner(params[:id])
 
 			@criteria = PaydayLoan.new    #@criteria gets used on view

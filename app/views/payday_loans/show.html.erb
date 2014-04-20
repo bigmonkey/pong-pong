@@ -21,17 +21,7 @@
 		<% #end %>
 
 		<% if @paid_lenders.blank? %>
-			<div class = "show_728x90">
-				<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-				<!-- LeaderBoard -->
-				<ins class="adsbygoogle"
-				     style="display:inline-block;width:728px;height:90px"
-				     data-ad-client="ca-pub-2559833851997252"
-				     data-ad-slot="4100870167"></ins>
-				<script>
-				(adsbygoogle = window.adsbygoogle || []).push({});
-				</script>
-			</div>
+			<%= render(partial:'shared/ads/google_728x90') %>
 		<% end %>
 
 

@@ -19,7 +19,7 @@
 }
 .lawSideBox{
 	background-color: $boxBackground;
-	@include rounded(3px);
+//	@include rounded(3px);
 	padding: 5px 10px;
 	margin: 0px 0px 10px 10px;
 	h2 {
@@ -79,7 +79,9 @@
 }
 
 .lawDisclaimer {
-	margin: 10px, 0px;
 	color: $dogEars;
 	font-size: .9em;
+  p {
+  	margin-top: 1em;
+  }
 }

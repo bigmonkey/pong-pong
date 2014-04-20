@@ -11,17 +11,7 @@
 </aside>
 <section id = "mainContent">
 		<% if @paid_lenders.blank? %>
-			<div class = "show_728x90">
-				<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-				<!-- LeaderBoard -->
-				<ins class="adsbygoogle"
-				     style="display:inline-block;width:728px;height:90px"
-				     data-ad-client="ca-pub-2559833851997252"
-				     data-ad-slot="4100870167"></ins>
-				<script>
-				(adsbygoogle = window.adsbygoogle || []).push({});
-				</script>
-			</div>
+			<%= render(partial:'shared/ads/google_728x90') %>
 		<% end %>
 		
 		<h1><%= "#{@state.state}" %> <%= @keyword.phrase.titleize %></h1>		
@@ -52,6 +42,8 @@
 	<% else %>
 		<p>There are no <%= @keyword.category=="lenders" ? @keyword.phrase : "installment lenders" %>  in <%= @state.state %>.</p>
 		<p>Visit <%= link_to("#{@state.state} Payday Lenders", payday_loan_path(@state.state_abbr.downcase)) %> to see if there are any payday loan options or see <%= link_to("#{@state.state} Payday Loan Laws", payday_loan_law_path(@state.state_abbr.downcase)) %> for information on <%= "#{@state.state}" %> payday lending laws and additional resources.</p>
+		<p>Since there are no <%= @keyword.phrase.humanize %> in your state you may consider a payday loan. These loans are quick, simple loans that can get you cash very quickly and do not require good credit. These loans are very expensive when compared to other options such as banks, credit cards, friends, and family so be sure to exhaust other options before considering a payday loan. <%= @keyword.phrase.humanize %> are best used for emergency expenses that are unavoidable such as a necessary car repair or urgent medical care and where repayment from the next paycheck is feasible.</p>
+		<p>Similar to <%= @keyword.phrase.humanize %> payday lenders make loans based on your pay check. The typical process is once approved for a loan the payday lender will deposit funds directly into your checking account. At your next pay date the lender will automatically deduct the principal and fees from your checking account. These fees range from around $9 to $30 per $100 borrowed. So if you get $300 deposited into your checking account, on your next payday $327 to $390 will be automatically deducted from your account depending on the fee for your particular loan. If the full deduction can be made then the loan is paid in full and you are done. If you are unable to make this full payment some payday lenders allow you to renew the loan. The extension usually is at the same rate and you will pay fees on the unpaid fees from the previous loan. This means at your next payday (now the second payday since you took the loan) $356 to $507 will be automatically deducted from your account. As you can see the fees add up fast and one can end up owing in fees way more than the original loan so please be careful with these loans.</p>
 		<p>You can also visit <%= "#{@state.state}" %>'s payday loan regulator, the <%= link_to("#{@paydaylawstate.regulator}", @paydaylawstate.regulator_site, :rel => 'nofollow') %> for additional information.</p>
 	<% end %>
    <%=  render(:partial => "shared/media_counters")%>

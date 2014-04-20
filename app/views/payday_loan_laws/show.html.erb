@@ -6,7 +6,22 @@
 
 
 	<section id = "mainContentFull">
-		<h1><%= "#{@state.state}" %> Payday Loan Laws</h1>
+		<% if @paid_lenders.blank? %>
+			<div class = "show_728x90">
+				<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+				<!-- LeaderBoard -->
+				<ins class="adsbygoogle"
+				     style="display:inline-block;width:728px;height:90px"
+				     data-ad-client="ca-pub-2559833851997252"
+				     data-ad-slot="4100870167"></ins>
+				<script>
+				(adsbygoogle = window.adsbygoogle || []).push({});
+				</script>
+			</div>
+		<% end %>
+
+
+
 		<div class = "lawContent">
 			<div class = "lawSideBoxes">
 						<div class = "lawSideBox">
@@ -46,9 +61,23 @@
 								<% end %>				
 							</div>
 						<% end %>	
+						<% if !@paid_banner.nil? %>
+							<div class = "show_160x600">
+								<%= link_to(image_tag(@paid_banner.size_160x600.url, alt: @paid_banner.name ), partner_path(@paid_banner.partner_id), :rel =>'nofollow', :target => 'blank')  %>
+							</div>	
+						<% end %>		
 			
 			</div>
 			<div class = "lawContentMain">
+
+		<% if !@paid_lenders.blank? %>
+			<% @paid_lenders.first(2).each_with_index do |p, i| %>
+				<% @lender = p %>
+				<%= render(partial: "lenders/lender_introbox", locals: {state: @state, keyword:@keyword, i: i} ) %>
+			<% end %>
+
+		<% end %>
+		<h1><%= "#{@state.state}" %> Payday Loan Laws</h1>
 				<div class = "lawDisclaimer"><p>The data provided here is for general informational purposes and should not be used as legal reference. If you have questions regarding <%= @state.state %> payday loan laws contact the <%= link_to("#{@paydaylawstate.regulator}", @paydaylawstate.regulator_site,:target => '_blank') %>.</p></div>
 
 				<p>Payday loans are <%= @paydaylawstate.legal_status.downcase %> in <%= @state.state %>   
@@ -56,8 +85,11 @@
 						(see <%= link_to("#{@state.state} Payday Loans", payday_loan_path(@state.state_abbr.downcase)) %> or <%= link_to("#{@state.state} Installment Loans", term_loan_path(@state.state_abbr.downcase)) %> to compare fees and requirements for individual lenders).
 						<% else %>
 						but there may be unlicensed lenders offering payday loans in <%= @state.state %>.</p> 
-						<p>See <%= link_to "#{@state.state} Payday Loans", payday_loan_path(@state.state_abbr.downcase) %> or <%= link_to "#{@state.state} Installment Loans", term_loan_path(@state.state_abbr.downcase) %> to see if any of the lenders we have reviewed are offering loans in <%= @state.state %>.</p>
-						<p>These lenders export their tribal or state laws into <%= @state.state %>. Not all states permit exportation of laws and some states enforce their ban more strictly but we do see lenders offering payday loans in states where it is prohibited. In any event remember these lenders are not licensed or regulated by <%= @state.state %> and may even be operating illegally so proceed with caution. 
+						
+						
+						<p>There are basically four types of lenders: in-state licensed lenders, out-of-state unlicensed lenders, tribal lenders, and foreign-based lenders. In-state licensed lenders are regulated and monitored by each state's regulator for compliance. They must also adhere to federal regulations. Out-of-state and tribal lenders will operate in states unlicensed based on the practice of exporting their states' or tribes' laws into your state. They are regulated by their states or tribes, but as a resident of neither, you often have less recourse if things go wrong. These lenders must also adhere to federal regulations. The last group of lenders are foreign-based lenders. They operate on the premise that they export their countries' laws into your state.<p/>						
+						<p>So if there are lenders in your state they are offering loans under the assumption that they can export their tribal or state laws into <%= @state.state %>. Not all states permit exportation of laws and some states enforce their ban more strictly but we do see lenders offering payday loans in states where it is prohibited. In any event remember these lenders are not licensed or regulated by <%= @state.state %> and may even be operating illegally so proceed with caution.</p>
+						<p>See <%= link_to "#{@state.state} Payday Loans", payday_loan_path(@state.state_abbr.downcase) %> or <%= link_to "#{@state.state} Installment Loans", term_loan_path(@state.state_abbr.downcase) %> to see if any of the lenders we have reviewed are offering loans in <%= @state.state %>.</p> 
 						<% end %>
 				</p>
 
