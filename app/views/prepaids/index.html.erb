@@ -81,7 +81,7 @@
               <table width = 100% >
                 <tr>    
                   <td class = "cardInfoName">
-                      <div><%= link_to(image_tag("prepaid/#{p.image_file}", :alt => p.name ),  partner_path(p.partner_id), :page=>@page,:rel => 'nofollow', :target => "_blank") %></div>
+                      <div><%= link_to(image_tag("prepaid/#{p.image_file}", :alt => p.name ),  partner_path(p.partner_id),:rel => 'nofollow', :target => "_blank") %></div>
                       <div class = "preCardNameUnderImage"><%= link_to p.name, prepaid_path(p.review_url.downcase) %></div>
                   </td>
                   <td class = "preCardInfoDesc">
