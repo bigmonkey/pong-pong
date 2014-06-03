@@ -11,7 +11,7 @@
 </aside>
 <section id = "mainContent">
 		<% if @paid_lenders.blank? %>
-			<%= render(partial:'shared/ads/google_728x90') %>
+			<%= render(partial:'shared/ads/g_728x90_term_top') %>
 		<% end %>
 		
 		<h1><%= "#{@state.state}" %> <%= @keyword.phrase.titleize %></h1>		
