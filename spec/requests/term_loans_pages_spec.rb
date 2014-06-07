@@ -311,14 +311,14 @@ describe "Installment Loan Pages" do
         FactoryGirl.create(:advertiser_loans_state, advertiser_loan_id: advertiser_banner.bannerable.id, state_id: State.find_by_state_abbr("TX").id)         
         visit "/installment-loans/tx" 
       }
-      it { should have_content("#1 Payday Hound Pick -- TX Installment Loans") }
-      it { should have_content("#2 Payday Hound Pick -- TX Installment Loans") }
+      it { should have_content("#1 Payday Hound Pick") }
+      it { should have_content("#2 Payday Hound Pick") }
       it "should have h2 selectors for paid lenders" do 
         State.find_by_state_abbr('TX').term_loans.paid.by_top_rank.first(2).each do |l|
           page.should have_selector("h2", text: "#{l.name.titleize}")      
         end
       end  
-      #it { should_not have_css('div.show_728x90')}      
+      it { should have_css('div.show_728x90')}      
       it { should have_css('div.show_160x600')}
     end
 
@@ -340,7 +340,7 @@ describe "Installment Loan Pages" do
       
       context "Do not exit in TX. Payday, and Advertisers do not exist in TX" do
         before { visit "/installment-loans/tx" }
-        it { should_not have_css('div.show_160x600')}
+        it { should have_css('div.show_160x600')}
       end      
 
       context "Do not exisit in TX but an advertisers exists in TX " do

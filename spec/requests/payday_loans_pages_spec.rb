@@ -312,9 +312,9 @@ describe "Payday Loan Pages" do
         FactoryGirl.create(:advertiser_loans_state, advertiser_loan_id: advertiser_banner.bannerable.id, state_id: State.find_by_state_abbr("TX").id)        
         visit "/payday-loans/tx" 
       }
-      it { should have_content("#1 Payday Hound Pick -- TX Payday Loans") }
-      it { should have_content("#2 Payday Hound Pick -- TX Payday Loans") }
-      #it { should_not have_css('div.show_728x90')}
+      it { should have_content("#1 Payday Hound Pick") }
+      it { should have_content("#2 Payday Hound Pick") }
+      it { should have_css('div.show_728x90')}
       it { should have_css('div.show_160x600')}
     end
 
@@ -336,7 +336,7 @@ describe "Payday Loan Pages" do
 
       context "Do not exit in TX. Term, and Advertisers do not exist in TX" do
         before { visit "/payday-loans/tx" }
-        it { should_not have_css('div.show_160x600')}
+        it { should have_css('div.show_160x600')}
       end
 
       context "Do not exisit in TX but an advertisers exists in TX " do
