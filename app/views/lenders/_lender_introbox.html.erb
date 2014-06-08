@@ -23,7 +23,7 @@
 			</div>
 			<div class = "lenderIntroBoxRight">		
 
-				<div class = "lenderImage"><%= link_to(image_tag("lendersbig/#{@lender.image_file_big}", :alt => @lender.name ), partner_path(@lender.partner_id), :rel => 'nofollow', :target => 'blank')  %></div>
-				<div class = "lenderApply"><%= link_to('Apply Direct', partner_path(@lender.partner_id), :rel => 'nofollow', :target => 'blank') %></div>
+				<div class = "lenderImage"><%= link_to(image_tag("lendersbig/#{@lender.image_file_big}", :alt => @lender.name ), partner_path(@lender.partner_id), :rel => 'nofollow', :target => 'blank', onclick: "ga('send', 'event', 'image', 'click', 'box #{@lender.lender_type} #{@lender.paid == true ? 'paid' : 'unpaid'}');" )  %></div>
+				<div class = "lenderApply"><%= link_to('Apply Direct', partner_path(@lender.partner_id), :rel => 'nofollow', :target => 'blank', onclick: "ga('send', 'event', 'button', 'click', 'box #{@lender.lender_type} #{@lender.paid == true ? 'paid' : 'unpaid'}');" ) %></div>
 			</div>
 		</div>
