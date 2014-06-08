@@ -8,14 +8,11 @@
 </div>
 
 
-<!--
+
 <% # if !@paid_banner.nil? %>
 	<div class = "show_160x600">
 		<%# link_to(image_tag(@paid_banner.size_160x600.url, alt: @paid_banner.name ), partner_path(@paid_banner.partner_id), :rel =>'nofollow', :target => 'blank')  %>
-	</div>	
-<% #end %>
--->
-
-	<div class = "show_160x600">
 		<%= render(partial:'shared/ads/g_160x600_sitewide_side') %>
 	</div>	
+<% #end %>
+

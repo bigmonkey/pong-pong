@@ -73,7 +73,8 @@ describe "Payday Loan Law Pages" do
 			it { should have_selector('h2', text: 'Regulator Details') }
 			it { should have_content("#{@paydaylawstate.legal_status.downcase}") }
 			it { should have_link("#{@paydaylawstate.regulator}", @paydaylawstate.regulator_site)}
-		
+			it { should have_css('div.show_728x90')}  		
+			it { should have_css('div.show_160x600')}  
 		end
 		
 		context "non-existing state" do 
@@ -82,7 +83,8 @@ describe "Payday Loan Law Pages" do
 
 			it { should have_selector('h1', text: 'Payday Loan State Laws')}
 			it { should_not have_selector('h1', text: "#{@state.state} Payday Loan Laws") }
-
+			it { should have_css('div.show_728x90')}  
+			it { should have_css('div.show_160x600')}  
 		end
 
 		after(:all) {
