@@ -26,8 +26,8 @@
     <% @lenders.each do |l| %>
     <tr>
       <td>
-          <div><%= link_to(image_tag("lendersm/#{l.image_file}", :alt => l.name ), partner_path(l.partner_id), :rel =>'nofollow', :target => 'blank')  %></div>
-          <div><%= link_to("Apply Direct", partner_path(l.partner_id), :rel =>'nofollow', :target => 'blank')  %></div>
+          <div><%= link_to(image_tag("lendersm/#{l.image_file}", :alt => l.name ), partner_path(l.partner_id), :rel =>'nofollow', :target => 'blank', onclick: "ga('send', 'event', 'image', 'click', 'table #{l.lender_type} #{l.paid == true ? 'paid' : 'unpaid'}');")  %></div>
+          <div><%= link_to("Apply Direct", partner_path(l.partner_id), :rel =>'nofollow', :target => 'blank', onclick: "ga('send', 'event', 'link', 'click', 'table #{l.lender_type} #{l.paid == true ? 'paid' : 'unpaid'}');")  %></div>
       </td>
       <td>
         <div><%= l.first_comment %></div>
