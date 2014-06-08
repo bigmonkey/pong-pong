@@ -35,7 +35,7 @@
         <td>
           <div><%= l.first_comment %></div>
           <div>Governing Law: <%= l.governing_law %></div>
-          <div><%= link_to('see review', lender_path(l.review_url, type: 'payday')) %></div>
+          <div><%= link_to('see review', lender_path(l.review_url)) %></div>
         </td>    
         <td><%= l.cost.nil? ? "?" : number_to_currency(l.cost) %></td>
         <td><%= l.apr.nil? ? "?" : number_to_percentage(l.apr*100, :precision => 0) %></td>

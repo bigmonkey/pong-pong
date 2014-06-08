@@ -28,7 +28,7 @@ describe "Installment Loan Pages" do
         TermLoan.all.each do |t|
           page.should have_content("Company Name")          
           page.should have_selector('div', text: t.first_comment)
-          page.should have_link("see review", href: "/lenders/#{t.review_url}/?type=term" )      
+          page.should have_link("see review", href: "/lenders/#{t.review_url}/" )      
           page.should have_link("Apply Direct", href: "#{partner_path(t.partner_id)}/" )
         end  
       end
@@ -289,7 +289,7 @@ describe "Installment Loan Pages" do
 
       it { should have_content("TX Lender") }
       it { should have_selector('div', text: @texaslender.first_comment) }        
-      it { should have_link("see review", href: "/lenders/#{@texaslender.review_url}/?type=term" ) }         
+      it { should have_link("see review", href: "/lenders/#{@texaslender.review_url}/" ) }         
       it { should have_link("Apply Direct", href: "/partners/#{@texaslender.partner_id}/") }
       it "should not show the VA lender" do 
         page.should_not have_link("Apply Direct", href: "/partners/#{@valender.partner_id}/")
