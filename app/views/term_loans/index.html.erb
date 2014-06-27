@@ -280,8 +280,10 @@
 </section>
 
 <aside id ="sidebarFinder">
-
-		<% # render(:partial => "shared/sidebars/paydayfinder")%>
-    <%= render(:partial => "shared/sidebars/sidebar")%>
-
+	<% if @keyword.category ==  "custom" %>
+		<% then %>
+			<%= render(:partial => "shared/sidebars/sidebar_loanfinder")%>
+    <% else %>
+    	<%= render(:partial => "shared/sidebars/sidebar")%>
+  <% end %>
 </aside>

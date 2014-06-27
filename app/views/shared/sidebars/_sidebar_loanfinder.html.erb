@@ -1,0 +1,14 @@
+<div class = "criteria">
+
+<%= form_tag("#{BASE_DOMAIN}/#{@path}/", method: 'get') do %>
+
+
+  <div class="formSection">
+    <div class="formLabel"><%= label(:state, :state) %></div>
+    <div class="state_id_container formInput"><%= select_tag :state, options_for_select(us_states), id: 'state_id'  %></div>
+  </div>
+  
+  <%= submit_tag "FIND LOAN", :class => "findLoanButton", onClick:"_gaq.push(['_trackEvent', 'Button', 'Click', 'FindLoan',, false]);" %>
+<% end %>
+
+</div>

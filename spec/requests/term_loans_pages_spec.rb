@@ -45,6 +45,12 @@ describe "Installment Loan Pages" do
       end 
   end
 
+  shared_examples_for "non-content ad pages" do 
+    it "should not show side bar loan selector" do
+      page.should_not have_content ("Need Quick Cash?")
+    end
+  end
+
   describe "Index Pages" do
     
     before(:all) { 
@@ -112,6 +118,8 @@ describe "Installment Loan Pages" do
 
       it { should have_selector('div', text: "#{@keyword.word.titleize} Finder") }
 
+      it_should_behave_like "non-content ad pages"      
+
     end  
 
     #Installment Loan SEO Pages
@@ -166,7 +174,8 @@ describe "Installment Loan Pages" do
       it { should_not have_link("#{@notgrandchild.word}", href: "/#{@notgrandchild.word.gsub(' ','-') }/" )}
 
       it_should_behave_like "all index installment loan pages"
-      it_should_behave_like "all installment loan pages"      
+      it_should_behave_like "all installment loan pages"  
+      it_should_behave_like "non-content ad pages"      
     end
 
     context "Military Loans" do
@@ -221,8 +230,41 @@ describe "Installment Loan Pages" do
       it { should have_content("#{@keyword.state_phrase.titleize}") }
       
       it_should_behave_like "all index installment loan pages"
-      it_should_behave_like "all installment loan pages"      
+      it_should_behave_like "all installment loan pages"  
+      it_should_behave_like "non-content ad pages"         
     end
+
+    # Installment Loan Content Ad Pages
+    context "Content Ad Page" do
+      before { 
+        # create installment loan kw 
+        FactoryGirl.create(
+          :keyword,
+          word:      "borrow money options",
+          phrase:    "borrow money options",
+          state_phrase: "evaluate borrow money options",
+          category:  "custom",
+          article:   "Here are some borrow money options.",
+          parent_page: "",
+        )
+        # @keyword is the keyword for the page being tested and must be in routes.rb
+        @keyword = Keyword.find_by_word("borrow money options")
+        #binding.pry
+        visit '/borrow-money-options/'
+        #binding.pry
+        #puts page.body
+      }  
+
+      it { should have_selector('h1', text: "#{@keyword.phrase.titleize}") }
+
+      it { should have_selector('div', text: "#{@keyword.word.titleize} Finder") }
+
+      it "should have loan finder sidebar " do
+        page.should have_content ("Need Quick Cash") 
+      end
+
+
+    end  
 
     after(:all){
       Sniff.destroy_all

@@ -23,6 +23,10 @@ class TermLoansController < ApplicationController
 		@criteria.sniff_id = Sniff.find_by_sniff_score(3).id
    	@criteria.ranking = 0	
 
+    # defined so the radio button defaults to correct button
+    @lender=TermLoan.new      
+    @lender.lender_type="term"
+    
   end
 
 	def show
