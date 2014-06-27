@@ -1,14 +1,18 @@
-<div class = "criteria">
-
+<div class = "sideContentLoanFinder">
+<h2>Get Quick Cash!</h2>
 <%= form_tag("#{BASE_DOMAIN}/#{@path}/", method: 'get') do %>
 
 
-  <div class="formSection">
-    <div class="formLabel"><%= label(:state, :state) %></div>
-    <div class="state_id_container formInput"><%= select_tag :state, options_for_select(us_states), id: 'state_id'  %></div>
+<div class = 'sideHighlights'>Instant Approvals</div>
+<div class = 'sideHighlights'>Deposited Overnight</div>
+<div class = 'sideHighlights'>Pre-Selected Lenders</div>
+<div class = 'sideHighlights'>Bad Credit OK</div>
+
+  <div class="">
+    <div class="sidecontentStateIdContainer formInput"><%= select_tag :state, options_for_select(us_states), id: 'sidecontentStateId'  %></div>
   </div>
   
-  <%= submit_tag "FIND LOAN", :class => "findLoanButton", onClick:"_gaq.push(['_trackEvent', 'Button', 'Click', 'FindLoan',, false]);" %>
+  <%= submit_tag "FIND LOAN", :class => "sidecontentLoanButton", onClick:"_gaq.push(['_trackEvent', 'Button', 'Click', 'FindLoan',, false]);" %>
 <% end %>
 
 </div>
