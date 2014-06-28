@@ -47,7 +47,7 @@ describe "Installment Loan Pages" do
 
   shared_examples_for "non-content ad pages" do 
     it "should not show side bar loan selector" do
-      page.should_not have_content ("Need Quick Cash?")
+      page.should_not have_selector('h2',text: 'Get Quick Cash')
     end
   end
 
@@ -257,10 +257,8 @@ describe "Installment Loan Pages" do
 
       it { should have_selector('h1', text: "#{@keyword.phrase.titleize}") }
 
-      it { should have_selector('div', text: "#{@keyword.word.titleize} Finder") }
-
       it "should have loan finder sidebar " do
-        page.should have_content ("Need Quick Cash") 
+        page.should have_selector('h2', 'Get Quick Cash') 
       end
 
 
