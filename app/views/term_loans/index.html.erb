@@ -17,7 +17,9 @@
  
 	<h1><%= @keyword.phrase.titleize %></h1>
 
-  <%= render(:partial => "shared/loanfinder")%>
+	<% if @keyword.category != "custom" %>
+		<%= render(:partial => "shared/loanfinder")%>
+  <% end %>
 
 	<% case @keyword.category %>
 	<% 		when "custom" %>
@@ -283,7 +285,6 @@
 	<% if @keyword.category ==  "custom" %>
 		<% then %>
 			<%= render(:partial => "shared/sidebars/sidebar_loanfinder")%>
-			<%= render(:partial => "shared/sidebars/paydayfinder")%>
     <% else %>
     	<%= render(:partial => "shared/sidebars/sidebar")%>
   <% end %>
