@@ -1,12 +1,12 @@
 <div class = "sideContentLoanFinder">
-<h2>Get Quick Cash!</h2>
-<%= form_tag("#{BASE_DOMAIN}/#{@path}/", method: 'get') do %>
+	<h2>Get Quick Cash!</h2>
+	<%= form_tag("#{BASE_DOMAIN}/#{@path}/", method: 'get') do %>	
+	
 
-
-<div class = 'sideHighlights'>Instant Approvals</div>
-<div class = 'sideHighlights'>Deposited Overnight</div>
-<div class = 'sideHighlights'>Pre-Selected Lenders</div>
-<div class = 'sideHighlights'>Bad Credit OK</div>
+	<div class = 'sideHighlights'>Instant Approvals</div>
+	<div class = 'sideHighlights'>Deposited Overnight</div>
+	<div class = 'sideHighlights'>Pre-Selected Lenders</div>
+	<div class = 'sideHighlights'>Bad Credit OK</div>
 
   <div class="">
   	<div class="sidecontentLabel">Select Your State</div>
@@ -14,6 +14,7 @@
   </div>
   
   <%= submit_tag "APPLY HERE", :class => "sidecontentLoanButton", onClick:"_gaq.push(['_trackEvent', 'Button', 'Click', 'FindLoan',, false]);" %>
-<% end %>
-
+	<% end %>
 </div>
+
+<%= render(partial:'shared/ads/g_160x600_sitewide_side') %>
