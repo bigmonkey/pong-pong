@@ -204,7 +204,7 @@ class ApplicationController < ActionController::Base
   # creates an array of lenders making loans in a given state
   # assumes three models:TermLoan, PaydayLoan, AdvertiserLoan
   def paid_lenders(type, state_abbr)
-    @paid_lenders = State.find_by_state_abbr(state_abbr).send(type+"_loans").paid.by_top_rank
+    @paid_lenders = State.find_by_state_abbr(state_abbr).send(type+"_loans").lender_type(type).paid.by_top_rank
   end
 
   # select a banner based on rotation_rank weighting
