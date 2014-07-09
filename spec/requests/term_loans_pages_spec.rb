@@ -47,6 +47,7 @@ describe "Installment Loan Pages" do
 
   shared_examples_for "non-content ad pages" do 
     it "should not show side bar loan selector" do
+      save_and_open_page
       page.should_not have_selector('h2',text: 'Get Quick Cash')
     end
   end

@@ -21,6 +21,8 @@
 
 	<div itemscope itemtype="http://schema.org/Article">
 
+
+
 		<span itemprop="name">
 			<h1><%= @keyword.phrase.titleize %></h1>
 		</span>
@@ -29,20 +31,20 @@
 			Updated <span itemprop="dateModified" content= <%= @keyword.updated_at.to_time.iso8601 %> ><%= @keyword.updated_at.strftime("%B %d, %Y") %></span>		
 		</div>
 
-
-		
 		<% if @keyword.category != "custom" %>
 			<%= render(:partial => "shared/loanfinder")%>
 			<%= render(:partial => "shared/loanDrop")%>
 	  <% end %>	
+		
+
 
 		<% case @keyword.category %>
 		<% 		when "custom" %>	
 
 			<%= @keyword.article.html_safe %>	
 
-			<%= render 'shared/state_selector' %>
-			
+			<% render 'shared/state_selector' %>
+			<%= render(:partial => "shared/loanDrop")%>
 			<h2>Installment Loan Lenders</h2>	
 			<p>The Payday Hound reviews installment lenders and ranks them according to our <%= link_to "Sniff Test", '/infos/about' %> (reputation), costs, and licensing. To see lenders who provide installment loans in your state select your state from the table above.</p>	
 

@@ -203,7 +203,7 @@ td .instantDecision {
 		color: #666;
 		width: 135px;
 		height: 20px;
-		vertical-align: middle;
+		//vertical-align: middle;
 		margin: -3px auto;
 	  background: none repeat scroll 0 0 transparent;
 	  border: 0 none;
@@ -222,6 +222,7 @@ td .instantDecision {
 	   	cursor: pointer;
 	   	cursor: hand;
 	   	display: block;
+	   	-webkit-appearance: none;
 	}	
 }
 

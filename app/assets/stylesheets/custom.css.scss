@@ -12,6 +12,7 @@ $boxBackgroundVeryDark: #888; /* highlight boxes veeeerry dark */
 $dogFur: #e0a03e; /*color of our dogs fur */
 $dogEars: #d85936; /* color of our dogs ears */
 $peach: #F7ECD2; /* peach background color */
+$redHighlight: #ba3e12; /* darker red used in loan finder button */
 
 @mixin rounded($radius) {
   border-radius: $radius;
