@@ -21,11 +21,11 @@
 	<% else %>
 		<% if !@lender.paid %>
 
-			<% if rand<0.5 %>
-				<%= render(:partial => "shared/loanfinder")%>
-			<% else %>	
+
+				<%# render(:partial => "shared/loanfinder")%>
+
 				<%= render(:partial => "shared/loanDrop")%>
-			<% end %>
+
 
 
 	  <% end %>
@@ -108,7 +108,7 @@
 		<div class = "lenderPaidDisclaimer">NOTE: We <%= link_to "may be compensated", '/infos/about/' %> by <%= @lender.name %> if you apply for a loan from our site. The Payday Hound is 100% free to you. </div>
 		<% end %>
 		<div class = "spacerUnderNav"></div>
-  	<%= render(partial:'shared/ads/g_728x90_lender_bottom') %>
+  	<%= render(partial:'shared/ads/g_728x90_lender_bottom') if AD_SENSE%>
 
 		<%=  render(:partial => "shared/media_counters")%>	
 

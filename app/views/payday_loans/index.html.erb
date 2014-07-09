@@ -16,11 +16,11 @@
 <section id="mainContent" >
 	<h1><%= @keyword.phrase.titleize %></h1>
 
-			<% if rand<0.5 %>
-				<%= render(:partial => "shared/loanfinder")%>
-			<% else %>	
+
+				<%# render(:partial => "shared/loanfinder")%>
+
 				<%= render(:partial => "shared/loanDrop")%>
-			<% end %>
+
 
 
 	<% case @keyword.category %>

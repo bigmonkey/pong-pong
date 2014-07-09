@@ -146,49 +146,49 @@
 				vertical-align: middle;
 			}
 		}
-	.loanDropLabel {
-		//border-top: 1px solid $pageBackground;
-		color: $pageBackground;
-		font-size: .8em;
-		padding-top: 1em;
-		text-align: center;
-		text-transform: uppercase;
-	}	
-
-	.loanDropStateIdContainer {
-		height: 17px;
-		width: 120px;
-	  overflow: hidden;
-	  margin: 0em auto;
-	  background: url(asset-path('downarrow.png')) no-repeat right #fff;
-	  //border: 1px solid #C6C6C6;
-		//@include rounded(4px); 
+		.loanDropLabel {
+			//border-top: 1px solid $pageBackground;
+			color: $pageBackground;
+			font-size: .8em;
+			padding-top: 1em;
+			text-align: center;
+			text-transform: uppercase;
 		}	
-
-	#loanDropStateId {
-		color: #666;
-		width: 135px;
-		height: 18px;
-		//vertical-align: middle;
-		margin: -3px auto;
-	  background: none repeat scroll 0 0 transparent;
-	  border: 0 none;
-	  border-radius: 0 0 0 0;
-	}	
-	.loanDropLoanButton {
-			background: $highColor;
-	   	height: 1.8em;
-	   	line-height: 1.8em;
-	   	width: 9.3em;
-	   	margin: 1.2em auto;
-	   	border: none;
-	   	color: $pageBackground;
-	   	font-family: helvetica, arial, san-serif;
-	   	font-size: 1em;
-	   	cursor: pointer;
-	   	cursor: hand;
-	   	display: block;
-	}			
+	
+		.loanDropStateIdContainer {
+			height: 17px;
+			width: 120px;
+	  	overflow: hidden;
+	  	margin: 0em auto;
+	  	background: url(asset-path('downarrow.png')) no-repeat right #fff;
+	  	//border: 1px solid #C6C6C6;
+			//@include rounded(4px); 
+			}	
+	
+		#loanDropStateId {
+			color: #666;
+			width: 137px;
+			height: 18px;
+			//vertical-align: middle;
+			margin: -3px auto;
+	  	background: none repeat scroll 0 0 transparent;
+	  	border: 0 none;
+	  	border-radius: 0 0 0 0;
+		}	
+		.loanDropLoanButton {
+				background: $highColor;
+	   		height: 1.8em;
+	   		line-height: 1.8em;
+	   		width: 9.3em;
+	   		margin: 1.2em auto;
+	   		border: none;
+	   		color: $pageBackground;
+	   		font-family: helvetica, arial, san-serif;
+	   		font-size: 1em;
+	   		cursor: pointer;
+	   		cursor: hand;
+	   		display: block;
+		}			
 	}	
 }
 
