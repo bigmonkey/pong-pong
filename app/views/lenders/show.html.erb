@@ -21,6 +21,7 @@
 	<% else %>
 		<% if !@lender.paid %>
 	  <%= render(partial: "shared/loanfinder")%>
+	  <%= render(:partial => "shared/loanDrop")%>
 	  <% end %>
 		<%= render(partial: "lenders/lender_introbox", locals: {state: ""} ) %>
 	

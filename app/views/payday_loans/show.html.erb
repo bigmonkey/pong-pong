@@ -21,7 +21,7 @@
 		<% #end %>
 
 		<% if @paid_lenders.blank? %>
-			<%= render(partial:'shared/ads/g_728x90_payday_top') %>
+			<%= render(partial:'shared/ads/g_728x90_payday_top') if AD_SENSE %>
 		<% end %>
 
 
