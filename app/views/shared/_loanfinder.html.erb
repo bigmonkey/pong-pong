@@ -30,7 +30,7 @@
 					</div>
 					<% end %>	
 
-						<div class = "loanFinderButtonBox"><%= submit_tag "Get the Best Rates", id: "loanFinderButton",  onClick:"_gaq.push(['_trackEvent', 'Button', 'Click', 'Loan Finder',, false]);" %></div>
+						<div class = "loanFinderButtonBox"><%= submit_tag "Get the Best Rates", id: "loanFinderButton",  onClick:"ga('send', 'event', 'Button', 'Click', 'Loan Finder');" %></div>
 			<% end %>
 		</div>
 	</div>
