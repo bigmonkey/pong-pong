@@ -47,7 +47,14 @@
 			<%= @keyword.article.html_safe %>	
 
 			<% render 'shared/state_selector' %>
-			<%= render(:partial => "shared/loanDrop")%>
+
+			<% if rand<0.5 %>
+				<%= render(:partial => "shared/loanfinder")%>
+			<% else %>	
+				<%= render(:partial => "shared/loanDrop")%>
+			<% end %>	
+
+
 			<h2>Installment Loan Lenders</h2>	
 			<p>The Payday Hound reviews installment lenders and ranks them according to our <%= link_to "Sniff Test", '/infos/about' %> (reputation), costs, and licensing. To see lenders who provide installment loans in your state select your state from the table above.</p>	
 
