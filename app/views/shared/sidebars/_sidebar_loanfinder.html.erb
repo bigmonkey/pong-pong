@@ -13,7 +13,7 @@
     <div class="sidecontentStateIdContainer formInput"><%= select_tag :state, options_for_select(us_states), id: 'sidecontentStateId', onchange: "this.form.submit();ga('send', 'event', 'List', 'Select', 'Sidebar Finder Dropdown');"  %></div>
   </div>
   
-  <%= submit_tag "APPLY HERE", :class => "sidecontentLoanButton", onsubmit:"ga('send', 'event', 'Button', 'Click', 'Sidebar Find Loan');" %>
+  <%= submit_tag "APPLY HERE", :class => "sidecontentLoanButton", onClick:"ga('send', 'event', 'Button', 'Click', 'Sidebar Find Loan');" %>
 	<% end %>
 </div>
 
