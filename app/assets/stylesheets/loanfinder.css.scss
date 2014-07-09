@@ -99,4 +99,46 @@
 	}
 }
 
+#loanDrop {
+	margin: 0em 3em 2em;
+	background: $bigColor;
+	height: 20.45em;
+	img {
+		display: inline-block;
+	}
+	.loanDropContent {
+		color: $pageBackground;
+		display: inline-block;
+		margin: 0 1.5em;
+		text-align: center;
+		vertical-align: top;
+		width: 65%;
+		h2 {
+			font-size: 1.7em;
+			color: $pageBackground;
+			padding: .6em 0em;
+		}
+		.loanDropBlurb {
+			font-size: 1em;
+		}
+		.loanDropBoxes{
+			margin: 1em 2em;
+			text-align: left;
+			font-size: 1.2;
+		}
+		.loanDropBoxLeft {
+			float: left;
+		}
+		.loanDropBoxRight {
+			float: right;
+		}
+		.loanDropHighlights {
+			font-size: 1em;
+			vertical-align: center;
+			img {
+				vertical-align: middle;
+			}
+		}
+	}	
+}
 

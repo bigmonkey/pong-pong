@@ -11,7 +11,8 @@
 
 <% # if !@paid_banner.nil? %>
 	<%# link_to(image_tag(@paid_banner.size_160x600.url, alt: @paid_banner.name ), partner_path(@paid_banner.partner_id), :rel =>'nofollow', :target => 'blank')  %>
-	<%= render(partial:'shared/ads/g_160x600_sitewide_side') %>
+
+	<%= render(partial:'shared/ads/g_160x600_sitewide_side') if AD_SENSE %>
 
 <% #end %>
 

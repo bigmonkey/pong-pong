@@ -32,4 +32,6 @@ Pdh::Application.configure do
   # this gets changed to herokuapp in production but for developement/testing needs to be local
   BASE_DOMAIN = ""
 
+  # added by cw 7/8/2014 to toggle adsense during development. Ads seem to crash Firebug.
+  AD_SENSE = false
 end

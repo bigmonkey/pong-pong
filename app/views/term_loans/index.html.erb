@@ -16,7 +16,7 @@
 <section id="mainContent">
  
 	<% if @keyword.category == "custom" %>
-		<%= render(partial:'shared/ads/g_728x90_article_top') %>
+		<%= render(partial:'shared/ads/g_728x90_article_top') if AD_SENSE%>
   <% end %>
 
 	<div itemscope itemtype="http://schema.org/Article">
@@ -33,6 +33,7 @@
 		
 		<% if @keyword.category != "custom" %>
 			<%= render(:partial => "shared/loanfinder")%>
+			<%= render(:partial => "shared/loanDrop")%>
 	  <% end %>	
 
 		<% case @keyword.category %>
