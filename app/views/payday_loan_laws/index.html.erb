@@ -14,8 +14,12 @@
 
 	<section id = "mainContent">
 
-		  <%= render(:partial => "shared/loanfinder")%>
-		  <%= render(:partial => "shared/loanDrop")%>
+			<% if rand<0.5 %>
+				<%= render(:partial => "shared/loanfinder")%>
+			<% else %>	
+				<%= render(:partial => "shared/loanDrop")%>
+			<% end %>
+			
 		<h1>Payday Loan State Laws</h1>
 				<p>Payday lending laws are ideally designed to protect you from unfair lending practices as well as to create a level playing field for lenders. The reason these laws matter to you is that if you are in a regulated state, you can leverage the state's monitoring and enforcement to help you avoid unscrupulous lenders. And if you live in a state where payday lending is prohibited, it is good to understand your options.</p>
 			<div class= "clearBoth"></div>

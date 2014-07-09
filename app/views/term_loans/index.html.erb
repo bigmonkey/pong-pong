@@ -32,8 +32,11 @@
 		</div>
 
 		<% if @keyword.category != "custom" %>
-			<%= render(:partial => "shared/loanfinder")%>
-			<%= render(:partial => "shared/loanDrop")%>
+			<% if rand<0.5 %>
+				<%= render(:partial => "shared/loanfinder")%>
+			<% else %>	
+				<%= render(:partial => "shared/loanDrop")%>
+			<% end %>
 	  <% end %>	
 		
 
