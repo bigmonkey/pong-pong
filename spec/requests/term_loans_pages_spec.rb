@@ -117,7 +117,10 @@ describe "Installment Loan Pages" do
       it_should_behave_like "all index installment loan pages"
       it_should_behave_like "all installment loan pages"
 
-      it { should have_selector('div', text: "#{@keyword.word.titleize} Finder") }
+      # below replaced with new loanDrop loanfinder
+      #it { should have_selector('div', text: "#{@keyword.word.titleize} Finder") }
+
+      it { should have_selector('h2', text: "Get Quick Cash") }
 
       it_should_behave_like "non-content ad pages"      
 

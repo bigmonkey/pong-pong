@@ -27,7 +27,7 @@ describe "Partner Pages" do
 	 			FactoryGirl.create(:term_loan, paid: true, partner_id: partner.id)
 	 			visit ("/partners/#{partner.id}/")	
 	 			#binding.pry
-	 			puts page.body
+	 			#puts page.body
 			}
 
 		  it "should have taboola pixel" do

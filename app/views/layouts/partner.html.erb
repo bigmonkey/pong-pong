@@ -7,13 +7,13 @@
 	<meta name="description" content="Detailed, unbiased direct lender reviews. Find the best rates. Apply direct at The Payday Hound."/>
   <meta name="robots" content="noindex, nofollow">  
 
-<!--
+
   <script type='application/javascript'>
       setTimeout(function() {
         window.location.href= "<%= @lender_url.html_safe %>";
 	     }, 3*1000); 
 	</script>
--->
+
 	<%= stylesheet_link_tag    "application", :media => "all" %>
   	<%= javascript_include_tag "application" %>
   	<%= csrf_meta_tags %>
@@ -32,7 +32,7 @@
 
   <%# place tracking pixel for paid partners %>
   <% if @paid_partner %>
-  <img src= <%="//trc.taboola.com/contigodirectollc-sc/log/3/action?tim=#{SecureRandom.urlsafe_base64}&item-url=http://www.thepaydayhound.com/partners/#{@partner.id}/&name=conversion"%> width="0" height="0" />
+  <img src= <%="//trc.taboola.com/contigodirectollc-sc/log/3/action?tim=#{rand(10**20)}&item-url=http://www.thepaydayhound.com/partners/#{@partner.id}/&name=conversion"%> width="0" height="0" />
   <% end %>
 
 </body>
