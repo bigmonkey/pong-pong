@@ -13,14 +13,18 @@ class PartnersController < ApplicationController
         # use session for :exit_page because loan application assigns it as page that leads to prequal page or two states ahead
         session[:exit_page] = uri.path + (!uri.query.nil? ? "?#{uri.query}" : "")
       end
-      p = Partner.find(params[:id])
-      @redirect=p.name
+      #@partner is instance variable bc it's used the view for Taboola tracking pixel
+      @partner = Partner.find(params[:id])
+      @redirect=@partner.name
       save_tracking
-      if p.lender_tail.blank?
-        @lender_url = p.lender_link
+      if @partner.lender_tail.blank?
+        @lender_url = @partner.lender_link
       else
-        @lender_url = p.lender_link + p.lender_tail + session[:token]
+        @lender_url = @partner.lender_link + @partner.lender_tail + session[:token]
       end
+      # paid_partner(id) method defined in application controller.
+      # returns true for paid partnes. @paid_partner used for tracking pixel
+      @paid_partner = paid_partner(@partner.id)
     end
   end
 

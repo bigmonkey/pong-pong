@@ -245,6 +245,22 @@ class ApplicationController < ActionController::Base
     
   end
 
+  def paid_partner(id)
+    paid_partner_ids = []
+    PaydayLoan.all.each do |t|
+      if t.paid
+        paid_partner_ids.push(t.partner_id)
+      end
+    end
+    TermLoan.all.each do |t|
+      if t.paid
+        paid_partner_ids.push(t.partner_id)
+      end
+    end
+    id.in?paid_partner_ids
+  end
+
+
   private
 
   # gets called by find_by bang above if no record found
