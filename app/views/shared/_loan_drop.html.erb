@@ -3,7 +3,7 @@
 
 	<div class = "loanDropContent">	
 		<h2>Get Quick Cash!</h2>
-		<%= form_tag("#{BASE_DOMAIN}/#{@path}/", method: 'get') do %>	
+		<%= form_tag("#{BASE_DOMAIN}/#{!@path.blank? ? @path : 'installment-loans'}/", method: 'get') do %>	
 			
 		<div class = "loanDropBlurb">We review more online lenders than anyone else we know. To see our top picks and get the best deal select your state below.</div>
 		<div class = "loanDropBoxes">
