@@ -30,6 +30,11 @@ class HomesController < ApplicationController
     render :partial => "shared/layouts/nav"
   end
 
+  def loan_drop
+    render partial: "shared/loan_drop"
+  end
+
+
   def tracking_pixel
     if session[:page_views].nil?
       session[:page_views] = 1  

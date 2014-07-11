@@ -5,11 +5,12 @@ Pdh::Application.routes.draw do
  
   root to: 'homes#index'
 
-  # Called from Wordpress site for header, footer and styles
+  # Called from Wordpress site for header, footer, styles, and content
   get "jstyle" => "homes#jstyle"
   get "header" => "homes#header"
   get "footer" => "homes#footer"
   get "nav" => "homes#nav"
+  get "loan-drop" => "homes#loan_drop"
   get "tracking_pixel" => "homes#tracking_pixel"
 
   # Old URL redirects to payday-loans
