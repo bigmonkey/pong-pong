@@ -1,0 +1,35 @@
+<div id = "loanDrop">
+		<%= image_tag("https://s3.amazonaws.com/loanimages/loan-review-team-sm.jpg") %>
+
+	<div class = "loanDropContent">	
+		<h2>Get Quick Cash!</h2>
+		<%= form_tag("#{BASE_DOMAIN}/#{@path}/", method: 'get') do %>	
+			
+		<div class = "loanDropBlurb">We review more online lenders than anyone else we know. To see our top picks and get the best deal select your state below.</div>
+		<div class = "loanDropBoxes">
+			<div class = "loanDropBoxLeft">
+				<div class = 'loanDropHighlights'><%= image_tag("check-mark.png") %> Instant Approvals</div>
+				<div class = 'loanDropHighlights'><%= image_tag("check-mark.png") %> Cash in 24 Hours</div>
+				<div class = 'loanDropHighlights'><%= image_tag("check-mark.png") %> Avoid Scams</div>
+			</div>
+			<div class = "loanDropBoxRight">
+				<div class = 'loanDropHighlights'><%= image_tag("check-mark.png") %> Pre-Selected Lenders</div>
+				<div class = 'loanDropHighlights'><%= image_tag("check-mark.png") %> Bad Credit OK</div>	
+				<div class = 'loanDropHighlights'><%= image_tag("check-mark.png") %> No Obligation, Free!</div>
+			</div>
+		</div>
+		<div class = "clearboth"></div>
+	  <div>
+	  	<div class="loanDropLabel">Select Your State</div>
+	    <div class="loanDropStateIdContainer formInput"><%= select_tag :state, options_for_select(us_states), id: 'loanDropStateId', onchange: "this.form.submit(); ga('send', 'event', 'List', 'Select', 'Finder Dropdown');"  %></div>
+	  </div>
+	  
+	  <%# submit_tag "APPLY HERE", :class => "loanDropLoanButton" %>
+		<% end %>
+
+	</div>
+</div>
+
+<div class = "clearboth"></div>
+
+
