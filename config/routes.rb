@@ -11,6 +11,7 @@ Pdh::Application.routes.draw do
   get "footer" => "homes#footer"
   get "nav" => "homes#nav"
   get "loan-drop" => "homes#loan_drop"
+  get "site_160x600" => "homes#site_160x600"
   get "tracking_pixel" => "homes#tracking_pixel"
 
   # Old URL redirects to payday-loans

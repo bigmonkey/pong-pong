@@ -34,7 +34,10 @@ class HomesController < ApplicationController
     render partial: "shared/loan_drop"
   end
 
-
+  def site_160x600
+    render partial: "shared/ads/g_160x600_sitewide_side"
+  end
+  
   def tracking_pixel
     if session[:page_views].nil?
       session[:page_views] = 1  
