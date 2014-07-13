@@ -7,7 +7,7 @@
 
 	<section id = "mainContentFull">
 		<% if @paid_lenders.blank? %>
-			<%= render(partial:'shared/ads/g_728x90_lending_laws') %>
+			<%= render(partial:'shared/ads/g_728x90_lending_laws') if AD_SENSE%>
 		<% end %>
 
 
@@ -54,7 +54,7 @@
 						<%# if !@paid_banner.nil? %>
 							<div class = "show_160x600">
 								<%# link_to(image_tag(@paid_banner.size_160x600.url, alt: @paid_banner.name ), partner_path(@paid_banner.partner_id), :rel =>'nofollow', :target => 'blank')  %>
-								<%= render(partial:'shared/ads/g_160x600_sitewide_side') %>
+								<%= render(partial:'shared/ads/g_160x600_sitewide_side') if AD_SENSE %>
 							</div>	
 						<%# end %>		
 

@@ -75,7 +75,7 @@ h1, h2 {
 }
 
 h2 {
-	margin-top: 10px;
+	margin: 10px 0px 5px;
 }
 h4 {
 	color: #666666;
@@ -379,6 +379,10 @@ nav {
 	font-size: 0.8em;
 	line-height: 1.4em;
 	padding-bottom: 1em;
+	article {
+		width: 715px;
+		margin: 0 auto;
+	}
 }
 
 #mainContent h1 {
@@ -390,6 +394,7 @@ nav {
 #mainContent h3 {
 	font-size: 1em;
 	color: #444;
+	margin-bottom: 5px;
 
 }
 
