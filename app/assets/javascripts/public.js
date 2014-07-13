@@ -1,3 +1,9 @@
+// tracks an event for optimizely testing loan drop down menu
+function optitest(){
+  window['optimizely'] = window['optimizely'] || [];
+  window.optimizely.push(["trackEvent", "eventName"]); 
+}
+
 function Tog(d) {
 var expand=document.getElementById(d);
 var info=document.getElementById('info' + d);
