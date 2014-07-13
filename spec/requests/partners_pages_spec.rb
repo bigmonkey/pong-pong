@@ -33,6 +33,11 @@ describe "Partner Pages" do
 		  it "should have taboola pixel" do
 		    page.should have_css("img[src*='taboola']")
 			end		
+
+		  it "should have arcametric pixel" do
+		    page.should have_css("img[src*='arcasync']")
+			end	
+			
 		end
 
 		context "Unpaid Partner" do
@@ -50,6 +55,11 @@ describe "Partner Pages" do
 		  it "should not have taboola pixel" do
 		    page.should_not have_css("img[src*='taboola']")
 			end		
+
+		  it "should not have taboola pixel" do
+		    page.should_not have_css("img[src*='arcasync']")
+			end		
+
 		end
 	
 	
