@@ -2,7 +2,7 @@ ActiveAdmin.register Applicant do
 
   
   index do
-    column :id 
+    #column :id 
     column :visitor_token
     column :token 
     column :entry_page
@@ -10,8 +10,10 @@ ActiveAdmin.register Applicant do
     column :redirect
     column :device
     column :referer_host
+    column :src
     column :page_views
     column :time_on_site
+    column :updated_at
     default_actions
   end
 
