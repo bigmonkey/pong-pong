@@ -1,6 +1,6 @@
 <div id = "loanFinder">
 	<% if !@keyword.nil? # payday and term loans will have this populated %>
-	<div class = "loanFinderTitle"><%= @keyword.word.titleize %> Finder</div>
+	<div class = "loanFinderTitle"><%= @keyword.phrase.titleize %> Finder</div>
 	<% #Select your state to see lenders offering loans in your state.</p> %>
 	<% else #state laws page will be nil %>
 	<div class = "loanFinderTitle">Finding a Loan Made Simple</div>
