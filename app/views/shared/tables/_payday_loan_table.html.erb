@@ -19,8 +19,7 @@
     <tr class="tableHeader">
      <th><%= !(defined? @state.state_abbr).nil? ? "#{@state.state_abbr} Lender" : "Company Name" %></th>
      <th>Description</th>
-     <th>Cost</th>
-     <th>APR</th>
+     <th>Costs*</th>
      <th>Sniff</th>
      <th>Rating</th>
 
@@ -30,17 +29,22 @@
       <tr>
         <td>
           <div><%= link_to(image_tag("lendersm/#{l.image_file}", :alt => l.name ), partner_path(l.partner_id), :rel =>'nofollow', :target => 'blank', onclick: "ga('send', 'event', 'image', 'click', 'table #{l.lender_type} #{l.paid == true ? 'paid' : 'unpaid'}');")  %></div>
-        <div><%= link_to("Apply Direct", partner_path(l.partner_id), :rel =>'nofollow', :target => 'blank', onclick: "ga('send', 'event', 'link', 'click', 'table #{l.lender_type} #{l.paid == true ? 'paid' : 'unpaid'}');")  %></div>
         </td>
         <td>
           <div><%= l.first_comment %></div>
+          <div><%= l.second_comment %></div>
           <div>Governing Law: <%= l.governing_law %></div>
           <div><%= link_to('see review', lender_path(l.review_url)) %></div>
         </td>    
-        <td><%= l.cost.nil? ? "?" : number_to_currency(l.cost) %></td>
-        <td><%= l.apr.nil? ? "?" : number_to_percentage(l.apr*100, :precision => 0) %></td>
+        <td class = "paydayTableCosts">
+          <div>Loan Amt: $300</div>
+          <div>APR: <%= l.apr.nil? ? "?" : number_to_percentage(l.apr*100, :precision => 0) %></div>
+          <div>Cost: <%= l.cost.nil? ? "?" : number_to_currency(l.cost) %></div>
+        </td>
         <td><%= l.sniff.sniff_desc %></td>
-        <td class = "rank<%= l.ranking.round %>"></td>
+        <td class = "rank<%= l.ranking.round %>">
+          <div class = "tableApply"><%= link_to("Apply Direct", partner_path(l.partner_id), :rel =>'nofollow', :target => 'blank', onclick: "ga('send', 'event', 'link', 'click', 'table #{l.lender_type} #{l.paid == true ? 'paid' : 'unpaid'}');")  %></div>
+        </td>
       </tr>
     <% end %>
     <% end %>

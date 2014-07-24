@@ -30,7 +30,7 @@ describe "Payday Loan Pages" do
           page.should have_content("Company Name")
           page.should have_selector('div', text: t.first_comment)
           page.should have_link("see review", href: "/lenders/#{t.review_url}/" )      
-          page.should have_link("Apply Direct", href: "#{partner_path(t.partner_id)}/" )
+          page.should have_link("Apply", href: "#{partner_path(t.partner_id)}/" )
         end  
       end
   end

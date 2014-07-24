@@ -29,7 +29,7 @@ describe "Installment Loan Pages" do
           page.should have_content("Company Name")          
           page.should have_selector('div', text: t.first_comment)
           page.should have_link("see review", href: "/lenders/#{t.review_url}/" )      
-          page.should have_link("Apply Direct", href: "#{partner_path(t.partner_id)}/" )
+          page.should have_link("Apply", href: "#{partner_path(t.partner_id)}/" )
         end  
       end
   end
@@ -117,10 +117,9 @@ describe "Installment Loan Pages" do
       it_should_behave_like "all index installment loan pages"
       it_should_behave_like "all installment loan pages"
 
-      # below replaced with new loanDrop loanfinder
-      #it { should have_selector('div', text: "#{@keyword.word.titleize} Finder") }
-
-      it { should have_selector('h2', text: "Get Quick Cash") }
+      # below is for loanfinder, the one below is for loanDrop
+      it { should have_selector('div', text: "#{@keyword.word.titleize} Finder") }
+      #it { should have_selector('h2', text: "Get Quick Cash") }
 
       it_should_behave_like "non-content ad pages"      
 
@@ -334,9 +333,9 @@ describe "Installment Loan Pages" do
       it { should have_content("TX Lender") }
       it { should have_selector('div', text: @texaslender.first_comment) }        
       it { should have_link("see review", href: "/lenders/#{@texaslender.review_url}/" ) }         
-      it { should have_link("Apply Direct", href: "/partners/#{@texaslender.partner_id}/") }
+      it { should have_link("Apply", href: "/partners/#{@texaslender.partner_id}/") }
       it "should not show the VA lender" do 
-        page.should_not have_link("Apply Direct", href: "/partners/#{@valender.partner_id}/")
+        page.should_not have_link("Apply", href: "/partners/#{@valender.partner_id}/")
       end      
 
       it_should_behave_like "all state installment loan pages"
