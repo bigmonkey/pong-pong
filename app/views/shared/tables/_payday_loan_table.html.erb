@@ -58,6 +58,12 @@
     <% end %>
   </table>
 
-  <p class = "tableIntro">* Costs vary by state. The comparisions above use pricing for Delaware residents when available. Check each lender's website for updated information. Some lender's will not provide pricing data until an application is completed.</p>
+  <p class = "tableIntro">
+    <% if @state.blank? %>
+    * Costs vary by state. Cost shown are based on pricing for Delaware residents when available. Check each lender's website for updated information. Some lender's will not provide pricing data until an application is completed.
+    <% else %>
+    * When avaiable we have shown pricing for <%= @state.state %> residents. Check each lender's website for updated information. Some lender's will not provide pricing data until an application is completed.
+    <% end %>
+  </p>
 
   <%= render(partial:'shared/ads/g_728x90_payday_bottom') if AD_SENSE %>
