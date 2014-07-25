@@ -22,7 +22,7 @@
 						<% slice.each do |s| %>
 							<div class = "loanFinderState">
 								<label >
-								<%= radio_button_tag(:state, s.state_abbr) %> 
+								<%= radio_button_tag(:state, s.state_abbr, false, onchange: "this.form.submit()") %> 
 								<%= s.state %>
 								</label>
 							</div>						
