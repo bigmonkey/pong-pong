@@ -39,7 +39,7 @@
         <div>APR: <%= l.apr.nil? ? "?" : l.apr %></div>
         <div>Amount: <%= l.loan_amt.nil? ? "?" : l.loan_amt %></div>
         <div>Payments: <%= l.payments.nil? ? "?" : l.payments %></div>
-        <div>Freq (days): <%= l.pmt_freq_in_days.nil? ? "?" : l.pmt_freq_in_days %></div>
+        <div>Freq: <%= l.pmt_freq_in_days.nil? ? "?" : l.pmt_freq_in_days %></div>
         <div>Cost: <%= l.cost.nil? ? "?" : l.cost %></div>
       </td>
       <td><%= l.sniff.sniff_desc %></td>
@@ -50,6 +50,6 @@
     <% end %>
   </table>
 
-  <p class = "tableIntro">* Costs vary by state. The comparisions above use pricing for Delaware residents when available. Check each lender's website for updated information. Some lender's will not provide pricing data until an application is completed.</p>
+  <p class = "tableIntro">* Costs vary by state. The comparisions above use pricing for Delaware residents when available. Calculating costs with ranges is very complicated. If lender's do not give pricing across ranges we selected sample rates, terms, and loan amounts. The actual rate provided by the lender will be based on your state, applications, and other factors. Please check each lender's website for accurate pricing. These our only estimates. Some lender's will not provide pricing data until an application is completed.</p>
 
   <%= render(partial:'shared/ads/g_728x90_term_bottom') if AD_SENSE %>
