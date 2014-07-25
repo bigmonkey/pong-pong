@@ -23,7 +23,6 @@ class PaydayLoansController < ApplicationController
     # defined so the radio button defaults to correct button
     @lender=PaydayLoan.new      
     @lender.lender_type="payday"
-
   end
 
 	def show

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140417230322) do
+ActiveRecord::Schema.define(version: 20140725000940) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -295,6 +295,9 @@ ActiveRecord::Schema.define(version: 20140417230322) do
     t.integer  "state_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.decimal  "cost",           precision: 7, scale: 2
+    t.decimal  "apr",            precision: 3, scale: 2
+    t.decimal  "loan_amt",       precision: 6, scale: 2
   end
 
   create_table "prepaids", force: true do |t|

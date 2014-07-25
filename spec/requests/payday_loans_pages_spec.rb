@@ -58,6 +58,8 @@ describe "Payday Loan Pages" do
       FactoryGirl.create(:sniff, sniff_score: 3, sniff_desc: "Bad") 
       # Create Terms table
       5.times { FactoryGirl.create(:payday_loan) }
+      # Make sure index pulls from PaydayLoan not PaydayLoansStates
+      FactoryGirl.create(:payday_loan, cost: 128)
     } 
 
     # Payday Loan Main Page
@@ -103,6 +105,9 @@ describe "Payday Loan Pages" do
       it { should have_selector('h1', text: "#{@keyword.phrase.titleize}") }
       it { should have_content("#{@keyword.state_phrase.titleize}") }
 
+      # test costs pulled from PaydayLoan table
+      it { should have_content(128) }
+
       # tests application_controller set_seo_vars related kw
       it { should have_link("#{@child.word}", href: "/#{@child.word.gsub(' ','-')}/" )}
       it { should_not have_link("#{@notchild.word.gsub(' ','-')}", href: "/#{@notchild.word.gsub(' ','-')}/" )}
@@ -110,8 +115,8 @@ describe "Payday Loan Pages" do
       it_should_behave_like "all payday loan pages"
 
       # below replaced with new loanDrop loanfinder      
-      #it { should have_selector('div', text: "#{@keyword.word.titleize} Finder") }
-      it { should have_selector('h2', text: "Get Quick Cash") }
+      it { should have_selector('div', text: "#{@keyword.word.titleize} Finder") }
+      #it { should have_selector('h2', text: "Get Quick Cash") }
 
     end  
 
@@ -263,10 +268,11 @@ describe "Payday Loan Pages" do
       # Create payday_loan_laws table
       FactoryGirl.create(:payday_loan_law, id: 1, state_abbr: "TX", regulator: "TX regulator")
       FactoryGirl.create(:payday_loan_law, id: 2, state_abbr: "VA", regulator: "VA regulator")
-      # Create payday_loans_state table. Payday Loans only in Texas and not Virginia
+      # Create payday_loans_state table. Payday Loans for Texas should not show Virginia
       @texaslender=PaydayLoan.first
       @valender=PaydayLoan.last
-      FactoryGirl.create(:payday_loans_state, payday_loan_id: @texaslender.id, state_id: State.find_by_state_abbr("TX").id)
+      # Loan, Cost, APR set for TX to test pricing by state 
+      FactoryGirl.create(:payday_loans_state, payday_loan_id: @texaslender.id, state_id: State.find_by_state_abbr("TX").id, loan_amt: 128, cost: 28, apr: 1.28)
       FactoryGirl.create(:payday_loans_state, payday_loan_id: @valender.id, state_id: State.find_by_state_abbr("VA").id)
 
       #binding.pry
@@ -293,13 +299,39 @@ describe "Payday Loan Pages" do
       it { should have_content("TX Lender") }
       it { should have_selector('div', text: @texaslender.first_comment) }        
       it { should have_link("see review", href: "/lenders/#{@texaslender.review_url}/" ) }        
-      it { should have_link("Apply Direct", href: "/partners/#{@texaslender.partner_id}/") }
+      it { should have_link("Apply", href: "/partners/#{@texaslender.partner_id}/") }
       it "should not show the VA lender" do 
-        page.should_not have_link("Apply Direct", href: "/partners/#{@valender.partner_id}/")
+        page.should_not have_link("Apply", href: "/partners/#{@valender.partner_id}/")
       end      
+
+      it "should show TX pricing if available" do
+        page.should have_content("Loan Amt: $128")
+        page.should have_content("Cost: $28")
+        page.should have_content("APR: 128%")
+      end
 
       it_should_behave_like "all state payday loan pages"
       it_should_behave_like "all payday loan pages"
+    end
+
+    context "Listed State as Virginia" do
+      before {
+        @valender.apr = 1.00
+        @valender.cost = 10
+        @valender.loan_amt = 100
+        @valender.save
+        @keyword = Keyword.find_by_word("payday loans")
+        visit "/payday-loans/va"
+        #binding.pry
+        #puts page.body
+      }
+
+      it "should show default pricing if state pricing is not available" do
+        page.should have_content("Loan Amt: $100")
+        page.should have_content("Cost: $10.00")
+        page.should have_content("APR: 100%")
+      end
+
     end
 
     context "Paid Lenders Exist in TX" do      

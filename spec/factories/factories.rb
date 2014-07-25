@@ -48,6 +48,9 @@ FactoryGirl.define do
 	factory :payday_loans_state do
 		payday_loan_id ""
 		state_id ""
+		loan_amt ""
+		cost ""
+		apr ""
 	end
 
 	factory :states_term_loan do

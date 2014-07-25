@@ -37,13 +37,21 @@
           <div><%= link_to('see review', lender_path(l.review_url)) %></div>
         </td>    
         <td class = "paydayTableCosts">
-          <div>Loan Amt: $300</div>
-          <div>APR: <%= l.apr.nil? ? "?" : number_to_percentage(l.apr*100, :precision => 0) %></div>
-          <div>Cost: <%= l.cost.nil? ? "?" : number_to_currency(l.cost) %></div>
+          <%# if not index table and state pricing is available %>
+          <% if !@state.nil? && !((state_pricing = l.payday_loans_states.find_by_state_id(@state.id)).cost.blank?)  %>
+            <div>Loan Amt: <%= number_to_currency(state_pricing.loan_amt, precision: 0) %></div>
+            <div>APR: <%= number_to_percentage(state_pricing.apr*100, :precision => 0) %></div>
+            <div>Cost: <%= number_to_currency(state_pricing.cost) %></div>
+          <%# show default pricing if in index or no state pricing available%>  
+          <% else  %>
+            <div>Loan Amt: <%= l.loan_amt.blank? ? "?" : number_to_currency(l.loan_amt, precision: 0) %></div>
+            <div>APR: <%= l.apr.blank? ? "?" : number_to_percentage(l.apr*100, :precision => 0) %></div>
+            <div>Cost: <%= l.cost.blank? ? "?" : number_to_currency(l.cost) %></div>
+          <% end %>  
         </td>
         <td><%= l.sniff.sniff_desc %></td>
         <td class = "rank<%= l.ranking.round %>">
-          <div class = "tableApply"><%= link_to("Apply Direct", partner_path(l.partner_id), :rel =>'nofollow', :target => 'blank', onclick: "ga('send', 'event', 'link', 'click', 'table #{l.lender_type} #{l.paid == true ? 'paid' : 'unpaid'}');")  %></div>
+          <div class = "tableApply"><%= link_to("Apply", partner_path(l.partner_id), :rel =>'nofollow', :target => 'blank', onclick: "ga('send', 'event', 'link', 'click', 'table #{l.lender_type} #{l.paid == true ? 'paid' : 'unpaid'}');")  %></div>
         </td>
       </tr>
     <% end %>

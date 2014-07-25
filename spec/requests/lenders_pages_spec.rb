@@ -93,8 +93,8 @@ describe "Lender Pages" do
 
       it "should show lender finder" do
         # below replaced with new loanDrop loanfinder
-        #page.should have_selector('div', text: 'Finding a Loan Made Simple')
-        page.should have_selector('h2', text: 'Get Quick Cash')
+        page.should have_selector('div', text: 'Finding a Loan Made Simple')
+        #page.should have_selector('h2', text: 'Get Quick Cash')
       end
     
       it_should_behave_like "all lender show pages"     
