@@ -44,9 +44,9 @@
             <div>Cost: <%= number_to_currency(state_pricing.cost) %></div>
           <%# show default pricing if in index or no state pricing available%>  
           <% else  %>
-            <div>Loan Amt: <%= l.loan_amt.blank? ? "?" : number_to_currency(l.loan_amt, precision: 0) %></div>
-            <div>APR: <%= l.apr.blank? ? "?" : number_to_percentage(l.apr*100, :precision => 0) %></div>
-            <div>Cost: <%= l.cost.blank? ? "?" : number_to_currency(l.cost) %></div>
+            <div>Loan Amt: <%= l.loan_amt.blank? ? "?" : l.loan_amt %></div>
+            <div>APR: <%= l.apr.blank? ? "?" : l.apr %></div>
+            <div>Cost: <%= l.cost.blank? ? "?" : l.cost %></div>
           <% end %>  
         </td>
         <td><%= l.sniff.sniff_desc %></td>
