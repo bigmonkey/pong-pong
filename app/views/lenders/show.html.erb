@@ -63,7 +63,7 @@
 			<div class = "lenderBottomSmallBox">
 				<div class = "lenderBoxTitle">Estimated Costs</div>
 				<div class = "lenderBoxHighlight"><%= !@lender.cost.blank? ? @lender.cost : "?" %> / <%= !@lender.apr.blank? ? @lender.apr : "?" %> apr</div>
-				<div class = "lenderBoxSubtitle"><%= !@lender.loan_amt.blank? ? @lender.loan_amt : "?" %>, <%= !@lender.pmt_freq_in_days.blank? ?  @lender.pmt_freq_in_days : "?" %>, <%=  !@lender.payments.nil? ? @lender.payments : "?" %> payments loan</div>
+				<div class = "lenderBoxSubtitle"><%= !@lender.loan_amt.blank? ? @lender.loan_amt : "?" %>, <%= !@lender.pmt_freq_in_days.blank? ?  @lender.pmt_freq_in_days : "?" %>, <%=  !@lender.payments.nil? ? @lender.payments : "?" %> payment loan</div>
 				<div class = "lenderBoxSubtitle">FEES AND TERMS VARY BY STATE.<br /> See <%= link_to("#{@lender.name}", partner_path(@lender.partner_id), :rel => 'nofollow', :target => 'blank') %> for actual rates.</div>
 			</div>
 			<div class = "lenderBottomSmallBox">
