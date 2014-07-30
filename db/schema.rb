@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140725170557) do
+ActiveRecord::Schema.define(version: 20140730050105) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -272,12 +272,6 @@ ActiveRecord::Schema.define(version: 20140725170557) do
     t.boolean  "https"
     t.boolean  "phone_contact"
     t.boolean  "live_chat"
-    t.decimal  "loan_amt",         precision: 6, scale: 2
-    t.decimal  "payments",         precision: 4, scale: 1
-    t.decimal  "pmt_freq_in_days", precision: 5, scale: 1
-    t.decimal  "pmt_amt",          precision: 7, scale: 2
-    t.decimal  "cost",             precision: 7, scale: 2
-    t.decimal  "apr",              precision: 3, scale: 2
     t.datetime "created_at",                                            null: false
     t.datetime "updated_at",                                            null: false
     t.text     "full_desc"
@@ -288,6 +282,12 @@ ActiveRecord::Schema.define(version: 20140725170557) do
     t.string   "link2_desc"
     t.string   "link2"
     t.boolean  "paid"
+    t.string   "apr"
+    t.string   "cost"
+    t.string   "pmt_amt"
+    t.string   "pmt_freq_in_days"
+    t.string   "payments"
+    t.string   "loan_amt"
   end
 
   create_table "payday_loans_states", force: true do |t|
