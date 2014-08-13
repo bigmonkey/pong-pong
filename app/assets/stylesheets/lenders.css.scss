@@ -345,7 +345,7 @@ td .instantDecision {
 	margin: 1em auto;
 	font-size: 1.3em;
 	//border: solid 1px $boxBackgroundDarker;
-	background: $highColor;
+	background: $bigColor;
 	color: #fff;
 	line-height: 2em;
 	height: 2em;
@@ -381,7 +381,7 @@ td .instantDecision {
 	font-size: 1.2em;
 	line-height: 25px;
 	height: 25px;
-	background: $boxBackgroundVeryDark;
+	background: $mainColor;
 	text-align: center;
 	//@include rounded(5px);
 }
