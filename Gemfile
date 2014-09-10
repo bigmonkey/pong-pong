@@ -16,6 +16,7 @@ group :test do
   gem "database_cleaner", "1.2.0"
   gem 'factory_girl_rails', '4.4.0' 
   gem 'shoulda'
+  gem "chromedriver-helper", "0.0.6" #download chrome driver for selenium (test browsers calls in chrome instead of firefox)
   #gem 'guard-rspec', '2.5.0'
 end
 

@@ -316,9 +316,9 @@ describe "Payday Loan Pages" do
 
     context "Listed State as Virginia" do
       before {
-        @valender.apr = 1.00
-        @valender.cost = 10
-        @valender.loan_amt = 100
+        @valender.apr = '100%'
+        @valender.cost = '$10.00'
+        @valender.loan_amt = '$100'
         @valender.save
         @keyword = Keyword.find_by_word("payday loans")
         visit "/payday-loans/va"
