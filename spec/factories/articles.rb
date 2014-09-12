@@ -8,5 +8,6 @@ FactoryGirl.define do
 		sequence(:article) { |n| "Be careful with payday loans. They have high rates. This is article #{n} on payday loans" }
 		sequence(:SEO_title) { |n| "SEO Article Title #{n}"}
 		sequence(:description) { |n| "Article #{n} description"}
+		sequence(:url) { |n| "article-url-#{n}"}
   end
 end

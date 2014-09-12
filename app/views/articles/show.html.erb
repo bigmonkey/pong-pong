@@ -1,0 +1,29 @@
+<% content_for :seotags do %>
+<title><%= @article.SEO_title %> | The Payday Hound </title>
+<meta name="description" content= "<%= "#{@article.description}" %>" />
+<% end %>
+
+<section id="mainContent">
+	<article>
+		<div itemscope itemtype="http://schema.org/Article">
+			<h1 itemprop="name"><%= @article.title %></h1>
+			<%=  render(:partial => "shared/media_counters_title")%>
+			<div class = "articleByline">
+				Updated <span itemprop="dateModified" content= <%= @article.updated_at.to_time.iso8601 %> ><%= @article.updated_at.strftime("%B %d, %Y") %></span>	by <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name"><%= link_to @article.author, @article.author_url %></span></span>	
+			</div>
+			<div><%= raw(@article.article) %></div>
+		</div>
+
+		<div class="articleByline">
+					Originally published <span itemprop="datePublished" content=<%= @article.created_at.to_time.iso8601 %> ><%= @article.created_at.strftime("%B %d, %Y") %></span>
+		</div>
+
+
+	</article>	
+	<%=  render(:partial => "shared/media_counters")%>
+</section>
+
+<aside id ="sidebarFinder">
+		<% # render(:partial => "shared/sidebars/paydayfinder")%>
+    <%= render(:partial => "shared/sidebars/sidebar")%>
+</aside>
