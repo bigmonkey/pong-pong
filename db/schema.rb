@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140730050105) do
+ActiveRecord::Schema.define(version: 20140912161141) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -114,6 +114,18 @@ ActiveRecord::Schema.define(version: 20140730050105) do
     t.integer  "page_views"
     t.string   "time_on_site"
     t.string   "exit_page"
+  end
+
+  create_table "articles", force: true do |t|
+    t.string   "title"
+    t.string   "author"
+    t.string   "author_url"
+    t.text     "article"
+    t.string   "SEO_title"
+    t.string   "description"
+    t.string   "url"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "banners", force: true do |t|
@@ -272,6 +284,12 @@ ActiveRecord::Schema.define(version: 20140730050105) do
     t.boolean  "https"
     t.boolean  "phone_contact"
     t.boolean  "live_chat"
+    t.string   "loan_amt"
+    t.string   "payments"
+    t.string   "pmt_freq_in_days"
+    t.string   "pmt_amt"
+    t.string   "cost"
+    t.string   "apr"
     t.datetime "created_at",                                            null: false
     t.datetime "updated_at",                                            null: false
     t.text     "full_desc"
@@ -282,12 +300,6 @@ ActiveRecord::Schema.define(version: 20140730050105) do
     t.string   "link2_desc"
     t.string   "link2"
     t.boolean  "paid"
-    t.string   "apr"
-    t.string   "cost"
-    t.string   "pmt_amt"
-    t.string   "pmt_freq_in_days"
-    t.string   "payments"
-    t.string   "loan_amt"
   end
 
   create_table "payday_loans_states", force: true do |t|

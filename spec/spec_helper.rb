@@ -54,7 +54,7 @@ RSpec.configure do |config|
   config.order = "random"
 
   # Includes spec/support/helpers.rb file 
- config.include Helpers
+  config.include Helpers
 
   # Added by CW to include Capybara in request specs
   config.include Capybara::DSL   
