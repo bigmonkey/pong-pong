@@ -20,11 +20,21 @@ describe "Articles" do
   describe "Index" do
 
     before {
+      10.times { FactoryGirl.create(:article) }
       visit articles_path
+      #puts page.body
     }
 
     it { should have_selector('h1')}    
     it_should_behave_like "article pages"
+
+    it "should list every article" do 
+      Article.all.each do |article|
+        page.should have_selector('h1',text: article.title)
+        page.should have_content(article.updated_at.strftime("%B %d, %Y"))
+        page.should have_content(article.article)
+      end
+    end
 
     after(:all){
       Article.destroy_all

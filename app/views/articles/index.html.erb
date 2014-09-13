@@ -3,15 +3,32 @@
 <meta name="description" content= "Learn how borrowing money, using cards, and building credit. Get informed and make great decision at The Payday Hound."/>
 <% end %>
 
-<section id="mainContent">
+<div id="mainContent">
+
+	<h1>Learn</h1>
+	<p>Make informed financial decisions. Learn about payday loans, installment loans, prepaid cards, and secured cards.</p> 
+	<p>Get the facts so you can make a decision that's best for your situation.</p>
+
+	<% Article.all.each do |article| %>
 	<article>
-		<h1>Learn</h1>
-		<p>Make informed financial decisions. Learn about payday loans, installment loans, prepaid cards, and secured cards. Get the facts so you can make a decision that's best for your situation.</p>
+		<h1><%= article.title %></h1>
+		<div class = "articleByline">Updated <%= article.updated_at.strftime("%B %d, %Y") %></div>
+		<div><%= raw(article.article) %></div>
 
+		<%# Social Media counters targeted to article url%>
+		<p>
+			<div class = "socialMedia">
+				<span class='st_plusone_hcount' displaytext="pluson" st_url= "<%="https://www.thepaydayhound.com/learn/#{article.url}/" %>" st_title="<%="#{article.title}" %>"></span>
+				<span class="st_fblike_hcount" displaytext="facebook" st_url= "<%="https://www.thepaydayhound.com/learn/#{article.url}/" %>" st_title="<%="#{article.title}" %>"></span>
 
+				<span class='st_twitter_hcount' displaytext="twitter" st_url= "<%="https://www.thepaydayhound.com/learn/#{article.url}/" %>" st_title="<%="#{article.title}" %>"></span>
+				<span class='st_sharethis_hcount' displaytext="sharethis" st_url= "<%="https://www.thepaydayhound.com/learn/#{article.url}/" %>" st_title="<%="#{article.title}" %>"></span>
+			</div>
+		</p>
 	</article>	
+	<% end %>
 
-</section>
+</div>
 
 <aside id ="sidebarFinder">
 		<% # render(:partial => "shared/sidebars/paydayfinder")%>

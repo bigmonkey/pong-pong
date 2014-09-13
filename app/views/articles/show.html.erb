@@ -3,8 +3,8 @@
 <meta name="description" content= "<%= "#{@article.description}" %>" />
 <% end %>
 
-<section id="mainContent">
-	<article>
+<div id="mainContent">
+<article>
 		<div itemscope itemtype="http://schema.org/Article">
 			<h1 itemprop="name"><%= @article.title %></h1>
 			<%=  render(:partial => "shared/media_counters_title")%>
@@ -19,9 +19,9 @@
 		</div>
 
 
-	</article>	
 	<%=  render(:partial => "shared/media_counters")%>
-</section>
+</article>	
+</div>
 
 <aside id ="sidebarFinder">
 		<% # render(:partial => "shared/sidebars/paydayfinder")%>
