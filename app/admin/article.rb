@@ -4,7 +4,7 @@ ActiveAdmin.register Article do
                 :author,
                 :author_url,
                 :article,
-                :SEO_title,
+                :seo_title,
                 :description,
                 :url
   
@@ -22,7 +22,7 @@ ActiveAdmin.register Article do
       f.input :title
       f.input :author
       f.input :author_url
-      f.input :SEO_title
+      f.input :seo_title
       f.input :description
       f.input :url
       f.input :article
@@ -35,7 +35,7 @@ ActiveAdmin.register Article do
       row :title
       row :author
       row :author_url
-      row :SEO_title
+      row :seo_title
       row :description
       row :url
       row :article

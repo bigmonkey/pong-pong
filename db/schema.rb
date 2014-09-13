@@ -121,7 +121,7 @@ ActiveRecord::Schema.define(version: 20140912161141) do
     t.string   "author"
     t.string   "author_url"
     t.text     "article"
-    t.string   "SEO_title"
+    t.string   "seo_title"
     t.string   "description"
     t.string   "url"
     t.datetime "created_at"

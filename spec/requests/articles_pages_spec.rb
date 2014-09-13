@@ -19,8 +19,9 @@ describe "Articles" do
 
   describe "Index" do
 
+    let(:article) { FactoryGirl.create(:article) }
+  
     before {
-      10.times { FactoryGirl.create(:article) }
       visit articles_path
       #puts page.body
     }
@@ -28,17 +29,21 @@ describe "Articles" do
     it { should have_selector('h1')}    
     it_should_behave_like "article pages"
 
-    it "should list every article" do 
-      Article.all.each do |article|
-        page.should have_selector('h1',text: article.title)
-        page.should have_content(article.updated_at.strftime("%B %d, %Y"))
-        page.should have_content(article.article)
+    describe "pagination" do
+      before(:all) { 35.times { FactoryGirl.create(:article) } }
+      after(:all)  { User.destroy_all }
+
+      it { should have_selector('div.pagination') }
+
+      it "should list each article" do
+        Article.paginate(page: 1, per_page: 5).each do |article|
+          page.should have_selector('h1',text: article.title)
+          page.should have_content(article.updated_at.strftime("%B %d, %Y"))
+          page.should have_content(article.article)          
+        end
       end
     end
 
-    after(:all){
-      Article.destroy_all
-    }
   end
 
   describe "Articles" do
@@ -48,7 +53,7 @@ describe "Articles" do
 
     # seo title and description should be use
     it { should have_css("meta[name='description'][content='#{article.description}']", visible: false) }
-    it { should have_title("#{article.SEO_title} | The Payday Hound")}   
+    it { should have_title("#{article.seo_title} | The Payday Hound")}   
 
     # author schema
     it { should have_css("div[itemtype='http://schema.org/Article']", visible: false)}

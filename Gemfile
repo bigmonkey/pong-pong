@@ -2,7 +2,6 @@ source 'https://rubygems.org'
  ruby "2.0.0"		
  gem 'rails', '4.0.2'
 
- 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
@@ -12,7 +11,7 @@ group :test do
 	gem 'selenium-webdriver', "2.40.0"
 	gem 'capybara', '2.1.0'
   gem 'launchy', '2.4.2'
-  gem 'faker', '1.1.2'
+  gem 'faker', '1.4.3'
   gem "database_cleaner", "1.2.0"
   gem 'factory_girl_rails', '4.4.0' 
   gem 'shoulda'
@@ -62,6 +61,8 @@ gem 'paperclip', '4.1.1'
 # Used by paperclip to store onto AWS S3
 gem "aws-sdk", "1.38.0"
 
+# Paginate for blog
+gem "will_paginate", "3.0.7"
 # to get heroku db:push to work need taps
 # gem 'sqlite3'
 # gem 'taps'

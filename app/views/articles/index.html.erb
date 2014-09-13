@@ -9,9 +9,11 @@
 	<p>Make informed financial decisions. Learn about payday loans, installment loans, prepaid cards, and secured cards.</p> 
 	<p>Get the facts so you can make a decision that's best for your situation.</p>
 
-	<% Article.all.each do |article| %>
+	<%= will_paginate %>
+
+	<% @articles.each do |article| %>
 	<article>
-		<h1><%= article.title %></h1>
+		<h1><%= link_to article.title, article_path(article.url)%></h1>
 		<div class = "articleByline">Updated <%= article.updated_at.strftime("%B %d, %Y") %></div>
 		<div><%= raw(article.article) %></div>
 
@@ -27,6 +29,8 @@
 		</p>
 	</article>	
 	<% end %>
+
+	<%= will_paginate %>
 
 </div>
 
