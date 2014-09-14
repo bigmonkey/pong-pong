@@ -1,7 +1,37 @@
-article {
-	div#articleBody{
-		font-family: Helvetica;
-		font-size: 1.1em;
-		line-height: 1.5em;
-	}	
+#sidebarArticle {
+    width: 185px;
+    float: right;
+    margin: 0em;
+    padding: 0em;	
+  h2 {
+    //background: none repeat scroll 0 0 #ffffff;
+    border-top: 2px solid #666666;
+    color: #555555;
+    font-size: 0.85em;
+    font-weight: bold;
+    padding: 4px 0;
+    text-align: center;  	
+  }  
+	ul{
+   	background: none repeat scroll 0 0 #eee;
+    border: 1px solid #dddddd;
+    border-radius: 3px;
+    font-size: 0.7em;
+    list-style: none outside none;
+    margin-bottom: 15px;
+    padding: 5px;
+    vertical-align: middle;		
+    li {
+    	border: 0 none;
+    	margin: 7px 10px;
+    	padding: 0;    	
+    }
+	}
+	a, a:link, a:visited {
+		color: $mainColor;
+	}
+	a:hover, a:active {
+		color: $highColor;
+	}
 }
+

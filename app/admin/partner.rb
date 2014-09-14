@@ -22,7 +22,7 @@ ActiveAdmin.register Partner do
     column :name
     column :lender_link
     column :lender_tail
-    default_actions
+    actions
   end
 
   form do |f|

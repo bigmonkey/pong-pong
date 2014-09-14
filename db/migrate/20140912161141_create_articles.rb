@@ -7,7 +7,7 @@ class CreateArticles < ActiveRecord::Migration
     	t.text :article
     	t.string :seo_title
 			t.string :description    	
-    	t.string :url
+    	t.string :slug
       t.timestamps
     end
   end

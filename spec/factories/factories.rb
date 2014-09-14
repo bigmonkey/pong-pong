@@ -62,5 +62,16 @@ FactoryGirl.define do
 		advertiser_loan_id ""
 		state_id ""
 	end	
+
+  factory :topic do
+  	sequence(:topic) { |n| "Topic #{n}" }
+  	sequence(:slug) { |n| "topic-slug-#{n}"}
+  end
+
+	factory :articles_topic do
+		article_id ""
+		topic_id ""
+	end
+
 end
 

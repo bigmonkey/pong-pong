@@ -11,10 +11,9 @@ group :test do
 	gem 'selenium-webdriver', "2.40.0"
 	gem 'capybara', '2.1.0'
   gem 'launchy', '2.4.2'
-  gem 'faker', '1.4.3'
   gem "database_cleaner", "1.2.0"
   gem 'factory_girl_rails', '4.4.0' 
-  gem 'shoulda'
+  gem 'shoulda', '3.5.0'
   gem "chromedriver-helper", "0.0.6" #download chrome driver for selenium (test browsers calls in chrome instead of firefox)
   #gem 'guard-rspec', '2.5.0'
 end
@@ -25,6 +24,7 @@ group :development, :test do
   #gem 'spork-rails', '4.0.0' 	
   gem "pry", "0.9.12.6"  
   gem "pry-nav", "0.2.3"  
+  gem 'faker', '1.4.3'
 end
 
 
@@ -39,7 +39,7 @@ gem 'therubyracer', :platform => 'ruby'
  #gem 'therubyracer', '~> 0.10.2' #update to 0.11 crashes install
 
 gem 'devise','3.2.3'
-gem 'activeadmin', github: 'gregbell/active_admin'
+gem 'activeadmin', github: 'activeadmin'
 
 gem 'sass-rails',   '4.0.1'
 gem 'sass','3.2.13'
@@ -61,8 +61,10 @@ gem 'paperclip', '4.1.1'
 # Used by paperclip to store onto AWS S3
 gem "aws-sdk", "1.38.0"
 
-# Paginate for blog
-gem "will_paginate", "3.0.7"
+# Paginate for blog. Switched to Kaminari because of conflicts with ActiveAdmin. The fix to use will_paginate with Active Admin is here...http://activeadmin.info/docs/0-installation.html
+#gem "will_paginate", "3.0.7"
+gem "kaminari", "0.16.1"
+
 # to get heroku db:push to work need taps
 # gem 'sqlite3'
 # gem 'taps'

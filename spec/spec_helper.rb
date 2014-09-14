@@ -2,6 +2,7 @@
 ENV["RAILS_ENV"] ||= 'test'
 require File.expand_path("../../config/environment", __FILE__)
 require 'rspec/rails'
+
 # CW commented out below becasue I'm using Zeus
 #require 'rspec/autorun'
 require 'capybara/rspec'
@@ -10,6 +11,7 @@ require 'capybara/rspec'
 require 'database_cleaner'
 
 require 'shoulda'
+
 # Requires supporting ruby files with custom matchers and macros, etc,
 # in spec/support/ and its subdirectories.
 Dir[Rails.root.join("spec/support/**/*.rb")].each { |f| require f }

@@ -3,3 +3,12 @@
 
 en:
   hello: "Hello world"
+
+  #Used with kaminari gem
+  views:
+    pagination:
+      first: "&laquo; Newest"
+      last: "Oldest &raquo;"
+      previous: "&lsaquo; Newer"
+      next: "Older &rsaquo;"
+      truncate: "&hellip;"

@@ -14,7 +14,7 @@ ActiveAdmin.register Applicant do
     column :page_views
     column :time_on_site
     column :updated_at
-    default_actions
+    actions
   end
 
 end

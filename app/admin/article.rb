@@ -6,12 +6,12 @@ ActiveAdmin.register Article do
                 :article,
                 :seo_title,
                 :description,
-                :url
+                :slug
   
   index do
     column :title
     column :author
-    default_actions
+    actions
   end
   
   filter :created_at
@@ -24,7 +24,7 @@ ActiveAdmin.register Article do
       f.input :author_url
       f.input :seo_title
       f.input :description
-      f.input :url
+      f.input :slug
       f.input :article
     end
     f.actions
@@ -37,7 +37,7 @@ ActiveAdmin.register Article do
       row :author_url
       row :seo_title
       row :description
-      row :url
+      row :slug
       row :article
     end
     active_admin_comments

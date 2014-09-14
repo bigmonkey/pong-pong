@@ -1,0 +1,31 @@
+<div>
+	<h2>Learn</h2>
+	<ul>
+		<li><%= link_to 'All Categories', '/learn/' %></li>
+		<% @categories.each do |c| %>
+			<li><%= link_to c.topic, "/learn/categories/#{c.slug}/" %></li>
+		<% end %>
+	</ul>
+</div>
+<div>
+	<h2>Recent Posts</h2>
+	<ul>
+		<% @recent_articles.each do |article| %>
+				<li><%= link_to article.title, "/learn/#{article.slug}/" %></li>
+		<% end %>
+	</ul>
+</div>
+<div>
+	<h2>The Payday Hound</h2>
+	<ul>
+		<li>
+			<a href="/infos/about">Why Use Us?</a>
+		</li>
+		<li>
+			<a href="/infos/about">How We Get Paid?</a>
+		</li>
+		<li>
+				<a href="/infos/about">How Our RankingsWork?</a>
+		</li>
+	</ul>
+</div>

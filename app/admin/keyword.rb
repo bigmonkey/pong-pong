@@ -22,7 +22,7 @@ ActiveAdmin.register Keyword do
     column :category
     column :parent_page
     column :controller
-    default_actions
+    actions
   end
 
   filter :word

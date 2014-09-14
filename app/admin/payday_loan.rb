@@ -48,7 +48,7 @@ ActiveAdmin.register PaydayLoan do
     column :active, :as => :check_box
     column :paid, as: :check_box
     column :ranking
-    default_actions
+    actions
   end
 
   filter :name

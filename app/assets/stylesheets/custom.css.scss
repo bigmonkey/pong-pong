@@ -53,6 +53,14 @@ body {
 	color: $mainColor;
 }
 
+article {
+	div#articleBody{
+		font-family: Helvetica;
+		font-size: 1.1em;
+		line-height: 1.5em;
+	}	
+}
+
 th {
 	vertical-align: middle;
 	font-size: 0.9em;
@@ -120,7 +128,7 @@ form button {
 	float:right;
 	background: $boxBackground;
 }
-nav {
+nav.main {
 	background-color: $boxBackground;
 	width: 50%;
 	//margin-top:65px;
@@ -129,6 +137,10 @@ nav {
 	//@include rounded(15px)
 }
 
+nav.pagination {
+	text-align: center;
+	margin: 2em 0em;
+}
 #hamburger {
 	display: none;
 }
@@ -439,6 +451,12 @@ nav {
 	font-style: italic;
 	font-size: .9em;
 	padding-bottom: .5em;
+	a, a:visited, a:link {
+		color: $bigColor;
+	}
+	a:hover, a:active {
+		color: $highColor;
+	}
 }
 
 

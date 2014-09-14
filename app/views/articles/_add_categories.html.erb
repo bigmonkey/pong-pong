@@ -1,0 +1,7 @@
+<% if !article.topics.blank? %>
+	<% tops = [] %>
+	<% article.topics.each do |t| %>
+		<% tops.push("<a rel=\"category tag\" title=\"View all posts in #{t.topic}\" href=\"/learn/category/#{t.slug}/\">#{t.topic}</a>") %>
+	<% end %>
+	- <%= tops.join(" • ").html_safe %>		
+<% end %>

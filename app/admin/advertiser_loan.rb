@@ -13,7 +13,7 @@ ActiveAdmin.register AdvertiserLoan do
     column :name 
     column :active, :as => :check_box
     column :paid, as: :check_box
-    default_actions
+    actions
   end
 
   filter :name

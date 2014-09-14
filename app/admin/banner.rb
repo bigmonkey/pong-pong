@@ -15,7 +15,7 @@ ActiveAdmin.register Banner do
     column :image do |b| link_to(image_tag(b.size_160x600.url(:thumb)), admin_banner_path(b.id)) end
     column :partner
     column :rotation_rank
-    default_actions
+    actions
   end
 
   # creates new create buttons because banners depend on lender type

@@ -9,32 +9,34 @@
 	<p>Make informed financial decisions. Learn about payday loans, installment loans, prepaid cards, and secured cards.</p> 
 	<p>Get the facts so you can make a decision that's best for your situation.</p>
 
-	<%= will_paginate %>
-
 	<% @articles.each do |article| %>
 	<article>
-		<h1><%= link_to article.title, article_path(article.url)%></h1>
-		<div class = "articleByline">Updated <%= article.updated_at.strftime("%B %d, %Y") %></div>
+		<h1><%= link_to article.title, article_path(article.slug)%></h1>
+		<div class = "articleByline">
+			Updated <%= article.updated_at.strftime("%B %d, %Y") %>
+			<%= render 'add_categories', article: article %>
+		</div>
 		<div><%= raw(article.article) %></div>
 
 		<%# Social Media counters targeted to article url%>
 		<p>
 			<div class = "socialMedia">
-				<span class='st_plusone_hcount' displaytext="pluson" st_url= "<%="https://www.thepaydayhound.com/learn/#{article.url}/" %>" st_title="<%="#{article.title}" %>"></span>
-				<span class="st_fblike_hcount" displaytext="facebook" st_url= "<%="https://www.thepaydayhound.com/learn/#{article.url}/" %>" st_title="<%="#{article.title}" %>"></span>
+				<span class='st_plusone_hcount' displaytext="pluson" st_url= "<%="https://www.thepaydayhound.com/learn/#{article.slug}/" %>" st_title="<%="#{article.title}" %>"></span>
+				<span class="st_fblike_hcount" displaytext="facebook" st_url= "<%="https://www.thepaydayhound.com/learn/#{article.slug}/" %>" st_title="<%="#{article.title}" %>"></span>
 
-				<span class='st_twitter_hcount' displaytext="twitter" st_url= "<%="https://www.thepaydayhound.com/learn/#{article.url}/" %>" st_title="<%="#{article.title}" %>"></span>
-				<span class='st_sharethis_hcount' displaytext="sharethis" st_url= "<%="https://www.thepaydayhound.com/learn/#{article.url}/" %>" st_title="<%="#{article.title}" %>"></span>
+				<span class='st_twitter_hcount' displaytext="twitter" st_url= "<%="https://www.thepaydayhound.com/learn/#{article.slug}/" %>" st_title="<%="#{article.title}" %>"></span>
+				<span class='st_sharethis_hcount' displaytext="sharethis" st_url= "<%="https://www.thepaydayhound.com/learn/#{article.slug}/" %>" st_title="<%="#{article.title}" %>"></span>
 			</div>
 		</p>
 	</article>	
 	<% end %>
 
-	<%= will_paginate %>
+	<%= paginate @articles %>
 
 </div>
 
-<aside id ="sidebarFinder">
-		<% # render(:partial => "shared/sidebars/paydayfinder")%>
-    <%= render(:partial => "shared/sidebars/sidebar")%>
+<aside id ="sidebarArticle">
+<%= render partial:'shared/sidebars/articles_sidebar' %>
+	<% # render(:partial => "shared/sidebars/paydayfinder")%>
+  <% # render(:partial => "shared/sidebars/sidebar")%>
 </aside>
