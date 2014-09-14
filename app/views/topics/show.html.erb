@@ -1,13 +1,12 @@
 <% content_for :seotags do %>
-<title>Learn | The Payday Hound </title>
-<meta name="description" content= "Learn how borrowing money, using cards, and building credit. Get informed and make great decision at The Payday Hound."/>
+<title><%= "Articles on #{@category.topic}" %> | The Payday Hound </title>
+<meta name="description" content= "<%= "Save money. Make smart decisions. Catch up on #{@category.topic} and protect yourself while saving money." %>" />
 <% end %>
 
 <div id="mainContent">
 
-	<h1>Learn</h1>
-	<p>Make informed financial decisions. Learn about payday loans, installment loans, prepaid cards, and secured cards.</p> 
-	<p>Get the facts so you can make a decision that's best for your situation.</p>
+	<h1>Articles for <%= @category.topic %></h1>
+	<p>Save money and make prudent decisions. Review our articles on <%= @category.topic %>. Learn about borrowing, fees, rates, and payments. Our articles can help you make informed financial decisions to protect yourself and save money. Get the facts so you can make a decision that's best for your situation.</p>
 
 	<% @articles.each do |article| %>
 	<article>

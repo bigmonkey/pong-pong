@@ -49,6 +49,7 @@ Pdh::Application.routes.draw do
   resources :partners, only: [ :show ]
   resources :banners
 
+  resources :topics, path: "learn/category/", only: [:index, :show]
   resources :articles, path: "learn/", only: [:index, :show]
 
 

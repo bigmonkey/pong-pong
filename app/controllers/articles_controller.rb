@@ -5,7 +5,7 @@ class ArticlesController < ApplicationController
 	before_filter :set_tracking
 	
 	def index
-		@articles = Article.created.page(params[:page]).per(5) 
+		@articles = Article.created.page(params[:page]).per(5)
 
 		# needed for sidebar
 		@recent_articles = Article.created.first(10)
