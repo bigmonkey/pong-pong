@@ -4,12 +4,16 @@ describe "Topics" do
 	subject { page }
 
     before(:all) {
-      16.times { FactoryGirl.create(:article) }
-      @recent_articles = Article.created.first(10)
       3.times { FactoryGirl.create(:topic) }
       @topics = Topic.all
+      @correct_topic = Topic.first
+      7.times do
+        article = FactoryGirl.create(:article)
+        FactoryGirl.create(:articles_topic, article: article, topic: @correct_topic)
+      end
+      7.times {FactoryGirl.create(:article)}
+      @recent_articles = Article.created.first(10)
     }  
-
     after(:all) {
       Article.destroy_all
       Topic.destroy_all
@@ -23,7 +27,7 @@ describe "Topics" do
     # sidebar
     it { should have_selector('h2', text:"Learn") }
     it "should list first category" do
-      page.should have_link(@topics.first.topic, href:"/learn/categories/#{@topics.first.slug}/")
+      page.should have_link(@topics.first.topic, href:"/learn/category/#{@topics.first.slug}/")
     end
 
     it { should have_selector('h2', text:"Recent Posts") }
@@ -41,24 +45,29 @@ describe "Topics" do
   describe "Topics" do
     
     before { 
-      @current_article = Article.find(2)
-      visit article_path(@current_article.slug)
+      visit topic_path(@correct_topic.slug)
       #puts page.body
     }
 
     # seo title and description should be use
-    it { should have_css("meta[name='description'][content='#{@current_article.description}']", visible: false) }
-    it { should have_title("#{@current_article.seo_title} | The Payday Hound")}   
+    it { should have_css("meta[name='description'][content='Save money. Make smart decisions. Catch up on #{@correct_topic.topic} and protect yourself while saving money.']", visible: false) }
+    it { should have_title("Articles for #{@correct_topic.topic} | The Payday Hound")}   
 
-    # author schema
-    it { should have_css("div[itemtype='http://schema.org/Article']", visible: false)}
-    it { should have_css("span[itemprop='name']", visible: false)}
-    it { should have_css("span[itemprop='dateModified']", visible: false)}
-    it { should have_css("span[itemprop='datePublished']", visible: false)}
+    describe "Pagination" do
+      # nav tag is created by kaminari gem
+      it { should have_selector('nav.pagination') }
 
+      it "should list each article" do
+        @correct_topic.articles.created.page(1).per(5).each do |article|
+          page.should have_selector('h1',text: article.title)
+          page.should have_content(article.updated_at.strftime("%B %d, %Y"))
+          page.should have_content(article.article)   
+        end
+      end
+    end
     #content
-    it {should have_selector('h1', text: @current_article.title)}
-    it_should_behave_like "article pages"
+    it {should have_selector('h1', text: "Articles for #{@correct_topic.topic}")}
+    it_should_behave_like "topic pages"
 
   end
 

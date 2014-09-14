@@ -23,7 +23,7 @@ describe "Articles" do
     # sidebar
     it { should have_selector('h2', text:"Learn") }
     it "should list first category" do
-      page.should have_link(@topics.first.topic, href:"/learn/categories/#{@topics.first.slug}/")
+      page.should have_link(@topics.first.topic, href:"/learn/category/#{@topics.first.slug}/")
     end
 
     it { should have_selector('h2', text:"Recent Posts") }
