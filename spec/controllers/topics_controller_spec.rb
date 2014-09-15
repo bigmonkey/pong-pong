@@ -5,7 +5,7 @@ describe TopicsController do
 	describe "Index" do
 		it "redirects" do
 			get :index
-			response.should redirect_to articles_path
+			response.should redirect_to("/infos/lost/")
 		end	
 	end	
 
@@ -22,9 +22,9 @@ describe TopicsController do
 			response.should render_template :show
 		end
 
-		it "redirects to /learn/ if no category exists" do
+		it "redirects to lost puppy if no category exists" do
 			get :show, id: "xx"
-			response.should redirect_to root_path
+			response.should redirect_to("/infos/lost/")
 		end
 
 		describe "Show Correct Articles" do

@@ -21,6 +21,11 @@ describe ArticlesController do
 			get :show, id: article.slug
 			response.should render_template :show
 		end
+		
+		it "renders the puppy lost page if parameter doesn't exist" do
+			get :show, id: "xx"
+			response.should redirect_to("/infos/lost/")
+		end		
 	end
 
   it_should_behave_like "all controllers that set tracking"

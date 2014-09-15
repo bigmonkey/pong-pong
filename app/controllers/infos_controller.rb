@@ -27,7 +27,7 @@ class InfosController < ApplicationController
   def who
   end
 
-  def pound
+  def lost
     @articles = Article.created.first(15)
     # needed for sidebar
     @recent_articles = Article.created.first(10)

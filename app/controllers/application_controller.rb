@@ -7,13 +7,13 @@ class ApplicationController < ActionController::Base
   #removed below sept15, 2014. learned that helpers aren't typically used by controllers. moved these methods to the bottom of Application Controller
   #include ApplicationHelper #include methods for mobile and tablet regex
 
-  private
+
 
   def wp
-    redirect_to ("http://www.thepaydayhound.com/learn" + request.fullpath), :status => 301
+    redirect_to ('/infos/lost/')
   end 
 
-
+  private
   # determines type of device using user agent
   # tablets_agents, mobile_agents_one, and mobile_agents_two are RegEx in ApplicationHelper
   # must include ApplicationHelper see line above
@@ -275,7 +275,7 @@ class ApplicationController < ActionController::Base
 
   # gets called by find_by bang above if no record found
   def record_not_found
-    redirect_to("/")
+    redirect_to("/infos/lost/")
   end
 
 end

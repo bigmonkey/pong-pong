@@ -49,8 +49,8 @@ Pdh::Application.routes.draw do
   resources :partners, only: [ :show ]
   resources :banners
 
-  resources :topics, path: "learn/category/", only: [:index, :show]
-  resources :articles, path: "learn/", only: [:index, :show]
+  resources :topics, path: "/learn/category/", only: [:index, :show]
+  resources :articles, path: "/learn/", only: [:index, :show]
 
 
   # Redirect old URLS to new URL's. Use redirect_to hardcard b/c of nginx/heroku/wordpress set up
@@ -122,5 +122,5 @@ Pdh::Application.routes.draw do
   match "*stuff", to: 'term_loans#index', constraints: SEOTermIndex.new, via: :get
   match "*stuff", to: 'payday_loans#index', constraints: SEOPaydayIndex.new, via: :get    
 
-  #match "*stuff" => "application#wp", via: :all
+  match "*stuff" => "application#wp", via: :all
 end
