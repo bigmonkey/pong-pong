@@ -27,4 +27,11 @@ class InfosController < ApplicationController
   def who
   end
 
+  def pound
+    @articles = Article.created.first(15)
+    # needed for sidebar
+    @recent_articles = Article.created.first(10)
+    @categories = Topic.disp_order
+  end
+
 end
