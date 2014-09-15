@@ -24,7 +24,7 @@ describe TopicsController do
 
 		it "redirects to /learn/ if no category exists" do
 			get :show, id: "xx"
-			response.should redirect_to articles_path
+			response.should redirect_to root_path
 		end
 
 		describe "Show Correct Articles" do

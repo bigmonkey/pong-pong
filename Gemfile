@@ -49,7 +49,7 @@ gem 'coffee-rails', '4.0.1'
 gem 'uglifier', '2.1.1'
 
 gem 'jquery-rails', '2.3.0'
-gem 'nokogiri', '1.6.0'
+gem 'nokogiri', '1.6.3'
 
 gem 'figaro', '0.7.0'  # used to conceal pw's and things. use rake figaro:heroku to push pw to heroku
 

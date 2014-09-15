@@ -9,14 +9,8 @@ class TopicsController < ApplicationController
 	end
 
 	def show
-		category = []
-		Topic.all.each do |t|
-			category.push(t.slug)
-		end
-		if !category.include?(params[:id])
-			redirect_to articles_path, status: 301
-		else
-			@category = Topic.find_by_slug(params[:id])
+		# the find_by_slug! returns Record Not found if nothing exits. This is escaped to the root using rescue_from in the application controller at the top and the private method it directs to
+		if @category = Topic.find_by_slug!(params[:id])
 			@articles = @category.articles.created.page(params[:page]).per(5)
 			# needed for sidebar
 			@recent_articles = Article.created.first(10)

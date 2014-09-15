@@ -25,5 +25,5 @@ describe ArticlesController do
 
   it_should_behave_like "all controllers that set tracking"
 
-  after(:all){Article.destoy_all}
+  after(:all){Article.destroy_all}
 end
