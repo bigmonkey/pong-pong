@@ -15,7 +15,7 @@
 			Updated <%= article.updated_at.strftime("%B %d, %Y") %>
 			<%= render partial:'shared/article/add_categories', locals: {article: article} %>
 		</div>
-		<div><%= raw(article.article) %></div>
+		<div><%= raw(remove_img_tags(article.article).split.first(60).join(" ")) %></div>
 
 		<%# Social Media counters targeted to article url%>
 		<p>
