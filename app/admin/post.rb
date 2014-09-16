@@ -29,8 +29,8 @@ ActiveAdmin.register Post do
       f.input :seo_title
       f.input :description
       f.input :slug
-      f.input :created_at
-      f.input :updated_at
+      #f.input :created_at
+      f.input :updated_at, as: :date_select
       f.input :article
     end
     f.actions
