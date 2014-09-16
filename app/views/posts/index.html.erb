@@ -1,12 +1,12 @@
 <% content_for :seotags do %>
-<title><%= "Articles for #{@category.topic}" %> | The Payday Hound </title>
-<meta name="description" content= "<%= "Save money. Make smart decisions. Catch up on #{@category.topic} and protect yourself while saving money." %>" />
+<title>Learn | The Payday Hound </title>
+<meta name="description" content= "Learn how borrowing money, using cards, and building credit. Get informed and make great decision at The Payday Hound."/>
 <% end %>
 
 <div id="mainContent">
 
-	<h1>Articles for <%= @category.topic %></h1>
-	<p>Save money and make prudent decisions. Review our articles on <%= @category.topic %>. Learn about borrowing, fees, rates, and payments. Our articles can help you make informed financial decisions to protect yourself and save money. Get the facts so you can make a decision that's best for your situation.</p>
+	<h1>Learn</h1>
+	<p>The Payday Hound aims to help you make informed financial decisions. Learn about payday loans, installment loans, and financial products in general. Learn about borrowing, fees, rates, and payments. Our articles can help you make informed financial decisions to protect yourself and save money. Get the facts so you can make a decision that's best for your situation.</p>
 
 	<% @posts.each do |post| %>
 	<article>
@@ -15,7 +15,7 @@
 			Updated <%= post.updated_at.strftime("%B %d, %Y") %>
 			<%= render partial:'shared/post/add_categories', locals: {post: post} %>
 		</div>
-		<div><%= raw(remove_img_tags(post.article).split.first(60).join(" ")) %></div>
+		<div><%= raw(post.article) %></div>
 
 		<%# Social Media counters targeted to post url%>
 		<p>

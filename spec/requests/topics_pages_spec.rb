@@ -8,14 +8,14 @@ describe "Topics" do
       @topics = Topic.all
       @correct_topic = Topic.first
       7.times do
-        article = FactoryGirl.create(:article)
-        FactoryGirl.create(:articles_topic, article: article, topic: @correct_topic)
+        post = FactoryGirl.create(:post)
+        FactoryGirl.create(:posts_topic, post: post, topic: @correct_topic)
       end
-      7.times {FactoryGirl.create(:article)}
-      @recent_articles = Article.created.first(10)
+      7.times {FactoryGirl.create(:post)}
+      @recent_posts = Post.created.first(10)
     }  
     after(:all) {
-      Article.destroy_all
+      Post.destroy_all
       Topic.destroy_all
     }
 
@@ -31,8 +31,8 @@ describe "Topics" do
     end
 
     it { should have_selector('h2', text:"Recent Posts") }
-    it "should list the 2nd most recent article" do
-      page.should have_link(@recent_articles[1].title, href:"/learn/#{@recent_articles[1].slug}/")
+    it "should list the 2nd most recent post" do
+      page.should have_link(@recent_posts[1].title, href:"/learn/#{@recent_posts[1].slug}/")
     end
     # Nav Bar
     it { should have_link('Learn', href:'#')}
@@ -57,11 +57,11 @@ describe "Topics" do
       # nav tag is created by kaminari gem
       it { should have_selector('nav.pagination') }
 
-      it "should list each article" do
-        @correct_topic.articles.created.page(1).per(5).each do |article|
-          page.should have_selector('h1',text: article.title)
-          page.should have_content(article.updated_at.strftime("%B %d, %Y"))
-          page.should have_content(article.article)   
+      it "should list each post" do
+        @correct_topic.posts.created.page(1).per(5).each do |post|
+          page.should have_selector('h1',text: post.title)
+          page.should have_content(post.updated_at.strftime("%B %d, %Y"))
+          page.should have_content(post.article)   
         end
       end
     end

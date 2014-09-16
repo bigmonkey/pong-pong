@@ -11,14 +11,14 @@
 	<p>Learn more about <%=link_to "here", "/infos/about/" %> and have a look at some of our aritcles below:</p>
 
 	<ul>
-	<% @articles.each do |article| %>
-		<li><%= link_to article.title, article_path(article.slug)%></li>
+	<% @posts.each do |post| %>
+		<li><%= link_to post.title, post_path(post.slug)%></li>
 	<% end %>
 	</ul>
 </div>
 
 <aside id ="sidebarArticle">
-<%= render partial:'shared/sidebars/articles_sidebar' %>
+<%= render partial:'shared/sidebars/posts_sidebar' %>
 	<% # render(:partial => "shared/sidebars/paydayfinder")%>
   <% # render(:partial => "shared/sidebars/sidebar")%>
 </aside>

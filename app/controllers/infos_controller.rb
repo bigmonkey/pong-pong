@@ -28,9 +28,9 @@ class InfosController < ApplicationController
   end
 
   def lost
-    @articles = Article.created.first(15)
+    @posts = Post.created.first(15)
     # needed for sidebar
-    @recent_articles = Article.created.first(10)
+    @recent_posts = Post.created.first(10)
     @categories = Topic.disp_order
   end
 

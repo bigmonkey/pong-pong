@@ -1,6 +1,6 @@
 class Topic < ActiveRecord::Base
-	has_many :articles_topics
-	has_many :articles, through: :articles_topics
+	has_many :posts_topics
+	has_many :posts, through: :posts_topics
 	
 	validates :topic, presence: true
 

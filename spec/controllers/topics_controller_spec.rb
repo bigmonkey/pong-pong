@@ -27,29 +27,29 @@ describe TopicsController do
 			response.should redirect_to("/infos/lost/")
 		end
 
-		describe "Show Correct Articles" do
+		describe "Show Correct Posts" do
 			before(:all){
-				Article.destroy_all #make sure we have clean count
+				Post.destroy_all #make sure we have clean count
 				Topic.destroy_all
 
 				2.times {FactoryGirl.create(:topic)}
 				@correct_topic = Topic.first
 				@empty_topic = Topic.last
 				3.times do
-					article = FactoryGirl.create(:article)
-					FactoryGirl.create(:articles_topic, article: article, topic: @correct_topic)
+					post = FactoryGirl.create(:post)
+					FactoryGirl.create(:posts_topic, post: post, topic: @correct_topic)
 				end
-				FactoryGirl.create(:article)				
+				FactoryGirl.create(:post)				
 			}
 
-			it "shows articles with the correct category" do
+			it "shows posts with the correct category" do
 				get :show, id: @correct_topic.slug
-				assigns(:articles).count.should eq(3)
+				assigns(:posts).count.should eq(3)
 			end
 
-			it "shows no articles with empty category" do
+			it "shows no posts with empty category" do
 				get :show, id: @empty_topic.slug
-				assigns(:articles).count.should eq(0)
+				assigns(:posts).count.should eq(0)
 			end
 
 		end
@@ -58,8 +58,8 @@ describe TopicsController do
 
 	after(:all){
 		Topic.destroy_all
-		Article.destroy_all
-		ArticlesTopic.destroy_all
+		Post.destroy_all
+		PostsTopic.destroy_all
 	}	
 
 end

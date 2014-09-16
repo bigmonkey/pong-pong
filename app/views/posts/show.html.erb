@@ -1,0 +1,38 @@
+<% content_for :seotags do %>
+<title><%= @post.seo_title %> | The Payday Hound </title>
+<meta name="description" content= "<%= "#{@post.description}" %>" />
+<% end %>
+
+<div id="mainContent">
+<article>
+		<div itemscope itemtype="http://schema.org/Article">
+			<h1 itemprop="name"><%= @post.title %></h1>
+			<%=  render(:partial => "shared/media_counters_title")%>
+			<div class = "articleByline">
+				Updated <span itemprop="dateModified" content= <%= @post.updated_at.to_time.iso8601 %> ><%= @post.updated_at.strftime("%B %d, %Y") %></span><span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name">
+				<% if !@post.author.blank? %>
+					<%if !@post.author_url.blank? %>
+						by <%= link_to @post.author, @post.author_url%></span></span>
+					<% else %>
+						by <%= @post.author %>
+					<% end %>	
+				<% end %>
+				<%= render partial:'shared/post/add_categories', locals: {post: @post} %>	
+			</div>
+			<div><%= raw(@post.article) %></div>
+		</div>
+
+		<div class="articleByline">
+					Originally published <span itemprop="datePublished" content=<%= @post.created_at.to_time.iso8601 %> ><%= @post.created_at.strftime("%B %d, %Y") %></span>
+		</div>
+
+
+	<%=  render(:partial => "shared/media_counters")%>
+</article>	
+</div>
+
+<aside id ="sidebarArticle">
+	<%= render partial:'shared/sidebars/posts_sidebar' %>
+	<% # render(:partial => "shared/sidebars/paydayfinder")%>
+   <%# render(:partial => "shared/sidebars/sidebar")%>
+</aside>

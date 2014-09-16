@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140914170028) do
+ActiveRecord::Schema.define(version: 20140916195413) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -114,25 +114,6 @@ ActiveRecord::Schema.define(version: 20140914170028) do
     t.integer  "page_views"
     t.string   "time_on_site"
     t.string   "exit_page"
-  end
-
-  create_table "articles", force: true do |t|
-    t.string   "title"
-    t.string   "author"
-    t.string   "author_url"
-    t.text     "article"
-    t.string   "seo_title"
-    t.string   "description"
-    t.string   "slug"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "articles_topics", force: true do |t|
-    t.integer  "article_id"
-    t.integer  "topic_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
   end
 
   create_table "banners", force: true do |t|
@@ -317,6 +298,25 @@ ActiveRecord::Schema.define(version: 20140914170028) do
     t.decimal  "cost",           precision: 7, scale: 2
     t.decimal  "apr",            precision: 3, scale: 2
     t.decimal  "loan_amt",       precision: 6, scale: 2
+  end
+
+  create_table "posts", force: true do |t|
+    t.string   "title"
+    t.string   "author"
+    t.string   "author_url"
+    t.text     "article"
+    t.string   "seo_title"
+    t.string   "description"
+    t.string   "slug"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "posts_topics", force: true do |t|
+    t.integer  "post_id"
+    t.integer  "topic_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "prepaids", force: true do |t|

@@ -4,7 +4,7 @@ Pdh::Application.routes.draw do
   #match "/(*all)", constraints: {original_url: /\bherokuapp\b/}, to: "application#heroku"
  
   root to: 'homes#index'
-  get "/learn/blogdump/" => "articles#blogdump"
+  get "/learn/blogdump/" => "posts#blogdump"
   # Called from Wordpress site for header, footer, styles, and content
   get "jstyle" => "homes#jstyle"
   get "header" => "homes#header"
@@ -50,7 +50,7 @@ Pdh::Application.routes.draw do
   resources :banners
 
   resources :topics, path: "/learn/category/", only: [:index, :show]
-  resources :articles, path: "/learn/", only: [:index, :show]
+  resources :posts, path: "/learn/", only: [:index, :show]
 
 
   # Redirect old URLS to new URL's. Use redirect_to hardcard b/c of nginx/heroku/wordpress set up

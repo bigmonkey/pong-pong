@@ -68,8 +68,8 @@ FactoryGirl.define do
   	sequence(:slug) { |n| "topic-slug-#{n}"}
   end
 
-	factory :articles_topic do
-		article_id ""
+	factory :posts_topic do
+		post_id ""
 		topic_id ""
 	end
 

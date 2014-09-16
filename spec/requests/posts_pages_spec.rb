@@ -1,21 +1,21 @@
 require 'spec_helper'
 
-describe "Articles" do
+describe "Posts" do
 	subject { page }
 
     before(:all) {
-      16.times { FactoryGirl.create(:article) }
-      @recent_articles = Article.created.first(10)
+      16.times { FactoryGirl.create(:post) }
+      @recent_posts = Post.created.first(10)
       3.times { FactoryGirl.create(:topic) }
       @topics = Topic.all
     }  
 
     after(:all) {
-      Article.destroy_all
+      Post.destroy_all
       Topic.destroy_all
     }
 
-  shared_examples_for "article pages" do
+  shared_examples_for "post pages" do
 
     it { should have_css("meta[name='description']", visible: false) }
     it { should have_css("title", visible:false)}
@@ -27,8 +27,8 @@ describe "Articles" do
     end
 
     it { should have_selector('h2', text:"Recent Posts") }
-    it "should list the 2nd most recent article" do
-      page.should have_link(@recent_articles[1].title, href:"/learn/#{@recent_articles[1].slug}/")
+    it "should list the 2nd most recent post" do
+      page.should have_link(@recent_posts[1].title, href:"/learn/#{@recent_posts[1].slug}/")
     end
     # Nav Bar
     it { should have_link('Learn', href:'#')}
@@ -40,7 +40,7 @@ describe "Articles" do
   describe "Index" do
 
     before {
-      visit articles_path
+      visit posts_path
       #puts page.body
     }
 
@@ -50,30 +50,30 @@ describe "Articles" do
       # nav tag is created by kaminari gem
       it { should have_selector('nav.pagination') }
 
-      it "should list each article" do
-        Article.created.page(1).per(5).each do |article|
-          page.should have_selector('h1',text: article.title)
-          page.should have_content(article.updated_at.strftime("%B %d, %Y"))
-          page.should have_content(article.article)   
+      it "should list each post" do
+        Post.created.page(1).per(5).each do |post|
+          page.should have_selector('h1',text: post.title)
+          page.should have_content(post.updated_at.strftime("%B %d, %Y"))
+          page.should have_content(post.article)   
         end
       end
     end
 
-    it_should_behave_like "article pages"
+    it_should_behave_like "post pages"
 
   end
 
-  describe "Articles" do
+  describe "Posts" do
     
     before { 
-      @current_article = Article.find(2)
-      visit article_path(@current_article.slug)
+      @current_post = Post.find(2)
+      visit post_path(@current_post.slug)
       #puts page.body
     }
 
     # seo title and description should be use
-    it { should have_css("meta[name='description'][content='#{@current_article.description}']", visible: false) }
-    it { should have_title("#{@current_article.seo_title} | The Payday Hound")}   
+    it { should have_css("meta[name='description'][content='#{@current_post.description}']", visible: false) }
+    it { should have_title("#{@current_post.seo_title} | The Payday Hound")}   
 
     # author schema
     it { should have_css("div[itemtype='http://schema.org/Article']", visible: false)}
@@ -82,8 +82,8 @@ describe "Articles" do
     it { should have_css("span[itemprop='datePublished']", visible: false)}
 
     #content
-    it {should have_selector('h1', text: @current_article.title)}
-    it_should_behave_like "article pages"
+    it {should have_selector('h1', text: @current_post.title)}
+    it_should_behave_like "post pages"
 
   end
 

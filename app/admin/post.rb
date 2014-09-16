@@ -1,4 +1,5 @@
-ActiveAdmin.register Article do
+ActiveAdmin.register Post do
+
 
   permit_params :title,
                 :author,
@@ -9,7 +10,7 @@ ActiveAdmin.register Article do
                 :slug,
                 :created_at,
                 :updated_at,
-                articles_topics_attributes: [:id, :article_id, :topic_id, :destroy]
+                posts_topics_attributes: [:id, :post_id, :topic_id, :destroy]
   
   index do
     column :title
@@ -34,7 +35,7 @@ ActiveAdmin.register Article do
     end
     f.actions
     f.inputs do
-      f.has_many :articles_topics do |app_f|
+      f.has_many :posts_topics do |app_f|
         if app_f.object.id
           app_f.input :_destroy, as: :boolean, label: "delete"
         end
@@ -53,10 +54,18 @@ ActiveAdmin.register Article do
       row :description
       row :slug
       row :article
-      table_for article.slug do
-
-      end
+      panel "Topics" do
+        table_for post.posts_topics do
+          column "Topics" do |t|
+            t.topic.topic
+          end
+          column "Slug" do |t|
+            t.topic.slug
+          end
+        end
+      end 
     end      
     active_admin_comments
   end
+
 end
