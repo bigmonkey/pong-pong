@@ -8,7 +8,9 @@ describe "Article Model" do
 	it "is invalid without a title" do
 		FactoryGirl.build(:article, title:nil).should_not be_valid
 	end 
-
+	it "is invalid without a slug" do
+		FactoryGirl.build(:article, slug:nil).should_not be_valid
+	end 
 
 	after(:all){
 		Article.destroy_all

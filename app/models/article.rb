@@ -5,6 +5,7 @@ class Article < ActiveRecord::Base
 	accepts_nested_attributes_for :articles_topics, allow_destroy: true
 
 	validates :title, presence: true
+	validates :slug, presence: true
 
 	def self.created
 		order(created_at: :desc)

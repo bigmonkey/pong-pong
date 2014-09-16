@@ -9,7 +9,15 @@
 			<h1 itemprop="name"><%= @article.title %></h1>
 			<%=  render(:partial => "shared/media_counters_title")%>
 			<div class = "articleByline">
-				Updated <span itemprop="dateModified" content= <%= @article.updated_at.to_time.iso8601 %> ><%= @article.updated_at.strftime("%B %d, %Y") %></span>	by <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name"><%= link_to @article.author, @article.author_url %></span></span><%= render partial:'shared/article/add_categories', locals: {article: @article} %>	
+				Updated <span itemprop="dateModified" content= <%= @article.updated_at.to_time.iso8601 %> ><%= @article.updated_at.strftime("%B %d, %Y") %></span><span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name">
+				<% if !@article.author.blank? %>
+					<%if !@article.author_url.blank? %>
+						by <%= link_to @article.author, @article.author_url%></span></span>
+					<% else %>
+						by <%= @article.author %>
+					<% end %>	
+				<% end %>
+				<%= render partial:'shared/article/add_categories', locals: {article: @article} %>	
 			</div>
 			<div><%= raw(@article.article) %></div>
 		</div>

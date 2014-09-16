@@ -6,7 +6,10 @@ ActiveAdmin.register Article do
                 :article,
                 :seo_title,
                 :description,
-                :slug
+                :slug,
+                :created_at,
+                :updated_at,
+                articles_topics_attributes: [:id, :article_id, :topic_id, :destroy]
   
   index do
     column :title
@@ -25,6 +28,16 @@ ActiveAdmin.register Article do
       f.input :seo_title
       f.input :description
       f.input :slug
+      f.inputs do
+        f.has_many :articles_topics do |c|
+          if c.object.id
+            c.input :destroy, as: :boolean, label: "delete"
+          end
+          c.input :topic, include_blank: :false, member_label: :topic
+        end
+      end
+      f.input :created_at
+      f.input :updated_at
       f.input :article
     end
     f.actions

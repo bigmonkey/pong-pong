@@ -4,7 +4,7 @@ Pdh::Application.routes.draw do
   #match "/(*all)", constraints: {original_url: /\bherokuapp\b/}, to: "application#heroku"
  
   root to: 'homes#index'
-
+  get "/learn/blogdump/" => "articles#blogdump"
   # Called from Wordpress site for header, footer, styles, and content
   get "jstyle" => "homes#jstyle"
   get "header" => "homes#header"
@@ -63,6 +63,8 @@ Pdh::Application.routes.draw do
   get "/bad-credit-credit-card-secured-card" => redirect("http://www.thepaydayhound.com/learn/best-secured-credit-card")
   get "/find-apply-best-payday-loan-state" => redirect("http://www.thepaydayhound.com/learn/payday-loan-finder")
   get "/choosing-a-payday-loan" => redirect("http://www.thepaydayhound.com/learn/how-to-choose-a-payday-loan")
+
+
   # Another way to create SEO friendly URL's 
   #resources "payday-loans", :as => :payday_loans, :controller => :payday_loans
   
