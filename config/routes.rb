@@ -4,7 +4,7 @@ Pdh::Application.routes.draw do
   #match "/(*all)", constraints: {original_url: /\bherokuapp\b/}, to: "application#heroku"
  
   root to: 'homes#index'
-  get "/learn/blogdump/" => "posts#blogdump"
+  
   # Called from Wordpress site for header, footer, styles, and content
   get "jstyle" => "homes#jstyle"
   get "header" => "homes#header"
