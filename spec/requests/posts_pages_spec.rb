@@ -66,7 +66,7 @@ describe "Posts" do
   describe "Posts" do
     
     before { 
-      @current_post = Post.find(2)
+      @current_post = Post.first
       visit post_path(@current_post.slug)
       #puts page.body
     }

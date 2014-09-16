@@ -6,7 +6,7 @@ Pdh::Application.routes.draw do
   root to: 'homes#index'
   #used to dump wordpress into database 9/16/14
   #get "/learn/blogdump/" => "posts#blogdump"
-  
+
   # Called from Wordpress site for header, footer, styles, and content
   get "jstyle" => "homes#jstyle"
   get "header" => "homes#header"
@@ -50,6 +50,8 @@ Pdh::Application.routes.draw do
   resources :payday_loan_laws, path: "payday-loan-laws", only: [:index, :show]
   resources :partners, only: [ :show ]
   resources :banners
+
+  get "/learn/five-secret-to-know-before-taking-a-payday-loaips-to-avoid-costly-payday-loan-fees" => redirect("/learn/five-payday-loan-secrets/")
 
   resources :topics, path: "/learn/category/", only: [:index, :show]
   resources :posts, path: "/learn/", only: [:index, :show]
