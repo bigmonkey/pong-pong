@@ -45,7 +45,7 @@ class ArticlesController < ApplicationController
   		a=Article.new
   		a.title = (i/'./title').text.titleize
   		a.slug = (i/'./wp:post_name').text
-  		a.created_at = (i/'./pubDate').text
+  		#a.created_at = (i/'./pubDate').text
   		a.author = (i/'./dc:creator').text.titleize
   		a.author = "Con Way" if a.author == "Conway"
   		a.article = (i/'./content:encoded').text

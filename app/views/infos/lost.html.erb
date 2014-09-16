@@ -1,0 +1,24 @@
+<% content_for :seotags do %>
+<title><%= "Lost Puppy Pound" %> | The Payday Hound </title>
+<meta name="description" content= "We are unable to find this page. Try other pages to learn more about loans and get the best deal at The Payday Hound" />
+<% end %>
+
+<div id="mainContent">
+	<%= render(:partial => "shared/loan_drop")%>
+	<h1>Whoops -- The Lost Puppy Pound</h1>
+	<p>The page you are looking for doesn't exist or has been moved.</p>
+	<p>The Payday Hound aims to help you make informed financial decisions. We focus on alternative financial products like payday loans and installment loans. We provide fact based articles featuring custom analysis. We also provide lender reviews and rankings. Finally, we provide tools to find lenders in your state. We hope by using our site you can decide whether a short term loan is right for you and if its find the best one for your situation.</p>
+	<p>Learn more about <%=link_to "here", "/infos/about/" %> and have a look at some of our aritcles below:</p>
+
+	<ul>
+	<% @articles.each do |article| %>
+		<li><%= link_to article.title, article_path(article.slug)%></li>
+	<% end %>
+	</ul>
+</div>
+
+<aside id ="sidebarArticle">
+<%= render partial:'shared/sidebars/articles_sidebar' %>
+	<% # render(:partial => "shared/sidebars/paydayfinder")%>
+  <% # render(:partial => "shared/sidebars/sidebar")%>
+</aside>

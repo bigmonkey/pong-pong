@@ -28,18 +28,19 @@ ActiveAdmin.register Article do
       f.input :seo_title
       f.input :description
       f.input :slug
-      f.inputs do
-        f.has_many :articles_topics do |c|
-          if c.object.id
-            c.input :destroy, as: :boolean, label: "delete"
-          end
-          c.input :topic, include_blank: :false, member_label: :topic
-        end
-      end
       f.input :created_at
       f.input :updated_at
       f.input :article
     end
+    f.actions
+    f.inputs do
+      f.has_many :articles_topics do |app_f|
+        if app_f.object.id
+          app_f.input :_destroy, as: :boolean, label: "delete"
+        end
+        app_f.input :topic, include_blank: :false, :member_label => :topic
+      end 
+    end 
     f.actions
   end
   
@@ -52,7 +53,10 @@ ActiveAdmin.register Article do
       row :description
       row :slug
       row :article
-    end
+      table_for article.slug do
+
+      end
+    end      
     active_admin_comments
   end
 end
