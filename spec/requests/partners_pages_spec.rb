@@ -30,9 +30,9 @@ describe "Partner Pages" do
 	 			#puts page.body
 			}
 
-		  it "should have taboola pixel" do
-		    page.should have_css("img[src*='taboola']")
-			end		
+		  #it "should have taboola pixel" do
+		  #  page.should have_css("img[src*='taboola']")
+			#end		
 
 		  it "should have arcametric pixel" do
 		    page.should have_css("img[src*='arcasync']")

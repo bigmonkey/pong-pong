@@ -5,7 +5,7 @@ class TopicsController < ApplicationController
 	before_filter :set_tracking
 	
 	def index
-		redirect_to("/infos/lost/")
+		redirect_to("#{BASE_DOMAIN}/infos/lost/")
 	end
 
 	def show

@@ -52,23 +52,23 @@ Pdh::Application.routes.draw do
   resources :banners
 
   # must put all /learn/ redirects before the resources :learn routing
-  get "/learn/five-secret-to-know-before-taking-a-payday-loaips-to-avoid-costly-payday-loan-fees" => redirect("/learn/five-payday-loan-secrets/")
-  get "/learn/payday-direct" => redirect("/direct-payday-lenders-online/")
+  get "#{BASE_DOMAIN}/learn/five-secret-to-know-before-taking-a-payday-loaips-to-avoid-costly-payday-loan-fees" => redirect("/learn/five-payday-loan-secrets/")
+  get "#{BASE_DOMAIN}/learn/payday-direct" => redirect("/direct-payday-lenders-online/")
 
   resources :topics, path: "/learn/category/", only: [:index, :show]
   resources :posts, path: "/learn/", only: [:index, :show]
 
 
   # Redirect old URLS to new URL's. Use redirect_to hardcard b/c of nginx/heroku/wordpress set up
-  get "/prepaid-card/" => redirect("http://www.thepaydayhound.com/prepaid-cards/")
-  match "/prepaid-card/:name/" => redirect("http://www.thepaydayhound.com/prepaid-cards/%{name}/"), via: :show
-  get "/secureds/" => redirect("http://www.thepaydayhound.com/secured-credit-cards/")
-  get "/prepaids/" => redirect("http://www.thepaydayhound.com/prepaid-cards/")
-  get "/applicants" => redirect("http://www.thepaydayhound.com/get-payday-loan/")
-  get "/payday-loans-direct-payday-lenders" => redirect("http://www.thepaydayhound.com/direct-payday-lenders-online/")
-  get "/bad-credit-credit-card-secured-card" => redirect("http://www.thepaydayhound.com/learn/best-secured-credit-card")
-  get "/find-apply-best-payday-loan-state" => redirect("http://www.thepaydayhound.com/learn/payday-loan-finder")
-  get "/choosing-a-payday-loan" => redirect("http://www.thepaydayhound.com/learn/how-to-choose-a-payday-loan")
+  get "/prepaid-card/" => redirect("#{BASE_DOMAIN}/prepaid-cards/")
+  match "/prepaid-card/:name/" => redirect(" #{BASE_DOMAIN}/prepaid-cards/%{name}/"), via: :show
+  get "/secureds/" => redirect(" #{BASE_DOMAIN}/secured-credit-cards/")
+  get "/prepaids/" => redirect(" #{BASE_DOMAIN}/prepaid-cards/")
+  get "/applicants" => redirect(" #{BASE_DOMAIN}/get-payday-loan/")
+  get "/payday-loans-direct-payday-lenders" => redirect(" #{BASE_DOMAIN}/direct-payday-lenders-online/")
+  get "/bad-credit-credit-card-secured-card" => redirect(" #{BASE_DOMAIN}/learn/best-secured-credit-card")
+  get "/find-apply-best-payday-loan-state" => redirect(" #{BASE_DOMAIN}/learn/payday-loan-finder")
+  get "/choosing-a-payday-loan" => redirect(" #{BASE_DOMAIN}/learn/how-to-choose-a-payday-loan")
 
 
   # Another way to create SEO friendly URL's 

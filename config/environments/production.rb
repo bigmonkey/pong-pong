@@ -79,7 +79,7 @@ Pdh::Application.configure do
 
   # added by cw 4/17/2014 needed because nginx reverse proxy sets based on http_host
   # this gets changed to herokuapp in production but for developement/testing needs to be local
-  BASE_DOMAIN = "http://www.thepaydayhound.com"
+  BASE_DOMAIN = "https://www.thepaydayhound.com"
 
   # added by cw 7/8/2014 to toggle adsense during development. Ads seem to crash Firebug.
   AD_SENSE = true  

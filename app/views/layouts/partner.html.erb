@@ -17,8 +17,9 @@
 	<%= stylesheet_link_tag    "application", :media => "all" %>
   	<%= javascript_include_tag "application" %>
   	<%= csrf_meta_tags %>
+    <%# added https Sept 17, 14 %>
   	<!--[if lt IE 9]>
-		<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+		<script src="https://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
 	<![endif]-->
 
  
@@ -31,11 +32,11 @@
 <%= yield %>
 
   <%# place tracking pixel for paid partners %>
-  <%# if @paid_partner %>
+  <% if @paid_partner %>
 
-  <%# Arca tracking pixel removed Sept 2014 %>
-  <%#  <img src="http://contigo.arcasync.com/TAGS/53c201808c493" width="0" height="0"> %>
-  <%# end %>
+  <%# Arca tracking pixel %>
+    <img src="https://contigo.arcasync.com/TAGS/53c201808c493" width="0" height="0">
+  <% end %>
 
 </body>
 </html>

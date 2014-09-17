@@ -6,7 +6,7 @@ class PartnersController < ApplicationController
   def show
   	#If there is an ID go to lender website else return to the hound
   	if params[:id].blank? || Partner.find_by_id(params[:id]).nil?
-  		redirect_to("/")
+  		redirect_to("#{BASE_DOMAIN}/")
   	else
       if !request.env["HTTP_REFERER"].blank?
         uri = URI(request.env["HTTP_REFERER"])

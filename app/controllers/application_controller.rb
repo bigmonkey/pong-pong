@@ -10,7 +10,7 @@ class ApplicationController < ActionController::Base
 
 
   def wp
-    redirect_to ('/infos/lost/')
+    redirect_to ('#{BASE_DOMAIN}/infos/lost/')
   end 
 
   private
@@ -275,7 +275,7 @@ class ApplicationController < ActionController::Base
 
   # gets called by find_by bang above if no record found
   def record_not_found
-    redirect_to("/infos/lost/")
+    redirect_to("#{BASE_DOMAIN}/infos/lost/")
   end
 
 end
