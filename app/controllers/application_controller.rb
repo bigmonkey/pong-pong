@@ -10,7 +10,7 @@ class ApplicationController < ActionController::Base
 
 
   def wp
-    redirect_to ('#{BASE_DOMAIN}/infos/lost/')
+    redirect_to ("#{BASE_DOMAIN}/infos/lost/")
   end 
 
   private
