@@ -52,8 +52,8 @@ Pdh::Application.routes.draw do
   resources :banners
 
   # must put all /learn/ redirects before the resources :learn routing
-  get "#{BASE_DOMAIN}/learn/five-secret-to-know-before-taking-a-payday-loaips-to-avoid-costly-payday-loan-fees" => redirect("/learn/five-payday-loan-secrets/")
-  get "#{BASE_DOMAIN}/learn/payday-direct" => redirect("/direct-payday-lenders-online/")
+  get "/learn/five-secret-to-know-before-taking-a-payday-loaips-to-avoid-costly-payday-loan-fees" => redirect("#{BASE_DOMAIN}/learn/five-payday-loan-secrets/")
+  get "/learn/payday-direct" => redirect("#{BASE_DOMAIN}/direct-payday-lenders-online/")
 
   resources :topics, path: "/learn/category/", only: [:index, :show]
   resources :posts, path: "/learn/", only: [:index, :show]
@@ -66,9 +66,9 @@ Pdh::Application.routes.draw do
   get "/prepaids/" => redirect(" #{BASE_DOMAIN}/prepaid-cards/")
   get "/applicants" => redirect(" #{BASE_DOMAIN}/get-payday-loan/")
   get "/payday-loans-direct-payday-lenders" => redirect(" #{BASE_DOMAIN}/direct-payday-lenders-online/")
-  get "/bad-credit-credit-card-secured-card" => redirect(" #{BASE_DOMAIN}/learn/best-secured-credit-card")
-  get "/find-apply-best-payday-loan-state" => redirect(" #{BASE_DOMAIN}/learn/payday-loan-finder")
-  get "/choosing-a-payday-loan" => redirect(" #{BASE_DOMAIN}/learn/how-to-choose-a-payday-loan")
+  get "/bad-credit-credit-card-secured-card" => redirect(" #{BASE_DOMAIN}/learn/best-secured-credit-card/")
+  get "/find-apply-best-payday-loan-state" => redirect(" #{BASE_DOMAIN}/learn/payday-loan-finder/")
+  get "/choosing-a-payday-loan" => redirect(" #{BASE_DOMAIN}/learn/how-to-choose-a-payday-loan/")
 
 
   # Another way to create SEO friendly URL's 
