@@ -51,7 +51,9 @@ Pdh::Application.routes.draw do
   resources :partners, only: [ :show ]
   resources :banners
 
+  # must put all /learn/ redirects before the resources :learn routing
   get "/learn/five-secret-to-know-before-taking-a-payday-loaips-to-avoid-costly-payday-loan-fees" => redirect("/learn/five-payday-loan-secrets/")
+  get "/learn/payday-direct" => redirect("/direct-payday-lenders-online/")
 
   resources :topics, path: "/learn/category/", only: [:index, :show]
   resources :posts, path: "/learn/", only: [:index, :show]

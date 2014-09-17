@@ -2,13 +2,17 @@ module ApplicationHelper
 
   # used for Topic summary and File not Found Page
   def remove_img_tags (original_html)
-    html = Nokogiri::HTML.fragment(original_html)
-    #creates array of all image tags in content
-    images = html.css('img').collect(&:to_s)
-    images.each do |i|
-      original_html.slice!(i)
+    noko_html = Nokogiri::HTML.fragment(original_html)
+    # images in the blog are wrapped in three div types
+    # this loop removes them
+    ["imgRight","imgLeft","imgCenter"].each do |cls|
+      noko_html.css("div[class=\"#{cls}\"]").remove
     end
-    original_html
+    #creates array of all image tags in content to remove any remaining images
+    noko_html.css('img').remove
+    noko_html.css('ul').remove
+    noko_html.css('ol').remove
+    original_html = noko_html.to_html
   end
 
     def us_states

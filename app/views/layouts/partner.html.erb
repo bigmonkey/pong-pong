@@ -31,10 +31,11 @@
 <%= yield %>
 
   <%# place tracking pixel for paid partners %>
-  <% if @paid_partner %>
-  <img src= <%="//trc.taboola.com/contigodirectollc-sc/log/3/action?tim=#{rand(10**20)}&item-url=http://www.thepaydayhound.com/partners/#{@partner.id}/&name=conversion"%> width="0" height="0" />
-  <img src="http://contigo.arcasync.com/TAGS/53c201808c493" width="0" height="0">
-  <% end %>
+  <%# if @paid_partner %>
+
+  <%# Arca tracking pixel removed Sept 2014 %>
+  <%#  <img src="http://contigo.arcasync.com/TAGS/53c201808c493" width="0" height="0"> %>
+  <%# end %>
 
 </body>
 </html>
