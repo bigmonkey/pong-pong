@@ -82,6 +82,6 @@ Pdh::Application.configure do
   BASE_DOMAIN = "https://www.thepaydayhound.com"
 
   # added by cw 7/8/2014 to toggle adsense during development. Ads seem to crash Firebug.
-  AD_SENSE = false  
+  AD_SENSE = true  
 
 end
